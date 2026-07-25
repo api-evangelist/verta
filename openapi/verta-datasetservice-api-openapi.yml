@@ -1,0 +1,1089 @@
+swagger: '2.0'
+info:
+  title: deployment/APISync.proto AuthzService DatasetService API
+  version: version not set
+basePath: /v1
+consumes:
+- application/json
+produces:
+- application/json
+tags:
+- name: DatasetService
+paths:
+  /dataset/addDatasetAttributes:
+    post:
+      operationId: DatasetService_addDatasetAttributes
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/modeldbAddDatasetAttributesResponse'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/runtimeError'
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/modeldbAddDatasetAttributes'
+      tags:
+      - DatasetService
+  /dataset/addDatasetTags:
+    post:
+      operationId: DatasetService_addDatasetTags
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/modeldbAddDatasetTagsResponse'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/runtimeError'
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/modeldbAddDatasetTags'
+      tags:
+      - DatasetService
+  /dataset/createDataset:
+    post:
+      operationId: DatasetService_createDataset
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/modeldbCreateDatasetResponse'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/runtimeError'
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/modeldbCreateDataset'
+      tags:
+      - DatasetService
+  /dataset/deleteDataset:
+    delete:
+      operationId: DatasetService_deleteDataset
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/modeldbDeleteDatasetResponse'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/runtimeError'
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/modeldbDeleteDataset'
+      tags:
+      - DatasetService
+  /dataset/deleteDatasetAttributes:
+    delete:
+      operationId: DatasetService_deleteDatasetAttributes
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/modeldbDeleteDatasetAttributesResponse'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/runtimeError'
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/modeldbDeleteDatasetAttributes'
+      tags:
+      - DatasetService
+  /dataset/deleteDatasetTags:
+    delete:
+      operationId: DatasetService_deleteDatasetTags
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/modeldbDeleteDatasetTagsResponse'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/runtimeError'
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/modeldbDeleteDatasetTags'
+      tags:
+      - DatasetService
+  /dataset/deleteDatasets:
+    delete:
+      operationId: DatasetService_deleteDatasets
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/modeldbDeleteDatasetsResponse'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/runtimeError'
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/modeldbDeleteDatasets'
+      tags:
+      - DatasetService
+  /dataset/findDatasets:
+    post:
+      summary: queries
+      operationId: DatasetService_findDatasets
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/modeldbFindDatasetsResponse'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/runtimeError'
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/modeldbFindDatasets'
+      tags:
+      - DatasetService
+  /dataset/getAllDatasets:
+    get:
+      operationId: DatasetService_getAllDatasets
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/modeldbGetAllDatasetsResponse'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/runtimeError'
+      parameters:
+      - name: page_number
+        description: For pagination.
+        in: query
+        required: false
+        type: integer
+        format: int32
+      - name: page_limit
+        in: query
+        required: false
+        type: integer
+        format: int32
+      - name: ascending
+        in: query
+        required: false
+        type: boolean
+      - name: sort_key
+        in: query
+        required: false
+        type: string
+      - name: workspace_name
+        in: query
+        required: false
+        type: string
+      tags:
+      - DatasetService
+  /dataset/getDatasetById:
+    get:
+      operationId: DatasetService_getDatasetById
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/modeldbGetDatasetByIdResponse'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/runtimeError'
+      parameters:
+      - name: id
+        in: query
+        required: false
+        type: string
+      tags:
+      - DatasetService
+  /dataset/getDatasetByName:
+    get:
+      operationId: DatasetService_getDatasetByName
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/modeldbGetDatasetByNameResponse'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/runtimeError'
+      parameters:
+      - name: name
+        in: query
+        required: false
+        type: string
+      - name: workspace_name
+        in: query
+        required: false
+        type: string
+      tags:
+      - DatasetService
+  /dataset/getDatasetTags:
+    get:
+      operationId: DatasetService_getDatasetTags
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/modeldbGetTagsResponse'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/runtimeError'
+      parameters:
+      - name: id
+        in: query
+        required: false
+        type: string
+      tags:
+      - DatasetService
+  /dataset/getExperimentRunByDataset:
+    post:
+      operationId: DatasetService_getExperimentRunByDataset
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/modeldbGetExperimentRunByDatasetResponse'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/runtimeError'
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/modeldbGetExperimentRunByDataset'
+      tags:
+      - DatasetService
+  /dataset/getLastExperimentByDatasetId:
+    get:
+      operationId: DatasetService_getLastExperimentByDatasetId
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/modeldbLastExperimentByDatasetIdResponse'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/runtimeError'
+      parameters:
+      - name: dataset_id
+        in: query
+        required: false
+        type: string
+      tags:
+      - DatasetService
+  /dataset/updateDatasetAttributes:
+    post:
+      operationId: DatasetService_updateDatasetAttributes
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/modeldbUpdateDatasetAttributesResponse'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/runtimeError'
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/modeldbUpdateDatasetAttributes'
+      tags:
+      - DatasetService
+  /dataset/updateDatasetDescription:
+    post:
+      operationId: DatasetService_updateDatasetDescription
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/modeldbUpdateDatasetDescriptionResponse'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/runtimeError'
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/modeldbUpdateDatasetDescription'
+      tags:
+      - DatasetService
+  /dataset/updateDatasetName:
+    post:
+      operationId: DatasetService_updateDatasetName
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            $ref: '#/definitions/modeldbUpdateDatasetNameResponse'
+        default:
+          description: An unexpected error response.
+          schema:
+            $ref: '#/definitions/runtimeError'
+      parameters:
+      - name: body
+        in: body
+        required: true
+        schema:
+          $ref: '#/definitions/modeldbUpdateDatasetName'
+      tags:
+      - DatasetService
+definitions:
+  versioningDockerEnvironmentBlob:
+    type: object
+    properties:
+      repository:
+        type: string
+      tag:
+        type: string
+      sha:
+        type: string
+  modeldbUpdateDatasetDescriptionResponse:
+    type: object
+    properties:
+      dataset:
+        $ref: '#/definitions/modeldbDataset'
+  modeldbDeleteDatasetTags:
+    type: object
+    properties:
+      id:
+        type: string
+      tags:
+        type: array
+        items:
+          type: string
+      delete_all:
+        type: boolean
+  uacCollaboratorPermissions:
+    type: object
+    properties:
+      collaborator_type:
+        $ref: '#/definitions/CollaboratorTypeEnumCollaboratorType'
+      can_deploy:
+        $ref: '#/definitions/TernaryEnumTernary'
+      can_predict:
+        $ref: '#/definitions/TernaryEnumTernary'
+  modeldbDataset:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      owner:
+        type: string
+      owner_id:
+        type: string
+        format: uint64
+      group_owner_id:
+        $ref: '#/definitions/commonGroupId'
+      description:
+        type: string
+      tags:
+        type: array
+        items:
+          type: string
+      dataset_visibility:
+        $ref: '#/definitions/DatasetVisibilityEnumDatasetVisibility'
+      dataset_type:
+        $ref: '#/definitions/DatasetTypeEnumDatasetType'
+      attributes:
+        type: array
+        items:
+          $ref: '#/definitions/commonKeyValue'
+      time_created:
+        type: string
+        format: uint64
+      time_updated:
+        type: string
+        format: uint64
+      workspace_id:
+        type: string
+      workspace_type:
+        $ref: '#/definitions/WorkspaceTypeEnumWorkspaceType'
+      workspace_service_id:
+        type: string
+        format: uint64
+      custom_permission:
+        $ref: '#/definitions/uacCollaboratorPermissions'
+        title: 'The next field only makes sense when visibility == ORG_CUSTOM
+
+          They will be empty otherwise'
+      visibility:
+        $ref: '#/definitions/uacResourceVisibility'
+      version_number:
+        type: string
+        format: uint64
+        title: Doc for version_number https://github.com/VertaAI/docs/pull/53
+  modeldbLastExperimentByDatasetIdResponse:
+    type: object
+    properties:
+      experiment:
+        $ref: '#/definitions/modeldbExperiment'
+  modeldbDeleteDatasetsResponse:
+    type: object
+    properties:
+      status:
+        type: boolean
+  modeldbGetExperimentRunByDataset:
+    type: object
+    properties:
+      dataset_id:
+        type: string
+  modeldbGetDatasetByNameResponse:
+    type: object
+    properties:
+      dataset_by_user:
+        $ref: '#/definitions/modeldbDataset'
+      shared_datasets:
+        type: array
+        items:
+          $ref: '#/definitions/modeldbDataset'
+  TernaryEnumTernary:
+    type: string
+    enum:
+    - UNKNOWN
+    - 'TRUE'
+    - 'FALSE'
+    default: UNKNOWN
+  modeldbDeleteDatasets:
+    type: object
+    properties:
+      ids:
+        type: array
+        items:
+          type: string
+  modeldbAddDatasetAttributesResponse:
+    type: object
+    properties:
+      dataset:
+        $ref: '#/definitions/modeldbDataset'
+  modeldbExperiment:
+    type: object
+    properties:
+      id:
+        type: string
+      project_id:
+        type: string
+      name:
+        type: string
+      description:
+        type: string
+      date_created:
+        type: string
+        format: int64
+      date_updated:
+        type: string
+        format: int64
+      attributes:
+        type: array
+        items:
+          $ref: '#/definitions/commonKeyValue'
+      tags:
+        type: array
+        items:
+          type: string
+      owner:
+        type: string
+      owner_id:
+        type: string
+        format: uint64
+      group_owner_id:
+        $ref: '#/definitions/commonGroupId'
+      code_version_snapshot:
+        $ref: '#/definitions/commonCodeVersion'
+      artifacts:
+        type: array
+        items:
+          $ref: '#/definitions/commonArtifact'
+      version_number:
+        type: string
+        format: uint64
+        title: Doc for version_number https://github.com/VertaAI/docs/pull/53
+  modeldbFindDatasets:
+    type: object
+    properties:
+      dataset_ids:
+        type: array
+        items:
+          type: string
+      predicates:
+        type: array
+        items:
+          $ref: '#/definitions/commonKeyValueQuery'
+      ids_only:
+        type: boolean
+      workspace_name:
+        type: string
+      page_number:
+        type: integer
+        format: int32
+        title: For pagination
+      page_limit:
+        type: integer
+        format: int32
+      ascending:
+        type: boolean
+      sort_key:
+        type: string
+  protobufAny:
+    type: object
+    properties:
+      type_url:
+        type: string
+      value:
+        type: string
+        format: byte
+  versioningPythonRequirementEnvironmentBlob:
+    type: object
+    properties:
+      library:
+        type: string
+      constraint:
+        type: string
+      version:
+        $ref: '#/definitions/versioningVersionEnvironmentBlob'
+  runtimeError:
+    type: object
+    properties:
+      error:
+        type: string
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      details:
+        type: array
+        items:
+          $ref: '#/definitions/protobufAny'
+  modeldbCreateDatasetResponse:
+    type: object
+    properties:
+      dataset:
+        $ref: '#/definitions/modeldbDataset'
+  DatasetVisibilityEnumDatasetVisibility:
+    type: string
+    enum:
+    - PRIVATE
+    - PUBLIC
+    - ORG_SCOPED_PUBLIC
+    default: PRIVATE
+  modeldbVersioningEntry:
+    type: object
+    properties:
+      repository_id:
+        type: string
+        format: uint64
+      commit:
+        type: string
+      key_location_map:
+        type: object
+        additionalProperties:
+          $ref: '#/definitions/vertamodeldbLocation'
+  versioningAptEnvironmentBlob:
+    type: object
+    properties:
+      packages:
+        type: array
+        items:
+          type: string
+  modeldbAddDatasetAttributes:
+    type: object
+    properties:
+      id:
+        type: string
+      attributes:
+        type: array
+        items:
+          $ref: '#/definitions/commonKeyValue'
+  modeldbGetExperimentRunByDatasetResponse:
+    type: object
+    properties:
+      experiment_runs:
+        type: array
+        items:
+          $ref: '#/definitions/modeldbExperimentRun'
+  modeldbAddDatasetTagsResponse:
+    type: object
+    properties:
+      dataset:
+        $ref: '#/definitions/modeldbDataset'
+  modeldbDeleteDataset:
+    type: object
+    properties:
+      id:
+        type: string
+  modeldbExperimentRun:
+    type: object
+    properties:
+      id:
+        type: string
+      project_id:
+        type: string
+      experiment_id:
+        type: string
+      name:
+        type: string
+      description:
+        type: string
+      date_created:
+        type: string
+        format: int64
+      date_updated:
+        type: string
+        format: int64
+      start_time:
+        type: string
+        format: int64
+      end_time:
+        type: string
+        format: int64
+      code_version:
+        type: string
+      code_version_snapshot:
+        $ref: '#/definitions/commonCodeVersion'
+      parent_id:
+        type: string
+      environment:
+        $ref: '#/definitions/versioningEnvironmentBlob'
+        title: Requirement
+      tags:
+        type: array
+        items:
+          type: string
+      attributes:
+        type: array
+        items:
+          $ref: '#/definitions/commonKeyValue'
+      hyperparameters:
+        type: array
+        items:
+          $ref: '#/definitions/commonKeyValue'
+      artifacts:
+        type: array
+        items:
+          $ref: '#/definitions/commonArtifact'
+      datasets:
+        type: array
+        items:
+          $ref: '#/definitions/commonArtifact'
+      metrics:
+        type: array
+        items:
+          $ref: '#/definitions/commonKeyValue'
+      observations:
+        type: array
+        items:
+          $ref: '#/definitions/modeldbObservation'
+      features:
+        type: array
+        items:
+          $ref: '#/definitions/modeldbFeature'
+      job_id:
+        type: string
+      owner:
+        type: string
+      owner_id:
+        type: string
+        format: uint64
+      group_owner_id:
+        $ref: '#/definitions/commonGroupId'
+      versioned_inputs:
+        $ref: '#/definitions/modeldbVersioningEntry'
+      code_version_from_blob:
+        type: object
+        additionalProperties:
+          $ref: '#/definitions/commonCodeVersion'
+      version_number:
+        type: string
+        format: uint64
+        title: Doc for version_number https://github.com/VertaAI/docs/pull/53
+    title: ExperimentRun Entity
+  commonKeyValueQuery:
+    type: object
+    properties:
+      key:
+        type: string
+      value:
+        type: object
+      value_type:
+        $ref: '#/definitions/ValueTypeEnumValueType'
+      operator:
+        $ref: '#/definitions/OperatorEnumOperator'
+  CollaboratorTypeEnumCollaboratorType:
+    type: string
+    enum:
+    - READ_ONLY
+    - READ_WRITE
+    default: READ_ONLY
+  modeldbGetTagsResponse:
+    type: object
+    properties:
+      tags:
+        type: array
+        items:
+          type: string
+  modeldbFindDatasetsResponse:
+    type: object
+    properties:
+      datasets:
+        type: array
+        items:
+          $ref: '#/definitions/modeldbDataset'
+      total_records:
+        type: string
+        format: int64
+  DatasetTypeEnumDatasetType:
+    type: string
+    enum:
+    - RAW
+    - PATH
+    - QUERY
+    default: RAW
+  versioningEnvironmentBlob:
+    type: object
+    properties:
+      python:
+        $ref: '#/definitions/versioningPythonEnvironmentBlob'
+      docker:
+        $ref: '#/definitions/versioningDockerEnvironmentBlob'
+      environment_variables:
+        type: array
+        items:
+          $ref: '#/definitions/versioningEnvironmentVariablesBlob'
+      command_line:
+        type: array
+        items:
+          type: string
+      apt:
+        $ref: '#/definitions/versioningAptEnvironmentBlob'
+  modeldbUpdateDatasetName:
+    type: object
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+  commonGitSnapshot:
+    type: object
+    properties:
+      filepaths:
+        type: array
+        items:
+          type: string
+      repo:
+        type: string
+      hash:
+        type: string
+      is_dirty:
+        $ref: '#/definitions/TernaryEnumTernary'
+  modeldbDeleteDatasetResponse:
+    type: object
+    properties:
+      status:
+        type: boolean
+  modeldbUpdateDatasetDescription:
+    type: object
+    properties:
+      id:
+        type: string
+      description:
+        type: string
+  modeldbAddDatasetTags:
+    type: object
+    properties:
+      id:
+        type: string
+      tags:
+        type: array
+        items:
+          type: string
+  versioningEnvironmentVariablesBlob:
+    type: object
+    properties:
+      name:
+        type: string
+      value:
+        type: string
+  ArtifactTypeEnumArtifactType:
+    type: string
+    enum:
+    - IMAGE
+    - MODEL
+    - TENSORBOARD
+    - DATA
+    - BLOB
+    - STRING
+    - CODE
+    - CONTAINER
+    default: IMAGE
+  commonArtifact:
+    type: object
+    properties:
+      key:
+        type: string
+      path:
+        type: string
+      path_only:
+        type: boolean
+      artifact_type:
+        $ref: '#/definitions/ArtifactTypeEnumArtifactType'
+      linked_artifact_id:
+        type: string
+      filename_extension:
+        type: string
+      serialization:
+        type: string
+      artifact_subtype:
+        type: string
+      upload_completed:
+        type: boolean
+  versioningVersionEnvironmentBlob:
+    type: object
+    properties:
+      major:
+        type: integer
+        format: int32
+      minor:
+        type: integer
+        format: int32
+      patch:
+        type: integer
+        format: int32
+      suffix:
+        type: string
+  modeldbDeleteDatasetAttributesResponse:
+    type: object
+    properties:
+      dataset:
+        $ref: '#/definitions/modeldbDataset'
+  modeldbUpdateDatasetAttributes:
+    type: object
+    properties:
+      id:
+        type: string
+      attribute:
+        $ref: '#/definitions/commonKeyValue'
+  versioningPythonEnvironmentBlob:
+    type: object
+    properties:
+      version:
+        $ref: '#/definitions/versioningVersionEnvironmentBlob'
+      requirements:
+        type: array
+        items:
+          $ref: '#/definitions/versioningPythonRequirementEnvironmentBlob'
+      constraints:
+        type: array
+        items:
+          $ref: '#/definitions/versioningPythonRequirementEnvironmentBlob'
+      raw_requirements:
+        type: string
+        description: These fields are only present if the parsed versions above are empty. That is, you cannot have both `requirements` and `raw_requirements` for example.
+      raw_constraints:
+        type: string
+  modeldbCreateDataset:
+    type: object
+    properties:
+      name:
+        type: string
+      description:
+        type: string
+      tags:
+        type: array
+        items:
+          type: string
+      attributes:
+        type: array
+        items:
+          $ref: '#/definitions/commonKeyValue'
+      dataset_visibility:
+        $ref: '#/definitions/DatasetVisibilityEnumDatasetVisibility'
+      dataset_type:
+        $ref: '#/definitions/DatasetTypeEnumDatasetType'
+      workspace_name:
+        type: string
+      time_created:
+        type: string
+        format: uint64
+      custom_permission:
+        $ref: '#/definitions/uacCollaboratorPermissions'
+        title: 'The next field only makes sense when visibility == ORG_CUSTOM
+
+          They will be empty otherwise'
+      visibility:
+        $ref: '#/definitions/uacResourceVisibility'
+  modeldbObservation:
+    type: object
+    properties:
+      attribute:
+        $ref: '#/definitions/commonKeyValue'
+      artifact:
+        $ref: '#/definitions/commonArtifact'
+      timestamp:
+        type: string
+        format: int64
+      epoch_number:
+        type: object
+    title: observations with the same key are not overwritten, the are appended to a list
+  modeldbDeleteDatasetTagsResponse:
+    type: object
+    properties:
+      dataset:
+        $ref: '#/definitions/modeldbDataset'
+  modeldbUpdateDatasetAttributesResponse:
+    type: object
+    properties:
+      dataset:
+        $ref: '#/definitions/modeldbDataset'
+  uacResourceVisibility:
+    type: string
+    enum:
+    - UNKNOWN
+    - ORG_DEFAULT
+    - ORG_CUSTOM
+    - PRIVATE
+    - WORKSPACE_DEFAULT
+    default: UNKNOWN
+  modeldbFeature:
+    type: object
+    properties:
+      name:
+        type: string
+  ValueTypeEnumValueType:
+    type: string
+    enum:
+    - STRING
+    - NUMBER
+    - LIST
+    - BLOB
+    default: STRING
+  modeldbUpdateDatasetNameResponse:
+    type: object
+    properties:
+      dataset:
+        $ref: '#/definitions/modeldbDataset'
+  commonCodeVersion:
+    type: object
+    properties:
+      git_snapshot:
+        $ref: '#/definitions/commonGitSnapshot'
+      code_archive:
+        $ref: '#/definitions/commonArtifact'
+      date_logged:
+        type: string
+        format: uint64
+    title: code version
+  commonGroupId:
+    type: object
+    properties:
+      org_id:
+        type: string
+      group_id:
+        type: string
+  modeldbGetDatasetByIdResponse:
+    type: object
+    properties:
+      dataset:
+        $ref: '#/definitions/modeldbDataset'
+  modeldbDeleteDatasetAttributes:
+    type: object
+    properties:
+      id:
+        type: string
+      attribute_keys:
+        type: array
+        items:
+          type: string
+      delete_all:
+        type: boolean
+  OperatorEnumOperator:
+    type: string
+    enum:
+    - EQ
+    - NE
+    - GT
+    - GTE
+    - LT
+    - LTE
+    - CONTAIN
+    - NOT_CONTAIN
+    - IN
+    - NOT_IN
+    default: EQ
+  WorkspaceTypeEnumWorkspaceType:
+    type: string
+    enum:
+    - UNKNOWN
+    - ORGANIZATION
+    - USER
+    default: UNKNOWN
+  vertamodeldbLocation:
+    type: object
+    properties:
+      location:
+        type: array
+        items:
+          type: string
+  modeldbGetAllDatasetsResponse:
+    type: object
+    properties:
+      datasets:
+        type: array
+        items:
+          $ref: '#/definitions/modeldbDataset'
+      total_records:
+        type: string
+        format: uint64
+  commonKeyValue:
+    type: object
+    properties:
+      key:
+        type: string
+      value:
+        type: object
+      value_type:
+        $ref: '#/definitions/ValueTypeEnumValueType'
+        description: "As per documentation of proto buffer 3.\n  For enums, the default value is the first defined enum value, which must be 0."
