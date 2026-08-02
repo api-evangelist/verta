@@ -1,0 +1,65 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/*.swagger.json (grpc-gateway generated specs)
+format: grpc-gateway-status
+notes: These are grpc-gateway / grpc-ecosystem generated REST specs. Every operation returns 200 on success
+  and a single `default` error response modeled as `runtimeError`, the standard grpc-gateway envelope
+  (google.rpc.Status shape). Not RFC 9457 problem+json. HTTP status is mapped from the gRPC status code
+  carried in the `code` field.
+error_envelope:
+  schema: runtimeError
+  media_type: application/json
+  fields:
+  - name: error
+    type: string
+    description: Human-readable error string.
+  - name: code
+    type: integer
+    description: gRPC status code (google.rpc.Code); mapped to an HTTP status by grpc-gateway.
+  - name: message
+    type: string
+    description: Error message.
+  - name: details
+    type: array
+    description: Array of protobufAny type-tagged detail messages.
+problems:
+- grpc_code: 3
+  grpc_status: INVALID_ARGUMENT
+  http: 400
+  title: Invalid argument
+  remediation: Fix malformed or missing request fields.
+- grpc_code: 16
+  grpc_status: UNAUTHENTICATED
+  http: 401
+  title: Unauthenticated
+  remediation: Supply valid Verta email + developer key credentials.
+- grpc_code: 7
+  grpc_status: PERMISSION_DENIED
+  http: 403
+  title: Permission denied
+  remediation: Requesting entity lacks the required UAC action on the resource.
+- grpc_code: 5
+  grpc_status: NOT_FOUND
+  http: 404
+  title: Not found
+  remediation: The referenced entity id does not exist or is not visible in the workspace.
+- grpc_code: 6
+  grpc_status: ALREADY_EXISTS
+  http: 409
+  title: Already exists
+  remediation: Use a unique name/id or fetch-or-create.
+- grpc_code: 8
+  grpc_status: RESOURCE_EXHAUSTED
+  http: 429
+  title: Resource exhausted
+  remediation: Back off and retry; a quota or rate limit was hit.
+- grpc_code: 13
+  grpc_status: INTERNAL
+  http: 500
+  title: Internal error
+  remediation: Retry; if it persists, report to the ModelDB maintainers.
+- grpc_code: 14
+  grpc_status: UNAVAILABLE
+  http: 503
+  title: Unavailable
+  remediation: Backend temporarily unavailable; retry with backoff.

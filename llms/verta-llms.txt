@@ -1,0 +1,37 @@
+# Verta (ModelDB)
+
+> Verta was an MLOps model-management and experiment-tracking platform (verta.ai), acquired by Cloudera on 2024-06-03; verta.ai now redirects to Cloudera Machine Learning. The open-source ModelDB project (Apache-2.0, github.com/VertaAI/modeldb) remains the maintained surface: ML model versioning, metadata, and experiment management. The REST API is a grpc-gateway transcoding of the ModelDB/UAC gRPC services, served under basePath /v1 with JSON bodies.
+
+## APIs
+- [ModelDB REST (grpc-gateway)](https://github.com/VertaAI/modeldb): 11 services, 264 operations under /v1 (Project, Experiment, ExperimentRun, Dataset, Registry, Versioning, Stage, MonitoredEntity, UAC/Authz, SCIM).
+
+## Specs
+- [ProjectService OpenAPI](openapi/verta-ProjectService.swagger.json)
+- [ExperimentService OpenAPI](openapi/verta-ExperimentService.swagger.json)
+- [ExperimentRunService OpenAPI](openapi/verta-ExperimentRunService.swagger.json)
+- [DatasetService OpenAPI](openapi/verta-DatasetService.swagger.json)
+- [RegistryService OpenAPI](openapi/verta-RegistryService.swagger.json)
+- [VersioningService OpenAPI](openapi/verta-VersioningService.swagger.json)
+- [StageService OpenAPI](openapi/verta-StageService.swagger.json)
+- [MonitoredEntity OpenAPI](openapi/verta-MonitoredEntity.swagger.json)
+- [UACService OpenAPI](openapi/verta-UACService.swagger.json)
+- [Authorization OpenAPI](openapi/verta-Authorization.swagger.json)
+- [SCIMConfiguration OpenAPI](openapi/verta-SCIMConfiguration.swagger.json)
+- [Protobuf definitions](grpc/)
+
+## Artifacts
+- [Authentication](authentication/verta-authentication.yml)
+- [Conventions](conventions/verta-conventions.yml)
+- [Error catalog](errors/verta-problem-types.yml)
+- [Data model](data-model/verta-data-model.yml)
+- [Conformance](conformance/verta-conformance.yml)
+- [Lifecycle](lifecycle/verta-lifecycle.yml)
+- [Changelog](changelog/verta-changelog.yml)
+- [Packages](packages/verta-packages.yml)
+- [MCP candidate tools](mcp/verta-mcp.yml)
+- [Agentic access](agentic-access/verta-agentic-access.yml)
+- [Agent skills](skills/_index.yml)
+
+## Docs
+- [Verta docs](https://docs.verta.ai/)
+- [ModelDB on GitHub](https://github.com/VertaAI/modeldb)

@@ -1,0 +1,803 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: openapi/*.swagger.json
+notes: No official hosted Verta/ModelDB MCP server is published. This is a candidate tool list derived
+  one-per-operation from the grpc-gateway REST specs.
+server:
+  name: verta-modeldb
+  transport: http
+tool_count: 264
+tools:
+- name: AuthzService_getAllowedEntities
+  description: POST /authz/getAllowedEntities
+  source_operation: openapi/verta-Authorization.swagger.json#AuthzService_getAllowedEntities
+- name: AuthzService_getSelfAllowedActionsBatch
+  description: POST /authz/getSelfAllowedActionsBatch
+  source_operation: openapi/verta-Authorization.swagger.json#AuthzService_getSelfAllowedActionsBatch
+- name: AuthzService_getSelfAllowedResources
+  description: POST /authz/getSelfAllowedResources
+  source_operation: openapi/verta-Authorization.swagger.json#AuthzService_getSelfAllowedResources
+- name: AuthzService_isSelfAllowed
+  description: POST /authz/isSelfAllowed
+  source_operation: openapi/verta-Authorization.swagger.json#AuthzService_isSelfAllowed
+- name: DatasetService_addDatasetAttributes
+  description: POST /dataset/addDatasetAttributes
+  source_operation: openapi/verta-DatasetService.swagger.json#DatasetService_addDatasetAttributes
+- name: DatasetService_addDatasetTags
+  description: POST /dataset/addDatasetTags
+  source_operation: openapi/verta-DatasetService.swagger.json#DatasetService_addDatasetTags
+- name: DatasetService_createDataset
+  description: POST /dataset/createDataset
+  source_operation: openapi/verta-DatasetService.swagger.json#DatasetService_createDataset
+- name: DatasetService_deleteDataset
+  description: DELETE /dataset/deleteDataset
+  source_operation: openapi/verta-DatasetService.swagger.json#DatasetService_deleteDataset
+- name: DatasetService_deleteDatasetAttributes
+  description: DELETE /dataset/deleteDatasetAttributes
+  source_operation: openapi/verta-DatasetService.swagger.json#DatasetService_deleteDatasetAttributes
+- name: DatasetService_deleteDatasetTags
+  description: DELETE /dataset/deleteDatasetTags
+  source_operation: openapi/verta-DatasetService.swagger.json#DatasetService_deleteDatasetTags
+- name: DatasetService_deleteDatasets
+  description: DELETE /dataset/deleteDatasets
+  source_operation: openapi/verta-DatasetService.swagger.json#DatasetService_deleteDatasets
+- name: DatasetService_findDatasets
+  description: POST /dataset/findDatasets
+  source_operation: openapi/verta-DatasetService.swagger.json#DatasetService_findDatasets
+- name: DatasetService_getAllDatasets
+  description: GET /dataset/getAllDatasets
+  source_operation: openapi/verta-DatasetService.swagger.json#DatasetService_getAllDatasets
+- name: DatasetService_getDatasetById
+  description: GET /dataset/getDatasetById
+  source_operation: openapi/verta-DatasetService.swagger.json#DatasetService_getDatasetById
+- name: DatasetService_getDatasetByName
+  description: GET /dataset/getDatasetByName
+  source_operation: openapi/verta-DatasetService.swagger.json#DatasetService_getDatasetByName
+- name: DatasetService_getDatasetTags
+  description: GET /dataset/getDatasetTags
+  source_operation: openapi/verta-DatasetService.swagger.json#DatasetService_getDatasetTags
+- name: DatasetService_getExperimentRunByDataset
+  description: POST /dataset/getExperimentRunByDataset
+  source_operation: openapi/verta-DatasetService.swagger.json#DatasetService_getExperimentRunByDataset
+- name: DatasetService_getLastExperimentByDatasetId
+  description: GET /dataset/getLastExperimentByDatasetId
+  source_operation: openapi/verta-DatasetService.swagger.json#DatasetService_getLastExperimentByDatasetId
+- name: DatasetService_updateDatasetAttributes
+  description: POST /dataset/updateDatasetAttributes
+  source_operation: openapi/verta-DatasetService.swagger.json#DatasetService_updateDatasetAttributes
+- name: DatasetService_updateDatasetDescription
+  description: POST /dataset/updateDatasetDescription
+  source_operation: openapi/verta-DatasetService.swagger.json#DatasetService_updateDatasetDescription
+- name: DatasetService_updateDatasetName
+  description: POST /dataset/updateDatasetName
+  source_operation: openapi/verta-DatasetService.swagger.json#DatasetService_updateDatasetName
+- name: ExperimentRunService_addExperimentRunAttributes
+  description: POST /experiment-run/addExperimentRunAttributes
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_addExperimentRunAttributes
+- name: ExperimentRunService_addExperimentRunTag
+  description: POST /experiment-run/addExperimentRunTag
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_addExperimentRunTag
+- name: ExperimentRunService_addExperimentRunTags
+  description: POST /experiment-run/addExperimentRunTags
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_addExperimentRunTags
+- name: ExperimentRunService_cloneExperimentRun
+  description: POST /experiment-run/cloneExperimentRun
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_cloneExperimentRun
+- name: ExperimentRunService_commitArtifactPart
+  description: POST /experiment-run/commitArtifactPart
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_commitArtifactPart
+- name: ExperimentRunService_commitMultipartArtifact
+  description: POST /experiment-run/commitMultipartArtifact
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_commitMultipartArtifact
+- name: ExperimentRunService_createExperimentRun
+  description: POST /experiment-run/createExperimentRun
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_createExperimentRun
+- name: ExperimentRunService_deleteArtifact
+  description: DELETE /experiment-run/deleteArtifact
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_deleteArtifact
+- name: ExperimentRunService_deleteExperimentRun
+  description: DELETE /experiment-run/deleteExperimentRun
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_deleteExperimentRun
+- name: ExperimentRunService_deleteExperimentRunAttributes
+  description: DELETE /experiment-run/deleteExperimentRunAttributes
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_deleteExperimentRunAttributes
+- name: ExperimentRunService_deleteExperimentRunTag
+  description: DELETE /experiment-run/deleteExperimentRunTag
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_deleteExperimentRunTag
+- name: ExperimentRunService_deleteExperimentRunTags
+  description: DELETE /experiment-run/deleteExperimentRunTags
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_deleteExperimentRunTags
+- name: ExperimentRunService_deleteExperimentRuns
+  description: DELETE /experiment-run/deleteExperimentRuns
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_deleteExperimentRuns
+- name: ExperimentRunService_deleteHyperparameters
+  description: DELETE /experiment-run/deleteHyperparameters
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_deleteHyperparameters
+- name: ExperimentRunService_deleteMetrics
+  description: DELETE /experiment-run/deleteMetrics
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_deleteMetrics
+- name: ExperimentRunService_deleteObservations
+  description: DELETE /experiment-run/deleteObservations
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_deleteObservations
+- name: ExperimentRunService_findExperimentRuns
+  description: POST /experiment-run/findExperimentRuns
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_findExperimentRuns
+- name: ExperimentRunService_getArtifacts
+  description: GET /experiment-run/getArtifacts
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_getArtifacts
+- name: ExperimentRunService_getExperimentRunAttributes
+  description: GET /experiment-run/getAttributes
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_getExperimentRunAttributes
+- name: ExperimentRunService_getChildrenExperimentRuns
+  description: GET /experiment-run/getChildrenExperimentRuns
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_getChildrenExperimentRuns
+- name: ExperimentRunService_getCommittedArtifactParts
+  description: GET /experiment-run/getCommittedArtifactParts
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_getCommittedArtifactParts
+- name: ExperimentRunService_getDatasets
+  description: GET /experiment-run/getDatasets
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_getDatasets
+- name: ExperimentRunService_getExperimentRunById
+  description: GET /experiment-run/getExperimentRunById
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_getExperimentRunById
+- name: ExperimentRunService_getExperimentRunByName
+  description: GET /experiment-run/getExperimentRunByName
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_getExperimentRunByName
+- name: ExperimentRunService_getExperimentRunCodeVersion
+  description: GET /experiment-run/getExperimentRunCodeVersion
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_getExperimentRunCodeVersion
+- name: ExperimentRunService_getExperimentRunTags
+  description: GET /experiment-run/getExperimentRunTags
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_getExperimentRunTags
+- name: ExperimentRunService_getExperimentRunsByDatasetVersionId
+  description: GET /experiment-run/getExperimentRunsByDatasetVersionId
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_getExperimentRunsByDatasetVersionId
+- name: ExperimentRunService_getExperimentRunsInExperiment
+  description: GET /experiment-run/getExperimentRunsInExperiment
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_getExperimentRunsInExperiment
+- name: ExperimentRunService_getExperimentRunsInProject
+  description: GET /experiment-run/getExperimentRunsInProject
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_getExperimentRunsInProject
+- name: ExperimentRunService_getHyperparameters
+  description: GET /experiment-run/getHyperparameters
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_getHyperparameters
+- name: ExperimentRunService_getJobId
+  description: GET /experiment-run/getJobId
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_getJobId
+- name: ExperimentRunService_getMetrics
+  description: GET /experiment-run/getMetrics
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_getMetrics
+- name: ExperimentRunService_getObservations
+  description: GET /experiment-run/getObservations
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_getObservations
+- name: ExperimentRunService_getTopExperimentRuns
+  description: GET /experiment-run/getTopExperimentRuns
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_getTopExperimentRuns
+- name: ExperimentRunService_getUrlForArtifact
+  description: POST /experiment-run/getUrlForArtifact
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_getUrlForArtifact
+- name: ExperimentRunService_getVersionedInputs
+  description: GET /experiment-run/getVersionedInput
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_getVersionedInputs
+- name: ExperimentRunService_logArtifact
+  description: POST /experiment-run/logArtifact
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_logArtifact
+- name: ExperimentRunService_logArtifacts
+  description: POST /experiment-run/logArtifacts
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_logArtifacts
+- name: ExperimentRunService_logAttribute
+  description: POST /experiment-run/logAttribute
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_logAttribute
+- name: ExperimentRunService_logAttributes
+  description: POST /experiment-run/logAttributes
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_logAttributes
+- name: ExperimentRunService_logDataset
+  description: POST /experiment-run/logDataset
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_logDataset
+- name: ExperimentRunService_logDatasets
+  description: POST /experiment-run/logDatasets
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_logDatasets
+- name: ExperimentRunService_logEnvironment
+  description: POST /experiment-run/logEnvironment
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_logEnvironment
+- name: ExperimentRunService_logExperimentRunCodeVersion
+  description: POST /experiment-run/logExperimentRunCodeVersion
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_logExperimentRunCodeVersion
+- name: ExperimentRunService_logHyperparameter
+  description: POST /experiment-run/logHyperparameter
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_logHyperparameter
+- name: ExperimentRunService_logHyperparameters
+  description: POST /experiment-run/logHyperparameters
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_logHyperparameters
+- name: ExperimentRunService_logJobId
+  description: GET /experiment-run/logJobId
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_logJobId
+- name: ExperimentRunService_logMetric
+  description: POST /experiment-run/logMetric
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_logMetric
+- name: ExperimentRunService_logMetrics
+  description: POST /experiment-run/logMetrics
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_logMetrics
+- name: ExperimentRunService_logObservation
+  description: POST /experiment-run/logObservation
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_logObservation
+- name: ExperimentRunService_logObservations
+  description: POST /experiment-run/logObservations
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_logObservations
+- name: ExperimentRunService_logVersionedInput
+  description: POST /experiment-run/logVersionedInput
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_logVersionedInput
+- name: ExperimentRunService_setParentExperimentRunId
+  description: POST /experiment-run/setParentExperimentRunId
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_setParentExperimentRunId
+- name: ExperimentRunService_sortExperimentRuns
+  description: GET /experiment-run/sortExperimentRuns
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_sortExperimentRuns
+- name: ExperimentRunService_updateExperimentRunDescription
+  description: POST /experiment-run/updateExperimentRunDescription
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_updateExperimentRunDescription
+- name: ExperimentRunService_updateExperimentRunName
+  description: POST /experiment-run/updateExperimentRunName
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_updateExperimentRunName
+- name: ExperimentRunService_ListBlobExperimentRuns2
+  description: GET /versioning/repositories/{repository_id.repo_id}/commits/{commit_sha}/path/runs
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_ListBlobExperimentRuns2
+- name: ExperimentRunService_ListCommitExperimentRuns2
+  description: GET /versioning/repositories/{repository_id.repo_id}/commits/{commit_sha}/runs
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_ListCommitExperimentRuns2
+- name: ExperimentRunService_ListBlobExperimentRuns
+  description: GET /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/commits/{commit_sha}/path/runs
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_ListBlobExperimentRuns
+- name: ExperimentRunService_ListCommitExperimentRuns
+  description: GET /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/commits/{commit_sha}/runs
+  source_operation: openapi/verta-ExperimentRunService.swagger.json#ExperimentRunService_ListCommitExperimentRuns
+- name: ExperimentService_addAttribute
+  description: POST /experiment/addAttribute
+  source_operation: openapi/verta-ExperimentService.swagger.json#ExperimentService_addAttribute
+- name: ExperimentService_addExperimentAttributes
+  description: POST /experiment/addExperimentAttributes
+  source_operation: openapi/verta-ExperimentService.swagger.json#ExperimentService_addExperimentAttributes
+- name: ExperimentService_addExperimentTag
+  description: POST /experiment/addExperimentTag
+  source_operation: openapi/verta-ExperimentService.swagger.json#ExperimentService_addExperimentTag
+- name: ExperimentService_addExperimentTags
+  description: POST /experiment/addExperimentTags
+  source_operation: openapi/verta-ExperimentService.swagger.json#ExperimentService_addExperimentTags
+- name: ExperimentService_createExperiment
+  description: POST /experiment/createExperiment
+  source_operation: openapi/verta-ExperimentService.swagger.json#ExperimentService_createExperiment
+- name: ExperimentService_deleteArtifact
+  description: DELETE /experiment/deleteArtifact
+  source_operation: openapi/verta-ExperimentService.swagger.json#ExperimentService_deleteArtifact
+- name: ExperimentService_deleteExperiment
+  description: DELETE /experiment/deleteExperiment
+  source_operation: openapi/verta-ExperimentService.swagger.json#ExperimentService_deleteExperiment
+- name: ExperimentService_deleteExperimentAttributes
+  description: DELETE /experiment/deleteExperimentAttributes
+  source_operation: openapi/verta-ExperimentService.swagger.json#ExperimentService_deleteExperimentAttributes
+- name: ExperimentService_deleteExperimentTag
+  description: DELETE /experiment/deleteExperimentTag
+  source_operation: openapi/verta-ExperimentService.swagger.json#ExperimentService_deleteExperimentTag
+- name: ExperimentService_deleteExperimentTags
+  description: DELETE /experiment/deleteExperimentTags
+  source_operation: openapi/verta-ExperimentService.swagger.json#ExperimentService_deleteExperimentTags
+- name: ExperimentService_deleteExperiments
+  description: DELETE /experiment/deleteExperiments
+  source_operation: openapi/verta-ExperimentService.swagger.json#ExperimentService_deleteExperiments
+- name: ExperimentService_findExperiments
+  description: POST /experiment/findExperiments
+  source_operation: openapi/verta-ExperimentService.swagger.json#ExperimentService_findExperiments
+- name: ExperimentService_getArtifacts
+  description: GET /experiment/getArtifacts
+  source_operation: openapi/verta-ExperimentService.swagger.json#ExperimentService_getArtifacts
+- name: ExperimentService_getExperimentAttributes
+  description: GET /experiment/getExperimentAttributes
+  source_operation: openapi/verta-ExperimentService.swagger.json#ExperimentService_getExperimentAttributes
+- name: ExperimentService_getExperimentById
+  description: GET /experiment/getExperimentById
+  source_operation: openapi/verta-ExperimentService.swagger.json#ExperimentService_getExperimentById
+- name: ExperimentService_getExperimentByName
+  description: GET /experiment/getExperimentByName
+  source_operation: openapi/verta-ExperimentService.swagger.json#ExperimentService_getExperimentByName
+- name: ExperimentService_getExperimentCodeVersion
+  description: GET /experiment/getExperimentCodeVersion
+  source_operation: openapi/verta-ExperimentService.swagger.json#ExperimentService_getExperimentCodeVersion
+- name: ExperimentService_getExperimentTags
+  description: GET /experiment/getExperimentTags
+  source_operation: openapi/verta-ExperimentService.swagger.json#ExperimentService_getExperimentTags
+- name: ExperimentService_getExperimentsInProject
+  description: GET /experiment/getExperimentsInProject
+  source_operation: openapi/verta-ExperimentService.swagger.json#ExperimentService_getExperimentsInProject
+- name: ExperimentService_getUrlForArtifact
+  description: POST /experiment/getUrlForArtifact
+  source_operation: openapi/verta-ExperimentService.swagger.json#ExperimentService_getUrlForArtifact
+- name: ExperimentService_logArtifacts
+  description: POST /experiment/logArtifacts
+  source_operation: openapi/verta-ExperimentService.swagger.json#ExperimentService_logArtifacts
+- name: ExperimentService_logExperimentCodeVersion
+  description: POST /experiment/logExperimentCodeVersion
+  source_operation: openapi/verta-ExperimentService.swagger.json#ExperimentService_logExperimentCodeVersion
+- name: ExperimentService_updateExperimentDescription
+  description: POST /experiment/updateExperimentDescription
+  source_operation: openapi/verta-ExperimentService.swagger.json#ExperimentService_updateExperimentDescription
+- name: ExperimentService_updateExperimentName
+  description: POST /experiment/updateExperimentName
+  source_operation: openapi/verta-ExperimentService.swagger.json#ExperimentService_updateExperimentName
+- name: ExperimentService_updateExperimentNameOrDescription
+  description: POST /experiment/updateExperimentNameOrDescription
+  source_operation: openapi/verta-ExperimentService.swagger.json#ExperimentService_updateExperimentNameOrDescription
+- name: MonitoredEntityService_createMonitoredEntity
+  description: POST /api/v1/monitoring/monitored_entity/createMonitoredEntity
+  source_operation: openapi/verta-MonitoredEntity.swagger.json#MonitoredEntityService_createMonitoredEntity
+- name: MonitoredEntityService_deleteMonitoredEntity
+  description: DELETE /api/v1/monitoring/monitored_entity/deleteMonitoredEntity
+  source_operation: openapi/verta-MonitoredEntity.swagger.json#MonitoredEntityService_deleteMonitoredEntity
+- name: MonitoredEntityService_findMonitoredEntity
+  description: POST /api/v1/monitoring/monitored_entity/findMonitoredEntity
+  source_operation: openapi/verta-MonitoredEntity.swagger.json#MonitoredEntityService_findMonitoredEntity
+- name: MonitoredEntityService_updateMonitoredEntity
+  description: PATCH /api/v1/monitoring/monitored_entity/updateMonitoredEntity
+  source_operation: openapi/verta-MonitoredEntity.swagger.json#MonitoredEntityService_updateMonitoredEntity
+- name: ProjectService_addProjectAttributes
+  description: POST /project/addProjectAttributes
+  source_operation: openapi/verta-ProjectService.swagger.json#ProjectService_addProjectAttributes
+- name: ProjectService_addProjectTag
+  description: POST /project/addProjectTag
+  source_operation: openapi/verta-ProjectService.swagger.json#ProjectService_addProjectTag
+- name: ProjectService_addProjectTags
+  description: POST /project/addProjectTags
+  source_operation: openapi/verta-ProjectService.swagger.json#ProjectService_addProjectTags
+- name: ProjectService_createProject
+  description: POST /project/createProject
+  source_operation: openapi/verta-ProjectService.swagger.json#ProjectService_createProject
+- name: ProjectService_deepCopyProject
+  description: POST /project/deepCopyProject
+  source_operation: openapi/verta-ProjectService.swagger.json#ProjectService_deepCopyProject
+- name: ProjectService_deleteArtifact
+  description: DELETE /project/deleteArtifact
+  source_operation: openapi/verta-ProjectService.swagger.json#ProjectService_deleteArtifact
+- name: ProjectService_deleteProject
+  description: DELETE /project/deleteProject
+  source_operation: openapi/verta-ProjectService.swagger.json#ProjectService_deleteProject
+- name: ProjectService_deleteProjectAttributes
+  description: DELETE /project/deleteProjectAttributes
+  source_operation: openapi/verta-ProjectService.swagger.json#ProjectService_deleteProjectAttributes
+- name: ProjectService_deleteProjectTag
+  description: DELETE /project/deleteProjectTag
+  source_operation: openapi/verta-ProjectService.swagger.json#ProjectService_deleteProjectTag
+- name: ProjectService_deleteProjectTags
+  description: DELETE /project/deleteProjectTags
+  source_operation: openapi/verta-ProjectService.swagger.json#ProjectService_deleteProjectTags
+- name: ProjectService_deleteProjects
+  description: DELETE /project/deleteProjects
+  source_operation: openapi/verta-ProjectService.swagger.json#ProjectService_deleteProjects
+- name: ProjectService_findProjects
+  description: POST /project/findProjects
+  source_operation: openapi/verta-ProjectService.swagger.json#ProjectService_findProjects
+- name: ProjectService_getArtifacts
+  description: GET /project/getArtifacts
+  source_operation: openapi/verta-ProjectService.swagger.json#ProjectService_getArtifacts
+- name: ProjectService_getProjectAttributes
+  description: GET /project/getProjectAttributes
+  source_operation: openapi/verta-ProjectService.swagger.json#ProjectService_getProjectAttributes
+- name: ProjectService_getProjectById
+  description: GET /project/getProjectById
+  source_operation: openapi/verta-ProjectService.swagger.json#ProjectService_getProjectById
+- name: ProjectService_getProjectByName
+  description: GET /project/getProjectByName
+  source_operation: openapi/verta-ProjectService.swagger.json#ProjectService_getProjectByName
+- name: ProjectService_getProjectCodeVersion
+  description: GET /project/getProjectCodeVersion
+  source_operation: openapi/verta-ProjectService.swagger.json#ProjectService_getProjectCodeVersion
+- name: ProjectService_getProjectDatasetCount
+  description: GET /project/getProjectDatasetCount
+  source_operation: openapi/verta-ProjectService.swagger.json#ProjectService_getProjectDatasetCount
+- name: ProjectService_getProjectReadme
+  description: GET /project/getProjectReadme
+  source_operation: openapi/verta-ProjectService.swagger.json#ProjectService_getProjectReadme
+- name: ProjectService_getProjectShortName
+  description: GET /project/getProjectShortName
+  source_operation: openapi/verta-ProjectService.swagger.json#ProjectService_getProjectShortName
+- name: ProjectService_getProjectTags
+  description: GET /project/getProjectTags
+  source_operation: openapi/verta-ProjectService.swagger.json#ProjectService_getProjectTags
+- name: ProjectService_getProjects
+  description: GET /project/getProjects
+  source_operation: openapi/verta-ProjectService.swagger.json#ProjectService_getProjects
+- name: ProjectService_getSummary
+  description: GET /project/getSummary
+  source_operation: openapi/verta-ProjectService.swagger.json#ProjectService_getSummary
+- name: ProjectService_getUrlForArtifact
+  description: POST /project/getUrlForArtifact
+  source_operation: openapi/verta-ProjectService.swagger.json#ProjectService_getUrlForArtifact
+- name: ProjectService_logArtifacts
+  description: POST /project/logArtifacts
+  source_operation: openapi/verta-ProjectService.swagger.json#ProjectService_logArtifacts
+- name: ProjectService_logProjectCodeVersion
+  description: POST /project/logProjectCodeVersion
+  source_operation: openapi/verta-ProjectService.swagger.json#ProjectService_logProjectCodeVersion
+- name: ProjectService_setProjectReadme
+  description: POST /project/setProjectReadme
+  source_operation: openapi/verta-ProjectService.swagger.json#ProjectService_setProjectReadme
+- name: ProjectService_setProjectShortName
+  description: POST /project/setProjectShortName
+  source_operation: openapi/verta-ProjectService.swagger.json#ProjectService_setProjectShortName
+- name: ProjectService_updateProjectAttributes
+  description: POST /project/updateProjectAttributes
+  source_operation: openapi/verta-ProjectService.swagger.json#ProjectService_updateProjectAttributes
+- name: ProjectService_updateProjectDescription
+  description: POST /project/updateProjectDescription
+  source_operation: openapi/verta-ProjectService.swagger.json#ProjectService_updateProjectDescription
+- name: ProjectService_updateProjectName
+  description: POST /project/updateProjectName
+  source_operation: openapi/verta-ProjectService.swagger.json#ProjectService_updateProjectName
+- name: ProjectService_verifyConnection
+  description: GET /project/verifyConnection
+  source_operation: openapi/verta-ProjectService.swagger.json#ProjectService_verifyConnection
+- name: RegistryService_FindModelVersion4
+  description: POST /model_versions/find
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_FindModelVersion4
+- name: RegistryService_GetModelVersion2
+  description: GET /model_versions/{id.model_version_id}
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_GetModelVersion2
+- name: RegistryService_DeleteModelVersion3
+  description: DELETE /model_versions/{id.model_version_id}
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_DeleteModelVersion3
+- name: RegistryService_SetLockModelVersion
+  description: PUT /model_versions/{id.model_version_id}/lock
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_SetLockModelVersion
+- name: RegistryService_DeleteModelVersionArtifact
+  description: DELETE /model_versions/{model_version_id}/artifacts/{artifact_key}
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_DeleteModelVersionArtifact
+- name: RegistryService_commitArtifactPart
+  description: POST /model_versions/{model_version_id}/commitArtifactPart
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_commitArtifactPart
+- name: RegistryService_commitMultipartArtifact
+  description: POST /model_versions/{model_version_id}/commitMultipartArtifact
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_commitMultipartArtifact
+- name: RegistryService_getCommittedArtifactParts
+  description: GET /model_versions/{model_version_id}/getCommittedArtifactParts
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_getCommittedArtifactParts
+- name: RegistryService_getUrlForArtifact
+  description: POST /model_versions/{model_version_id}/getUrlForArtifact
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_getUrlForArtifact
+- name: RegistryService_logAttributesInModelVersion
+  description: POST /model_versions/{model_version_id}/logAttributes
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_logAttributesInModelVersion
+- name: RegistryService_logCodeBlobInModelVersion
+  description: POST /model_versions/{model_version_id}/logCodeBlobInModelVersion
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_logCodeBlobInModelVersion
+- name: RegistryService_logDatasetsInModelVersion
+  description: POST /model_versions/{model_version_id}/logDatasets
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_logDatasetsInModelVersion
+- name: RegistryService_logDockerMetadataInModelVersion
+  description: POST /model_versions/{model_version_id}/logDockerMetadata
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_logDockerMetadataInModelVersion
+- name: RegistryService_GetRegisteredModelCount
+  description: GET /registered_models/count
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_GetRegisteredModelCount
+- name: RegistryService_FindRegisteredModel2
+  description: POST /registered_models/find
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_FindRegisteredModel2
+- name: RegistryService_CreateExternalDeployment
+  description: POST /registered_models/model_versions/external_deployments
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_CreateExternalDeployment
+- name: RegistryService_UpdateExternalDeployment
+  description: PUT /registered_models/model_versions/external_deployments
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_UpdateExternalDeployment
+- name: RegistryService_GetExternalDeployment
+  description: GET /registered_models/model_versions/external_deployments/{external_deployment_id}
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_GetExternalDeployment
+- name: RegistryService_DeleteExternalDeployment
+  description: DELETE /registered_models/model_versions/external_deployments/{external_deployment_id}
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_DeleteExternalDeployment
+- name: RegistryService_CreateModelVersion2
+  description: POST /registered_models/{id.model_id.registered_model_id}/model_versions
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_CreateModelVersion2
+- name: RegistryService_DeleteModelVersion2
+  description: DELETE /registered_models/{id.model_id.registered_model_id}/model_versions/{id.model_version_id}
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_DeleteModelVersion2
+- name: RegistryService_UpdateModelVersion6
+  description: PUT /registered_models/{id.model_id.registered_model_id}/model_versions/{id.model_version_id}
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_UpdateModelVersion6
+- name: RegistryService_UpdateModelVersion2
+  description: PATCH /registered_models/{id.model_id.registered_model_id}/model_versions/{id.model_version_id}
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_UpdateModelVersion2
+- name: RegistryService_UpdateModelVersion4
+  description: PATCH /registered_models/{id.model_id.registered_model_id}/model_versions/{id.model_version_id}/full_body
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_UpdateModelVersion4
+- name: RegistryService_GetRegisteredModel2
+  description: GET /registered_models/{id.registered_model_id}
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_GetRegisteredModel2
+- name: RegistryService_DeleteRegisteredModel2
+  description: DELETE /registered_models/{id.registered_model_id}
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_DeleteRegisteredModel2
+- name: RegistryService_UpdateRegisteredModel6
+  description: PUT /registered_models/{id.registered_model_id}
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_UpdateRegisteredModel6
+- name: RegistryService_UpdateRegisteredModel2
+  description: PATCH /registered_models/{id.registered_model_id}
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_UpdateRegisteredModel2
+- name: RegistryService_UpdateRegisteredModel4
+  description: PATCH /registered_models/{id.registered_model_id}/full_body
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_UpdateRegisteredModel4
+- name: RegistryService_FindModelVersion2
+  description: POST /registered_models/{id.registered_model_id}/model_versions/find
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_FindModelVersion2
+- name: RegistryService_CreateModelVersion
+  description: POST /workspaces/{id.model_id.named_id.workspace_name}/registered_models/{id.model_id.named_id.name}/model_versions
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_CreateModelVersion
+- name: RegistryService_GetModelVersion
+  description: GET /workspaces/{id.model_id.named_id.workspace_name}/registered_models/{id.model_id.named_id.name}/model_versions/{id.model_version_id}
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_GetModelVersion
+- name: RegistryService_DeleteModelVersion
+  description: DELETE /workspaces/{id.model_id.named_id.workspace_name}/registered_models/{id.model_id.named_id.name}/model_versions/{id.model_version_id}
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_DeleteModelVersion
+- name: RegistryService_UpdateModelVersion5
+  description: PUT /workspaces/{id.model_id.named_id.workspace_name}/registered_models/{id.model_id.named_id.name}/model_versions/{id.model_version_id}
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_UpdateModelVersion5
+- name: RegistryService_UpdateModelVersion
+  description: PATCH /workspaces/{id.model_id.named_id.workspace_name}/registered_models/{id.model_id.named_id.name}/model_versions/{id.model_version_id}
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_UpdateModelVersion
+- name: RegistryService_UpdateModelVersion3
+  description: PATCH /workspaces/{id.model_id.named_id.workspace_name}/registered_models/{id.model_id.named_id.name}/model_versions/{id.model_version_id}/full_body
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_UpdateModelVersion3
+- name: RegistryService_FindModelVersion3
+  description: POST /workspaces/{id.named_id.workspace_name}/model_versions/find
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_FindModelVersion3
+- name: RegistryService_CreateRegisteredModel
+  description: POST /workspaces/{id.named_id.workspace_name}/registered_models
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_CreateRegisteredModel
+- name: RegistryService_GetRegisteredModel
+  description: GET /workspaces/{id.named_id.workspace_name}/registered_models/{id.named_id.name}
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_GetRegisteredModel
+- name: RegistryService_DeleteRegisteredModel
+  description: DELETE /workspaces/{id.named_id.workspace_name}/registered_models/{id.named_id.name}
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_DeleteRegisteredModel
+- name: RegistryService_UpdateRegisteredModel5
+  description: PUT /workspaces/{id.named_id.workspace_name}/registered_models/{id.named_id.name}
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_UpdateRegisteredModel5
+- name: RegistryService_UpdateRegisteredModel
+  description: PATCH /workspaces/{id.named_id.workspace_name}/registered_models/{id.named_id.name}
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_UpdateRegisteredModel
+- name: RegistryService_UpdateRegisteredModel3
+  description: PATCH /workspaces/{id.named_id.workspace_name}/registered_models/{id.named_id.name}/full_body
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_UpdateRegisteredModel3
+- name: RegistryService_FindModelVersion
+  description: POST /workspaces/{id.named_id.workspace_name}/registered_models/{id.named_id.name}/model_versions/find
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_FindModelVersion
+- name: RegistryService_FindRegisteredModel
+  description: POST /workspaces/{workspace_name}/registered_models/find
+  source_operation: openapi/verta-RegistryService.swagger.json#RegistryService_FindRegisteredModel
+- name: SCIMConfigurationService_getConfiguration
+  description: GET /scim/getConfiguration
+  source_operation: openapi/verta-SCIMConfiguration.swagger.json#SCIMConfigurationService_getConfiguration
+- name: StageService_ApproveTransition
+  description: POST /stage/approveTransition
+  source_operation: openapi/verta-StageService.swagger.json#StageService_ApproveTransition
+- name: StageService_CloseTransition
+  description: POST /stage/closeTransition
+  source_operation: openapi/verta-StageService.swagger.json#StageService_CloseTransition
+- name: StageService_CommitTransition
+  description: POST /stage/commitTransition
+  source_operation: openapi/verta-StageService.swagger.json#StageService_CommitTransition
+- name: StageService_CreateComment
+  description: POST /stage/createComment
+  source_operation: openapi/verta-StageService.swagger.json#StageService_CreateComment
+- name: StageService_CreateTransition
+  description: POST /stage/createTransition
+  source_operation: openapi/verta-StageService.swagger.json#StageService_CreateTransition
+- name: StageService_FindActivities
+  description: POST /stage/findActivities
+  source_operation: openapi/verta-StageService.swagger.json#StageService_FindActivities
+- name: StageService_FindTransitions
+  description: POST /stage/findTransitions
+  source_operation: openapi/verta-StageService.swagger.json#StageService_FindTransitions
+- name: StageService_RejectTransition
+  description: POST /stage/rejectTransition
+  source_operation: openapi/verta-StageService.swagger.json#StageService_RejectTransition
+- name: StageService_UpdateStage
+  description: POST /stage/updateStage
+  source_operation: openapi/verta-StageService.swagger.json#StageService_UpdateStage
+- name: UACService_addDevKey
+  description: POST /uac/addDevKey
+  source_operation: openapi/verta-UACService.swagger.json#UACService_addDevKey
+- name: UACService_addDevKeyForUser
+  description: POST /uac/addDevKeyForUser
+  source_operation: openapi/verta-UACService.swagger.json#UACService_addDevKeyForUser
+- name: UACService_createUser
+  description: POST /uac/createUser
+  source_operation: openapi/verta-UACService.swagger.json#UACService_createUser
+- name: UACService_deletePrimaryDevKey
+  description: DELETE /uac/deletePrimaryDevKey
+  source_operation: openapi/verta-UACService.swagger.json#UACService_deletePrimaryDevKey
+- name: UACService_deletePrimaryDevKeyForUser
+  description: DELETE /uac/deletePrimaryDevKeyForUser
+  source_operation: openapi/verta-UACService.swagger.json#UACService_deletePrimaryDevKeyForUser
+- name: UACService_deleteSecondaryDevKey
+  description: DELETE /uac/deleteSecondaryDevKey
+  source_operation: openapi/verta-UACService.swagger.json#UACService_deleteSecondaryDevKey
+- name: UACService_deleteSecondaryDevKeyForUser
+  description: DELETE /uac/deleteSecondaryDevKeyForUser
+  source_operation: openapi/verta-UACService.swagger.json#UACService_deleteSecondaryDevKeyForUser
+- name: UACService_deleteUser
+  description: POST /uac/deleteUser
+  source_operation: openapi/verta-UACService.swagger.json#UACService_deleteUser
+- name: UACService_getCurrentUser
+  description: GET /uac/getCurrentUser
+  source_operation: openapi/verta-UACService.swagger.json#UACService_getCurrentUser
+- name: UACService_getUser
+  description: GET /uac/getUser
+  source_operation: openapi/verta-UACService.swagger.json#UACService_getUser
+- name: UACService_getUsers
+  description: POST /uac/getUsers
+  source_operation: openapi/verta-UACService.swagger.json#UACService_getUsers
+- name: UACService_getUsersFuzzy
+  description: POST /uac/getUsersFuzzy
+  source_operation: openapi/verta-UACService.swagger.json#UACService_getUsersFuzzy
+- name: UACService_updateUser
+  description: POST /uac/updateUser
+  source_operation: openapi/verta-UACService.swagger.json#UACService_updateUser
+- name: VersioningService_commitMultipartVersionedBlobArtifact
+  description: POST /versioning/commitMultipartVersionedBlobArtifact
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_commitMultipartVersionedBlobArtifact
+- name: VersioningService_commitVersionedBlobArtifactPart
+  description: POST /versioning/commitVersionedBlobArtifactPart
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_commitVersionedBlobArtifactPart
+- name: VersioningService_getCommittedVersionedBlobArtifactParts
+  description: GET /versioning/getCommittedVersionedBlobArtifactParts
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_getCommittedVersionedBlobArtifactParts
+- name: VersioningService_ListRepositories2
+  description: GET /versioning/repositories
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_ListRepositories2
+- name: VersioningService_GetRepository2
+  description: GET /versioning/repositories/{id.repo_id}
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_GetRepository2
+- name: VersioningService_UpdateRepository2
+  description: PUT /versioning/repositories/{id.repo_id}
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_UpdateRepository2
+- name: VersioningService_DeleteRepository2
+  description: DELETE /versioning/repositories/{repository_id.repo_id}
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_DeleteRepository2
+- name: VersioningService_ListBranches2
+  description: GET /versioning/repositories/{repository_id.repo_id}/branches
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_ListBranches2
+- name: VersioningService_GetBranch2
+  description: GET /versioning/repositories/{repository_id.repo_id}/branches/{branch}
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_GetBranch2
+- name: VersioningService_DeleteBranch2
+  description: DELETE /versioning/repositories/{repository_id.repo_id}/branches/{branch}
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_DeleteBranch2
+- name: VersioningService_SetBranch2
+  description: PUT /versioning/repositories/{repository_id.repo_id}/branches/{branch}
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_SetBranch2
+- name: VersioningService_ListCommitsLog2
+  description: GET /versioning/repositories/{repository_id.repo_id}/branches/{branch}/log
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_ListCommitsLog2
+- name: VersioningService_ListCommits2
+  description: GET /versioning/repositories/{repository_id.repo_id}/commits
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_ListCommits2
+- name: VersioningService_CreateCommit2
+  description: POST /versioning/repositories/{repository_id.repo_id}/commits
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_CreateCommit2
+- name: VersioningService_GetCommit2
+  description: GET /versioning/repositories/{repository_id.repo_id}/commits/{commit_sha}
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_GetCommit2
+- name: VersioningService_DeleteCommit2
+  description: DELETE /versioning/repositories/{repository_id.repo_id}/commits/{commit_sha}
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_DeleteCommit2
+- name: VersioningService_ListCommitBlobs2
+  description: GET /versioning/repositories/{repository_id.repo_id}/commits/{commit_sha}/blobs
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_ListCommitBlobs2
+- name: VersioningService_getUrlForBlobVersioned2
+  description: POST /versioning/repositories/{repository_id.repo_id}/commits/{commit_sha}/getUrlForBlobVersioned
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_getUrlForBlobVersioned2
+- name: VersioningService_ListCommitsLog4
+  description: GET /versioning/repositories/{repository_id.repo_id}/commits/{commit_sha}/log
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_ListCommitsLog4
+- name: VersioningService_GetCommitComponent2
+  description: GET /versioning/repositories/{repository_id.repo_id}/commits/{commit_sha}/path
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_GetCommitComponent2
+- name: VersioningService_RevertRepositoryCommits2
+  description: POST /versioning/repositories/{repository_id.repo_id}/commits/{commit_to_revert_sha}/revert
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_RevertRepositoryCommits2
+- name: VersioningService_ComputeRepositoryDiff2
+  description: GET /versioning/repositories/{repository_id.repo_id}/diff
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_ComputeRepositoryDiff2
+- name: VersioningService_MergeRepositoryCommits2
+  description: POST /versioning/repositories/{repository_id.repo_id}/merge
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_MergeRepositoryCommits2
+- name: VersioningService_ListTags2
+  description: GET /versioning/repositories/{repository_id.repo_id}/tags
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_ListTags2
+- name: VersioningService_GetTag2
+  description: GET /versioning/repositories/{repository_id.repo_id}/tags/{tag}
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_GetTag2
+- name: VersioningService_DeleteTag2
+  description: DELETE /versioning/repositories/{repository_id.repo_id}/tags/{tag}
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_DeleteTag2
+- name: VersioningService_SetTag2
+  description: PUT /versioning/repositories/{repository_id.repo_id}/tags/{tag}
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_SetTag2
+- name: VersioningService_CreateRepository
+  description: POST /versioning/workspaces/{id.named_id.workspace_name}/repositories
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_CreateRepository
+- name: VersioningService_GetRepository
+  description: GET /versioning/workspaces/{id.named_id.workspace_name}/repositories/{id.named_id.name}
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_GetRepository
+- name: VersioningService_UpdateRepository
+  description: PUT /versioning/workspaces/{id.named_id.workspace_name}/repositories/{id.named_id.name}
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_UpdateRepository
+- name: VersioningService_DeleteRepository
+  description: DELETE /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_DeleteRepository
+- name: VersioningService_ListBranches
+  description: GET /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/branches
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_ListBranches
+- name: VersioningService_GetBranch
+  description: GET /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/branches/{branch}
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_GetBranch
+- name: VersioningService_DeleteBranch
+  description: DELETE /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/branches/{branch}
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_DeleteBranch
+- name: VersioningService_SetBranch
+  description: PUT /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/branches/{branch}
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_SetBranch
+- name: VersioningService_ListCommitsLog
+  description: GET /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/branches/{branch}/log
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_ListCommitsLog
+- name: VersioningService_ListCommits
+  description: GET /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/commits
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_ListCommits
+- name: VersioningService_CreateCommit
+  description: POST /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/commits
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_CreateCommit
+- name: VersioningService_GetCommit
+  description: GET /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/commits/{commit_sha}
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_GetCommit
+- name: VersioningService_DeleteCommit
+  description: DELETE /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/commits/{commit_sha}
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_DeleteCommit
+- name: VersioningService_ListCommitBlobs
+  description: GET /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/commits/{commit_sha}/blobs
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_ListCommitBlobs
+- name: VersioningService_getUrlForBlobVersioned
+  description: POST /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/commits/{commit_sha}/getUrlForBlobVersioned
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_getUrlForBlobVersioned
+- name: VersioningService_ListCommitsLog3
+  description: GET /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/commits/{commit_sha}/log
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_ListCommitsLog3
+- name: VersioningService_GetCommitComponent
+  description: GET /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/commits/{commit_sha}/path
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_GetCommitComponent
+- name: VersioningService_RevertRepositoryCommits
+  description: POST /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/commits/{commit_to_revert_sha}/revert
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_RevertRepositoryCommits
+- name: VersioningService_ComputeRepositoryDiff
+  description: GET /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/diff
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_ComputeRepositoryDiff
+- name: VersioningService_MergeRepositoryCommits
+  description: POST /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/merge
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_MergeRepositoryCommits
+- name: VersioningService_ListTags
+  description: GET /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/tags
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_ListTags
+- name: VersioningService_GetTag
+  description: GET /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/tags/{tag}
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_GetTag
+- name: VersioningService_DeleteTag
+  description: DELETE /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/tags/{tag}
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_DeleteTag
+- name: VersioningService_SetTag
+  description: PUT /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/tags/{tag}
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_SetTag
+- name: VersioningService_findRepositories
+  description: POST /versioning/workspaces/{workspace_name}/findRepositories
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_findRepositories
+- name: VersioningService_findRepositoriesBlobs
+  description: POST /versioning/workspaces/{workspace_name}/findRepositoriesBlobs
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_findRepositoriesBlobs
+- name: VersioningService_ListRepositories
+  description: GET /versioning/workspaces/{workspace_name}/repositories
+  source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_ListRepositories

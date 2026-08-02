@@ -1,0 +1,39 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/*.swagger.json + docs.verta.ai
+authentication:
+  style: email + developer-key credentials on the hosted Verta platform; unauthenticated host for local
+    OSS ModelDB.
+  note: The harvested grpc-gateway specs declare no securityDefinitions; see authentication/verta-authentication.yml.
+idempotency:
+  supported: false
+  note: No idempotency-key header or parameter is documented in the specs; create operations use name-based
+    get-or-create semantics in the client rather than an Idempotency-Key contract.
+pagination:
+  style: page-number
+  request:
+    object: commonPagination
+    params:
+    - page_number
+    - page_limit
+  response:
+    fields:
+    - total_records
+  note: List/find operations accept a commonPagination object (page_number, page_limit) and return total_records.
+transport:
+  protocol: gRPC with a grpc-gateway JSON/REST transcoding layer
+  base_path: /v1
+  media_type: application/json
+  field_casing: snake_case JSON fields (protobuf-derived)
+error_envelope:
+  ref: errors/verta-problem-types.yml
+  schema: runtimeError
+authorization_model:
+  system: UAC (User Access Control) — action/resource/service enums (ModelDBService, DeploymentService,
+    AuthzService, RoleService).
+  ref: openapi/verta-UACService.swagger.json + openapi/verta-Authorization.swagger.json
+cross_links:
+  errors: errors/verta-problem-types.yml
+  authentication: authentication/verta-authentication.yml
+  lifecycle: lifecycle/verta-lifecycle.yml
+  data_model: data-model/verta-data-model.yml

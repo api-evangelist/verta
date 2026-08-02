@@ -1,0 +1,750 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "uac/UACService.proto",
+    "version": "version not set"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/uac/addDevKey": {
+      "post": {
+        "summary": "adds new user developer key",
+        "operationId": "UACService_addDevKey",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/uacUserInfo"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/vertauacEmpty"
+            }
+          }
+        ],
+        "tags": [
+          "UACService"
+        ]
+      }
+    },
+    "/uac/addDevKeyForUser": {
+      "post": {
+        "summary": "adds new user developer key",
+        "operationId": "UACService_addDevKeyForUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/uacUserInfo"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/uacChangeDevKeyForUser"
+            }
+          }
+        ],
+        "tags": [
+          "UACService"
+        ]
+      }
+    },
+    "/uac/createUser": {
+      "post": {
+        "summary": "For now, any user can create a new user",
+        "operationId": "UACService_createUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/uacCreateUserResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/uacCreateUser"
+            }
+          }
+        ],
+        "tags": [
+          "UACService"
+        ]
+      }
+    },
+    "/uac/deletePrimaryDevKey": {
+      "delete": {
+        "summary": "deletes primary developer key",
+        "operationId": "UACService_deletePrimaryDevKey",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/uacUserInfo"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/vertauacEmpty"
+            }
+          }
+        ],
+        "tags": [
+          "UACService"
+        ]
+      }
+    },
+    "/uac/deletePrimaryDevKeyForUser": {
+      "delete": {
+        "summary": "deletes primary developer key",
+        "operationId": "UACService_deletePrimaryDevKeyForUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/uacUserInfo"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/uacChangeDevKeyForUser"
+            }
+          }
+        ],
+        "tags": [
+          "UACService"
+        ]
+      }
+    },
+    "/uac/deleteSecondaryDevKey": {
+      "delete": {
+        "summary": "deletes secondary developer key",
+        "operationId": "UACService_deleteSecondaryDevKey",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/uacUserInfo"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/vertauacEmpty"
+            }
+          }
+        ],
+        "tags": [
+          "UACService"
+        ]
+      }
+    },
+    "/uac/deleteSecondaryDevKeyForUser": {
+      "delete": {
+        "summary": "deletes primary developer key",
+        "operationId": "UACService_deleteSecondaryDevKeyForUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/uacUserInfo"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/uacChangeDevKeyForUser"
+            }
+          }
+        ],
+        "tags": [
+          "UACService"
+        ]
+      }
+    },
+    "/uac/deleteUser": {
+      "post": {
+        "summary": "Only current user can delete themselves",
+        "operationId": "UACService_deleteUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/uacDeleteUserResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/uacDeleteUser"
+            }
+          }
+        ],
+        "tags": [
+          "UACService"
+        ]
+      }
+    },
+    "/uac/getCurrentUser": {
+      "get": {
+        "summary": "Get the current user information verifying JWT token",
+        "operationId": "UACService_getCurrentUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/uacUserInfo"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "tags": [
+          "UACService"
+        ]
+      }
+    },
+    "/uac/getUser": {
+      "get": {
+        "summary": "Get the current user information verifying JWT token",
+        "operationId": "UACService_getUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/uacUserInfo"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "UACService"
+        ]
+      }
+    },
+    "/uac/getUsers": {
+      "post": {
+        "operationId": "UACService_getUsers",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/uacGetUsersResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/uacGetUsers"
+            }
+          }
+        ],
+        "tags": [
+          "UACService"
+        ]
+      }
+    },
+    "/uac/getUsersFuzzy": {
+      "post": {
+        "operationId": "UACService_getUsersFuzzy",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/uacGetUsersFuzzyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/uacGetUsersFuzzy"
+            }
+          }
+        ],
+        "tags": [
+          "UACService"
+        ]
+      }
+    },
+    "/uac/updateUser": {
+      "post": {
+        "summary": "Only current user can update themselves",
+        "operationId": "UACService_updateUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/uacUpdateUserResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/uacUpdateUser"
+            }
+          }
+        ],
+        "tags": [
+          "UACService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "IdServiceProviderEnumIdServiceProvider": {
+      "type": "string",
+      "enum": [
+        "UNKNOWN",
+        "GITHUB",
+        "BITBUCKET",
+        "GOOGLE",
+        "VERTA",
+        "SAML",
+        "AD_OAUTH2",
+        "LDAP",
+        "OKTA_SCIM",
+        "AD_SCIM",
+        "SCIM"
+      ],
+      "default": "UNKNOWN"
+    },
+    "commonPagination": {
+      "type": "object",
+      "properties": {
+        "page_number": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "page_limit": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "For pagination"
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        },
+        "value": {
+          "type": "string",
+          "format": "byte",
+          "description": "Must be a valid serialized protocol buffer of the above specified type."
+        }
+      },
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(&foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := &pb.Foo{...}\n     any, err := ptypes.MarshalAny(foo)\n     ...\n     foo := &pb.Foo{}\n     if err := ptypes.UnmarshalAny(any, foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": <string>,\n      \"lastName\": <string>\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    },
+    "runtimeError": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "uacChangeDevKeyForUser": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        }
+      }
+    },
+    "uacCreateUser": {
+      "type": "object",
+      "properties": {
+        "info": {
+          "$ref": "#/definitions/uacUserInfo"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "uacCreateUserResponse": {
+      "type": "object",
+      "properties": {
+        "info": {
+          "$ref": "#/definitions/uacUserInfo"
+        }
+      }
+    },
+    "uacDeleteUser": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        }
+      }
+    },
+    "uacDeleteUserResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "boolean"
+        }
+      }
+    },
+    "uacFlagEnum": {
+      "type": "string",
+      "enum": [
+        "UNDEFINED",
+        "TRUE",
+        "FALSE"
+      ],
+      "default": "UNDEFINED"
+    },
+    "uacGetUsers": {
+      "type": "object",
+      "properties": {
+        "user_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "emails": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "usernames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "pagination": {
+          "$ref": "#/definitions/commonPagination"
+        }
+      }
+    },
+    "uacGetUsersFuzzy": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        },
+        "pagination": {
+          "$ref": "#/definitions/commonPagination"
+        }
+      }
+    },
+    "uacGetUsersFuzzyResponse": {
+      "type": "object",
+      "properties": {
+        "user_infos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/uacUserInfo"
+          }
+        },
+        "total_records": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "uacGetUsersResponse": {
+      "type": "object",
+      "properties": {
+        "user_infos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/uacUserInfo"
+          }
+        },
+        "total_records": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "uacUpdateUser": {
+      "type": "object",
+      "properties": {
+        "info": {
+          "$ref": "#/definitions/uacUserInfo"
+        },
+        "password": {
+          "type": "string"
+        },
+        "default_workspace_id": {
+          "type": "string",
+          "format": "uint64"
+        }
+      }
+    },
+    "uacUpdateUserResponse": {
+      "type": "object",
+      "properties": {
+        "info": {
+          "$ref": "#/definitions/uacUserInfo"
+        }
+      }
+    },
+    "uacUserInfo": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        },
+        "full_name": {
+          "type": "string"
+        },
+        "first_name": {
+          "type": "string"
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "id_service_provider": {
+          "$ref": "#/definitions/IdServiceProviderEnumIdServiceProvider"
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "image_url": {
+          "type": "string"
+        },
+        "dev_key": {
+          "type": "string"
+        },
+        "verta_info": {
+          "$ref": "#/definitions/uacVertaUserInfo"
+        },
+        "secondary_dev_key": {
+          "type": "string"
+        },
+        "disabled": {
+          "type": "boolean"
+        },
+        "job_title": {
+          "type": "string"
+        },
+        "company": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "uint64"
+        }
+      }
+    },
+    "uacVertaUserInfo": {
+      "type": "object",
+      "properties": {
+        "individual_user": {
+          "type": "boolean"
+        },
+        "username": {
+          "type": "string"
+        },
+        "refresh_timestamp": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "last_login_timestamp": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "user_id": {
+          "type": "string"
+        },
+        "publicProfile": {
+          "$ref": "#/definitions/uacFlagEnum"
+        },
+        "workspace_id": {
+          "type": "string"
+        },
+        "default_workspace_id": {
+          "type": "string",
+          "format": "uint64",
+          "title": "Workspace that the user has selected as their default. Initializes to the user's personal workspace\nWhen the user is added to their _first_ org, the default workspace automatically switches to that if it was the default value\nThis should be empty if the user is not the current user"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "vertauacEmpty": {
+      "type": "object"
+    }
+  },
+  "basePath": "/v1"
+}

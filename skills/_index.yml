@@ -1,0 +1,21 @@
+generated: '2026-07-21'
+method: generated
+source: openapi/*.swagger.json (operationIds verified against the harvested grpc-gateway specs)
+skills:
+  - file: verta-track-experiment.md
+    name: Track an ML experiment in Verta ModelDB
+    api: openapi/verta-ProjectService.swagger.json
+    operations:
+      - ProjectService_createProject
+      - ExperimentService_createExperiment
+      - ExperimentRunService_createExperimentRun
+      - ExperimentRunService_logHyperparameter
+      - ExperimentRunService_logMetric
+      - ExperimentRunService_logArtifact
+  - file: verta-register-model.md
+    name: Register and version a model in Verta ModelDB
+    api: openapi/verta-RegistryService.swagger.json
+    operations:
+      - RegistryService_CreateRegisteredModel
+      - RegistryService_CreateModelVersion
+      - RegistryService_GetModelVersion

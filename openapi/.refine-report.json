@@ -1,0 +1,34 @@
+{
+  "provider": "verta",
+  "sources": [
+    "verta-authzservice-api-openapi.yml",
+    "verta-datasetservice-api-openapi.yml",
+    "verta-experimentrunservice-api-openapi.yml",
+    "verta-experimentservice-api-openapi.yml",
+    "verta-monitoredentityservice-api-openapi.yml",
+    "verta-projectservice-api-openapi.yml",
+    "verta-registryservice-api-openapi.yml",
+    "verta-scimconfigurationservice-api-openapi.yml",
+    "verta-stageservice-api-openapi.yml",
+    "verta-uacservice-api-openapi.yml",
+    "verta-versioningservice-api-openapi.yml"
+  ],
+  "outputs": [
+    "verta-authzservice-api-openapi.yml",
+    "verta-datasetservice-api-openapi.yml",
+    "verta-experimentrunservice-api-openapi.yml",
+    "verta-experimentservice-api-openapi.yml",
+    "verta-monitoredentityservice-api-openapi.yml",
+    "verta-projectservice-api-openapi.yml",
+    "verta-registryservice-api-openapi.yml",
+    "verta-scimconfigurationservice-api-openapi.yml",
+    "verta-stageservice-api-openapi.yml",
+    "verta-uacservice-api-openapi.yml",
+    "verta-versioningservice-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

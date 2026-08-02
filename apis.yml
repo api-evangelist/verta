@@ -1,8 +1,26 @@
 aid: verta
 name: Verta
-description: Verta is a company surfaced as a portfolio company of general-catalyst and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: Verta was an MLOps model-management, experiment-tracking, and model-registry platform (verta.ai)
+  acquired by Cloudera on 2024-06-03; verta.ai now redirects to Cloudera Machine Learning. Its open-source
+  core, ModelDB (Apache-2.0, github.com/VertaAI/modeldb), remains actively maintained and provides ML
+  model versioning, metadata management, and experiment tracking. The REST API is a grpc-gateway transcoding
+  of the ModelDB and UAC gRPC services — 11 services and 264 operations served under /v1 — covering projects,
+  experiments, experiment runs, datasets, a model registry, Git-style versioning, deployment stages, monitoring,
+  and SCIM/UAC access control.
 url: https://raw.githubusercontent.com/api-evangelist/verta/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://github.com/VertaAI.png
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
@@ -11,12 +29,433 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
+- MLOps
+- Machine Learning
+- Model Management
+- Experiment Tracking
+- Model Registry
+- Model Versioning
+- Metadata
+- Open Source
 - Company
-apis: []
+apis:
+- aid: verta:verta-authzservice-api
+  name: Verta AuthzService API
+  description: The AuthzService API from Verta — 4 operation(s) for authzservice.
+  humanURL: https://docs.verta.ai/
+  baseURL: https://docs.verta.ai/
+  tags:
+  - AuthzService
+  properties:
+  - type: OpenAPI
+    url: openapi/verta-authzservice-api-openapi.yml
+  - type: Protobuf
+    url: grpc/verta-APISync.proto
+  - type: Protobuf
+    url: grpc/verta-Authorization.proto
+  - type: Protobuf
+    url: grpc/verta-DatasetService.proto
+  - type: Protobuf
+    url: grpc/verta-ExperimentRunService.proto
+  - type: Protobuf
+    url: grpc/verta-ExperimentService.proto
+  - type: Protobuf
+    url: grpc/verta-MonitoredEntity.proto
+  - type: Protobuf
+    url: grpc/verta-ProjectService.proto
+  - type: Protobuf
+    url: grpc/verta-RegistryService.proto
+  - type: Protobuf
+    url: grpc/verta-SCIMConfiguration.proto
+  - type: Protobuf
+    url: grpc/verta-StageService.proto
+  - type: Protobuf
+    url: grpc/verta-UACService.proto
+  - type: Protobuf
+    url: grpc/verta-VersioningService.proto
+- aid: verta:verta-datasetservice-api
+  name: Verta DatasetService API
+  description: The DatasetService API from Verta — 17 operation(s) for datasetservice.
+  humanURL: https://docs.verta.ai/
+  baseURL: https://docs.verta.ai/
+  tags:
+  - DatasetService
+  properties:
+  - type: OpenAPI
+    url: openapi/verta-datasetservice-api-openapi.yml
+  - type: Protobuf
+    url: grpc/verta-APISync.proto
+  - type: Protobuf
+    url: grpc/verta-Authorization.proto
+  - type: Protobuf
+    url: grpc/verta-DatasetService.proto
+  - type: Protobuf
+    url: grpc/verta-ExperimentRunService.proto
+  - type: Protobuf
+    url: grpc/verta-ExperimentService.proto
+  - type: Protobuf
+    url: grpc/verta-MonitoredEntity.proto
+  - type: Protobuf
+    url: grpc/verta-ProjectService.proto
+  - type: Protobuf
+    url: grpc/verta-RegistryService.proto
+  - type: Protobuf
+    url: grpc/verta-SCIMConfiguration.proto
+  - type: Protobuf
+    url: grpc/verta-StageService.proto
+  - type: Protobuf
+    url: grpc/verta-UACService.proto
+  - type: Protobuf
+    url: grpc/verta-VersioningService.proto
+- aid: verta:verta-experimentrunservice-api
+  name: Verta ExperimentRunService API
+  description: The ExperimentRunService API from Verta — 60 operation(s) for experimentrunservice.
+  humanURL: https://docs.verta.ai/
+  baseURL: https://docs.verta.ai/
+  tags:
+  - ExperimentRunService
+  properties:
+  - type: OpenAPI
+    url: openapi/verta-experimentrunservice-api-openapi.yml
+  - type: Protobuf
+    url: grpc/verta-APISync.proto
+  - type: Protobuf
+    url: grpc/verta-Authorization.proto
+  - type: Protobuf
+    url: grpc/verta-DatasetService.proto
+  - type: Protobuf
+    url: grpc/verta-ExperimentRunService.proto
+  - type: Protobuf
+    url: grpc/verta-ExperimentService.proto
+  - type: Protobuf
+    url: grpc/verta-MonitoredEntity.proto
+  - type: Protobuf
+    url: grpc/verta-ProjectService.proto
+  - type: Protobuf
+    url: grpc/verta-RegistryService.proto
+  - type: Protobuf
+    url: grpc/verta-SCIMConfiguration.proto
+  - type: Protobuf
+    url: grpc/verta-StageService.proto
+  - type: Protobuf
+    url: grpc/verta-UACService.proto
+  - type: Protobuf
+    url: grpc/verta-VersioningService.proto
+- aid: verta:verta-experimentservice-api
+  name: Verta ExperimentService API
+  description: The ExperimentService API from Verta — 25 operation(s) for experimentservice.
+  humanURL: https://docs.verta.ai/
+  baseURL: https://docs.verta.ai/
+  tags:
+  - ExperimentService
+  properties:
+  - type: OpenAPI
+    url: openapi/verta-experimentservice-api-openapi.yml
+  - type: Protobuf
+    url: grpc/verta-APISync.proto
+  - type: Protobuf
+    url: grpc/verta-Authorization.proto
+  - type: Protobuf
+    url: grpc/verta-DatasetService.proto
+  - type: Protobuf
+    url: grpc/verta-ExperimentRunService.proto
+  - type: Protobuf
+    url: grpc/verta-ExperimentService.proto
+  - type: Protobuf
+    url: grpc/verta-MonitoredEntity.proto
+  - type: Protobuf
+    url: grpc/verta-ProjectService.proto
+  - type: Protobuf
+    url: grpc/verta-RegistryService.proto
+  - type: Protobuf
+    url: grpc/verta-SCIMConfiguration.proto
+  - type: Protobuf
+    url: grpc/verta-StageService.proto
+  - type: Protobuf
+    url: grpc/verta-UACService.proto
+  - type: Protobuf
+    url: grpc/verta-VersioningService.proto
+- aid: verta:verta-monitoredentityservice-api
+  name: Verta MonitoredEntityService API
+  description: The MonitoredEntityService API from Verta — 4 operation(s) for monitoredentityservice.
+  humanURL: https://docs.verta.ai/
+  baseURL: https://docs.verta.ai/
+  tags:
+  - MonitoredEntityService
+  properties:
+  - type: OpenAPI
+    url: openapi/verta-monitoredentityservice-api-openapi.yml
+  - type: Protobuf
+    url: grpc/verta-APISync.proto
+  - type: Protobuf
+    url: grpc/verta-Authorization.proto
+  - type: Protobuf
+    url: grpc/verta-DatasetService.proto
+  - type: Protobuf
+    url: grpc/verta-ExperimentRunService.proto
+  - type: Protobuf
+    url: grpc/verta-ExperimentService.proto
+  - type: Protobuf
+    url: grpc/verta-MonitoredEntity.proto
+  - type: Protobuf
+    url: grpc/verta-ProjectService.proto
+  - type: Protobuf
+    url: grpc/verta-RegistryService.proto
+  - type: Protobuf
+    url: grpc/verta-SCIMConfiguration.proto
+  - type: Protobuf
+    url: grpc/verta-StageService.proto
+  - type: Protobuf
+    url: grpc/verta-UACService.proto
+  - type: Protobuf
+    url: grpc/verta-VersioningService.proto
+- aid: verta:verta-projectservice-api
+  name: Verta ProjectService API
+  description: The ProjectService API from Verta — 32 operation(s) for projectservice.
+  humanURL: https://docs.verta.ai/
+  baseURL: https://docs.verta.ai/
+  tags:
+  - ProjectService
+  properties:
+  - type: OpenAPI
+    url: openapi/verta-projectservice-api-openapi.yml
+  - type: Protobuf
+    url: grpc/verta-APISync.proto
+  - type: Protobuf
+    url: grpc/verta-Authorization.proto
+  - type: Protobuf
+    url: grpc/verta-DatasetService.proto
+  - type: Protobuf
+    url: grpc/verta-ExperimentRunService.proto
+  - type: Protobuf
+    url: grpc/verta-ExperimentService.proto
+  - type: Protobuf
+    url: grpc/verta-MonitoredEntity.proto
+  - type: Protobuf
+    url: grpc/verta-ProjectService.proto
+  - type: Protobuf
+    url: grpc/verta-RegistryService.proto
+  - type: Protobuf
+    url: grpc/verta-SCIMConfiguration.proto
+  - type: Protobuf
+    url: grpc/verta-StageService.proto
+  - type: Protobuf
+    url: grpc/verta-UACService.proto
+  - type: Protobuf
+    url: grpc/verta-VersioningService.proto
+- aid: verta:verta-registryservice-api
+  name: Verta RegistryService API
+  description: The RegistryService API from Verta — 31 operation(s) for registryservice.
+  humanURL: https://docs.verta.ai/
+  baseURL: https://docs.verta.ai/
+  tags:
+  - RegistryService
+  properties:
+  - type: OpenAPI
+    url: openapi/verta-registryservice-api-openapi.yml
+  - type: Protobuf
+    url: grpc/verta-APISync.proto
+  - type: Protobuf
+    url: grpc/verta-Authorization.proto
+  - type: Protobuf
+    url: grpc/verta-DatasetService.proto
+  - type: Protobuf
+    url: grpc/verta-ExperimentRunService.proto
+  - type: Protobuf
+    url: grpc/verta-ExperimentService.proto
+  - type: Protobuf
+    url: grpc/verta-MonitoredEntity.proto
+  - type: Protobuf
+    url: grpc/verta-ProjectService.proto
+  - type: Protobuf
+    url: grpc/verta-RegistryService.proto
+  - type: Protobuf
+    url: grpc/verta-SCIMConfiguration.proto
+  - type: Protobuf
+    url: grpc/verta-StageService.proto
+  - type: Protobuf
+    url: grpc/verta-UACService.proto
+  - type: Protobuf
+    url: grpc/verta-VersioningService.proto
+- aid: verta:verta-scimconfigurationservice-api
+  name: Verta SCIMConfigurationService API
+  description: >-
+    The SCIMConfigurationService API from Verta — 1 operation(s) for scimconfigurationservice.
+  humanURL: https://docs.verta.ai/
+  baseURL: https://docs.verta.ai/
+  tags:
+  - SCIMConfigurationService
+  properties:
+  - type: OpenAPI
+    url: openapi/verta-scimconfigurationservice-api-openapi.yml
+  - type: Protobuf
+    url: grpc/verta-APISync.proto
+  - type: Protobuf
+    url: grpc/verta-Authorization.proto
+  - type: Protobuf
+    url: grpc/verta-DatasetService.proto
+  - type: Protobuf
+    url: grpc/verta-ExperimentRunService.proto
+  - type: Protobuf
+    url: grpc/verta-ExperimentService.proto
+  - type: Protobuf
+    url: grpc/verta-MonitoredEntity.proto
+  - type: Protobuf
+    url: grpc/verta-ProjectService.proto
+  - type: Protobuf
+    url: grpc/verta-RegistryService.proto
+  - type: Protobuf
+    url: grpc/verta-SCIMConfiguration.proto
+  - type: Protobuf
+    url: grpc/verta-StageService.proto
+  - type: Protobuf
+    url: grpc/verta-UACService.proto
+  - type: Protobuf
+    url: grpc/verta-VersioningService.proto
+- aid: verta:verta-stageservice-api
+  name: Verta StageService API
+  description: The StageService API from Verta — 9 operation(s) for stageservice.
+  humanURL: https://docs.verta.ai/
+  baseURL: https://docs.verta.ai/
+  tags:
+  - StageService
+  properties:
+  - type: OpenAPI
+    url: openapi/verta-stageservice-api-openapi.yml
+  - type: Protobuf
+    url: grpc/verta-APISync.proto
+  - type: Protobuf
+    url: grpc/verta-Authorization.proto
+  - type: Protobuf
+    url: grpc/verta-DatasetService.proto
+  - type: Protobuf
+    url: grpc/verta-ExperimentRunService.proto
+  - type: Protobuf
+    url: grpc/verta-ExperimentService.proto
+  - type: Protobuf
+    url: grpc/verta-MonitoredEntity.proto
+  - type: Protobuf
+    url: grpc/verta-ProjectService.proto
+  - type: Protobuf
+    url: grpc/verta-RegistryService.proto
+  - type: Protobuf
+    url: grpc/verta-SCIMConfiguration.proto
+  - type: Protobuf
+    url: grpc/verta-StageService.proto
+  - type: Protobuf
+    url: grpc/verta-UACService.proto
+  - type: Protobuf
+    url: grpc/verta-VersioningService.proto
+- aid: verta:verta-uacservice-api
+  name: Verta UACService API
+  description: The UACService API from Verta — 13 operation(s) for uacservice.
+  humanURL: https://docs.verta.ai/
+  baseURL: https://docs.verta.ai/
+  tags:
+  - UACService
+  properties:
+  - type: OpenAPI
+    url: openapi/verta-uacservice-api-openapi.yml
+  - type: Protobuf
+    url: grpc/verta-APISync.proto
+  - type: Protobuf
+    url: grpc/verta-Authorization.proto
+  - type: Protobuf
+    url: grpc/verta-DatasetService.proto
+  - type: Protobuf
+    url: grpc/verta-ExperimentRunService.proto
+  - type: Protobuf
+    url: grpc/verta-ExperimentService.proto
+  - type: Protobuf
+    url: grpc/verta-MonitoredEntity.proto
+  - type: Protobuf
+    url: grpc/verta-ProjectService.proto
+  - type: Protobuf
+    url: grpc/verta-RegistryService.proto
+  - type: Protobuf
+    url: grpc/verta-SCIMConfiguration.proto
+  - type: Protobuf
+    url: grpc/verta-StageService.proto
+  - type: Protobuf
+    url: grpc/verta-UACService.proto
+  - type: Protobuf
+    url: grpc/verta-VersioningService.proto
+- aid: verta:verta-versioningservice-api
+  name: Verta VersioningService API
+  description: The VersioningService API from Verta — 40 operation(s) for versioningservice.
+  humanURL: https://docs.verta.ai/
+  baseURL: https://docs.verta.ai/
+  tags:
+  - VersioningService
+  properties:
+  - type: OpenAPI
+    url: openapi/verta-versioningservice-api-openapi.yml
+  - type: Protobuf
+    url: grpc/verta-APISync.proto
+  - type: Protobuf
+    url: grpc/verta-Authorization.proto
+  - type: Protobuf
+    url: grpc/verta-DatasetService.proto
+  - type: Protobuf
+    url: grpc/verta-ExperimentRunService.proto
+  - type: Protobuf
+    url: grpc/verta-ExperimentService.proto
+  - type: Protobuf
+    url: grpc/verta-MonitoredEntity.proto
+  - type: Protobuf
+    url: grpc/verta-ProjectService.proto
+  - type: Protobuf
+    url: grpc/verta-RegistryService.proto
+  - type: Protobuf
+    url: grpc/verta-SCIMConfiguration.proto
+  - type: Protobuf
+    url: grpc/verta-StageService.proto
+  - type: Protobuf
+    url: grpc/verta-UACService.proto
+  - type: Protobuf
+    url: grpc/verta-VersioningService.proto
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+common:
+- type: AgenticAccess
+  url: agentic-access/verta-agentic-access.yml
+- type: Authentication
+  url: authentication/verta-authentication.yml
+- type: Conventions
+  url: conventions/verta-conventions.yml
+- type: ErrorCatalog
+  url: errors/verta-problem-types.yml
+- type: DataModel
+  url: data-model/verta-data-model.yml
+- type: Conformance
+  url: conformance/verta-conformance.yml
+- type: Lifecycle
+  url: lifecycle/verta-lifecycle.yml
+- type: ChangeLog
+  url: changelog/verta-changelog.yml
+- type: Packages
+  url: packages/verta-packages.yml
+- type: SDKs
+  url: packages/verta-packages.yml
+- type: MCPServer
+  url: mcp/verta-mcp.yml
+- type: LLMsTxt
+  url: llms/verta-llms.txt
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Documentation
+  url: https://docs.verta.ai/
+- type: GitHubOrganization
+  url: https://github.com/VertaAI
+- type: SourceCode
+  url: https://github.com/VertaAI/modeldb
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 14
+  pass: local-v1

@@ -1,0 +1,88 @@
+syntax = "proto3";
+
+package ai.verta.uac;
+option go_package = "github.com/VertaAI/modeldb/protos/gen/go/protos/public/uac";
+
+option java_multiple_files = true;
+import "google/api/annotations.proto";
+import "uac/RoleService.proto";
+import "common/CommonService.proto";
+
+// Answers the question "what `entities` are allowed to perform any of `actions` on any of `resources`?"
+// Lists all entities that are allowed to perform a certain action on certain resources
+message GetAllowedEntities {
+    repeated Action actions = 1;
+    repeated Resources resources = 2;
+    common.Pagination pagination = 3;
+
+    message Response {
+        repeated Entities entities = 1;
+        int64 total_records = 2;
+    };
+};
+
+message GetAllowedEntitiesWithActionsResponseItem {
+    repeated Entities entities = 1;
+    Action actions = 2;
+}
+
+// Same as IsAllowed, but infers entities from the current logged user
+message IsSelfAllowed {
+    repeated Action actions = 2;
+    repeated Resources resources = 3;
+
+    message Response {
+        bool allowed = 1;
+    }
+};
+
+// Same as GetAllowedResources, but infers entities from the current logged user
+message GetSelfAllowedResources {
+    repeated Action actions = 2;
+    ResourceType resource_type = 3;
+    ServiceEnum.Service service = 4;
+    common.Pagination pagination = 5;
+
+    message Response {
+        repeated Resources resources = 1;
+        int64 total_records = 2;
+    };
+};
+
+message Actions {
+  repeated Action actions = 2;
+}
+
+message GetSelfAllowedActionsBatch {
+   Resources resources = 3;
+   message Response {
+       map<string, Actions> actions = 2; // key is resource id
+   };
+};
+
+service AuthzService {
+    rpc getAllowedEntities (GetAllowedEntities) returns (GetAllowedEntities.Response) {
+        option (google.api.http) = {
+            post : "/v1/authz/getAllowedEntities"
+            body : "*"
+        };
+    };
+    rpc isSelfAllowed (IsSelfAllowed) returns (IsSelfAllowed.Response) {
+        option (google.api.http) = {
+            post : "/v1/authz/isSelfAllowed"
+            body : "*"
+        };
+    };
+    rpc getSelfAllowedResources (GetSelfAllowedResources) returns (GetSelfAllowedResources.Response) {
+        option (google.api.http) = {
+            post : "/v1/authz/getSelfAllowedResources"
+            body : "*"
+        };
+    };
+    rpc getSelfAllowedActionsBatch (GetSelfAllowedActionsBatch) returns (GetSelfAllowedActionsBatch.Response) {
+        option (google.api.http) = {
+            post : "/v1/authz/getSelfAllowedActionsBatch"
+            body : "*"
+        };
+    };
+};

@@ -1,0 +1,18 @@
+generated: '2026-07-21'
+method: searched
+source: https://github.com/VertaAI/modeldb/releases
+scheme: semver
+current_version: 2.0.4
+notes: >-
+  ModelDB tags GitHub releases without structured release notes. Only the recent tagged window is
+  captured here; the live GitHub releases page is the source of truth. Repository last pushed
+  2024-07-23 (post-Cloudera acquisition maintenance).
+entries:
+  - version: 2.0.4
+    date: '2020-05-05'
+    breaking: false
+    highlights: []
+  - version: 2.0.2
+    date: '2020-04-01'
+    breaking: false
+    highlights: []

@@ -1,0 +1,17 @@
+generated: '2026-07-21'
+method: derived
+source: https://github.com/VertaAI/modeldb
+notes: >-
+  Verta.ai (verta.ai) was acquired by Cloudera on 2024-06-03 and verta.ai now redirects to
+  cloudera.com. The open-source ModelDB project (Apache-2.0) remains the maintained client surface.
+  The first-party Python client lives in the VertaAI/modeldb repository. NOTE: the PyPI name `verta`
+  now resolves to an unrelated third-party project ("Virtual Environment Route and Trajectory
+  Analyzer"), so it is intentionally NOT listed here as the official distribution.
+packages:
+  - language: python
+    registry: source
+    name: verta (ModelDB client)
+    url: https://github.com/VertaAI/modeldb/tree/main/client/verta
+    official: true
+    docs: https://docs.verta.ai/
+    entrypoint: verta.Client

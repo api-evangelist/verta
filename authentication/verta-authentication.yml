@@ -1,0 +1,19 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.verta.ai/ + https://github.com/VertaAI/modeldb
+summary:
+  types:
+  - custom
+  spec_declared: false
+  note: The harvested grpc-gateway REST specs declare no OpenAPI securityDefinitions.
+model:
+  scheme: Verta email + developer key
+  description: The hosted Verta platform authenticates the client against a backend host with a user email
+    and developer key; the open-source ModelDB quickstart connects to a host (e.g. http://localhost:3000)
+    and can run without credentials in local mode. Credentials are carried as gRPC metadata through the
+    grpc-gateway.
+  client_entrypoint: verta.Client(host, email=..., dev_key=...)
+scopes:
+  oauth2: false
+  note: No OAuth2 flows; authorization is enforced server-side via the UAC action/resource model, not
+    client-presented scopes.
