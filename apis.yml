@@ -422,6 +422,11 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Overlay
+  url: overlays/verta-apisync-overlay.yaml
+- type: License
+  name: Apache-2.0
+  url: https://github.com/VertaAI/modeldb/blob/main/LICENSE
 - type: AgenticAccess
   url: agentic-access/verta-agentic-access.yml
 - type: Authentication
