@@ -1,0 +1,250 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "deployment/APISync.proto AuthzService DatasetService API",
+    "version": "version not set"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "DatasetService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "DatasetService_addDatasetAttributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/dataset/addDatasetAttributes"
+          }
+        },
+        {
+          "info": {
+            "name": "DatasetService_addDatasetTags",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/dataset/addDatasetTags"
+          }
+        },
+        {
+          "info": {
+            "name": "DatasetService_createDataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/dataset/createDataset"
+          }
+        },
+        {
+          "info": {
+            "name": "DatasetService_deleteDataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/dataset/deleteDataset"
+          }
+        },
+        {
+          "info": {
+            "name": "DatasetService_deleteDatasetAttributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/dataset/deleteDatasetAttributes"
+          }
+        },
+        {
+          "info": {
+            "name": "DatasetService_deleteDatasetTags",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/dataset/deleteDatasetTags"
+          }
+        },
+        {
+          "info": {
+            "name": "DatasetService_deleteDatasets",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/dataset/deleteDatasets"
+          }
+        },
+        {
+          "info": {
+            "name": "queries",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/dataset/findDatasets"
+          },
+          "docs": "queries"
+        },
+        {
+          "info": {
+            "name": "DatasetService_getAllDatasets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/dataset/getAllDatasets",
+            "params": [
+              {
+                "name": "page_number",
+                "value": "",
+                "type": "query",
+                "description": "For pagination."
+              },
+              {
+                "name": "page_limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ascending",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort_key",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "workspace_name",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "DatasetService_getDatasetById",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/dataset/getDatasetById",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "DatasetService_getDatasetByName",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/dataset/getDatasetByName",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "workspace_name",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "DatasetService_getDatasetTags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/dataset/getDatasetTags",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "DatasetService_getExperimentRunByDataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/dataset/getExperimentRunByDataset"
+          }
+        },
+        {
+          "info": {
+            "name": "DatasetService_getLastExperimentByDatasetId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/dataset/getLastExperimentByDatasetId",
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "DatasetService_updateDatasetAttributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/dataset/updateDatasetAttributes"
+          }
+        },
+        {
+          "info": {
+            "name": "DatasetService_updateDatasetDescription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/dataset/updateDatasetDescription"
+          }
+        },
+        {
+          "info": {
+            "name": "DatasetService_updateDatasetName",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/dataset/updateDatasetName"
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1078 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "deployment/APISync.proto AuthzService ExperimentRunService API",
+    "version": "version not set"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ExperimentRunService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ExperimentRunService_addExperimentRunAttributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment-run/addExperimentRunAttributes"
+          }
+        },
+        {
+          "info": {
+            "name": "tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment-run/addExperimentRunTag"
+          },
+          "docs": "tag"
+        },
+        {
+          "info": {
+            "name": "tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment-run/addExperimentRunTags"
+          },
+          "docs": "tags"
+        },
+        {
+          "info": {
+            "name": "ExperimentRunService_cloneExperimentRun",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment-run/cloneExperimentRun"
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentRunService_commitArtifactPart",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment-run/commitArtifactPart"
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentRunService_commitMultipartArtifact",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment-run/commitMultipartArtifact"
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentRunService_createExperimentRun",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment-run/createExperimentRun"
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentRunService_deleteArtifact",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/experiment-run/deleteArtifact"
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentRunService_deleteExperimentRun",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/experiment-run/deleteExperimentRun"
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentRunService_deleteExperimentRunAttributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/experiment-run/deleteExperimentRunAttributes"
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentRunService_deleteExperimentRunTag",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/experiment-run/deleteExperimentRunTag"
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentRunService_deleteExperimentRunTags",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/experiment-run/deleteExperimentRunTags"
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentRunService_deleteExperimentRuns",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/experiment-run/deleteExperimentRuns"
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentRunService_deleteHyperparameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/experiment-run/deleteHyperparameters"
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentRunService_deleteMetrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/experiment-run/deleteMetrics"
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentRunService_deleteObservations",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/experiment-run/deleteObservations"
+          }
+        },
+        {
+          "info": {
+            "name": "queries",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment-run/findExperimentRuns"
+          },
+          "docs": "queries"
+        },
+        {
+          "info": {
+            "name": "ExperimentRunService_getArtifacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/experiment-run/getArtifacts",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentRunService_getExperimentRunAttributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/experiment-run/getAttributes",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "attribute_keys",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "get_all",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentRunService_getChildrenExperimentRuns",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/experiment-run/getChildrenExperimentRuns",
+            "params": [
+              {
+                "name": "experiment_run_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page_number",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page_limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ascending",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort_key",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentRunService_getCommittedArtifactParts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/experiment-run/getCommittedArtifactParts",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentRunService_getDatasets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/experiment-run/getDatasets",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentRunService_getExperimentRunById",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/experiment-run/getExperimentRunById",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentRunService_getExperimentRunByName",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/experiment-run/getExperimentRunByName",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "experiment_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentRunService_getExperimentRunCodeVersion",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/experiment-run/getExperimentRunCodeVersion",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentRunService_getExperimentRunTags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/experiment-run/getExperimentRunTags",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentRunService_getExperimentRunsByDatasetVersionId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/experiment-run/getExperimentRunsByDatasetVersionId",
+            "params": [
+              {
+                "name": "dataset_version_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page_number",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page_limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ascending",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort_key",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentRunService_getExperimentRunsInExperiment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/experiment-run/getExperimentRunsInExperiment",
+            "params": [
+              {
+                "name": "experiment_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page_number",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page_limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ascending",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort_key",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "basic queries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/experiment-run/getExperimentRunsInProject",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page_number",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page_limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ascending",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort_key",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "basic queries"
+        },
+        {
+          "info": {
+            "name": "ExperimentRunService_getHyperparameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/experiment-run/getHyperparameters",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentRunService_getJobId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/experiment-run/getJobId",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentRunService_getMetrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/experiment-run/getMetrics",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentRunService_getObservations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/experiment-run/getObservations",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "observation_key",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentRunService_getTopExperimentRuns",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/experiment-run/getTopExperimentRuns",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "experiment_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "experiment_run_ids",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort_key",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ascending",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "top_k",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ids_only",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentRunService_getUrlForArtifact",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment-run/getUrlForArtifact"
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentRunService_getVersionedInputs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/experiment-run/getVersionedInput",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "artifact",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment-run/logArtifact"
+          },
+          "docs": "artifact"
+        },
+        {
+          "info": {
+            "name": "artifacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment-run/logArtifacts"
+          },
+          "docs": "artifacts"
+        },
+        {
+          "info": {
+            "name": "attribute",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment-run/logAttribute"
+          },
+          "docs": "attribute"
+        },
+        {
+          "info": {
+            "name": "attributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment-run/logAttributes"
+          },
+          "docs": "attributes"
+        },
+        {
+          "info": {
+            "name": "dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment-run/logDataset"
+          },
+          "docs": "dataset"
+        },
+        {
+          "info": {
+            "name": "datasets",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment-run/logDatasets"
+          },
+          "docs": "datasets"
+        },
+        {
+          "info": {
+            "name": "ExperimentRunService_logEnvironment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment-run/logEnvironment"
+          }
+        },
+        {
+          "info": {
+            "name": "code version",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment-run/logExperimentRunCodeVersion"
+          },
+          "docs": "code version"
+        },
+        {
+          "info": {
+            "name": "hyperparameter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment-run/logHyperparameter"
+          },
+          "docs": "hyperparameter"
+        },
+        {
+          "info": {
+            "name": "hyperparameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment-run/logHyperparameters"
+          },
+          "docs": "hyperparameters"
+        },
+        {
+          "info": {
+            "name": "jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/experiment-run/logJobId",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "job_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "jobs"
+        },
+        {
+          "info": {
+            "name": "metric",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment-run/logMetric"
+          },
+          "docs": "metric"
+        },
+        {
+          "info": {
+            "name": "metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment-run/logMetrics"
+          },
+          "docs": "metrics"
+        },
+        {
+          "info": {
+            "name": "observation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment-run/logObservation"
+          },
+          "docs": "observation"
+        },
+        {
+          "info": {
+            "name": "observations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment-run/logObservations"
+          },
+          "docs": "observations"
+        },
+        {
+          "info": {
+            "name": "ExperimentRunService_logVersionedInput",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment-run/logVersionedInput"
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentRunService_setParentExperimentRunId",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment-run/setParentExperimentRunId"
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentRunService_sortExperimentRuns",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/experiment-run/sortExperimentRuns",
+            "params": [
+              {
+                "name": "experiment_run_ids",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort_key",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ascending",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ids_only",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentRunService_updateExperimentRunDescription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment-run/updateExperimentRunDescription"
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentRunService_updateExperimentRunName",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment-run/updateExperimentRunName"
+          }
+        },
+        {
+          "info": {
+            "name": "Getting ExperimentRuns linked to a blob",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/versioning/repositories/:repository_id.repo_id/commits/:commit_sha/path/runs",
+            "params": [
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "commit_sha",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pagination.page_number",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pagination.page_limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Getting ExperimentRuns linked to a blob"
+        },
+        {
+          "info": {
+            "name": "Getting ExperimentRuns linked to a commit",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/versioning/repositories/:repository_id.repo_id/commits/:commit_sha/runs",
+            "params": [
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "commit_sha",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pagination.page_number",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pagination.page_limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Getting ExperimentRuns linked to a commit"
+        },
+        {
+          "info": {
+            "name": "Getting ExperimentRuns linked to a blob",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/versioning/workspaces/:repository_id.named_id.workspace_name/repositories/:repository_id.named_id.name/commits/:commit_sha/path/runs",
+            "params": [
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "commit_sha",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pagination.page_number",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pagination.page_limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Getting ExperimentRuns linked to a blob"
+        },
+        {
+          "info": {
+            "name": "Getting ExperimentRuns linked to a commit",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/versioning/workspaces/:repository_id.named_id.workspace_name/repositories/:repository_id.named_id.name/commits/:commit_sha/runs",
+            "params": [
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "commit_sha",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pagination.page_number",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pagination.page_limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Getting ExperimentRuns linked to a commit"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

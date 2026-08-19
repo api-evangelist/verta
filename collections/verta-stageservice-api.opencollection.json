@@ -1,0 +1,113 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "deployment/APISync.proto AuthzService StageService API",
+    "version": "version not set"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "StageService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "StageService_ApproveTransition",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/stage/approveTransition"
+          }
+        },
+        {
+          "info": {
+            "name": "StageService_CloseTransition",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/stage/closeTransition"
+          }
+        },
+        {
+          "info": {
+            "name": "Only a transition that has been approved can be commited. The user must have RW permission\nSimilar to merging a PR",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/stage/commitTransition"
+          },
+          "docs": "Only a transition that has been approved can be commited. The user must have RW permission\nSimilar to merging a PR"
+        },
+        {
+          "info": {
+            "name": "StageService_CreateComment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/stage/createComment"
+          }
+        },
+        {
+          "info": {
+            "name": "Anyone with RW permission on the model version can do any of these\nNote that the author of the transition cannot approve or reject it themselves (like in github)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/stage/createTransition"
+          },
+          "docs": "Anyone with RW permission on the model version can do any of these\nNote that the author of the transition cannot approve or reject it themselves (like in github)"
+        },
+        {
+          "info": {
+            "name": "List objects from the db. Similar to the PR history",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/stage/findActivities"
+          },
+          "docs": "List objects from the db. Similar to the PR history"
+        },
+        {
+          "info": {
+            "name": "Similar to listing PRs by state",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/stage/findTransitions"
+          },
+          "docs": "Similar to listing PRs by state"
+        },
+        {
+          "info": {
+            "name": "StageService_RejectTransition",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/stage/rejectTransition"
+          }
+        },
+        {
+          "info": {
+            "name": "Directly update the stage without going through approval. The user must have RW permission\nSimilar to merging to master directly",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/stage/updateStage"
+          },
+          "docs": "Directly update the stage without going through approval. The user must have RW permission\nSimilar to merging to master directly"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

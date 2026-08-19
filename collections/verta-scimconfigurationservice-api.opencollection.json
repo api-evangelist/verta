@@ -1,0 +1,28 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "deployment/APISync.proto AuthzService SCIMConfigurationService API",
+    "version": "version not set"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SCIMConfigurationService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SCIMConfigurationService_getConfiguration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/scim/getConfiguration"
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

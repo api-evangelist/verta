@@ -1,0 +1,378 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "deployment/APISync.proto AuthzService ExperimentService API",
+    "version": "version not set"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ExperimentService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ExperimentService_addAttribute",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment/addAttribute"
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentService_addExperimentAttributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment/addExperimentAttributes"
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentService_addExperimentTag",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment/addExperimentTag"
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentService_addExperimentTags",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment/addExperimentTags"
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentService_createExperiment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment/createExperiment"
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentService_deleteArtifact",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/experiment/deleteArtifact"
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentService_deleteExperiment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/experiment/deleteExperiment"
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentService_deleteExperimentAttributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/experiment/deleteExperimentAttributes",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "attribute_keys",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "delete_all",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentService_deleteExperimentTag",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/experiment/deleteExperimentTag"
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentService_deleteExperimentTags",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/experiment/deleteExperimentTags"
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentService_deleteExperiments",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/experiment/deleteExperiments"
+          }
+        },
+        {
+          "info": {
+            "name": "queries",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment/findExperiments"
+          },
+          "docs": "queries"
+        },
+        {
+          "info": {
+            "name": "ExperimentService_getArtifacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/experiment/getArtifacts",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentService_getExperimentAttributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/experiment/getExperimentAttributes",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "attribute_keys",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "get_all",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentService_getExperimentById",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/experiment/getExperimentById",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentService_getExperimentByName",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/experiment/getExperimentByName",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentService_getExperimentCodeVersion",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/experiment/getExperimentCodeVersion",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentService_getExperimentTags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/experiment/getExperimentTags",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentService_getExperimentsInProject",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/experiment/getExperimentsInProject",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page_number",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page_limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ascending",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort_key",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "artifacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment/getUrlForArtifact"
+          },
+          "docs": "artifacts"
+        },
+        {
+          "info": {
+            "name": "artifacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment/logArtifacts"
+          },
+          "docs": "artifacts"
+        },
+        {
+          "info": {
+            "name": "code version",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment/logExperimentCodeVersion"
+          },
+          "docs": "code version"
+        },
+        {
+          "info": {
+            "name": "ExperimentService_updateExperimentDescription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment/updateExperimentDescription"
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentService_updateExperimentName",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment/updateExperimentName"
+          }
+        },
+        {
+          "info": {
+            "name": "ExperimentService_updateExperimentNameOrDescription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/experiment/updateExperimentNameOrDescription"
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

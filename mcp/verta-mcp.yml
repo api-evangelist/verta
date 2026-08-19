@@ -801,3 +801,9 @@ tools:
 - name: VersioningService_ListRepositories
   description: GET /versioning/workspaces/{workspace_name}/repositories
   source_operation: openapi/verta-VersioningService.swagger.json#VersioningService_ListRepositories
+deployment:
+  mode: none
+  verified: derived
+  tools: 264
+  checked: '2026-08-12'
+  source: catalog MCP census

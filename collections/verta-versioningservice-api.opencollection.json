@@ -1,0 +1,1677 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "deployment/APISync.proto AuthzService VersioningService API",
+    "version": "version not set"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "VersioningService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "VersioningService_commitMultipartVersionedBlobArtifact",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/versioning/commitMultipartVersionedBlobArtifact"
+          }
+        },
+        {
+          "info": {
+            "name": "VersioningService_commitVersionedBlobArtifactPart",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/versioning/commitVersionedBlobArtifactPart"
+          }
+        },
+        {
+          "info": {
+            "name": "VersioningService_getCommittedVersionedBlobArtifactParts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/versioning/getCommittedVersionedBlobArtifactParts",
+            "params": [
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "commit_sha",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "path_dataset_component_blob_path",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "CRUD for repositories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/versioning/repositories",
+            "params": [
+              {
+                "name": "workspace_name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pagination.page_number",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pagination.page_limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "CRUD for repositories"
+        },
+        {
+          "info": {
+            "name": "VersioningService_GetRepository2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/versioning/repositories/:id.repo_id",
+            "params": [
+              {
+                "name": "id.repo_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id.named_id.name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id.named_id.workspace_name",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "VersioningService_UpdateRepository2",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/versioning/repositories/:id.repo_id",
+            "params": [
+              {
+                "name": "id.repo_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id.named_id.name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id.named_id.workspace_name",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "VersioningService_DeleteRepository2",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/versioning/repositories/:repository_id.repo_id",
+            "params": [
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "CRUD for Branches",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/versioning/repositories/:repository_id.repo_id/branches",
+            "params": [
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "CRUD for Branches"
+        },
+        {
+          "info": {
+            "name": "VersioningService_GetBranch2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/versioning/repositories/:repository_id.repo_id/branches/:branch",
+            "params": [
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "Unlike tags, branches can be updated. The API must verify that the new commit is a child of the current branch.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/versioning/repositories/:repository_id.repo_id/branches/:branch",
+            "params": [
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Unlike tags, branches can be updated. The API must verify that the new commit is a child of the current branch."
+        },
+        {
+          "info": {
+            "name": "VersioningService_DeleteBranch2",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/versioning/repositories/:repository_id.repo_id/branches/:branch",
+            "params": [
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "VersioningService_ListCommitsLog2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/versioning/repositories/:repository_id.repo_id/branches/:branch/log",
+            "params": [
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path",
+                "description": "Pagination pagination = 2;"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "commit_sha",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "CRUD for commits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/versioning/repositories/:repository_id.repo_id/commits",
+            "params": [
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pagination.page_number",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pagination.page_limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "commit_base",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "commit_head",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "CRUD for commits"
+        },
+        {
+          "info": {
+            "name": "VersioningService_CreateCommit2",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/versioning/repositories/:repository_id.repo_id/commits",
+            "params": [
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "VersioningService_GetCommit2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/versioning/repositories/:repository_id.repo_id/commits/:commit_sha",
+            "params": [
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "commit_sha",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "VersioningService_DeleteCommit2",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/versioning/repositories/:repository_id.repo_id/commits/:commit_sha",
+            "params": [
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "commit_sha",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "Getting blobs and folders in a commit",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/versioning/repositories/:repository_id.repo_id/commits/:commit_sha/blobs",
+            "params": [
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "commit_sha",
+                "value": "",
+                "type": "path",
+                "description": "Pagination pagination = 2;"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "location_prefix",
+                "value": "",
+                "type": "query",
+                "description": "List of folder names (with the last element potentially representing the blob name)\nThis will be used to limit the search to scope just this location, like `git log /my/path` would do."
+              }
+            ]
+          },
+          "docs": "Getting blobs and folders in a commit"
+        },
+        {
+          "info": {
+            "name": "VersioningService_getUrlForBlobVersioned2",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/versioning/repositories/:repository_id.repo_id/commits/:commit_sha/getUrlForBlobVersioned",
+            "params": [
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "commit_sha",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "VersioningService_ListCommitsLog4",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/versioning/repositories/:repository_id.repo_id/commits/:commit_sha/log",
+            "params": [
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "commit_sha",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "query",
+                "description": "Pagination pagination = 2;."
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "VersioningService_GetCommitComponent2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/versioning/repositories/:repository_id.repo_id/commits/:commit_sha/path",
+            "params": [
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "commit_sha",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "query",
+                "description": "List of folder names, with the last element being the name of the blob or tree\nthe last element determines if the response to be returned is Folder or Blob\nEach element goes one level deeper. So [\"foo\", \"bar\"] represents the same as /foo/bar."
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "VersioningService_RevertRepositoryCommits2",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/versioning/repositories/:repository_id.repo_id/commits/:commit_to_revert_sha/revert",
+            "params": [
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "commit_to_revert_sha",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "Git-like operations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/versioning/repositories/:repository_id.repo_id/diff",
+            "params": [
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "commit_a",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "commit_b",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "replace_a_with_common_ancestor",
+                "value": "",
+                "type": "query",
+                "description": "Replace commit_a with the nearest common ancestor of commit_a and commit_b."
+              },
+              {
+                "name": "branch_a",
+                "value": "",
+                "type": "query",
+                "description": "for a or b only one of commit or branch should be populated."
+              },
+              {
+                "name": "branch_b",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Git-like operations"
+        },
+        {
+          "info": {
+            "name": "VersioningService_MergeRepositoryCommits2",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/versioning/repositories/:repository_id.repo_id/merge",
+            "params": [
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "CRUD for tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/versioning/repositories/:repository_id.repo_id/tags",
+            "params": [
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "CRUD for tags"
+        },
+        {
+          "info": {
+            "name": "VersioningService_GetTag2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/versioning/repositories/:repository_id.repo_id/tags/:tag",
+            "params": [
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "tag",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "Can't update a tag. If someone tries to set one that exists, we should error.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/versioning/repositories/:repository_id.repo_id/tags/:tag",
+            "params": [
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "tag",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Can't update a tag. If someone tries to set one that exists, we should error."
+        },
+        {
+          "info": {
+            "name": "VersioningService_DeleteTag2",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/versioning/repositories/:repository_id.repo_id/tags/:tag",
+            "params": [
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "tag",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "VersioningService_CreateRepository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/versioning/workspaces/:id.named_id.workspace_name/repositories",
+            "params": [
+              {
+                "name": "id.named_id.workspace_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id.named_id.name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id.repo_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "VersioningService_GetRepository",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/versioning/workspaces/:id.named_id.workspace_name/repositories/:id.named_id.name",
+            "params": [
+              {
+                "name": "id.named_id.workspace_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id.named_id.name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id.repo_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "VersioningService_UpdateRepository",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/versioning/workspaces/:id.named_id.workspace_name/repositories/:id.named_id.name",
+            "params": [
+              {
+                "name": "id.named_id.workspace_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id.named_id.name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id.repo_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "VersioningService_DeleteRepository",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/versioning/workspaces/:repository_id.named_id.workspace_name/repositories/:repository_id.named_id.name",
+            "params": [
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "CRUD for Branches",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/versioning/workspaces/:repository_id.named_id.workspace_name/repositories/:repository_id.named_id.name/branches",
+            "params": [
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "CRUD for Branches"
+        },
+        {
+          "info": {
+            "name": "VersioningService_GetBranch",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/versioning/workspaces/:repository_id.named_id.workspace_name/repositories/:repository_id.named_id.name/branches/:branch",
+            "params": [
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "Unlike tags, branches can be updated. The API must verify that the new commit is a child of the current branch.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/versioning/workspaces/:repository_id.named_id.workspace_name/repositories/:repository_id.named_id.name/branches/:branch",
+            "params": [
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Unlike tags, branches can be updated. The API must verify that the new commit is a child of the current branch."
+        },
+        {
+          "info": {
+            "name": "VersioningService_DeleteBranch",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/versioning/workspaces/:repository_id.named_id.workspace_name/repositories/:repository_id.named_id.name/branches/:branch",
+            "params": [
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "VersioningService_ListCommitsLog",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/versioning/workspaces/:repository_id.named_id.workspace_name/repositories/:repository_id.named_id.name/branches/:branch/log",
+            "params": [
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "path",
+                "description": "Pagination pagination = 2;"
+              },
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "commit_sha",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "CRUD for commits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/versioning/workspaces/:repository_id.named_id.workspace_name/repositories/:repository_id.named_id.name/commits",
+            "params": [
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pagination.page_number",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pagination.page_limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "commit_base",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "commit_head",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "CRUD for commits"
+        },
+        {
+          "info": {
+            "name": "VersioningService_CreateCommit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/versioning/workspaces/:repository_id.named_id.workspace_name/repositories/:repository_id.named_id.name/commits",
+            "params": [
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "VersioningService_GetCommit",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/versioning/workspaces/:repository_id.named_id.workspace_name/repositories/:repository_id.named_id.name/commits/:commit_sha",
+            "params": [
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "commit_sha",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "VersioningService_DeleteCommit",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/versioning/workspaces/:repository_id.named_id.workspace_name/repositories/:repository_id.named_id.name/commits/:commit_sha",
+            "params": [
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "commit_sha",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "Getting blobs and folders in a commit",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/versioning/workspaces/:repository_id.named_id.workspace_name/repositories/:repository_id.named_id.name/commits/:commit_sha/blobs",
+            "params": [
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "commit_sha",
+                "value": "",
+                "type": "path",
+                "description": "Pagination pagination = 2;"
+              },
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "location_prefix",
+                "value": "",
+                "type": "query",
+                "description": "List of folder names (with the last element potentially representing the blob name)\nThis will be used to limit the search to scope just this location, like `git log /my/path` would do."
+              }
+            ]
+          },
+          "docs": "Getting blobs and folders in a commit"
+        },
+        {
+          "info": {
+            "name": "VersioningService_getUrlForBlobVersioned",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/versioning/workspaces/:repository_id.named_id.workspace_name/repositories/:repository_id.named_id.name/commits/:commit_sha/getUrlForBlobVersioned",
+            "params": [
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "commit_sha",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "VersioningService_ListCommitsLog3",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/versioning/workspaces/:repository_id.named_id.workspace_name/repositories/:repository_id.named_id.name/commits/:commit_sha/log",
+            "params": [
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "commit_sha",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "branch",
+                "value": "",
+                "type": "query",
+                "description": "Pagination pagination = 2;."
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "VersioningService_GetCommitComponent",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/versioning/workspaces/:repository_id.named_id.workspace_name/repositories/:repository_id.named_id.name/commits/:commit_sha/path",
+            "params": [
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "commit_sha",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "query",
+                "description": "List of folder names, with the last element being the name of the blob or tree\nthe last element determines if the response to be returned is Folder or Blob\nEach element goes one level deeper. So [\"foo\", \"bar\"] represents the same as /foo/bar."
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "VersioningService_RevertRepositoryCommits",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/versioning/workspaces/:repository_id.named_id.workspace_name/repositories/:repository_id.named_id.name/commits/:commit_to_revert_sha/revert",
+            "params": [
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "commit_to_revert_sha",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "Git-like operations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/versioning/workspaces/:repository_id.named_id.workspace_name/repositories/:repository_id.named_id.name/diff",
+            "params": [
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "commit_a",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "commit_b",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "replace_a_with_common_ancestor",
+                "value": "",
+                "type": "query",
+                "description": "Replace commit_a with the nearest common ancestor of commit_a and commit_b."
+              },
+              {
+                "name": "branch_a",
+                "value": "",
+                "type": "query",
+                "description": "for a or b only one of commit or branch should be populated."
+              },
+              {
+                "name": "branch_b",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Git-like operations"
+        },
+        {
+          "info": {
+            "name": "VersioningService_MergeRepositoryCommits",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/versioning/workspaces/:repository_id.named_id.workspace_name/repositories/:repository_id.named_id.name/merge",
+            "params": [
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "CRUD for tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/versioning/workspaces/:repository_id.named_id.workspace_name/repositories/:repository_id.named_id.name/tags",
+            "params": [
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "CRUD for tags"
+        },
+        {
+          "info": {
+            "name": "VersioningService_GetTag",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/versioning/workspaces/:repository_id.named_id.workspace_name/repositories/:repository_id.named_id.name/tags/:tag",
+            "params": [
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "tag",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "Can't update a tag. If someone tries to set one that exists, we should error.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/versioning/workspaces/:repository_id.named_id.workspace_name/repositories/:repository_id.named_id.name/tags/:tag",
+            "params": [
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "tag",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Can't update a tag. If someone tries to set one that exists, we should error."
+        },
+        {
+          "info": {
+            "name": "VersioningService_DeleteTag",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/versioning/workspaces/:repository_id.named_id.workspace_name/repositories/:repository_id.named_id.name/tags/:tag",
+            "params": [
+              {
+                "name": "repository_id.named_id.workspace_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.named_id.name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "tag",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "repository_id.repo_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "VersioningService_findRepositories",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/versioning/workspaces/:workspace_name/findRepositories",
+            "params": [
+              {
+                "name": "workspace_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "VersioningService_findRepositoriesBlobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/versioning/workspaces/:workspace_name/findRepositoriesBlobs",
+            "params": [
+              {
+                "name": "workspace_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "CRUD for repositories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/versioning/workspaces/:workspace_name/repositories",
+            "params": [
+              {
+                "name": "workspace_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "pagination.page_number",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pagination.page_limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "CRUD for repositories"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

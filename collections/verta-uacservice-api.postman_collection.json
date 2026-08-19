@@ -1,0 +1,1662 @@
+{
+  "item": [
+    {
+      "id": "b0a47a33-8bb5-43d5-99c5-b6ee802286ae",
+      "name": "UACService",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "061b9138-b60d-44d7-ad2d-f4c532af6830",
+          "name": "adds new user developer key",
+          "request": {
+            "name": "adds new user developer key",
+            "description": {},
+            "url": {
+              "path": [
+                "uac",
+                "addDevKey"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fb5aa9aa-8ece-416a-87ee-076f6a180691",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uac",
+                    "addDevKey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user_id\": \"string\",\n  \"full_name\": \"string\",\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"email\": \"string\",\n  \"id_service_provider\": \"UNKNOWN\",\n  \"roles\": [\n    \"string\",\n    \"string\"\n  ],\n  \"image_url\": \"string\",\n  \"dev_key\": \"string\",\n  \"verta_info\": {\n    \"individual_user\": true,\n    \"username\": \"string\",\n    \"refresh_timestamp\": \"string\",\n    \"last_login_timestamp\": \"string\",\n    \"user_id\": \"string\",\n    \"publicProfile\": \"UNDEFINED\",\n    \"workspace_id\": \"string\",\n    \"default_workspace_id\": \"string\",\n    \"description\": \"string\"\n  },\n  \"secondary_dev_key\": \"string\",\n  \"disabled\": true,\n  \"job_title\": \"string\",\n  \"company\": \"string\",\n  \"created_at\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb0a8ae7-0ae3-4ce7-a649-0148a8108957",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uac",
+                    "addDevKey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 2117,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b2a0a5dc-65d5-4b02-94d3-212dae6691cd",
+          "name": "adds new user developer key",
+          "request": {
+            "name": "adds new user developer key",
+            "description": {},
+            "url": {
+              "path": [
+                "uac",
+                "addDevKeyForUser"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1b68b442-15d5-4af6-a0cc-f6689730a7af",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uac",
+                    "addDevKeyForUser"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user_id\": \"string\",\n  \"full_name\": \"string\",\n  \"first_name\": \"string\",\n  \"last_name\": \"string\",\n  \"email\": \"string\",\n  \"id_service_provider\": \"UNKNOWN\",\n  \"roles\": [\n    \"string\",\n    \"string\"\n  ],\n  \"image_url\": \"string\",\n  \"dev_key\": \"string\",\n  \"verta_info\": {\n    \"individual_user\": true,\n    \"username\": \"string\",\n    \"refresh_timestamp\": \"string\",\n    \"last_login_timestamp\": \"string\",\n    \"user_id\": \"string\",\n    \"publicProfile\": \"UNDEFINED\",\n    \"workspace_id\": \"string\",\n    \"default_workspace_id\": \"string\",\n    \"description\": \"string\"\n  },\n  \"secondary_dev_key\": \"string\",\n  \"disabled\": false,\n  \"job_title\": \"string\",\n  \"company\": \"string\",\n  \"created_at\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "18abb8eb-040b-4656-95b9-635ad5c002d4",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uac",
+                    "addDevKeyForUser"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 9934,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c5c29a82-e91e-4d60-a748-8cfec0f8a120",
+          "name": "For now, any user can create a new user",
+          "request": {
+            "name": "For now, any user can create a new user",
+            "description": {},
+            "url": {
+              "path": [
+                "uac",
+                "createUser"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"info\": {\n    \"user_id\": \"<string>\",\n    \"full_name\": \"<string>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"id_service_provider\": \"UNKNOWN\",\n    \"roles\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"image_url\": \"<string>\",\n    \"dev_key\": \"<string>\",\n    \"verta_info\": {\n      \"individual_user\": \"<boolean>\",\n      \"username\": \"<string>\",\n      \"refresh_timestamp\": \"<uint64>\",\n      \"last_login_timestamp\": \"<uint64>\",\n      \"user_id\": \"<string>\",\n      \"publicProfile\": \"UNDEFINED\",\n      \"workspace_id\": \"<string>\",\n      \"default_workspace_id\": \"<uint64>\",\n      \"description\": \"<string>\"\n    },\n    \"secondary_dev_key\": \"<string>\",\n    \"disabled\": \"<boolean>\",\n    \"job_title\": \"<string>\",\n    \"company\": \"<string>\",\n    \"created_at\": \"<uint64>\"\n  },\n  \"password\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "33384a17-b6d8-48bf-b284-7b048fa9449a",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uac",
+                    "createUser"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"info\": {\n    \"user_id\": \"<string>\",\n    \"full_name\": \"<string>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"id_service_provider\": \"UNKNOWN\",\n    \"roles\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"image_url\": \"<string>\",\n    \"dev_key\": \"<string>\",\n    \"verta_info\": {\n      \"individual_user\": \"<boolean>\",\n      \"username\": \"<string>\",\n      \"refresh_timestamp\": \"<uint64>\",\n      \"last_login_timestamp\": \"<uint64>\",\n      \"user_id\": \"<string>\",\n      \"publicProfile\": \"UNDEFINED\",\n      \"workspace_id\": \"<string>\",\n      \"default_workspace_id\": \"<uint64>\",\n      \"description\": \"<string>\"\n    },\n    \"secondary_dev_key\": \"<string>\",\n    \"disabled\": \"<boolean>\",\n    \"job_title\": \"<string>\",\n    \"company\": \"<string>\",\n    \"created_at\": \"<uint64>\"\n  },\n  \"password\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"info\": {\n    \"user_id\": \"<string>\",\n    \"full_name\": \"<string>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"id_service_provider\": \"UNKNOWN\",\n    \"roles\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"image_url\": \"<string>\",\n    \"dev_key\": \"<string>\",\n    \"verta_info\": {\n      \"individual_user\": \"<boolean>\",\n      \"username\": \"<string>\",\n      \"refresh_timestamp\": \"<uint64>\",\n      \"last_login_timestamp\": \"<uint64>\",\n      \"user_id\": \"<string>\",\n      \"publicProfile\": \"UNDEFINED\",\n      \"workspace_id\": \"<string>\",\n      \"default_workspace_id\": \"<uint64>\",\n      \"description\": \"<string>\"\n    },\n    \"secondary_dev_key\": \"<string>\",\n    \"disabled\": \"<boolean>\",\n    \"job_title\": \"<string>\",\n    \"company\": \"<string>\",\n    \"created_at\": \"<uint64>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4193d3ec-27e1-4a11-8b75-0afcd96d198a",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uac",
+                    "createUser"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"info\": {\n    \"user_id\": \"<string>\",\n    \"full_name\": \"<string>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"id_service_provider\": \"UNKNOWN\",\n    \"roles\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"image_url\": \"<string>\",\n    \"dev_key\": \"<string>\",\n    \"verta_info\": {\n      \"individual_user\": \"<boolean>\",\n      \"username\": \"<string>\",\n      \"refresh_timestamp\": \"<uint64>\",\n      \"last_login_timestamp\": \"<uint64>\",\n      \"user_id\": \"<string>\",\n      \"publicProfile\": \"UNDEFINED\",\n      \"workspace_id\": \"<string>\",\n      \"default_workspace_id\": \"<uint64>\",\n      \"description\": \"<string>\"\n    },\n    \"secondary_dev_key\": \"<string>\",\n    \"disabled\": \"<boolean>\",\n    \"job_title\": \"<string>\",\n    \"company\": \"<string>\",\n    \"created_at\": \"<uint64>\"\n  },\n  \"password\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 9934,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5c945fbe-ce90-44a9-a2c8-85f6070fc0c9",
+          "name": "deletes primary developer key",
+          "request": {
+            "name": "deletes primary developer key",
+            "description": {},
+            "url": {
+              "path": [
+                "uac",
+                "deletePrimaryDevKey"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f26b1a81-488e-4800-be51-d762a2c200a4",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uac",
+                    "deletePrimaryDevKey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user_id\": \"<string>\",\n  \"full_name\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"id_service_provider\": \"UNKNOWN\",\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"image_url\": \"<string>\",\n  \"dev_key\": \"<string>\",\n  \"verta_info\": {\n    \"individual_user\": \"<boolean>\",\n    \"username\": \"<string>\",\n    \"refresh_timestamp\": \"<uint64>\",\n    \"last_login_timestamp\": \"<uint64>\",\n    \"user_id\": \"<string>\",\n    \"publicProfile\": \"UNDEFINED\",\n    \"workspace_id\": \"<string>\",\n    \"default_workspace_id\": \"<uint64>\",\n    \"description\": \"<string>\"\n  },\n  \"secondary_dev_key\": \"<string>\",\n  \"disabled\": \"<boolean>\",\n  \"job_title\": \"<string>\",\n  \"company\": \"<string>\",\n  \"created_at\": \"<uint64>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f31663e2-d44d-4a5f-92f9-40f4c39b611f",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uac",
+                    "deletePrimaryDevKey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 9934,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "84b2d862-bdfb-416f-be76-824cc4ed2ade",
+          "name": "deletes primary developer key",
+          "request": {
+            "name": "deletes primary developer key",
+            "description": {},
+            "url": {
+              "path": [
+                "uac",
+                "deletePrimaryDevKeyForUser"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f3805d97-b7a0-4448-aec5-c7ae747e2232",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uac",
+                    "deletePrimaryDevKeyForUser"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user_id\": \"<string>\",\n  \"full_name\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"id_service_provider\": \"UNKNOWN\",\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"image_url\": \"<string>\",\n  \"dev_key\": \"<string>\",\n  \"verta_info\": {\n    \"individual_user\": \"<boolean>\",\n    \"username\": \"<string>\",\n    \"refresh_timestamp\": \"<uint64>\",\n    \"last_login_timestamp\": \"<uint64>\",\n    \"user_id\": \"<string>\",\n    \"publicProfile\": \"UNDEFINED\",\n    \"workspace_id\": \"<string>\",\n    \"default_workspace_id\": \"<uint64>\",\n    \"description\": \"<string>\"\n  },\n  \"secondary_dev_key\": \"<string>\",\n  \"disabled\": \"<boolean>\",\n  \"job_title\": \"<string>\",\n  \"company\": \"<string>\",\n  \"created_at\": \"<uint64>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "66724ffd-04ce-4c56-a54f-13f2d7489a2e",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uac",
+                    "deletePrimaryDevKeyForUser"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 9934,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aa7a86eb-22e6-45ed-8548-f6262ae85f17",
+          "name": "deletes secondary developer key",
+          "request": {
+            "name": "deletes secondary developer key",
+            "description": {},
+            "url": {
+              "path": [
+                "uac",
+                "deleteSecondaryDevKey"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7f7c6826-2094-445c-923f-ace56589e74d",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uac",
+                    "deleteSecondaryDevKey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user_id\": \"<string>\",\n  \"full_name\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"id_service_provider\": \"UNKNOWN\",\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"image_url\": \"<string>\",\n  \"dev_key\": \"<string>\",\n  \"verta_info\": {\n    \"individual_user\": \"<boolean>\",\n    \"username\": \"<string>\",\n    \"refresh_timestamp\": \"<uint64>\",\n    \"last_login_timestamp\": \"<uint64>\",\n    \"user_id\": \"<string>\",\n    \"publicProfile\": \"UNDEFINED\",\n    \"workspace_id\": \"<string>\",\n    \"default_workspace_id\": \"<uint64>\",\n    \"description\": \"<string>\"\n  },\n  \"secondary_dev_key\": \"<string>\",\n  \"disabled\": \"<boolean>\",\n  \"job_title\": \"<string>\",\n  \"company\": \"<string>\",\n  \"created_at\": \"<uint64>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "078349d9-a626-4286-8636-5abd56601ccc",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uac",
+                    "deleteSecondaryDevKey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 9934,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c2215227-e3d9-4c71-8a30-8ce7066ba704",
+          "name": "deletes primary developer key",
+          "request": {
+            "name": "deletes primary developer key",
+            "description": {},
+            "url": {
+              "path": [
+                "uac",
+                "deleteSecondaryDevKeyForUser"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "82ea789c-ded4-48c2-8dbc-7a18c3363fc0",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uac",
+                    "deleteSecondaryDevKeyForUser"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user_id\": \"<string>\",\n  \"full_name\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"id_service_provider\": \"UNKNOWN\",\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"image_url\": \"<string>\",\n  \"dev_key\": \"<string>\",\n  \"verta_info\": {\n    \"individual_user\": \"<boolean>\",\n    \"username\": \"<string>\",\n    \"refresh_timestamp\": \"<uint64>\",\n    \"last_login_timestamp\": \"<uint64>\",\n    \"user_id\": \"<string>\",\n    \"publicProfile\": \"UNDEFINED\",\n    \"workspace_id\": \"<string>\",\n    \"default_workspace_id\": \"<uint64>\",\n    \"description\": \"<string>\"\n  },\n  \"secondary_dev_key\": \"<string>\",\n  \"disabled\": \"<boolean>\",\n  \"job_title\": \"<string>\",\n  \"company\": \"<string>\",\n  \"created_at\": \"<uint64>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12ca5ed4-c359-433b-a460-2b2b25027d24",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uac",
+                    "deleteSecondaryDevKeyForUser"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 9934,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "db06d232-de6a-487c-884c-4e55e11b81f5",
+          "name": "Only current user can delete themselves",
+          "request": {
+            "name": "Only current user can delete themselves",
+            "description": {},
+            "url": {
+              "path": [
+                "uac",
+                "deleteUser"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ea06bd37-882c-4837-9eca-690d886dece5",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uac",
+                    "deleteUser"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "132ae763-6fcb-4ab2-bbee-78a366c14a0e",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uac",
+                    "deleteUser"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 9934,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cb78557c-6734-446a-b4ed-9b474239741a",
+          "name": "Get the current user information verifying JWT token",
+          "request": {
+            "name": "Get the current user information verifying JWT token",
+            "description": {},
+            "url": {
+              "path": [
+                "uac",
+                "getCurrentUser"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2f5ddc72-a8af-45dc-a9c4-a60857264062",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uac",
+                    "getCurrentUser"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user_id\": \"<string>\",\n  \"full_name\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"id_service_provider\": \"UNKNOWN\",\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"image_url\": \"<string>\",\n  \"dev_key\": \"<string>\",\n  \"verta_info\": {\n    \"individual_user\": \"<boolean>\",\n    \"username\": \"<string>\",\n    \"refresh_timestamp\": \"<uint64>\",\n    \"last_login_timestamp\": \"<uint64>\",\n    \"user_id\": \"<string>\",\n    \"publicProfile\": \"UNDEFINED\",\n    \"workspace_id\": \"<string>\",\n    \"default_workspace_id\": \"<uint64>\",\n    \"description\": \"<string>\"\n  },\n  \"secondary_dev_key\": \"<string>\",\n  \"disabled\": \"<boolean>\",\n  \"job_title\": \"<string>\",\n  \"company\": \"<string>\",\n  \"created_at\": \"<uint64>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3439d545-fb43-4bc3-af36-6af0dc596c79",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uac",
+                    "getCurrentUser"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 9934,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ab9fff0c-b7ea-487a-8595-9f48c02a34e4",
+          "name": "Get the current user information verifying JWT token",
+          "request": {
+            "name": "Get the current user information verifying JWT token",
+            "description": {},
+            "url": {
+              "path": [
+                "uac",
+                "getUser"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "username",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c50a4ca2-48b2-4206-87cb-a09c81de672f",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uac",
+                    "getUser"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "username",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user_id\": \"<string>\",\n  \"full_name\": \"<string>\",\n  \"first_name\": \"<string>\",\n  \"last_name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"id_service_provider\": \"UNKNOWN\",\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"image_url\": \"<string>\",\n  \"dev_key\": \"<string>\",\n  \"verta_info\": {\n    \"individual_user\": \"<boolean>\",\n    \"username\": \"<string>\",\n    \"refresh_timestamp\": \"<uint64>\",\n    \"last_login_timestamp\": \"<uint64>\",\n    \"user_id\": \"<string>\",\n    \"publicProfile\": \"UNDEFINED\",\n    \"workspace_id\": \"<string>\",\n    \"default_workspace_id\": \"<uint64>\",\n    \"description\": \"<string>\"\n  },\n  \"secondary_dev_key\": \"<string>\",\n  \"disabled\": \"<boolean>\",\n  \"job_title\": \"<string>\",\n  \"company\": \"<string>\",\n  \"created_at\": \"<uint64>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2ecdda83-dfef-40cc-8143-781b9a524f9b",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uac",
+                    "getUser"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "username",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 9934,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2e076a48-a60e-4b3f-aa93-deb5f2c88db4",
+          "name": "UAC Service get Users",
+          "request": {
+            "name": "UAC Service get Users",
+            "description": {},
+            "url": {
+              "path": [
+                "uac",
+                "getUsers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"emails\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"usernames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"pagination\": {\n    \"page_number\": \"<integer>\",\n    \"page_limit\": \"<integer>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5f3a116e-bfc8-4c87-91de-09c128bdb951",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uac",
+                    "getUsers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"emails\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"usernames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"pagination\": {\n    \"page_number\": \"<integer>\",\n    \"page_limit\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user_infos\": [\n    {\n      \"user_id\": \"<string>\",\n      \"full_name\": \"<string>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"id_service_provider\": \"UNKNOWN\",\n      \"roles\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"image_url\": \"<string>\",\n      \"dev_key\": \"<string>\",\n      \"verta_info\": {\n        \"individual_user\": \"<boolean>\",\n        \"username\": \"<string>\",\n        \"refresh_timestamp\": \"<uint64>\",\n        \"last_login_timestamp\": \"<uint64>\",\n        \"user_id\": \"<string>\",\n        \"publicProfile\": \"UNDEFINED\",\n        \"workspace_id\": \"<string>\",\n        \"default_workspace_id\": \"<uint64>\",\n        \"description\": \"<string>\"\n      },\n      \"secondary_dev_key\": \"<string>\",\n      \"disabled\": \"<boolean>\",\n      \"job_title\": \"<string>\",\n      \"company\": \"<string>\",\n      \"created_at\": \"<uint64>\"\n    },\n    {\n      \"user_id\": \"<string>\",\n      \"full_name\": \"<string>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"id_service_provider\": \"UNKNOWN\",\n      \"roles\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"image_url\": \"<string>\",\n      \"dev_key\": \"<string>\",\n      \"verta_info\": {\n        \"individual_user\": \"<boolean>\",\n        \"username\": \"<string>\",\n        \"refresh_timestamp\": \"<uint64>\",\n        \"last_login_timestamp\": \"<uint64>\",\n        \"user_id\": \"<string>\",\n        \"publicProfile\": \"UNDEFINED\",\n        \"workspace_id\": \"<string>\",\n        \"default_workspace_id\": \"<uint64>\",\n        \"description\": \"<string>\"\n      },\n      \"secondary_dev_key\": \"<string>\",\n      \"disabled\": \"<boolean>\",\n      \"job_title\": \"<string>\",\n      \"company\": \"<string>\",\n      \"created_at\": \"<uint64>\"\n    }\n  ],\n  \"total_records\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cd342fc3-3cda-40a4-b595-ee8e68229f51",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uac",
+                    "getUsers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"emails\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"usernames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"pagination\": {\n    \"page_number\": \"<integer>\",\n    \"page_limit\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 9934,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ce87521d-4056-4349-9730-b038c527bbc4",
+          "name": "UAC Service get Users Fuzzy",
+          "request": {
+            "name": "UAC Service get Users Fuzzy",
+            "description": {},
+            "url": {
+              "path": [
+                "uac",
+                "getUsersFuzzy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<string>\",\n  \"username\": \"<string>\",\n  \"pagination\": {\n    \"page_number\": \"<integer>\",\n    \"page_limit\": \"<integer>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b65f7c07-ef1e-4bf3-b9d5-77ccaab6922c",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uac",
+                    "getUsersFuzzy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<string>\",\n  \"username\": \"<string>\",\n  \"pagination\": {\n    \"page_number\": \"<integer>\",\n    \"page_limit\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user_infos\": [\n    {\n      \"user_id\": \"<string>\",\n      \"full_name\": \"<string>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"id_service_provider\": \"UNKNOWN\",\n      \"roles\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"image_url\": \"<string>\",\n      \"dev_key\": \"<string>\",\n      \"verta_info\": {\n        \"individual_user\": \"<boolean>\",\n        \"username\": \"<string>\",\n        \"refresh_timestamp\": \"<uint64>\",\n        \"last_login_timestamp\": \"<uint64>\",\n        \"user_id\": \"<string>\",\n        \"publicProfile\": \"UNDEFINED\",\n        \"workspace_id\": \"<string>\",\n        \"default_workspace_id\": \"<uint64>\",\n        \"description\": \"<string>\"\n      },\n      \"secondary_dev_key\": \"<string>\",\n      \"disabled\": \"<boolean>\",\n      \"job_title\": \"<string>\",\n      \"company\": \"<string>\",\n      \"created_at\": \"<uint64>\"\n    },\n    {\n      \"user_id\": \"<string>\",\n      \"full_name\": \"<string>\",\n      \"first_name\": \"<string>\",\n      \"last_name\": \"<string>\",\n      \"email\": \"<string>\",\n      \"id_service_provider\": \"UNKNOWN\",\n      \"roles\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"image_url\": \"<string>\",\n      \"dev_key\": \"<string>\",\n      \"verta_info\": {\n        \"individual_user\": \"<boolean>\",\n        \"username\": \"<string>\",\n        \"refresh_timestamp\": \"<uint64>\",\n        \"last_login_timestamp\": \"<uint64>\",\n        \"user_id\": \"<string>\",\n        \"publicProfile\": \"UNDEFINED\",\n        \"workspace_id\": \"<string>\",\n        \"default_workspace_id\": \"<uint64>\",\n        \"description\": \"<string>\"\n      },\n      \"secondary_dev_key\": \"<string>\",\n      \"disabled\": \"<boolean>\",\n      \"job_title\": \"<string>\",\n      \"company\": \"<string>\",\n      \"created_at\": \"<uint64>\"\n    }\n  ],\n  \"total_records\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ae1fc06c-f3c5-4d7a-a81c-97c0c1a349e5",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uac",
+                    "getUsersFuzzy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"<string>\",\n  \"username\": \"<string>\",\n  \"pagination\": {\n    \"page_number\": \"<integer>\",\n    \"page_limit\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 9934,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "84cc494d-4915-4df4-8618-5249bd5423dc",
+          "name": "Only current user can update themselves",
+          "request": {
+            "name": "Only current user can update themselves",
+            "description": {},
+            "url": {
+              "path": [
+                "uac",
+                "updateUser"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"info\": {\n    \"user_id\": \"<string>\",\n    \"full_name\": \"<string>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"id_service_provider\": \"UNKNOWN\",\n    \"roles\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"image_url\": \"<string>\",\n    \"dev_key\": \"<string>\",\n    \"verta_info\": {\n      \"individual_user\": \"<boolean>\",\n      \"username\": \"<string>\",\n      \"refresh_timestamp\": \"<uint64>\",\n      \"last_login_timestamp\": \"<uint64>\",\n      \"user_id\": \"<string>\",\n      \"publicProfile\": \"UNDEFINED\",\n      \"workspace_id\": \"<string>\",\n      \"default_workspace_id\": \"<uint64>\",\n      \"description\": \"<string>\"\n    },\n    \"secondary_dev_key\": \"<string>\",\n    \"disabled\": \"<boolean>\",\n    \"job_title\": \"<string>\",\n    \"company\": \"<string>\",\n    \"created_at\": \"<uint64>\"\n  },\n  \"password\": \"<string>\",\n  \"default_workspace_id\": \"<uint64>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8b26a338-0d6f-416a-a5b8-c1ce652f368a",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uac",
+                    "updateUser"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"info\": {\n    \"user_id\": \"<string>\",\n    \"full_name\": \"<string>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"id_service_provider\": \"UNKNOWN\",\n    \"roles\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"image_url\": \"<string>\",\n    \"dev_key\": \"<string>\",\n    \"verta_info\": {\n      \"individual_user\": \"<boolean>\",\n      \"username\": \"<string>\",\n      \"refresh_timestamp\": \"<uint64>\",\n      \"last_login_timestamp\": \"<uint64>\",\n      \"user_id\": \"<string>\",\n      \"publicProfile\": \"UNDEFINED\",\n      \"workspace_id\": \"<string>\",\n      \"default_workspace_id\": \"<uint64>\",\n      \"description\": \"<string>\"\n    },\n    \"secondary_dev_key\": \"<string>\",\n    \"disabled\": \"<boolean>\",\n    \"job_title\": \"<string>\",\n    \"company\": \"<string>\",\n    \"created_at\": \"<uint64>\"\n  },\n  \"password\": \"<string>\",\n  \"default_workspace_id\": \"<uint64>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"info\": {\n    \"user_id\": \"<string>\",\n    \"full_name\": \"<string>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"id_service_provider\": \"UNKNOWN\",\n    \"roles\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"image_url\": \"<string>\",\n    \"dev_key\": \"<string>\",\n    \"verta_info\": {\n      \"individual_user\": \"<boolean>\",\n      \"username\": \"<string>\",\n      \"refresh_timestamp\": \"<uint64>\",\n      \"last_login_timestamp\": \"<uint64>\",\n      \"user_id\": \"<string>\",\n      \"publicProfile\": \"UNDEFINED\",\n      \"workspace_id\": \"<string>\",\n      \"default_workspace_id\": \"<uint64>\",\n      \"description\": \"<string>\"\n    },\n    \"secondary_dev_key\": \"<string>\",\n    \"disabled\": \"<boolean>\",\n    \"job_title\": \"<string>\",\n    \"company\": \"<string>\",\n    \"created_at\": \"<uint64>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5e61b11c-aa36-4563-a27f-dcd153491760",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uac",
+                    "updateUser"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"info\": {\n    \"user_id\": \"<string>\",\n    \"full_name\": \"<string>\",\n    \"first_name\": \"<string>\",\n    \"last_name\": \"<string>\",\n    \"email\": \"<string>\",\n    \"id_service_provider\": \"UNKNOWN\",\n    \"roles\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"image_url\": \"<string>\",\n    \"dev_key\": \"<string>\",\n    \"verta_info\": {\n      \"individual_user\": \"<boolean>\",\n      \"username\": \"<string>\",\n      \"refresh_timestamp\": \"<uint64>\",\n      \"last_login_timestamp\": \"<uint64>\",\n      \"user_id\": \"<string>\",\n      \"publicProfile\": \"UNDEFINED\",\n      \"workspace_id\": \"<string>\",\n      \"default_workspace_id\": \"<uint64>\",\n      \"description\": \"<string>\"\n    },\n    \"secondary_dev_key\": \"<string>\",\n    \"disabled\": \"<boolean>\",\n    \"job_title\": \"<string>\",\n    \"company\": \"<string>\",\n    \"created_at\": \"<uint64>\"\n  },\n  \"password\": \"<string>\",\n  \"default_workspace_id\": \"<uint64>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 9934,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "072519f2-a963-4739-a6b3-44fb4a20a068",
+    "name": "deployment/APISync.proto AuthzService UACService API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

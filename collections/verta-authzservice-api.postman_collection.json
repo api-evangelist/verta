@@ -1,0 +1,568 @@
+{
+  "item": [
+    {
+      "id": "772d9614-129d-473a-b1c4-5969b2d48065",
+      "name": "AuthzService",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "99b604c4-e661-41d3-840e-11d344fdd345",
+          "name": "Authz Service get Allowed Entities",
+          "request": {
+            "name": "Authz Service get Allowed Entities",
+            "description": {},
+            "url": {
+              "path": [
+                "authz",
+                "getAllowedEntities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"actions\": [\n    {\n      \"service\": \"UNKNOWN\",\n      \"role_service_action\": \"UNKNOWN\",\n      \"authz_service_action\": \"UNKNOWN\",\n      \"modeldb_service_action\": \"UNKNOWN\",\n      \"deployment_service_action\": \"UNKNOWN\"\n    },\n    {\n      \"service\": \"UNKNOWN\",\n      \"role_service_action\": \"UNKNOWN\",\n      \"authz_service_action\": \"UNKNOWN\",\n      \"modeldb_service_action\": \"UNKNOWN\",\n      \"deployment_service_action\": \"UNKNOWN\"\n    }\n  ],\n  \"resources\": [\n    {\n      \"service\": \"UNKNOWN\",\n      \"resource_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"all_resource_ids\": \"<boolean>\",\n      \"resource_type\": {\n        \"role_service_resource_type\": \"UNKNOWN\",\n        \"authz_service_resource_type\": \"UNKNOWN\",\n        \"modeldb_service_resource_type\": \"UNKNOWN\",\n        \"deployment_service_resource_type\": \"UNKNOWN\"\n      }\n    },\n    {\n      \"service\": \"UNKNOWN\",\n      \"resource_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"all_resource_ids\": \"<boolean>\",\n      \"resource_type\": {\n        \"role_service_resource_type\": \"UNKNOWN\",\n        \"authz_service_resource_type\": \"UNKNOWN\",\n        \"modeldb_service_resource_type\": \"UNKNOWN\",\n        \"deployment_service_resource_type\": \"UNKNOWN\"\n      }\n    }\n  ],\n  \"pagination\": {\n    \"page_number\": \"<integer>\",\n    \"page_limit\": \"<integer>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "65f6125b-8259-41a7-b256-3de083ae070f",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authz",
+                    "getAllowedEntities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"actions\": [\n    {\n      \"service\": \"UNKNOWN\",\n      \"role_service_action\": \"UNKNOWN\",\n      \"authz_service_action\": \"UNKNOWN\",\n      \"modeldb_service_action\": \"UNKNOWN\",\n      \"deployment_service_action\": \"UNKNOWN\"\n    },\n    {\n      \"service\": \"UNKNOWN\",\n      \"role_service_action\": \"UNKNOWN\",\n      \"authz_service_action\": \"UNKNOWN\",\n      \"modeldb_service_action\": \"UNKNOWN\",\n      \"deployment_service_action\": \"UNKNOWN\"\n    }\n  ],\n  \"resources\": [\n    {\n      \"service\": \"UNKNOWN\",\n      \"resource_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"all_resource_ids\": \"<boolean>\",\n      \"resource_type\": {\n        \"role_service_resource_type\": \"UNKNOWN\",\n        \"authz_service_resource_type\": \"UNKNOWN\",\n        \"modeldb_service_resource_type\": \"UNKNOWN\",\n        \"deployment_service_resource_type\": \"UNKNOWN\"\n      }\n    },\n    {\n      \"service\": \"UNKNOWN\",\n      \"resource_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"all_resource_ids\": \"<boolean>\",\n      \"resource_type\": {\n        \"role_service_resource_type\": \"UNKNOWN\",\n        \"authz_service_resource_type\": \"UNKNOWN\",\n        \"modeldb_service_resource_type\": \"UNKNOWN\",\n        \"deployment_service_resource_type\": \"UNKNOWN\"\n      }\n    }\n  ],\n  \"pagination\": {\n    \"page_number\": \"<integer>\",\n    \"page_limit\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entities\": [\n    {\n      \"user_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"org_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"team_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"group_ids\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"user_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"org_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"team_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"group_ids\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"total_records\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "38a06c7c-81f8-4c65-9e6d-0e8a7e3672cf",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authz",
+                    "getAllowedEntities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"actions\": [\n    {\n      \"service\": \"UNKNOWN\",\n      \"role_service_action\": \"UNKNOWN\",\n      \"authz_service_action\": \"UNKNOWN\",\n      \"modeldb_service_action\": \"UNKNOWN\",\n      \"deployment_service_action\": \"UNKNOWN\"\n    },\n    {\n      \"service\": \"UNKNOWN\",\n      \"role_service_action\": \"UNKNOWN\",\n      \"authz_service_action\": \"UNKNOWN\",\n      \"modeldb_service_action\": \"UNKNOWN\",\n      \"deployment_service_action\": \"UNKNOWN\"\n    }\n  ],\n  \"resources\": [\n    {\n      \"service\": \"UNKNOWN\",\n      \"resource_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"all_resource_ids\": \"<boolean>\",\n      \"resource_type\": {\n        \"role_service_resource_type\": \"UNKNOWN\",\n        \"authz_service_resource_type\": \"UNKNOWN\",\n        \"modeldb_service_resource_type\": \"UNKNOWN\",\n        \"deployment_service_resource_type\": \"UNKNOWN\"\n      }\n    },\n    {\n      \"service\": \"UNKNOWN\",\n      \"resource_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"all_resource_ids\": \"<boolean>\",\n      \"resource_type\": {\n        \"role_service_resource_type\": \"UNKNOWN\",\n        \"authz_service_resource_type\": \"UNKNOWN\",\n        \"modeldb_service_resource_type\": \"UNKNOWN\",\n        \"deployment_service_resource_type\": \"UNKNOWN\"\n      }\n    }\n  ],\n  \"pagination\": {\n    \"page_number\": \"<integer>\",\n    \"page_limit\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 441,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ab022c04-3f8b-498b-a48f-282dbf6442b8",
+          "name": "Authz Service get Self Allowed Actions Batch",
+          "request": {
+            "name": "Authz Service get Self Allowed Actions Batch",
+            "description": {},
+            "url": {
+              "path": [
+                "authz",
+                "getSelfAllowedActionsBatch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"resources\": {\n    \"service\": \"UNKNOWN\",\n    \"resource_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"all_resource_ids\": \"<boolean>\",\n    \"resource_type\": {\n      \"role_service_resource_type\": \"UNKNOWN\",\n      \"authz_service_resource_type\": \"UNKNOWN\",\n      \"modeldb_service_resource_type\": \"UNKNOWN\",\n      \"deployment_service_resource_type\": \"UNKNOWN\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8b516ea8-1258-49c9-b11a-5340522e83b2",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authz",
+                    "getSelfAllowedActionsBatch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resources\": {\n    \"service\": \"UNKNOWN\",\n    \"resource_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"all_resource_ids\": \"<boolean>\",\n    \"resource_type\": {\n      \"role_service_resource_type\": \"UNKNOWN\",\n      \"authz_service_resource_type\": \"UNKNOWN\",\n      \"modeldb_service_resource_type\": \"UNKNOWN\",\n      \"deployment_service_resource_type\": \"UNKNOWN\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"actions\": {\n    \"key_0\": {\n      \"actions\": [\n        {\n          \"service\": \"UNKNOWN\",\n          \"role_service_action\": \"UNKNOWN\",\n          \"authz_service_action\": \"UNKNOWN\",\n          \"modeldb_service_action\": \"UNKNOWN\",\n          \"deployment_service_action\": \"UNKNOWN\"\n        },\n        {\n          \"service\": \"UNKNOWN\",\n          \"role_service_action\": \"UNKNOWN\",\n          \"authz_service_action\": \"UNKNOWN\",\n          \"modeldb_service_action\": \"UNKNOWN\",\n          \"deployment_service_action\": \"UNKNOWN\"\n        }\n      ]\n    },\n    \"key_1\": {\n      \"actions\": [\n        {\n          \"service\": \"UNKNOWN\",\n          \"role_service_action\": \"UNKNOWN\",\n          \"authz_service_action\": \"UNKNOWN\",\n          \"modeldb_service_action\": \"UNKNOWN\",\n          \"deployment_service_action\": \"UNKNOWN\"\n        },\n        {\n          \"service\": \"UNKNOWN\",\n          \"role_service_action\": \"UNKNOWN\",\n          \"authz_service_action\": \"UNKNOWN\",\n          \"modeldb_service_action\": \"UNKNOWN\",\n          \"deployment_service_action\": \"UNKNOWN\"\n        }\n      ]\n    },\n    \"key_2\": {\n      \"actions\": [\n        {\n          \"service\": \"UNKNOWN\",\n          \"role_service_action\": \"UNKNOWN\",\n          \"authz_service_action\": \"UNKNOWN\",\n          \"modeldb_service_action\": \"UNKNOWN\",\n          \"deployment_service_action\": \"UNKNOWN\"\n        },\n        {\n          \"service\": \"UNKNOWN\",\n          \"role_service_action\": \"UNKNOWN\",\n          \"authz_service_action\": \"UNKNOWN\",\n          \"modeldb_service_action\": \"UNKNOWN\",\n          \"deployment_service_action\": \"UNKNOWN\"\n        }\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a8f74ac0-b7f0-42d1-87f1-d11be4853367",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authz",
+                    "getSelfAllowedActionsBatch"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resources\": {\n    \"service\": \"UNKNOWN\",\n    \"resource_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"all_resource_ids\": \"<boolean>\",\n    \"resource_type\": {\n      \"role_service_resource_type\": \"UNKNOWN\",\n      \"authz_service_resource_type\": \"UNKNOWN\",\n      \"modeldb_service_resource_type\": \"UNKNOWN\",\n      \"deployment_service_resource_type\": \"UNKNOWN\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 8607,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "91c1531e-2a8a-4a61-acf5-ebdd0d5728bb",
+          "name": "Authz Service get Self Allowed Resources",
+          "request": {
+            "name": "Authz Service get Self Allowed Resources",
+            "description": {},
+            "url": {
+              "path": [
+                "authz",
+                "getSelfAllowedResources"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"actions\": [\n    {\n      \"service\": \"UNKNOWN\",\n      \"role_service_action\": \"UNKNOWN\",\n      \"authz_service_action\": \"UNKNOWN\",\n      \"modeldb_service_action\": \"UNKNOWN\",\n      \"deployment_service_action\": \"UNKNOWN\"\n    },\n    {\n      \"service\": \"UNKNOWN\",\n      \"role_service_action\": \"UNKNOWN\",\n      \"authz_service_action\": \"UNKNOWN\",\n      \"modeldb_service_action\": \"UNKNOWN\",\n      \"deployment_service_action\": \"UNKNOWN\"\n    }\n  ],\n  \"resource_type\": {\n    \"role_service_resource_type\": \"UNKNOWN\",\n    \"authz_service_resource_type\": \"UNKNOWN\",\n    \"modeldb_service_resource_type\": \"UNKNOWN\",\n    \"deployment_service_resource_type\": \"UNKNOWN\"\n  },\n  \"service\": \"UNKNOWN\",\n  \"pagination\": {\n    \"page_number\": \"<integer>\",\n    \"page_limit\": \"<integer>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "01089020-a582-41dc-a6d7-6535bdf53f26",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authz",
+                    "getSelfAllowedResources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"actions\": [\n    {\n      \"service\": \"UNKNOWN\",\n      \"role_service_action\": \"UNKNOWN\",\n      \"authz_service_action\": \"UNKNOWN\",\n      \"modeldb_service_action\": \"UNKNOWN\",\n      \"deployment_service_action\": \"UNKNOWN\"\n    },\n    {\n      \"service\": \"UNKNOWN\",\n      \"role_service_action\": \"UNKNOWN\",\n      \"authz_service_action\": \"UNKNOWN\",\n      \"modeldb_service_action\": \"UNKNOWN\",\n      \"deployment_service_action\": \"UNKNOWN\"\n    }\n  ],\n  \"resource_type\": {\n    \"role_service_resource_type\": \"UNKNOWN\",\n    \"authz_service_resource_type\": \"UNKNOWN\",\n    \"modeldb_service_resource_type\": \"UNKNOWN\",\n    \"deployment_service_resource_type\": \"UNKNOWN\"\n  },\n  \"service\": \"UNKNOWN\",\n  \"pagination\": {\n    \"page_number\": \"<integer>\",\n    \"page_limit\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resources\": [\n    {\n      \"service\": \"UNKNOWN\",\n      \"resource_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"all_resource_ids\": \"<boolean>\",\n      \"resource_type\": {\n        \"role_service_resource_type\": \"UNKNOWN\",\n        \"authz_service_resource_type\": \"UNKNOWN\",\n        \"modeldb_service_resource_type\": \"UNKNOWN\",\n        \"deployment_service_resource_type\": \"UNKNOWN\"\n      }\n    },\n    {\n      \"service\": \"UNKNOWN\",\n      \"resource_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"all_resource_ids\": \"<boolean>\",\n      \"resource_type\": {\n        \"role_service_resource_type\": \"UNKNOWN\",\n        \"authz_service_resource_type\": \"UNKNOWN\",\n        \"modeldb_service_resource_type\": \"UNKNOWN\",\n        \"deployment_service_resource_type\": \"UNKNOWN\"\n      }\n    }\n  ],\n  \"total_records\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cebca312-58b7-4d88-923f-d36dda5b0e0f",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authz",
+                    "getSelfAllowedResources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"actions\": [\n    {\n      \"service\": \"UNKNOWN\",\n      \"role_service_action\": \"UNKNOWN\",\n      \"authz_service_action\": \"UNKNOWN\",\n      \"modeldb_service_action\": \"UNKNOWN\",\n      \"deployment_service_action\": \"UNKNOWN\"\n    },\n    {\n      \"service\": \"UNKNOWN\",\n      \"role_service_action\": \"UNKNOWN\",\n      \"authz_service_action\": \"UNKNOWN\",\n      \"modeldb_service_action\": \"UNKNOWN\",\n      \"deployment_service_action\": \"UNKNOWN\"\n    }\n  ],\n  \"resource_type\": {\n    \"role_service_resource_type\": \"UNKNOWN\",\n    \"authz_service_resource_type\": \"UNKNOWN\",\n    \"modeldb_service_resource_type\": \"UNKNOWN\",\n    \"deployment_service_resource_type\": \"UNKNOWN\"\n  },\n  \"service\": \"UNKNOWN\",\n  \"pagination\": {\n    \"page_number\": \"<integer>\",\n    \"page_limit\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 8607,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1dcef907-9fb9-4ee3-b076-af076355070c",
+          "name": "Authz Service is Self Allowed",
+          "request": {
+            "name": "Authz Service is Self Allowed",
+            "description": {},
+            "url": {
+              "path": [
+                "authz",
+                "isSelfAllowed"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"actions\": [\n    {\n      \"service\": \"UNKNOWN\",\n      \"role_service_action\": \"UNKNOWN\",\n      \"authz_service_action\": \"UNKNOWN\",\n      \"modeldb_service_action\": \"UNKNOWN\",\n      \"deployment_service_action\": \"UNKNOWN\"\n    },\n    {\n      \"service\": \"UNKNOWN\",\n      \"role_service_action\": \"UNKNOWN\",\n      \"authz_service_action\": \"UNKNOWN\",\n      \"modeldb_service_action\": \"UNKNOWN\",\n      \"deployment_service_action\": \"UNKNOWN\"\n    }\n  ],\n  \"resources\": [\n    {\n      \"service\": \"UNKNOWN\",\n      \"resource_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"all_resource_ids\": \"<boolean>\",\n      \"resource_type\": {\n        \"role_service_resource_type\": \"UNKNOWN\",\n        \"authz_service_resource_type\": \"UNKNOWN\",\n        \"modeldb_service_resource_type\": \"UNKNOWN\",\n        \"deployment_service_resource_type\": \"UNKNOWN\"\n      }\n    },\n    {\n      \"service\": \"UNKNOWN\",\n      \"resource_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"all_resource_ids\": \"<boolean>\",\n      \"resource_type\": {\n        \"role_service_resource_type\": \"UNKNOWN\",\n        \"authz_service_resource_type\": \"UNKNOWN\",\n        \"modeldb_service_resource_type\": \"UNKNOWN\",\n        \"deployment_service_resource_type\": \"UNKNOWN\"\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "673b1219-76b2-42e2-a988-e629d7aff511",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authz",
+                    "isSelfAllowed"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"actions\": [\n    {\n      \"service\": \"UNKNOWN\",\n      \"role_service_action\": \"UNKNOWN\",\n      \"authz_service_action\": \"UNKNOWN\",\n      \"modeldb_service_action\": \"UNKNOWN\",\n      \"deployment_service_action\": \"UNKNOWN\"\n    },\n    {\n      \"service\": \"UNKNOWN\",\n      \"role_service_action\": \"UNKNOWN\",\n      \"authz_service_action\": \"UNKNOWN\",\n      \"modeldb_service_action\": \"UNKNOWN\",\n      \"deployment_service_action\": \"UNKNOWN\"\n    }\n  ],\n  \"resources\": [\n    {\n      \"service\": \"UNKNOWN\",\n      \"resource_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"all_resource_ids\": \"<boolean>\",\n      \"resource_type\": {\n        \"role_service_resource_type\": \"UNKNOWN\",\n        \"authz_service_resource_type\": \"UNKNOWN\",\n        \"modeldb_service_resource_type\": \"UNKNOWN\",\n        \"deployment_service_resource_type\": \"UNKNOWN\"\n      }\n    },\n    {\n      \"service\": \"UNKNOWN\",\n      \"resource_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"all_resource_ids\": \"<boolean>\",\n      \"resource_type\": {\n        \"role_service_resource_type\": \"UNKNOWN\",\n        \"authz_service_resource_type\": \"UNKNOWN\",\n        \"modeldb_service_resource_type\": \"UNKNOWN\",\n        \"deployment_service_resource_type\": \"UNKNOWN\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"allowed\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8358570f-a878-469a-89ae-1d9029ee237b",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authz",
+                    "isSelfAllowed"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"actions\": [\n    {\n      \"service\": \"UNKNOWN\",\n      \"role_service_action\": \"UNKNOWN\",\n      \"authz_service_action\": \"UNKNOWN\",\n      \"modeldb_service_action\": \"UNKNOWN\",\n      \"deployment_service_action\": \"UNKNOWN\"\n    },\n    {\n      \"service\": \"UNKNOWN\",\n      \"role_service_action\": \"UNKNOWN\",\n      \"authz_service_action\": \"UNKNOWN\",\n      \"modeldb_service_action\": \"UNKNOWN\",\n      \"deployment_service_action\": \"UNKNOWN\"\n    }\n  ],\n  \"resources\": [\n    {\n      \"service\": \"UNKNOWN\",\n      \"resource_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"all_resource_ids\": \"<boolean>\",\n      \"resource_type\": {\n        \"role_service_resource_type\": \"UNKNOWN\",\n        \"authz_service_resource_type\": \"UNKNOWN\",\n        \"modeldb_service_resource_type\": \"UNKNOWN\",\n        \"deployment_service_resource_type\": \"UNKNOWN\"\n      }\n    },\n    {\n      \"service\": \"UNKNOWN\",\n      \"resource_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"all_resource_ids\": \"<boolean>\",\n      \"resource_type\": {\n        \"role_service_resource_type\": \"UNKNOWN\",\n        \"authz_service_resource_type\": \"UNKNOWN\",\n        \"modeldb_service_resource_type\": \"UNKNOWN\",\n        \"deployment_service_resource_type\": \"UNKNOWN\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 8607,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1321ce50-dee9-442a-9bc1-ab98a87dc182",
+    "name": "deployment/APISync.proto AuthzService API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

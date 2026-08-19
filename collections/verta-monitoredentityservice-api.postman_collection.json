@@ -1,0 +1,604 @@
+{
+  "item": [
+    {
+      "id": "4fe74d60-8007-4836-95c6-6bbd63e1267a",
+      "name": "MonitoredEntityService",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "56adfecd-f7ec-4803-a9b0-7bbc1c84c2d8",
+          "name": "Monitored Entity Service create Monitored Entity",
+          "request": {
+            "name": "Monitored Entity Service create Monitored Entity",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "monitoring",
+                "monitored_entity",
+                "createMonitoredEntity"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"workspace_id\": \"<uint64>\",\n  \"workspace_name\": \"<string>\",\n  \"attributes\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"resource_visibility\": \"UNKNOWN\",\n  \"custom_permission\": {\n    \"collaborator_type\": \"READ_ONLY\",\n    \"can_deploy\": \"UNKNOWN\",\n    \"can_predict\": \"UNKNOWN\"\n  },\n  \"endpoint_id\": \"<uint64>\",\n  \"origin\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c3fbc3b1-3594-4826-a444-6d411fbcacb5",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "monitoring",
+                    "monitored_entity",
+                    "createMonitoredEntity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"workspace_id\": \"<uint64>\",\n  \"workspace_name\": \"<string>\",\n  \"attributes\": {\n    \"key_0\": \"<string>\"\n  },\n  \"resource_visibility\": \"UNKNOWN\",\n  \"custom_permission\": {\n    \"collaborator_type\": \"READ_ONLY\",\n    \"can_deploy\": \"UNKNOWN\",\n    \"can_predict\": \"UNKNOWN\"\n  },\n  \"endpoint_id\": \"<uint64>\",\n  \"origin\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"monitored_entity\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"workspace_id\": \"string\",\n    \"created_at_timestamp_millis\": \"string\",\n    \"updated_at_timestamp_millis\": \"string\",\n    \"attributes\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"owner\": \"string\",\n    \"owner_id\": \"string\",\n    \"group_owner_id\": {\n      \"org_id\": \"string\",\n      \"group_id\": \"string\"\n    },\n    \"resource_visibility\": \"UNKNOWN\",\n    \"custom_permission\": {\n      \"collaborator_type\": \"READ_ONLY\",\n      \"can_deploy\": \"UNKNOWN\",\n      \"can_predict\": \"UNKNOWN\"\n    },\n    \"version_number\": \"string\",\n    \"endpoint_id\": \"string\",\n    \"datasource_name\": \"string\",\n    \"origin\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e1716932-0e40-4302-ab85-3dbd61c708b3",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "monitoring",
+                    "monitored_entity",
+                    "createMonitoredEntity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"workspace_id\": \"<uint64>\",\n  \"workspace_name\": \"<string>\",\n  \"attributes\": {\n    \"key_0\": \"<string>\"\n  },\n  \"resource_visibility\": \"UNKNOWN\",\n  \"custom_permission\": {\n    \"collaborator_type\": \"READ_ONLY\",\n    \"can_deploy\": \"UNKNOWN\",\n    \"can_predict\": \"UNKNOWN\"\n  },\n  \"endpoint_id\": \"<uint64>\",\n  \"origin\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 9988,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "208b331f-0522-49d9-adb3-aca9379b5a00",
+          "name": "Monitored Entity Service delete Monitored Entity",
+          "request": {
+            "name": "Monitored Entity Service delete Monitored Entity",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "monitoring",
+                "monitored_entity",
+                "deleteMonitoredEntity"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<uint64>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e239fc99-bc3c-4e2a-bd78-c43f65595252",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "monitoring",
+                    "monitored_entity",
+                    "deleteMonitoredEntity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<uint64>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eede37c2-19e9-42fa-8cc6-ba2002fe5add",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "monitoring",
+                    "monitored_entity",
+                    "deleteMonitoredEntity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<uint64>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 9227,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fb53977e-6467-41aa-8eee-dea96559715c",
+          "name": "Monitored Entity Service find Monitored Entity",
+          "request": {
+            "name": "Monitored Entity Service find Monitored Entity",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "monitoring",
+                "monitored_entity",
+                "findMonitoredEntity"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ids\": [\n    \"<uint64>\",\n    \"<uint64>\"\n  ],\n  \"names\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"fuzzy_names\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"endpoint_ids\": [\n    \"<uint64>\",\n    \"<uint64>\"\n  ],\n  \"model_version_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"workspace_id\": \"<uint64>\",\n  \"workspace_name\": \"<string>\",\n  \"page_number\": \"<integer>\",\n  \"page_limit\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c37cdff1-b82b-4409-a45a-82058cd279b6",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "monitoring",
+                    "monitored_entity",
+                    "findMonitoredEntity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<uint64>\",\n    \"<uint64>\"\n  ],\n  \"names\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"fuzzy_names\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"endpoint_ids\": [\n    \"<uint64>\",\n    \"<uint64>\"\n  ],\n  \"model_version_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"workspace_id\": \"<uint64>\",\n  \"workspace_name\": \"<string>\",\n  \"page_number\": \"<integer>\",\n  \"page_limit\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"monitored_entities\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"workspace_id\": \"string\",\n      \"created_at_timestamp_millis\": \"string\",\n      \"updated_at_timestamp_millis\": \"string\",\n      \"attributes\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\",\n        \"key_3\": \"string\"\n      },\n      \"owner\": \"string\",\n      \"owner_id\": \"string\",\n      \"group_owner_id\": {\n        \"org_id\": \"string\",\n        \"group_id\": \"string\"\n      },\n      \"resource_visibility\": \"UNKNOWN\",\n      \"custom_permission\": {\n        \"collaborator_type\": \"READ_ONLY\",\n        \"can_deploy\": \"UNKNOWN\",\n        \"can_predict\": \"UNKNOWN\"\n      },\n      \"version_number\": \"string\",\n      \"endpoint_id\": \"string\",\n      \"datasource_name\": \"string\",\n      \"origin\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"workspace_id\": \"string\",\n      \"created_at_timestamp_millis\": \"string\",\n      \"updated_at_timestamp_millis\": \"string\",\n      \"attributes\": {\n        \"key_0\": \"string\"\n      },\n      \"owner\": \"string\",\n      \"owner_id\": \"string\",\n      \"group_owner_id\": {\n        \"org_id\": \"string\",\n        \"group_id\": \"string\"\n      },\n      \"resource_visibility\": \"UNKNOWN\",\n      \"custom_permission\": {\n        \"collaborator_type\": \"READ_ONLY\",\n        \"can_deploy\": \"UNKNOWN\",\n        \"can_predict\": \"UNKNOWN\"\n      },\n      \"version_number\": \"string\",\n      \"endpoint_id\": \"string\",\n      \"datasource_name\": \"string\",\n      \"origin\": \"string\"\n    }\n  ],\n  \"total_records\": 7670\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4e902a83-33eb-4b14-85d1-a96d1427a477",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "monitoring",
+                    "monitored_entity",
+                    "findMonitoredEntity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<uint64>\",\n    \"<uint64>\"\n  ],\n  \"names\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"fuzzy_names\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"endpoint_ids\": [\n    \"<uint64>\",\n    \"<uint64>\"\n  ],\n  \"model_version_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"workspace_id\": \"<uint64>\",\n  \"workspace_name\": \"<string>\",\n  \"page_number\": \"<integer>\",\n  \"page_limit\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 9227,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0b5af7e2-72a6-49d1-8fdc-e0e30a6eb485",
+          "name": "Monitored Entity Service update Monitored Entity",
+          "request": {
+            "name": "Monitored Entity Service update Monitored Entity",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "monitoring",
+                "monitored_entity",
+                "updateMonitoredEntity"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<uint64>\",\n  \"name\": \"<string>\",\n  \"attributes\": {\n    \"key_0\": \"<string>\"\n  },\n  \"resource_visibility\": \"UNKNOWN\",\n  \"custom_permission\": {\n    \"collaborator_type\": \"READ_ONLY\",\n    \"can_deploy\": \"UNKNOWN\",\n    \"can_predict\": \"UNKNOWN\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c401b0ad-0d8c-4fbb-9cd3-e3fbd8cee1e6",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "monitoring",
+                    "monitored_entity",
+                    "updateMonitoredEntity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<uint64>\",\n  \"name\": \"<string>\",\n  \"attributes\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"resource_visibility\": \"UNKNOWN\",\n  \"custom_permission\": {\n    \"collaborator_type\": \"READ_ONLY\",\n    \"can_deploy\": \"UNKNOWN\",\n    \"can_predict\": \"UNKNOWN\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"monitored_entity\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"workspace_id\": \"string\",\n    \"created_at_timestamp_millis\": \"string\",\n    \"updated_at_timestamp_millis\": \"string\",\n    \"attributes\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"owner\": \"string\",\n    \"owner_id\": \"string\",\n    \"group_owner_id\": {\n      \"org_id\": \"string\",\n      \"group_id\": \"string\"\n    },\n    \"resource_visibility\": \"UNKNOWN\",\n    \"custom_permission\": {\n      \"collaborator_type\": \"READ_ONLY\",\n      \"can_deploy\": \"UNKNOWN\",\n      \"can_predict\": \"UNKNOWN\"\n    },\n    \"version_number\": \"string\",\n    \"endpoint_id\": \"string\",\n    \"datasource_name\": \"string\",\n    \"origin\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "96a48c41-ddb8-48e0-a585-7849d9ca7807",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "monitoring",
+                    "monitored_entity",
+                    "updateMonitoredEntity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<uint64>\",\n  \"name\": \"<string>\",\n  \"attributes\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"resource_visibility\": \"UNKNOWN\",\n  \"custom_permission\": {\n    \"collaborator_type\": \"READ_ONLY\",\n    \"can_deploy\": \"UNKNOWN\",\n    \"can_predict\": \"UNKNOWN\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 9227,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7e6428c0-f6b8-4085-b82c-3228b619fc9c",
+    "name": "deployment/APISync.proto AuthzService MonitoredEntityService API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

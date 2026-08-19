@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "deployment/APISync.proto AuthzService API",
+    "version": "version not set"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "AuthzService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AuthzService_getAllowedEntities",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/authz/getAllowedEntities"
+          }
+        },
+        {
+          "info": {
+            "name": "AuthzService_getSelfAllowedActionsBatch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/authz/getSelfAllowedActionsBatch"
+          }
+        },
+        {
+          "info": {
+            "name": "AuthzService_getSelfAllowedResources",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/authz/getSelfAllowedResources"
+          }
+        },
+        {
+          "info": {
+            "name": "AuthzService_isSelfAllowed",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/authz/isSelfAllowed"
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

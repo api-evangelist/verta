@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "deployment/APISync.proto AuthzService MonitoredEntityService API",
+    "version": "version not set"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "MonitoredEntityService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "MonitoredEntityService_createMonitoredEntity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/monitoring/monitored_entity/createMonitoredEntity"
+          }
+        },
+        {
+          "info": {
+            "name": "MonitoredEntityService_deleteMonitoredEntity",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/v1/monitoring/monitored_entity/deleteMonitoredEntity"
+          }
+        },
+        {
+          "info": {
+            "name": "MonitoredEntityService_findMonitoredEntity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/v1/monitoring/monitored_entity/findMonitoredEntity"
+          }
+        },
+        {
+          "info": {
+            "name": "MonitoredEntityService_updateMonitoredEntity",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/v1/monitoring/monitored_entity/updateMonitoredEntity"
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,459 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "deployment/APISync.proto AuthzService ProjectService API",
+    "version": "version not set"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ProjectService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ProjectService_addProjectAttributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/project/addProjectAttributes"
+          }
+        },
+        {
+          "info": {
+            "name": "ProjectService_addProjectTag",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/project/addProjectTag"
+          }
+        },
+        {
+          "info": {
+            "name": "ProjectService_addProjectTags",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/project/addProjectTags"
+          }
+        },
+        {
+          "info": {
+            "name": "ProjectService_createProject",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/project/createProject"
+          }
+        },
+        {
+          "info": {
+            "name": "ProjectService_deepCopyProject",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/project/deepCopyProject"
+          }
+        },
+        {
+          "info": {
+            "name": "ProjectService_deleteArtifact",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/project/deleteArtifact"
+          }
+        },
+        {
+          "info": {
+            "name": "ProjectService_deleteProject",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/project/deleteProject"
+          }
+        },
+        {
+          "info": {
+            "name": "ProjectService_deleteProjectAttributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/project/deleteProjectAttributes"
+          }
+        },
+        {
+          "info": {
+            "name": "ProjectService_deleteProjectTag",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/project/deleteProjectTag"
+          }
+        },
+        {
+          "info": {
+            "name": "ProjectService_deleteProjectTags",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/project/deleteProjectTags"
+          }
+        },
+        {
+          "info": {
+            "name": "ProjectService_deleteProjects",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/project/deleteProjects"
+          }
+        },
+        {
+          "info": {
+            "name": "queries",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/project/findProjects"
+          },
+          "docs": "queries"
+        },
+        {
+          "info": {
+            "name": "ProjectService_getArtifacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/project/getArtifacts",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "ProjectService_getProjectAttributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/project/getProjectAttributes",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "attribute_keys",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "get_all",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "ProjectService_getProjectById",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/project/getProjectById",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "ProjectService_getProjectByName",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/project/getProjectByName",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "workspace_name",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "ProjectService_getProjectCodeVersion",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/project/getProjectCodeVersion",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "ProjectService_getProjectDatasetCount",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/project/getProjectDatasetCount",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "ProjectService_getProjectReadme",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/project/getProjectReadme",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "ProjectService_getProjectShortName",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/project/getProjectShortName",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "ProjectService_getProjectTags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/project/getProjectTags",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "ProjectService_getProjects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/project/getProjects",
+            "params": [
+              {
+                "name": "page_number",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page_limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ascending",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort_key",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "workspace_name",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "ProjectService_getSummary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/project/getSummary",
+            "params": [
+              {
+                "name": "entityId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "artifacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/project/getUrlForArtifact"
+          },
+          "docs": "artifacts"
+        },
+        {
+          "info": {
+            "name": "artifacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/project/logArtifacts"
+          },
+          "docs": "artifacts"
+        },
+        {
+          "info": {
+            "name": "code version",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/project/logProjectCodeVersion"
+          },
+          "docs": "code version"
+        },
+        {
+          "info": {
+            "name": "ProjectService_setProjectReadme",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/project/setProjectReadme"
+          }
+        },
+        {
+          "info": {
+            "name": "ProjectService_setProjectShortName",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/project/setProjectShortName"
+          }
+        },
+        {
+          "info": {
+            "name": "ProjectService_updateProjectAttributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/project/updateProjectAttributes"
+          }
+        },
+        {
+          "info": {
+            "name": "ProjectService_updateProjectDescription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/project/updateProjectDescription"
+          }
+        },
+        {
+          "info": {
+            "name": "ProjectService_updateProjectName",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/project/updateProjectName"
+          }
+        },
+        {
+          "info": {
+            "name": "ProjectService_verifyConnection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/project/verifyConnection"
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

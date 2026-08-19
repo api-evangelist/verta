@@ -1,0 +1,1238 @@
+{
+  "item": [
+    {
+      "id": "b718a239-6a94-48ed-a4db-4df131698e5e",
+      "name": "StageService",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f3aadbc5-ea35-4e61-b432-9c184ca7a614",
+          "name": "Stage Service Approve Transition",
+          "request": {
+            "name": "Stage Service Approve Transition",
+            "description": {},
+            "url": {
+              "path": [
+                "stage",
+                "approveTransition"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"transition_id\": \"<uint64>\",\n  \"comment\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cb6dfc8e-b865-4b2e-8426-4423dab6becf",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stage",
+                    "approveTransition"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transition_id\": \"<uint64>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"model_version_id\": \"string\",\n  \"author_id\": \"string\",\n  \"time_created\": \"string\",\n  \"comment\": \"string\",\n  \"transition\": {\n    \"source_stage\": \"UNKNOWN\",\n    \"desired_stage\": \"UNKNOWN\",\n    \"state\": \"UNKNOWN\",\n    \"id\": \"string\"\n  },\n  \"approval\": {},\n  \"rejection\": {},\n  \"close\": {},\n  \"update\": {\n    \"stage\": \"UNKNOWN\"\n  },\n  \"activity_state\": \"UNKNOWN\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1605fa8a-4d9b-4418-bf5f-138723f6f2bb",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stage",
+                    "approveTransition"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transition_id\": \"<uint64>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 2065,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ff42993d-be1f-471e-9239-c75c28da8b9f",
+          "name": "Stage Service Close Transition",
+          "request": {
+            "name": "Stage Service Close Transition",
+            "description": {},
+            "url": {
+              "path": [
+                "stage",
+                "closeTransition"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"transition_id\": \"<uint64>\",\n  \"comment\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "70103408-a5dd-4483-b491-9b4342b95308",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stage",
+                    "closeTransition"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transition_id\": \"<uint64>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"model_version_id\": \"string\",\n  \"author_id\": \"string\",\n  \"time_created\": \"string\",\n  \"comment\": \"string\",\n  \"transition\": {\n    \"source_stage\": \"UNKNOWN\",\n    \"desired_stage\": \"UNKNOWN\",\n    \"state\": \"UNKNOWN\",\n    \"id\": \"string\"\n  },\n  \"approval\": {},\n  \"rejection\": {},\n  \"close\": {},\n  \"update\": {\n    \"stage\": \"UNKNOWN\"\n  },\n  \"activity_state\": \"UNKNOWN\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dc38dc02-8e7c-43f0-bf34-6bb9dfd15d7d",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stage",
+                    "closeTransition"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transition_id\": \"<uint64>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 6363,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e61f3cc4-98be-4eb8-80de-21919706bc3f",
+          "name": "Only a transition that has been approved can be commited. The user must have RW permission\nSimilar to merging a PR",
+          "request": {
+            "name": "Only a transition that has been approved can be commited. The user must have RW permission\nSimilar to merging a PR",
+            "description": {},
+            "url": {
+              "path": [
+                "stage",
+                "commitTransition"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"transition_id\": \"<uint64>\",\n  \"comment\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8dce28f4-abe3-46f3-bd79-9650e0fd2be4",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stage",
+                    "commitTransition"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transition_id\": \"<uint64>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"model_version_id\": \"string\",\n  \"author_id\": \"string\",\n  \"time_created\": \"string\",\n  \"comment\": \"string\",\n  \"transition\": {\n    \"source_stage\": \"UNKNOWN\",\n    \"desired_stage\": \"UNKNOWN\",\n    \"state\": \"UNKNOWN\",\n    \"id\": \"string\"\n  },\n  \"approval\": {},\n  \"rejection\": {},\n  \"close\": {},\n  \"update\": {\n    \"stage\": \"UNKNOWN\"\n  },\n  \"activity_state\": \"UNKNOWN\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cea6c7c0-2520-426f-bfee-537e28c47ad9",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stage",
+                    "commitTransition"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transition_id\": \"<uint64>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 6363,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d3a7f5db-395d-49a1-abc2-2199bcbdc357",
+          "name": "Stage Service Create Comment",
+          "request": {
+            "name": "Stage Service Create Comment",
+            "description": {},
+            "url": {
+              "path": [
+                "stage",
+                "createComment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model_version_id\": \"<uint64>\",\n  \"comment\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c91f30dd-b46e-49e5-8ca8-c97dc7903463",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stage",
+                    "createComment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model_version_id\": \"<uint64>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"model_version_id\": \"string\",\n  \"author_id\": \"string\",\n  \"time_created\": \"string\",\n  \"comment\": \"string\",\n  \"transition\": {\n    \"source_stage\": \"UNKNOWN\",\n    \"desired_stage\": \"UNKNOWN\",\n    \"state\": \"UNKNOWN\",\n    \"id\": \"string\"\n  },\n  \"approval\": {},\n  \"rejection\": {},\n  \"close\": {},\n  \"update\": {\n    \"stage\": \"UNKNOWN\"\n  },\n  \"activity_state\": \"UNKNOWN\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7b2e8fb8-b3b4-43e7-8c48-5d638993b422",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stage",
+                    "createComment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model_version_id\": \"<uint64>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 6363,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "59c03b45-67ba-4334-a82d-b0deb522ffef",
+          "name": "Anyone with RW permission on the model version can do any of these\nNote that the author of the transition cannot approve or reject it themselves (like in github)",
+          "request": {
+            "name": "Anyone with RW permission on the model version can do any of these\nNote that the author of the transition cannot approve or reject it themselves (like in github)",
+            "description": {},
+            "url": {
+              "path": [
+                "stage",
+                "createTransition"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model_version_id\": \"<uint64>\",\n  \"desired_stage\": \"UNKNOWN\",\n  \"comment\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a33cb312-ef37-461c-a85f-5f4797d3ddde",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stage",
+                    "createTransition"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model_version_id\": \"<uint64>\",\n  \"desired_stage\": \"UNKNOWN\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"model_version_id\": \"string\",\n  \"author_id\": \"string\",\n  \"time_created\": \"string\",\n  \"comment\": \"string\",\n  \"transition\": {\n    \"source_stage\": \"UNKNOWN\",\n    \"desired_stage\": \"UNKNOWN\",\n    \"state\": \"UNKNOWN\",\n    \"id\": \"string\"\n  },\n  \"approval\": {},\n  \"rejection\": {},\n  \"close\": {},\n  \"update\": {\n    \"stage\": \"UNKNOWN\"\n  },\n  \"activity_state\": \"UNKNOWN\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4ec08890-ba3b-4c5c-98e1-853bbd5df23f",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stage",
+                    "createTransition"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model_version_id\": \"<uint64>\",\n  \"desired_stage\": \"UNKNOWN\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 6363,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ba7a56da-684b-4d24-9e37-64cef7d2cb91",
+          "name": "List objects from the db. Similar to the PR history",
+          "request": {
+            "name": "List objects from the db. Similar to the PR history",
+            "description": {},
+            "url": {
+              "path": [
+                "stage",
+                "findActivities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"registered_model_id\": \"<uint64>\",\n  \"model_version_id\": \"<uint64>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9bf05698-4f6a-4390-9d62-ed5b2a610afb",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stage",
+                    "findActivities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"registered_model_id\": \"<uint64>\",\n  \"model_version_id\": \"<uint64>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"activities\": [\n    {\n      \"id\": \"string\",\n      \"model_version_id\": \"string\",\n      \"author_id\": \"string\",\n      \"time_created\": \"string\",\n      \"comment\": \"string\",\n      \"transition\": {\n        \"source_stage\": \"UNKNOWN\",\n        \"desired_stage\": \"UNKNOWN\",\n        \"state\": \"UNKNOWN\",\n        \"id\": \"string\"\n      },\n      \"approval\": {},\n      \"rejection\": {},\n      \"close\": {},\n      \"update\": {\n        \"stage\": \"UNKNOWN\"\n      },\n      \"activity_state\": \"UNKNOWN\"\n    },\n    {\n      \"id\": \"string\",\n      \"model_version_id\": \"string\",\n      \"author_id\": \"string\",\n      \"time_created\": \"string\",\n      \"comment\": \"string\",\n      \"transition\": {\n        \"source_stage\": \"UNKNOWN\",\n        \"desired_stage\": \"UNKNOWN\",\n        \"state\": \"UNKNOWN\",\n        \"id\": \"string\"\n      },\n      \"approval\": {},\n      \"rejection\": {},\n      \"close\": {},\n      \"update\": {\n        \"stage\": \"UNKNOWN\"\n      },\n      \"activity_state\": \"UNKNOWN\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a2b68130-d746-4fe9-a07f-aea281f008ee",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stage",
+                    "findActivities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"registered_model_id\": \"<uint64>\",\n  \"model_version_id\": \"<uint64>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 6363,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "660c443c-664a-495e-b979-4bc158f6eb31",
+          "name": "Similar to listing PRs by state",
+          "request": {
+            "name": "Similar to listing PRs by state",
+            "description": {},
+            "url": {
+              "path": [
+                "stage",
+                "findTransitions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"registered_model_id\": \"<uint64>\",\n  \"model_version_id\": \"<uint64>\",\n  \"state\": [\n    \"UNKNOWN\",\n    \"UNKNOWN\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ed8e9bbb-04c1-44aa-9f69-f58c8c18e6cc",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stage",
+                    "findTransitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"registered_model_id\": \"<uint64>\",\n  \"model_version_id\": \"<uint64>\",\n  \"state\": [\n    \"UNKNOWN\",\n    \"UNKNOWN\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"activities\": [\n    {\n      \"id\": \"string\",\n      \"model_version_id\": \"string\",\n      \"author_id\": \"string\",\n      \"time_created\": \"string\",\n      \"comment\": \"string\",\n      \"transition\": {\n        \"source_stage\": \"UNKNOWN\",\n        \"desired_stage\": \"UNKNOWN\",\n        \"state\": \"UNKNOWN\",\n        \"id\": \"string\"\n      },\n      \"approval\": {},\n      \"rejection\": {},\n      \"close\": {},\n      \"update\": {\n        \"stage\": \"UNKNOWN\"\n      },\n      \"activity_state\": \"UNKNOWN\"\n    },\n    {\n      \"id\": \"string\",\n      \"model_version_id\": \"string\",\n      \"author_id\": \"string\",\n      \"time_created\": \"string\",\n      \"comment\": \"string\",\n      \"transition\": {\n        \"source_stage\": \"UNKNOWN\",\n        \"desired_stage\": \"UNKNOWN\",\n        \"state\": \"UNKNOWN\",\n        \"id\": \"string\"\n      },\n      \"approval\": {},\n      \"rejection\": {},\n      \"close\": {},\n      \"update\": {\n        \"stage\": \"UNKNOWN\"\n      },\n      \"activity_state\": \"UNKNOWN\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "546c8aa8-8b77-4023-8f49-edc1be9e5cae",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stage",
+                    "findTransitions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"registered_model_id\": \"<uint64>\",\n  \"model_version_id\": \"<uint64>\",\n  \"state\": [\n    \"UNKNOWN\",\n    \"UNKNOWN\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 6363,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a473bde2-1702-4ea5-a9e1-7dd2aa29795a",
+          "name": "Stage Service Reject Transition",
+          "request": {
+            "name": "Stage Service Reject Transition",
+            "description": {},
+            "url": {
+              "path": [
+                "stage",
+                "rejectTransition"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"transition_id\": \"<uint64>\",\n  \"comment\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e2ac49bb-d504-407d-b068-a251e09ae5d6",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stage",
+                    "rejectTransition"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transition_id\": \"<uint64>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"model_version_id\": \"string\",\n  \"author_id\": \"string\",\n  \"time_created\": \"string\",\n  \"comment\": \"string\",\n  \"transition\": {\n    \"source_stage\": \"UNKNOWN\",\n    \"desired_stage\": \"UNKNOWN\",\n    \"state\": \"UNKNOWN\",\n    \"id\": \"string\"\n  },\n  \"approval\": {},\n  \"rejection\": {},\n  \"close\": {},\n  \"update\": {\n    \"stage\": \"UNKNOWN\"\n  },\n  \"activity_state\": \"UNKNOWN\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6797be2d-6e3d-4f71-90e3-4fe6162a0a22",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stage",
+                    "rejectTransition"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transition_id\": \"<uint64>\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 6363,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8a3af93a-4f35-4923-920a-4756705d3d02",
+          "name": "Directly update the stage without going through approval. The user must have RW permission\nSimilar to merging to master directly",
+          "request": {
+            "name": "Directly update the stage without going through approval. The user must have RW permission\nSimilar to merging to master directly",
+            "description": {},
+            "url": {
+              "path": [
+                "stage",
+                "updateStage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"model_version_id\": \"<uint64>\",\n  \"stage\": \"UNKNOWN\",\n  \"comment\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8bbdf798-7f15-49fe-985d-7a61e3f77f2b",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stage",
+                    "updateStage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model_version_id\": \"<uint64>\",\n  \"stage\": \"UNKNOWN\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"model_version_id\": \"string\",\n  \"author_id\": \"string\",\n  \"time_created\": \"string\",\n  \"comment\": \"string\",\n  \"transition\": {\n    \"source_stage\": \"UNKNOWN\",\n    \"desired_stage\": \"UNKNOWN\",\n    \"state\": \"UNKNOWN\",\n    \"id\": \"string\"\n  },\n  \"approval\": {},\n  \"rejection\": {},\n  \"close\": {},\n  \"update\": {\n    \"stage\": \"UNKNOWN\"\n  },\n  \"activity_state\": \"UNKNOWN\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8c6f7292-86dd-47a9-97ad-1e8c0f505618",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stage",
+                    "updateStage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"model_version_id\": \"<uint64>\",\n  \"stage\": \"UNKNOWN\",\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 6363,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1964b4a7-8392-47f2-adb7-ba4a5a3ca4e7",
+    "name": "deployment/APISync.proto AuthzService StageService API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

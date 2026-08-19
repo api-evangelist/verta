@@ -1,0 +1,176 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "deployment/APISync.proto AuthzService UACService API",
+    "version": "version not set"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "UACService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "adds new user developer key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/uac/addDevKey"
+          },
+          "docs": "adds new user developer key"
+        },
+        {
+          "info": {
+            "name": "adds new user developer key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/uac/addDevKeyForUser"
+          },
+          "docs": "adds new user developer key"
+        },
+        {
+          "info": {
+            "name": "For now, any user can create a new user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/uac/createUser"
+          },
+          "docs": "For now, any user can create a new user"
+        },
+        {
+          "info": {
+            "name": "deletes primary developer key",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/uac/deletePrimaryDevKey"
+          },
+          "docs": "deletes primary developer key"
+        },
+        {
+          "info": {
+            "name": "deletes primary developer key",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/uac/deletePrimaryDevKeyForUser"
+          },
+          "docs": "deletes primary developer key"
+        },
+        {
+          "info": {
+            "name": "deletes secondary developer key",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/uac/deleteSecondaryDevKey"
+          },
+          "docs": "deletes secondary developer key"
+        },
+        {
+          "info": {
+            "name": "deletes primary developer key",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/uac/deleteSecondaryDevKeyForUser"
+          },
+          "docs": "deletes primary developer key"
+        },
+        {
+          "info": {
+            "name": "Only current user can delete themselves",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/uac/deleteUser"
+          },
+          "docs": "Only current user can delete themselves"
+        },
+        {
+          "info": {
+            "name": "Get the current user information verifying JWT token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/uac/getCurrentUser"
+          },
+          "docs": "Get the current user information verifying JWT token"
+        },
+        {
+          "info": {
+            "name": "Get the current user information verifying JWT token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/uac/getUser",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "email",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get the current user information verifying JWT token"
+        },
+        {
+          "info": {
+            "name": "UACService_getUsers",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/uac/getUsers"
+          }
+        },
+        {
+          "info": {
+            "name": "UACService_getUsersFuzzy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/uac/getUsersFuzzy"
+          }
+        },
+        {
+          "info": {
+            "name": "Only current user can update themselves",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/uac/updateUser"
+          },
+          "docs": "Only current user can update themselves"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

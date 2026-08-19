@@ -1,0 +1,2311 @@
+{
+  "item": [
+    {
+      "id": "b053c7d7-f2b7-4c5f-a9a9-648ea92d7f9d",
+      "name": "DatasetService",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "997b43c1-d9da-4747-bb0e-9e69e49de6cb",
+          "name": "Dataset Service add Dataset Attributes",
+          "request": {
+            "name": "Dataset Service add Dataset Attributes",
+            "description": {},
+            "url": {
+              "path": [
+                "dataset",
+                "addDatasetAttributes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"attributes\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<object>\",\n      \"value_type\": \"STRING\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<object>\",\n      \"value_type\": \"STRING\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5583203e-0b57-4afd-9ec8-1ae8604479e3",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataset",
+                    "addDatasetAttributes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"attributes\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<object>\",\n      \"value_type\": \"STRING\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<object>\",\n      \"value_type\": \"STRING\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dataset\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"owner\": \"string\",\n    \"owner_id\": \"string\",\n    \"group_owner_id\": {\n      \"org_id\": \"string\",\n      \"group_id\": \"string\"\n    },\n    \"description\": \"string\",\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"dataset_visibility\": \"PRIVATE\",\n    \"dataset_type\": \"RAW\",\n    \"attributes\": [\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<object>\",\n        \"value_type\": \"STRING\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<object>\",\n        \"value_type\": \"STRING\"\n      }\n    ],\n    \"time_created\": \"string\",\n    \"time_updated\": \"string\",\n    \"workspace_id\": \"string\",\n    \"workspace_type\": \"UNKNOWN\",\n    \"workspace_service_id\": \"string\",\n    \"custom_permission\": {\n      \"collaborator_type\": \"READ_ONLY\",\n      \"can_deploy\": \"UNKNOWN\",\n      \"can_predict\": \"UNKNOWN\"\n    },\n    \"visibility\": \"UNKNOWN\",\n    \"version_number\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cfe938ec-7b1c-44af-8d2d-3c98db9abfdb",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataset",
+                    "addDatasetAttributes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"attributes\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<object>\",\n      \"value_type\": \"STRING\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<object>\",\n      \"value_type\": \"STRING\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 3293,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "47615bba-93ca-4928-9a1d-8580eea001c0",
+          "name": "Dataset Service add Dataset Tags",
+          "request": {
+            "name": "Dataset Service add Dataset Tags",
+            "description": {},
+            "url": {
+              "path": [
+                "dataset",
+                "addDatasetTags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "81114111-ed72-4b0d-85bf-c0ea38858949",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataset",
+                    "addDatasetTags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dataset\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"owner\": \"string\",\n    \"owner_id\": \"string\",\n    \"group_owner_id\": {\n      \"org_id\": \"string\",\n      \"group_id\": \"string\"\n    },\n    \"description\": \"string\",\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"dataset_visibility\": \"PRIVATE\",\n    \"dataset_type\": \"RAW\",\n    \"attributes\": [\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<object>\",\n        \"value_type\": \"STRING\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<object>\",\n        \"value_type\": \"STRING\"\n      }\n    ],\n    \"time_created\": \"string\",\n    \"time_updated\": \"string\",\n    \"workspace_id\": \"string\",\n    \"workspace_type\": \"UNKNOWN\",\n    \"workspace_service_id\": \"string\",\n    \"custom_permission\": {\n      \"collaborator_type\": \"READ_ONLY\",\n      \"can_deploy\": \"UNKNOWN\",\n      \"can_predict\": \"UNKNOWN\"\n    },\n    \"visibility\": \"UNKNOWN\",\n    \"version_number\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "baf627a0-5e06-4a40-8da2-4ccef85b5cbd",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataset",
+                    "addDatasetTags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 9604,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "65d08fd6-3dc9-43f7-8da8-99e20f1803df",
+          "name": "Dataset Service create Dataset",
+          "request": {
+            "name": "Dataset Service create Dataset",
+            "description": {},
+            "url": {
+              "path": [
+                "dataset",
+                "createDataset"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"attributes\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<object>\",\n      \"value_type\": \"STRING\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<object>\",\n      \"value_type\": \"STRING\"\n    }\n  ],\n  \"dataset_visibility\": \"PRIVATE\",\n  \"dataset_type\": \"RAW\",\n  \"workspace_name\": \"<string>\",\n  \"time_created\": \"<uint64>\",\n  \"custom_permission\": {\n    \"collaborator_type\": \"READ_ONLY\",\n    \"can_deploy\": \"UNKNOWN\",\n    \"can_predict\": \"UNKNOWN\"\n  },\n  \"visibility\": \"UNKNOWN\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e42fb231-ccfa-4575-8c9f-3a3b01f59b23",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataset",
+                    "createDataset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"attributes\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<object>\",\n      \"value_type\": \"STRING\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<object>\",\n      \"value_type\": \"STRING\"\n    }\n  ],\n  \"dataset_visibility\": \"PRIVATE\",\n  \"dataset_type\": \"RAW\",\n  \"workspace_name\": \"<string>\",\n  \"time_created\": \"<uint64>\",\n  \"custom_permission\": {\n    \"collaborator_type\": \"READ_ONLY\",\n    \"can_deploy\": \"UNKNOWN\",\n    \"can_predict\": \"UNKNOWN\"\n  },\n  \"visibility\": \"UNKNOWN\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dataset\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"owner\": \"string\",\n    \"owner_id\": \"string\",\n    \"group_owner_id\": {\n      \"org_id\": \"string\",\n      \"group_id\": \"string\"\n    },\n    \"description\": \"string\",\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"dataset_visibility\": \"PRIVATE\",\n    \"dataset_type\": \"RAW\",\n    \"attributes\": [\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<object>\",\n        \"value_type\": \"STRING\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<object>\",\n        \"value_type\": \"STRING\"\n      }\n    ],\n    \"time_created\": \"string\",\n    \"time_updated\": \"string\",\n    \"workspace_id\": \"string\",\n    \"workspace_type\": \"UNKNOWN\",\n    \"workspace_service_id\": \"string\",\n    \"custom_permission\": {\n      \"collaborator_type\": \"READ_ONLY\",\n      \"can_deploy\": \"UNKNOWN\",\n      \"can_predict\": \"UNKNOWN\"\n    },\n    \"visibility\": \"UNKNOWN\",\n    \"version_number\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8ab4d990-b8ce-4503-872c-8548bad477f5",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataset",
+                    "createDataset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"attributes\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<object>\",\n      \"value_type\": \"STRING\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<object>\",\n      \"value_type\": \"STRING\"\n    }\n  ],\n  \"dataset_visibility\": \"PRIVATE\",\n  \"dataset_type\": \"RAW\",\n  \"workspace_name\": \"<string>\",\n  \"time_created\": \"<uint64>\",\n  \"custom_permission\": {\n    \"collaborator_type\": \"READ_ONLY\",\n    \"can_deploy\": \"UNKNOWN\",\n    \"can_predict\": \"UNKNOWN\"\n  },\n  \"visibility\": \"UNKNOWN\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 9604,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d82541b5-2434-4036-b968-2d279b5271f0",
+          "name": "Dataset Service delete Dataset",
+          "request": {
+            "name": "Dataset Service delete Dataset",
+            "description": {},
+            "url": {
+              "path": [
+                "dataset",
+                "deleteDataset"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4dba9e4d-7674-4366-97b5-3f9d6c41f19c",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataset",
+                    "deleteDataset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12a19923-ea4d-4010-ad79-e27b58afe113",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataset",
+                    "deleteDataset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 9604,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "660fc68c-6bc6-454c-8a9a-634ae7e9305e",
+          "name": "Dataset Service delete Dataset Attributes",
+          "request": {
+            "name": "Dataset Service delete Dataset Attributes",
+            "description": {},
+            "url": {
+              "path": [
+                "dataset",
+                "deleteDatasetAttributes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"attribute_keys\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"delete_all\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8cce41c3-40fd-4a12-9ab5-40581ed09d11",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataset",
+                    "deleteDatasetAttributes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"attribute_keys\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"delete_all\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dataset\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"owner\": \"string\",\n    \"owner_id\": \"string\",\n    \"group_owner_id\": {\n      \"org_id\": \"string\",\n      \"group_id\": \"string\"\n    },\n    \"description\": \"string\",\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"dataset_visibility\": \"PRIVATE\",\n    \"dataset_type\": \"RAW\",\n    \"attributes\": [\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<object>\",\n        \"value_type\": \"STRING\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<object>\",\n        \"value_type\": \"STRING\"\n      }\n    ],\n    \"time_created\": \"string\",\n    \"time_updated\": \"string\",\n    \"workspace_id\": \"string\",\n    \"workspace_type\": \"UNKNOWN\",\n    \"workspace_service_id\": \"string\",\n    \"custom_permission\": {\n      \"collaborator_type\": \"READ_ONLY\",\n      \"can_deploy\": \"UNKNOWN\",\n      \"can_predict\": \"UNKNOWN\"\n    },\n    \"visibility\": \"UNKNOWN\",\n    \"version_number\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4d8e9cff-0879-4eee-98b8-987a650239ac",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataset",
+                    "deleteDatasetAttributes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"attribute_keys\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"delete_all\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 9604,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5ce7c45a-51ba-476f-a9b9-7e5f279247a2",
+          "name": "Dataset Service delete Dataset Tags",
+          "request": {
+            "name": "Dataset Service delete Dataset Tags",
+            "description": {},
+            "url": {
+              "path": [
+                "dataset",
+                "deleteDatasetTags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"delete_all\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "59ce685e-3e11-41e8-b038-8c888c84eda1",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataset",
+                    "deleteDatasetTags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"delete_all\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dataset\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"owner\": \"string\",\n    \"owner_id\": \"string\",\n    \"group_owner_id\": {\n      \"org_id\": \"string\",\n      \"group_id\": \"string\"\n    },\n    \"description\": \"string\",\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"dataset_visibility\": \"PRIVATE\",\n    \"dataset_type\": \"RAW\",\n    \"attributes\": [\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<object>\",\n        \"value_type\": \"STRING\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<object>\",\n        \"value_type\": \"STRING\"\n      }\n    ],\n    \"time_created\": \"string\",\n    \"time_updated\": \"string\",\n    \"workspace_id\": \"string\",\n    \"workspace_type\": \"UNKNOWN\",\n    \"workspace_service_id\": \"string\",\n    \"custom_permission\": {\n      \"collaborator_type\": \"READ_ONLY\",\n      \"can_deploy\": \"UNKNOWN\",\n      \"can_predict\": \"UNKNOWN\"\n    },\n    \"visibility\": \"UNKNOWN\",\n    \"version_number\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8d7fa95e-27c5-4493-a4d1-949e647865a7",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataset",
+                    "deleteDatasetTags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"tags\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"delete_all\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 9604,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c23ad39a-d059-4751-98d6-cf29a47153f4",
+          "name": "Dataset Service delete Datasets",
+          "request": {
+            "name": "Dataset Service delete Datasets",
+            "description": {},
+            "url": {
+              "path": [
+                "dataset",
+                "deleteDatasets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ad116517-e79e-4b00-ad26-6e1fe9cd6e35",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataset",
+                    "deleteDatasets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a1c7396-357f-4d02-a7ae-c0131fd059f2",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataset",
+                    "deleteDatasets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 9604,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3e370fe4-04be-4c31-b827-3099c62451e8",
+          "name": "queries",
+          "request": {
+            "name": "queries",
+            "description": {},
+            "url": {
+              "path": [
+                "dataset",
+                "findDatasets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataset_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"predicates\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<object>\",\n      \"value_type\": \"STRING\",\n      \"operator\": \"EQ\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<object>\",\n      \"value_type\": \"STRING\",\n      \"operator\": \"EQ\"\n    }\n  ],\n  \"ids_only\": \"<boolean>\",\n  \"workspace_name\": \"<string>\",\n  \"page_number\": \"<integer>\",\n  \"page_limit\": \"<integer>\",\n  \"ascending\": \"<boolean>\",\n  \"sort_key\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "60a46ec3-081c-4d82-9e00-484d0196e49a",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataset",
+                    "findDatasets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"predicates\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<object>\",\n      \"value_type\": \"STRING\",\n      \"operator\": \"EQ\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<object>\",\n      \"value_type\": \"STRING\",\n      \"operator\": \"EQ\"\n    }\n  ],\n  \"ids_only\": \"<boolean>\",\n  \"workspace_name\": \"<string>\",\n  \"page_number\": \"<integer>\",\n  \"page_limit\": \"<integer>\",\n  \"ascending\": \"<boolean>\",\n  \"sort_key\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"datasets\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"owner\": \"string\",\n      \"owner_id\": \"string\",\n      \"group_owner_id\": {\n        \"org_id\": \"string\",\n        \"group_id\": \"string\"\n      },\n      \"description\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"dataset_visibility\": \"PRIVATE\",\n      \"dataset_type\": \"RAW\",\n      \"attributes\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<object>\",\n          \"value_type\": \"STRING\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<object>\",\n          \"value_type\": \"STRING\"\n        }\n      ],\n      \"time_created\": \"string\",\n      \"time_updated\": \"string\",\n      \"workspace_id\": \"string\",\n      \"workspace_type\": \"UNKNOWN\",\n      \"workspace_service_id\": \"string\",\n      \"custom_permission\": {\n        \"collaborator_type\": \"READ_ONLY\",\n        \"can_deploy\": \"UNKNOWN\",\n        \"can_predict\": \"UNKNOWN\"\n      },\n      \"visibility\": \"UNKNOWN\",\n      \"version_number\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"owner\": \"string\",\n      \"owner_id\": \"string\",\n      \"group_owner_id\": {\n        \"org_id\": \"string\",\n        \"group_id\": \"string\"\n      },\n      \"description\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"dataset_visibility\": \"PRIVATE\",\n      \"dataset_type\": \"RAW\",\n      \"attributes\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<object>\",\n          \"value_type\": \"STRING\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<object>\",\n          \"value_type\": \"STRING\"\n        }\n      ],\n      \"time_created\": \"string\",\n      \"time_updated\": \"string\",\n      \"workspace_id\": \"string\",\n      \"workspace_type\": \"UNKNOWN\",\n      \"workspace_service_id\": \"string\",\n      \"custom_permission\": {\n        \"collaborator_type\": \"READ_ONLY\",\n        \"can_deploy\": \"UNKNOWN\",\n        \"can_predict\": \"UNKNOWN\"\n      },\n      \"visibility\": \"UNKNOWN\",\n      \"version_number\": \"string\"\n    }\n  ],\n  \"total_records\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9cd80042-a4da-4cad-bf03-bb25e393a352",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataset",
+                    "findDatasets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"predicates\": [\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<object>\",\n      \"value_type\": \"STRING\",\n      \"operator\": \"EQ\"\n    },\n    {\n      \"key\": \"<string>\",\n      \"value\": \"<object>\",\n      \"value_type\": \"STRING\",\n      \"operator\": \"EQ\"\n    }\n  ],\n  \"ids_only\": \"<boolean>\",\n  \"workspace_name\": \"<string>\",\n  \"page_number\": \"<integer>\",\n  \"page_limit\": \"<integer>\",\n  \"ascending\": \"<boolean>\",\n  \"sort_key\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 9604,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d845eb19-0d0e-41a4-a2e4-b26802bc485f",
+          "name": "Dataset Service get All Datasets",
+          "request": {
+            "name": "Dataset Service get All Datasets",
+            "description": {},
+            "url": {
+              "path": [
+                "dataset",
+                "getAllDatasets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page_number",
+                  "value": "<integer>",
+                  "description": "For pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_limit",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "ascending",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_key",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "workspace_name",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "924db7a5-1f08-47bc-9b4b-7247c1cf4554",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataset",
+                    "getAllDatasets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_number",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "ascending",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "sort_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "workspace_name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"datasets\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"owner\": \"string\",\n      \"owner_id\": \"string\",\n      \"group_owner_id\": {\n        \"org_id\": \"string\",\n        \"group_id\": \"string\"\n      },\n      \"description\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"dataset_visibility\": \"PRIVATE\",\n      \"dataset_type\": \"RAW\",\n      \"attributes\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<object>\",\n          \"value_type\": \"STRING\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<object>\",\n          \"value_type\": \"STRING\"\n        }\n      ],\n      \"time_created\": \"string\",\n      \"time_updated\": \"string\",\n      \"workspace_id\": \"string\",\n      \"workspace_type\": \"UNKNOWN\",\n      \"workspace_service_id\": \"string\",\n      \"custom_permission\": {\n        \"collaborator_type\": \"READ_ONLY\",\n        \"can_deploy\": \"UNKNOWN\",\n        \"can_predict\": \"UNKNOWN\"\n      },\n      \"visibility\": \"UNKNOWN\",\n      \"version_number\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"owner\": \"string\",\n      \"owner_id\": \"string\",\n      \"group_owner_id\": {\n        \"org_id\": \"string\",\n        \"group_id\": \"string\"\n      },\n      \"description\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"dataset_visibility\": \"PRIVATE\",\n      \"dataset_type\": \"RAW\",\n      \"attributes\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<object>\",\n          \"value_type\": \"STRING\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<object>\",\n          \"value_type\": \"STRING\"\n        }\n      ],\n      \"time_created\": \"string\",\n      \"time_updated\": \"string\",\n      \"workspace_id\": \"string\",\n      \"workspace_type\": \"UNKNOWN\",\n      \"workspace_service_id\": \"string\",\n      \"custom_permission\": {\n        \"collaborator_type\": \"READ_ONLY\",\n        \"can_deploy\": \"UNKNOWN\",\n        \"can_predict\": \"UNKNOWN\"\n      },\n      \"visibility\": \"UNKNOWN\",\n      \"version_number\": \"string\"\n    }\n  ],\n  \"total_records\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a0fed2b9-66fd-4be6-8ce7-be311ad3e7ed",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataset",
+                    "getAllDatasets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_number",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "ascending",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "sort_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "workspace_name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 9604,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9975691b-4f20-4cc1-86d0-db9da545aed9",
+          "name": "Dataset Service get Dataset By Id",
+          "request": {
+            "name": "Dataset Service get Dataset By Id",
+            "description": {},
+            "url": {
+              "path": [
+                "dataset",
+                "getDatasetById"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5afdbe83-ffcb-45a4-bbc9-ee2e79baa36a",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataset",
+                    "getDatasetById"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dataset\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"owner\": \"string\",\n    \"owner_id\": \"string\",\n    \"group_owner_id\": {\n      \"org_id\": \"string\",\n      \"group_id\": \"string\"\n    },\n    \"description\": \"string\",\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"dataset_visibility\": \"PRIVATE\",\n    \"dataset_type\": \"RAW\",\n    \"attributes\": [\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<object>\",\n        \"value_type\": \"STRING\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<object>\",\n        \"value_type\": \"STRING\"\n      }\n    ],\n    \"time_created\": \"string\",\n    \"time_updated\": \"string\",\n    \"workspace_id\": \"string\",\n    \"workspace_type\": \"UNKNOWN\",\n    \"workspace_service_id\": \"string\",\n    \"custom_permission\": {\n      \"collaborator_type\": \"READ_ONLY\",\n      \"can_deploy\": \"UNKNOWN\",\n      \"can_predict\": \"UNKNOWN\"\n    },\n    \"visibility\": \"UNKNOWN\",\n    \"version_number\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "382a2fcd-3b13-4174-862c-27449edc0980",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataset",
+                    "getDatasetById"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 9604,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "210b7594-177a-4c09-9a08-7294a120f7da",
+          "name": "Dataset Service get Dataset By Name",
+          "request": {
+            "name": "Dataset Service get Dataset By Name",
+            "description": {},
+            "url": {
+              "path": [
+                "dataset",
+                "getDatasetByName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "workspace_name",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0a17f59d-1290-4757-8b5c-ec3abb7593e0",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataset",
+                    "getDatasetByName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "workspace_name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dataset_by_user\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"owner\": \"string\",\n    \"owner_id\": \"string\",\n    \"group_owner_id\": {\n      \"org_id\": \"string\",\n      \"group_id\": \"string\"\n    },\n    \"description\": \"string\",\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"dataset_visibility\": \"PRIVATE\",\n    \"dataset_type\": \"RAW\",\n    \"attributes\": [\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<object>\",\n        \"value_type\": \"STRING\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<object>\",\n        \"value_type\": \"STRING\"\n      }\n    ],\n    \"time_created\": \"string\",\n    \"time_updated\": \"string\",\n    \"workspace_id\": \"string\",\n    \"workspace_type\": \"UNKNOWN\",\n    \"workspace_service_id\": \"string\",\n    \"custom_permission\": {\n      \"collaborator_type\": \"READ_ONLY\",\n      \"can_deploy\": \"UNKNOWN\",\n      \"can_predict\": \"UNKNOWN\"\n    },\n    \"visibility\": \"UNKNOWN\",\n    \"version_number\": \"string\"\n  },\n  \"shared_datasets\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"owner\": \"string\",\n      \"owner_id\": \"string\",\n      \"group_owner_id\": {\n        \"org_id\": \"string\",\n        \"group_id\": \"string\"\n      },\n      \"description\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"dataset_visibility\": \"PRIVATE\",\n      \"dataset_type\": \"RAW\",\n      \"attributes\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<object>\",\n          \"value_type\": \"STRING\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<object>\",\n          \"value_type\": \"STRING\"\n        }\n      ],\n      \"time_created\": \"string\",\n      \"time_updated\": \"string\",\n      \"workspace_id\": \"string\",\n      \"workspace_type\": \"UNKNOWN\",\n      \"workspace_service_id\": \"string\",\n      \"custom_permission\": {\n        \"collaborator_type\": \"READ_ONLY\",\n        \"can_deploy\": \"UNKNOWN\",\n        \"can_predict\": \"UNKNOWN\"\n      },\n      \"visibility\": \"UNKNOWN\",\n      \"version_number\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"owner\": \"string\",\n      \"owner_id\": \"string\",\n      \"group_owner_id\": {\n        \"org_id\": \"string\",\n        \"group_id\": \"string\"\n      },\n      \"description\": \"string\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"dataset_visibility\": \"PRIVATE\",\n      \"dataset_type\": \"RAW\",\n      \"attributes\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<object>\",\n          \"value_type\": \"STRING\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<object>\",\n          \"value_type\": \"STRING\"\n        }\n      ],\n      \"time_created\": \"string\",\n      \"time_updated\": \"string\",\n      \"workspace_id\": \"string\",\n      \"workspace_type\": \"UNKNOWN\",\n      \"workspace_service_id\": \"string\",\n      \"custom_permission\": {\n        \"collaborator_type\": \"READ_ONLY\",\n        \"can_deploy\": \"UNKNOWN\",\n        \"can_predict\": \"UNKNOWN\"\n      },\n      \"visibility\": \"UNKNOWN\",\n      \"version_number\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a770c182-3836-4bfa-8066-782705ad4719",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataset",
+                    "getDatasetByName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "workspace_name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 9604,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7c9dc911-eb62-4cb4-bc27-a1e31bcc0d41",
+          "name": "Dataset Service get Dataset Tags",
+          "request": {
+            "name": "Dataset Service get Dataset Tags",
+            "description": {},
+            "url": {
+              "path": [
+                "dataset",
+                "getDatasetTags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c6514d73-941c-44a0-a6a8-0154e4a1ff14",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataset",
+                    "getDatasetTags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tags\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a5869824-531d-4127-a32c-cd4bbf885ecc",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataset",
+                    "getDatasetTags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 9604,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "828e410a-e35a-4f72-a0da-fb3f70a77a54",
+          "name": "Dataset Service get Experiment Run By Dataset",
+          "request": {
+            "name": "Dataset Service get Experiment Run By Dataset",
+            "description": {},
+            "url": {
+              "path": [
+                "dataset",
+                "getExperimentRunByDataset"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataset_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "de5ead3a-bfe7-4efb-9f41-39a29bba18cd",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataset",
+                    "getExperimentRunByDataset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"experiment_runs\": [\n    {\n      \"id\": \"string\",\n      \"project_id\": \"string\",\n      \"experiment_id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"date_created\": \"string\",\n      \"date_updated\": \"string\",\n      \"start_time\": \"string\",\n      \"end_time\": \"string\",\n      \"code_version\": \"string\",\n      \"code_version_snapshot\": {\n        \"git_snapshot\": {\n          \"filepaths\": [\n            \"string\",\n            \"string\"\n          ],\n          \"repo\": \"string\",\n          \"hash\": \"string\",\n          \"is_dirty\": \"UNKNOWN\"\n        },\n        \"code_archive\": {\n          \"key\": \"string\",\n          \"path\": \"string\",\n          \"path_only\": false,\n          \"artifact_type\": \"IMAGE\",\n          \"linked_artifact_id\": \"string\",\n          \"filename_extension\": \"string\",\n          \"serialization\": \"string\",\n          \"artifact_subtype\": \"string\",\n          \"upload_completed\": true\n        },\n        \"date_logged\": \"string\"\n      },\n      \"parent_id\": \"string\",\n      \"environment\": {\n        \"python\": {\n          \"version\": {\n            \"major\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"minor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"patch\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"suffix\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"requirements\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"constraints\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"raw_requirements\": \"string\",\n          \"raw_constraints\": \"string\"\n        },\n        \"docker\": {\n          \"repository\": \"string\",\n          \"tag\": \"string\",\n          \"sha\": \"string\"\n        },\n        \"environment_variables\": [\n          {\n            \"name\": \"string\",\n            \"value\": \"string\"\n          },\n          {\n            \"name\": \"string\",\n            \"value\": \"string\"\n          }\n        ],\n        \"command_line\": [\n          \"string\",\n          \"string\"\n        ],\n        \"apt\": {\n          \"packages\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      },\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"attributes\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<object>\",\n          \"value_type\": \"STRING\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<object>\",\n          \"value_type\": \"STRING\"\n        }\n      ],\n      \"hyperparameters\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<object>\",\n          \"value_type\": \"STRING\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<object>\",\n          \"value_type\": \"STRING\"\n        }\n      ],\n      \"artifacts\": [\n        {\n          \"key\": \"string\",\n          \"path\": \"string\",\n          \"path_only\": true,\n          \"artifact_type\": \"IMAGE\",\n          \"linked_artifact_id\": \"string\",\n          \"filename_extension\": \"string\",\n          \"serialization\": \"string\",\n          \"artifact_subtype\": \"string\",\n          \"upload_completed\": false\n        },\n        {\n          \"key\": \"string\",\n          \"path\": \"string\",\n          \"path_only\": false,\n          \"artifact_type\": \"IMAGE\",\n          \"linked_artifact_id\": \"string\",\n          \"filename_extension\": \"string\",\n          \"serialization\": \"string\",\n          \"artifact_subtype\": \"string\",\n          \"upload_completed\": false\n        }\n      ],\n      \"datasets\": [\n        {\n          \"key\": \"string\",\n          \"path\": \"string\",\n          \"path_only\": true,\n          \"artifact_type\": \"IMAGE\",\n          \"linked_artifact_id\": \"string\",\n          \"filename_extension\": \"string\",\n          \"serialization\": \"string\",\n          \"artifact_subtype\": \"string\",\n          \"upload_completed\": true\n        },\n        {\n          \"key\": \"string\",\n          \"path\": \"string\",\n          \"path_only\": true,\n          \"artifact_type\": \"IMAGE\",\n          \"linked_artifact_id\": \"string\",\n          \"filename_extension\": \"string\",\n          \"serialization\": \"string\",\n          \"artifact_subtype\": \"string\",\n          \"upload_completed\": false\n        }\n      ],\n      \"metrics\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<object>\",\n          \"value_type\": \"STRING\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<object>\",\n          \"value_type\": \"STRING\"\n        }\n      ],\n      \"observations\": [\n        {\n          \"attribute\": {\n            \"key\": \"<string>\",\n            \"value\": \"<object>\",\n            \"value_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"artifact\": {\n            \"key\": \"string\",\n            \"path\": \"string\",\n            \"path_only\": false,\n            \"artifact_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"linked_artifact_id\": \"string\",\n            \"filename_extension\": \"string\",\n            \"serialization\": \"string\",\n            \"artifact_subtype\": \"string\",\n            \"upload_completed\": true\n          },\n          \"timestamp\": \"string\",\n          \"epoch_number\": {}\n        },\n        {\n          \"attribute\": {\n            \"key\": \"<string>\",\n            \"value\": \"<object>\",\n            \"value_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"artifact\": {\n            \"key\": \"string\",\n            \"path\": \"string\",\n            \"path_only\": false,\n            \"artifact_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"linked_artifact_id\": \"string\",\n            \"filename_extension\": \"string\",\n            \"serialization\": \"string\",\n            \"artifact_subtype\": \"string\",\n            \"upload_completed\": true\n          },\n          \"timestamp\": \"string\",\n          \"epoch_number\": {}\n        }\n      ],\n      \"features\": [\n        {\n          \"name\": \"string\"\n        },\n        {\n          \"name\": \"string\"\n        }\n      ],\n      \"job_id\": \"string\",\n      \"owner\": \"string\",\n      \"owner_id\": \"string\",\n      \"group_owner_id\": {\n        \"org_id\": \"string\",\n        \"group_id\": \"string\"\n      },\n      \"versioned_inputs\": {\n        \"repository_id\": \"string\",\n        \"commit\": \"string\",\n        \"key_location_map\": {\n          \"key_0\": {\n            \"location\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_1\": {\n            \"location\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      },\n      \"code_version_from_blob\": {\n        \"key_0\": {\n          \"git_snapshot\": {\n            \"filepaths\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"repo\": \"string\",\n            \"hash\": \"string\",\n            \"is_dirty\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"code_archive\": {\n            \"key\": \"string\",\n            \"path\": \"string\",\n            \"path_only\": true,\n            \"artifact_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"linked_artifact_id\": \"string\",\n            \"filename_extension\": \"string\",\n            \"serialization\": \"string\",\n            \"artifact_subtype\": \"string\",\n            \"upload_completed\": true\n          },\n          \"date_logged\": \"string\"\n        },\n        \"key_1\": {\n          \"git_snapshot\": {\n            \"filepaths\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"repo\": \"string\",\n            \"hash\": \"string\",\n            \"is_dirty\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"code_archive\": {\n            \"key\": \"string\",\n            \"path\": \"string\",\n            \"path_only\": true,\n            \"artifact_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"linked_artifact_id\": \"string\",\n            \"filename_extension\": \"string\",\n            \"serialization\": \"string\",\n            \"artifact_subtype\": \"string\",\n            \"upload_completed\": false\n          },\n          \"date_logged\": \"string\"\n        }\n      },\n      \"version_number\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"project_id\": \"string\",\n      \"experiment_id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"date_created\": \"string\",\n      \"date_updated\": \"string\",\n      \"start_time\": \"string\",\n      \"end_time\": \"string\",\n      \"code_version\": \"string\",\n      \"code_version_snapshot\": {\n        \"git_snapshot\": {\n          \"filepaths\": [\n            \"string\",\n            \"string\"\n          ],\n          \"repo\": \"string\",\n          \"hash\": \"string\",\n          \"is_dirty\": \"UNKNOWN\"\n        },\n        \"code_archive\": {\n          \"key\": \"string\",\n          \"path\": \"string\",\n          \"path_only\": false,\n          \"artifact_type\": \"IMAGE\",\n          \"linked_artifact_id\": \"string\",\n          \"filename_extension\": \"string\",\n          \"serialization\": \"string\",\n          \"artifact_subtype\": \"string\",\n          \"upload_completed\": true\n        },\n        \"date_logged\": \"string\"\n      },\n      \"parent_id\": \"string\",\n      \"environment\": {\n        \"python\": {\n          \"version\": {\n            \"major\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"minor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"patch\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"suffix\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"requirements\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"constraints\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"raw_requirements\": \"string\",\n          \"raw_constraints\": \"string\"\n        },\n        \"docker\": {\n          \"repository\": \"string\",\n          \"tag\": \"string\",\n          \"sha\": \"string\"\n        },\n        \"environment_variables\": [\n          {\n            \"name\": \"string\",\n            \"value\": \"string\"\n          },\n          {\n            \"name\": \"string\",\n            \"value\": \"string\"\n          }\n        ],\n        \"command_line\": [\n          \"string\",\n          \"string\"\n        ],\n        \"apt\": {\n          \"packages\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      },\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"attributes\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<object>\",\n          \"value_type\": \"STRING\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<object>\",\n          \"value_type\": \"STRING\"\n        }\n      ],\n      \"hyperparameters\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<object>\",\n          \"value_type\": \"STRING\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<object>\",\n          \"value_type\": \"STRING\"\n        }\n      ],\n      \"artifacts\": [\n        {\n          \"key\": \"string\",\n          \"path\": \"string\",\n          \"path_only\": true,\n          \"artifact_type\": \"IMAGE\",\n          \"linked_artifact_id\": \"string\",\n          \"filename_extension\": \"string\",\n          \"serialization\": \"string\",\n          \"artifact_subtype\": \"string\",\n          \"upload_completed\": false\n        },\n        {\n          \"key\": \"string\",\n          \"path\": \"string\",\n          \"path_only\": true,\n          \"artifact_type\": \"IMAGE\",\n          \"linked_artifact_id\": \"string\",\n          \"filename_extension\": \"string\",\n          \"serialization\": \"string\",\n          \"artifact_subtype\": \"string\",\n          \"upload_completed\": false\n        }\n      ],\n      \"datasets\": [\n        {\n          \"key\": \"string\",\n          \"path\": \"string\",\n          \"path_only\": false,\n          \"artifact_type\": \"IMAGE\",\n          \"linked_artifact_id\": \"string\",\n          \"filename_extension\": \"string\",\n          \"serialization\": \"string\",\n          \"artifact_subtype\": \"string\",\n          \"upload_completed\": false\n        },\n        {\n          \"key\": \"string\",\n          \"path\": \"string\",\n          \"path_only\": true,\n          \"artifact_type\": \"IMAGE\",\n          \"linked_artifact_id\": \"string\",\n          \"filename_extension\": \"string\",\n          \"serialization\": \"string\",\n          \"artifact_subtype\": \"string\",\n          \"upload_completed\": true\n        }\n      ],\n      \"metrics\": [\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<object>\",\n          \"value_type\": \"STRING\"\n        },\n        {\n          \"key\": \"<string>\",\n          \"value\": \"<object>\",\n          \"value_type\": \"STRING\"\n        }\n      ],\n      \"observations\": [\n        {\n          \"attribute\": {\n            \"key\": \"<string>\",\n            \"value\": \"<object>\",\n            \"value_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"artifact\": {\n            \"key\": \"string\",\n            \"path\": \"string\",\n            \"path_only\": true,\n            \"artifact_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"linked_artifact_id\": \"string\",\n            \"filename_extension\": \"string\",\n            \"serialization\": \"string\",\n            \"artifact_subtype\": \"string\",\n            \"upload_completed\": true\n          },\n          \"timestamp\": \"string\",\n          \"epoch_number\": {}\n        },\n        {\n          \"attribute\": {\n            \"key\": \"<string>\",\n            \"value\": \"<object>\",\n            \"value_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"artifact\": {\n            \"key\": \"string\",\n            \"path\": \"string\",\n            \"path_only\": true,\n            \"artifact_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"linked_artifact_id\": \"string\",\n            \"filename_extension\": \"string\",\n            \"serialization\": \"string\",\n            \"artifact_subtype\": \"string\",\n            \"upload_completed\": true\n          },\n          \"timestamp\": \"string\",\n          \"epoch_number\": {}\n        }\n      ],\n      \"features\": [\n        {\n          \"name\": \"string\"\n        },\n        {\n          \"name\": \"string\"\n        }\n      ],\n      \"job_id\": \"string\",\n      \"owner\": \"string\",\n      \"owner_id\": \"string\",\n      \"group_owner_id\": {\n        \"org_id\": \"string\",\n        \"group_id\": \"string\"\n      },\n      \"versioned_inputs\": {\n        \"repository_id\": \"string\",\n        \"commit\": \"string\",\n        \"key_location_map\": {\n          \"key_0\": {\n            \"location\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_1\": {\n            \"location\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"key_2\": {\n            \"location\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      },\n      \"code_version_from_blob\": {\n        \"key_0\": {\n          \"git_snapshot\": {\n            \"filepaths\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"repo\": \"string\",\n            \"hash\": \"string\",\n            \"is_dirty\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"code_archive\": {\n            \"key\": \"string\",\n            \"path\": \"string\",\n            \"path_only\": false,\n            \"artifact_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"linked_artifact_id\": \"string\",\n            \"filename_extension\": \"string\",\n            \"serialization\": \"string\",\n            \"artifact_subtype\": \"string\",\n            \"upload_completed\": false\n          },\n          \"date_logged\": \"string\"\n        },\n        \"key_1\": {\n          \"git_snapshot\": {\n            \"filepaths\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"repo\": \"string\",\n            \"hash\": \"string\",\n            \"is_dirty\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"code_archive\": {\n            \"key\": \"string\",\n            \"path\": \"string\",\n            \"path_only\": false,\n            \"artifact_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"linked_artifact_id\": \"string\",\n            \"filename_extension\": \"string\",\n            \"serialization\": \"string\",\n            \"artifact_subtype\": \"string\",\n            \"upload_completed\": true\n          },\n          \"date_logged\": \"string\"\n        },\n        \"key_2\": {\n          \"git_snapshot\": {\n            \"filepaths\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"repo\": \"string\",\n            \"hash\": \"string\",\n            \"is_dirty\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"code_archive\": {\n            \"key\": \"string\",\n            \"path\": \"string\",\n            \"path_only\": true,\n            \"artifact_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"linked_artifact_id\": \"string\",\n            \"filename_extension\": \"string\",\n            \"serialization\": \"string\",\n            \"artifact_subtype\": \"string\",\n            \"upload_completed\": false\n          },\n          \"date_logged\": \"string\"\n        }\n      },\n      \"version_number\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "24989e4c-a532-4252-97f5-07d49ef8d05c",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataset",
+                    "getExperimentRunByDataset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataset_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 9604,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c958cb48-a39e-42f5-8f9f-ced2b32b0597",
+          "name": "Dataset Service get Last Experiment By Dataset Id",
+          "request": {
+            "name": "Dataset Service get Last Experiment By Dataset Id",
+            "description": {},
+            "url": {
+              "path": [
+                "dataset",
+                "getLastExperimentByDatasetId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "dataset_id",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9cac0be1-5dbf-44e2-bf77-0b781662828f",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataset",
+                    "getLastExperimentByDatasetId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dataset_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"experiment\": {\n    \"id\": \"string\",\n    \"project_id\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"date_created\": \"string\",\n    \"date_updated\": \"string\",\n    \"attributes\": [\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<object>\",\n        \"value_type\": \"STRING\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<object>\",\n        \"value_type\": \"STRING\"\n      }\n    ],\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"owner\": \"string\",\n    \"owner_id\": \"string\",\n    \"group_owner_id\": {\n      \"org_id\": \"string\",\n      \"group_id\": \"string\"\n    },\n    \"code_version_snapshot\": {\n      \"git_snapshot\": {\n        \"filepaths\": [\n          \"string\",\n          \"string\"\n        ],\n        \"repo\": \"string\",\n        \"hash\": \"string\",\n        \"is_dirty\": \"UNKNOWN\"\n      },\n      \"code_archive\": {\n        \"key\": \"string\",\n        \"path\": \"string\",\n        \"path_only\": false,\n        \"artifact_type\": \"IMAGE\",\n        \"linked_artifact_id\": \"string\",\n        \"filename_extension\": \"string\",\n        \"serialization\": \"string\",\n        \"artifact_subtype\": \"string\",\n        \"upload_completed\": true\n      },\n      \"date_logged\": \"string\"\n    },\n    \"artifacts\": [\n      {\n        \"key\": \"string\",\n        \"path\": \"string\",\n        \"path_only\": true,\n        \"artifact_type\": \"IMAGE\",\n        \"linked_artifact_id\": \"string\",\n        \"filename_extension\": \"string\",\n        \"serialization\": \"string\",\n        \"artifact_subtype\": \"string\",\n        \"upload_completed\": false\n      },\n      {\n        \"key\": \"string\",\n        \"path\": \"string\",\n        \"path_only\": false,\n        \"artifact_type\": \"IMAGE\",\n        \"linked_artifact_id\": \"string\",\n        \"filename_extension\": \"string\",\n        \"serialization\": \"string\",\n        \"artifact_subtype\": \"string\",\n        \"upload_completed\": false\n      }\n    ],\n    \"version_number\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7e539eb0-0b32-4d63-b47d-fc9bf592190c",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataset",
+                    "getLastExperimentByDatasetId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dataset_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 9604,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "48a66da2-5128-4500-a6e9-1a868271ee77",
+          "name": "Dataset Service update Dataset Attributes",
+          "request": {
+            "name": "Dataset Service update Dataset Attributes",
+            "description": {},
+            "url": {
+              "path": [
+                "dataset",
+                "updateDatasetAttributes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"attribute\": {\n    \"key\": \"<string>\",\n    \"value\": \"<object>\",\n    \"value_type\": \"STRING\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d6a3cc78-db5d-42b6-b301-ace96e619463",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataset",
+                    "updateDatasetAttributes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"attribute\": {\n    \"key\": \"<string>\",\n    \"value\": \"<object>\",\n    \"value_type\": \"STRING\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dataset\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"owner\": \"string\",\n    \"owner_id\": \"string\",\n    \"group_owner_id\": {\n      \"org_id\": \"string\",\n      \"group_id\": \"string\"\n    },\n    \"description\": \"string\",\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"dataset_visibility\": \"PRIVATE\",\n    \"dataset_type\": \"RAW\",\n    \"attributes\": [\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<object>\",\n        \"value_type\": \"STRING\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<object>\",\n        \"value_type\": \"STRING\"\n      }\n    ],\n    \"time_created\": \"string\",\n    \"time_updated\": \"string\",\n    \"workspace_id\": \"string\",\n    \"workspace_type\": \"UNKNOWN\",\n    \"workspace_service_id\": \"string\",\n    \"custom_permission\": {\n      \"collaborator_type\": \"READ_ONLY\",\n      \"can_deploy\": \"UNKNOWN\",\n      \"can_predict\": \"UNKNOWN\"\n    },\n    \"visibility\": \"UNKNOWN\",\n    \"version_number\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a4a8c80a-47be-47a7-83a4-c7b61779d0ba",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataset",
+                    "updateDatasetAttributes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"attribute\": {\n    \"key\": \"<string>\",\n    \"value\": \"<object>\",\n    \"value_type\": \"STRING\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 9604,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fcea3efe-41d0-42e4-9707-4e157e1317c3",
+          "name": "Dataset Service update Dataset Description",
+          "request": {
+            "name": "Dataset Service update Dataset Description",
+            "description": {},
+            "url": {
+              "path": [
+                "dataset",
+                "updateDatasetDescription"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f2a1af30-5bd9-44a4-89d2-3d4fac5982ff",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataset",
+                    "updateDatasetDescription"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dataset\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"owner\": \"string\",\n    \"owner_id\": \"string\",\n    \"group_owner_id\": {\n      \"org_id\": \"string\",\n      \"group_id\": \"string\"\n    },\n    \"description\": \"string\",\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"dataset_visibility\": \"PRIVATE\",\n    \"dataset_type\": \"RAW\",\n    \"attributes\": [\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<object>\",\n        \"value_type\": \"STRING\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<object>\",\n        \"value_type\": \"STRING\"\n      }\n    ],\n    \"time_created\": \"string\",\n    \"time_updated\": \"string\",\n    \"workspace_id\": \"string\",\n    \"workspace_type\": \"UNKNOWN\",\n    \"workspace_service_id\": \"string\",\n    \"custom_permission\": {\n      \"collaborator_type\": \"READ_ONLY\",\n      \"can_deploy\": \"UNKNOWN\",\n      \"can_predict\": \"UNKNOWN\"\n    },\n    \"visibility\": \"UNKNOWN\",\n    \"version_number\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "89c8f137-0c37-4548-a3a3-fe6647cbdf18",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataset",
+                    "updateDatasetDescription"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 9604,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ecad8e9d-0ce8-4e22-8e8e-6ac7b2e72712",
+          "name": "Dataset Service update Dataset Name",
+          "request": {
+            "name": "Dataset Service update Dataset Name",
+            "description": {},
+            "url": {
+              "path": [
+                "dataset",
+                "updateDatasetName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0df1aca3-439f-4524-89b7-9e6fd12522df",
+              "name": "A successful response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataset",
+                    "updateDatasetName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"dataset\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"owner\": \"string\",\n    \"owner_id\": \"string\",\n    \"group_owner_id\": {\n      \"org_id\": \"string\",\n      \"group_id\": \"string\"\n    },\n    \"description\": \"string\",\n    \"tags\": [\n      \"string\",\n      \"string\"\n    ],\n    \"dataset_visibility\": \"PRIVATE\",\n    \"dataset_type\": \"RAW\",\n    \"attributes\": [\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<object>\",\n        \"value_type\": \"STRING\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<object>\",\n        \"value_type\": \"STRING\"\n      }\n    ],\n    \"time_created\": \"string\",\n    \"time_updated\": \"string\",\n    \"workspace_id\": \"string\",\n    \"workspace_type\": \"UNKNOWN\",\n    \"workspace_service_id\": \"string\",\n    \"custom_permission\": {\n      \"collaborator_type\": \"READ_ONLY\",\n      \"can_deploy\": \"UNKNOWN\",\n      \"can_predict\": \"UNKNOWN\"\n    },\n    \"visibility\": \"UNKNOWN\",\n    \"version_number\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bad85d4d-8509-4eb5-ad51-92d4c82d5e01",
+              "name": "An unexpected error response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dataset",
+                    "updateDatasetName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\",\n  \"code\": 9604,\n  \"message\": \"string\",\n  \"details\": [\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"type_url\": \"string\",\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "584dafd7-d983-45d7-a20c-3181fe4033ad",
+    "name": "deployment/APISync.proto AuthzService DatasetService API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}
