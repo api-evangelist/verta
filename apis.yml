@@ -8,6 +8,19 @@ description: Verta was an MLOps model-management, experiment-tracking, and model
   experiments, experiment runs, datasets, a model registry, Git-style versioning, deployment stages, monitoring,
   and SCIM/UAC access control.
 url: https://raw.githubusercontent.com/api-evangelist/verta/refs/heads/main/apis.yml
+deliveryModel:
+  model: self-hosted
+  license: Apache-2.0
+  open_source: true
+  commercial: false
+  callable_host: false
+  label: Self-hosted open source · you run it yourself
+  confidence: high
+  source:
+  - license
+  - openapi
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: unknown
@@ -432,6 +445,10 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: IssueTracker
+  url: https://github.com/VertaAI/modeldb/issues
+- type: Releases
+  url: https://github.com/VertaAI/modeldb/releases
 - type: Overlay
   url: overlays/verta-apisync-overlay.yaml
 - type: License
