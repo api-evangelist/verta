@@ -42,7 +42,7 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.23'
 created: '2026-07-17'
-modified: '2026-07-21'
+modified: '2026-09-16'
 tags:
 - MLOps
 - Machine-Learning
@@ -304,8 +304,7 @@ apis:
     url: grpc/verta-VersioningService.proto
 - aid: verta:verta-scimconfigurationservice-api
   name: Verta SCIMConfigurationService API
-  description: >-
-    The SCIMConfigurationService API from Verta — 1 operation(s) for scimconfigurationservice.
+  description: The SCIMConfigurationService API from Verta — 1 operation(s) for scimconfigurationservice.
   humanURL: https://docs.verta.ai/
   baseURL: https://docs.verta.ai/
   tags:
@@ -445,6 +444,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Website
+  url: https://verta.ai
 - type: IssueTracker
   url: https://github.com/VertaAI/modeldb/issues
 - type: Releases
@@ -476,7 +477,10 @@ common:
   url: packages/verta-packages.yml
 - type: X-MCPServerCandidate
   url: mcp/verta-mcp.yml
-  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
+  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate
+    — a tool list derived from the published API contracts, not an existing server. The scorer already
+    read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type
+    surfaces with a server that does not exist.'
 - type: LLMsTxt
   url: llms/verta-llms.txt
 - type: AgentSkill
