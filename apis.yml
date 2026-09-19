@@ -444,6 +444,11 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: ParentCompany
+  url: https://apis.io/providers/cloudera/
+  name: Cloudera
+  x-relationship: acquired
+  x-evidence: "description names Cloudera and https://verta.ai now redirects to cloudera.com (roadmap#390, corroborate-dead.py)"
 - type: Website
   url: https://verta.ai
 - type: IssueTracker
