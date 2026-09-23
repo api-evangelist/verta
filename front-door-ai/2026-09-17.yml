@@ -1,0 +1,36 @@
+# Front Door AI Index — verta — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: verta
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: verta.ai
+  final_host: www.cloudera.com
+  ownership: own
+  owner: verta
+  shares_host_with: null
+  inherited_from: null
+  verdict: scored
+  score: 104
+  host_score: 104
+  density: 74.39
+  words: 1398
+  tiers:
+    agentic: 18
+    core: 85
+    model: 1
+  ambiguous: 5
+  top_terms:
+    AI: 72
+    agentic: 7
+    gen ai: 5
+    inference: 5
+    AI assistant: 4
+    agent: 4
+    ML: 3
+    LLMs: 2
+    machine learning: 2
+    Mistral: 1
+    fine-tune: 1
+    generative ai: 1

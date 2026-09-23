@@ -1,12 +1,9 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
-  title: deployment/APISync.proto AuthzService StageService API
+  title: registry/.proto Stage Service API
   version: version not set
-basePath: /v1
-consumes:
-- application/json
-produces:
-- application/json
+servers:
+- url: /v1
 tags:
 - name: StageService
 paths:
@@ -16,106 +13,128 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/registryActivity'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/registryActivity'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/registryApproveTransitionRequest'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       tags:
       - StageService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/registryApproveTransitionRequest'
+        required: true
+      summary: Stage service approve transition
+      x-summary-source: derived
   /stage/closeTransition:
     post:
       operationId: StageService_CloseTransition
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/registryActivity'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/registryActivity'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/registryCloseTransitionRequest'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       tags:
       - StageService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/registryCloseTransitionRequest'
+        required: true
+      summary: Stage service close transition
+      x-summary-source: derived
   /stage/commitTransition:
     post:
-      summary: 'Only a transition that has been approved can be commited. The user must have RW permission
-
-        Similar to merging a PR'
+      summary: Only a transition that has been approved can be commited.
       operationId: StageService_CommitTransition
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/registryActivity'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/registryActivity'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/registryCommitTransitionRequest'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       tags:
       - StageService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/registryCommitTransitionRequest'
+        required: true
   /stage/createComment:
     post:
       operationId: StageService_CreateComment
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/registryActivity'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/registryActivity'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/registryCreateCommentRequest'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       tags:
       - StageService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/registryCreateCommentRequest'
+        required: true
+      summary: Stage service create comment
+      x-summary-source: derived
   /stage/createTransition:
     post:
-      summary: 'Anyone with RW permission on the model version can do any of these
-
-        Note that the author of the transition cannot approve or reject it themselves (like in github)'
+      summary: Anyone with RW permission on the model version can do any of these Note that…
       operationId: StageService_CreateTransition
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/registryActivity'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/registryActivity'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/registryCreateTransitionRequest'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       tags:
       - StageService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/registryCreateTransitionRequest'
+        required: true
   /stage/findActivities:
     post:
       summary: List objects from the db. Similar to the PR history
@@ -123,20 +142,24 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/registryFindActivitiesRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/registryFindActivitiesRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/registryFindActivitiesRequest'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       tags:
       - StageService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/registryFindActivitiesRequest'
+        required: true
   /stage/findTransitions:
     post:
       summary: Similar to listing PRs by state
@@ -144,264 +167,277 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/registryFindTransitionsRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/registryFindTransitionsRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/registryFindTransitionsRequest'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       tags:
       - StageService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/registryFindTransitionsRequest'
+        required: true
   /stage/rejectTransition:
     post:
       operationId: StageService_RejectTransition
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/registryActivity'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/registryActivity'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/registryRejectTransitionRequest'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       tags:
       - StageService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/registryRejectTransitionRequest'
+        required: true
+      summary: Stage service reject transition
+      x-summary-source: derived
   /stage/updateStage:
     post:
-      summary: 'Directly update the stage without going through approval. The user must have RW permission
-
-        Similar to merging to master directly'
+      summary: Directly update the stage without going through approval.
       operationId: StageService_UpdateStage
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/registryActivity'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/registryActivity'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/registryUpdateStageRequest'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       tags:
       - StageService
-definitions:
-  registryCloseTransitionRequest:
-    type: object
-    properties:
-      transition_id:
-        type: string
-        format: uint64
-      comment:
-        type: string
-  registryStageUpdate:
-    type: object
-    properties:
-      stage:
-        $ref: '#/definitions/StageEnumStage'
-  protobufAny:
-    type: object
-    properties:
-      type_url:
-        type: string
-      value:
-        type: string
-        format: byte
-  runtimeError:
-    type: object
-    properties:
-      error:
-        type: string
-      code:
-        type: integer
-        format: int32
-      message:
-        type: string
-      details:
-        type: array
-        items:
-          $ref: '#/definitions/protobufAny'
-  StageEnumStage:
-    type: string
-    enum:
-    - UNKNOWN
-    - DEVELOPMENT
-    - STAGING
-    - PRODUCTION
-    - ARCHIVED
-    - UNASSIGNED
-    default: UNKNOWN
-  registryFindTransitionsRequestResponse:
-    type: object
-    properties:
-      activities:
-        type: array
-        items:
-          $ref: '#/definitions/registryActivity'
-        title: Only things of type transition can be returned
-  registryApproveTransitionRequest:
-    type: object
-    properties:
-      transition_id:
-        type: string
-        format: uint64
-      comment:
-        type: string
-  registryTransition:
-    type: object
-    properties:
-      source_stage:
-        $ref: '#/definitions/StageEnumStage'
-        title: Current stage. Automatically populated from the backend
-      desired_stage:
-        $ref: '#/definitions/StageEnumStage'
-        title: Desired stage sent as part of the transition request
-      state:
-        $ref: '#/definitions/TransitionStateEnumTransitionState'
-        title: Current state of the transition
-      id:
-        type: string
-        format: uint64
-        title: Transition Id, Automatically populated from the backend
-  registryRejectionOfTransition:
-    type: object
-  registryCloseOfTransition:
-    type: object
-  registryFindTransitionsRequest:
-    type: object
-    properties:
-      registered_model_id:
-        type: string
-        format: uint64
-        title: At least one of the following needs to be provided
-      model_version_id:
-        type: string
-        format: uint64
-      state:
-        type: array
-        items:
-          $ref: '#/definitions/TransitionStateEnumTransitionState'
-        title: Current state. If empty, return in any state
-  registryCreateCommentRequest:
-    type: object
-    properties:
-      model_version_id:
-        type: string
-        format: uint64
-      comment:
-        type: string
-  registryApprovalOfTransition:
-    type: object
-  registryFindActivitiesRequest:
-    type: object
-    properties:
-      registered_model_id:
-        type: string
-        format: uint64
-        title: At least one of the following needs to be provided
-      model_version_id:
-        type: string
-        format: uint64
-  registryActivity:
-    type: object
-    properties:
-      id:
-        type: string
-        format: uint64
-      model_version_id:
-        type: string
-        format: uint64
-      author_id:
-        type: string
-      time_created:
-        type: string
-        format: int64
-        title: Track time
-      comment:
-        type: string
-        title: Text provided by the user
-      transition:
-        $ref: '#/definitions/registryTransition'
-        title: Effective oneof for the following fields (all might be missing and that's fine too)
-      approval:
-        $ref: '#/definitions/registryApprovalOfTransition'
-      rejection:
-        $ref: '#/definitions/registryRejectionOfTransition'
-      close:
-        $ref: '#/definitions/registryCloseOfTransition'
-      update:
-        $ref: '#/definitions/registryStageUpdate'
-      activity_state:
-        $ref: '#/definitions/TransitionStateEnumTransitionState'
-        title: Activity state while the transition happen
-  registryUpdateStageRequest:
-    type: object
-    properties:
-      model_version_id:
-        type: string
-        format: uint64
-      stage:
-        $ref: '#/definitions/StageEnumStage'
-      comment:
-        type: string
-  registryRejectTransitionRequest:
-    type: object
-    properties:
-      transition_id:
-        type: string
-        format: uint64
-      comment:
-        type: string
-  registryCreateTransitionRequest:
-    type: object
-    properties:
-      model_version_id:
-        type: string
-        format: uint64
-      desired_stage:
-        $ref: '#/definitions/StageEnumStage'
-      comment:
-        type: string
-    title: Actions
-  registryFindActivitiesRequestResponse:
-    type: object
-    properties:
-      activities:
-        type: array
-        items:
-          $ref: '#/definitions/registryActivity'
-  TransitionStateEnumTransitionState:
-    type: string
-    enum:
-    - UNKNOWN
-    - APPROVED
-    - REJECTED
-    - PENDING
-    - CLOSED
-    - COMMITTED
-    default: UNKNOWN
-    title: "- APPROVED: It is approved only if it has one approval and no rejections\n - REJECTED: It is rejected if it has any rejection\n - PENDING: It is pending if there are no approvals or rejections\n - CLOSED: It is closed if the user has explicitly requested it to be closed\n - COMMITTED: It has been committed and people can't close, approve or reject anymore"
-  registryCommitTransitionRequest:
-    type: object
-    properties:
-      transition_id:
-        type: string
-        format: uint64
-      comment:
-        type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/registryUpdateStageRequest'
+        required: true
+components:
+  schemas:
+    registryFindTransitionsRequestResponse:
+      type: object
+      properties:
+        activities:
+          type: array
+          items:
+            $ref: '#/components/schemas/registryActivity'
+          title: Only things of type transition can be returned
+    registryRejectTransitionRequest:
+      type: object
+      properties:
+        transition_id:
+          type: string
+          format: uint64
+        comment:
+          type: string
+    registryActivity:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uint64
+        model_version_id:
+          type: string
+          format: uint64
+        author_id:
+          type: string
+        time_created:
+          type: string
+          format: int64
+          title: Track time
+        comment:
+          type: string
+          title: Text provided by the user
+        transition:
+          $ref: '#/components/schemas/registryTransition'
+          title: Effective oneof for the following fields (all might be missing and that's fine too)
+        approval:
+          $ref: '#/components/schemas/registryApprovalOfTransition'
+        rejection:
+          $ref: '#/components/schemas/registryRejectionOfTransition'
+        close:
+          $ref: '#/components/schemas/registryCloseOfTransition'
+        update:
+          $ref: '#/components/schemas/registryStageUpdate'
+        activity_state:
+          $ref: '#/components/schemas/TransitionStateEnumTransitionState'
+          title: Activity state while the transition happen
+    registryFindActivitiesRequest:
+      type: object
+      properties:
+        registered_model_id:
+          type: string
+          format: uint64
+          title: At least one of the following needs to be provided
+        model_version_id:
+          type: string
+          format: uint64
+    registryStageUpdate:
+      type: object
+      properties:
+        stage:
+          $ref: '#/components/schemas/StageEnumStage'
+    registryRejectionOfTransition:
+      type: object
+    registryCreateTransitionRequest:
+      type: object
+      properties:
+        model_version_id:
+          type: string
+          format: uint64
+        desired_stage:
+          $ref: '#/components/schemas/StageEnumStage'
+        comment:
+          type: string
+      title: Actions
+    registryCloseOfTransition:
+      type: object
+    runtimeError:
+      type: object
+      properties:
+        error:
+          type: string
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/protobufAny'
+    StageEnumStage:
+      type: string
+      enum:
+      - UNKNOWN
+      - DEVELOPMENT
+      - STAGING
+      - PRODUCTION
+      - ARCHIVED
+      - UNASSIGNED
+      default: UNKNOWN
+    registryApprovalOfTransition:
+      type: object
+    protobufAny:
+      type: object
+      properties:
+        type_url:
+          type: string
+        value:
+          type: string
+          format: byte
+    registryFindActivitiesRequestResponse:
+      type: object
+      properties:
+        activities:
+          type: array
+          items:
+            $ref: '#/components/schemas/registryActivity'
+    registryCreateCommentRequest:
+      type: object
+      properties:
+        model_version_id:
+          type: string
+          format: uint64
+        comment:
+          type: string
+    TransitionStateEnumTransitionState:
+      type: string
+      enum:
+      - UNKNOWN
+      - APPROVED
+      - REJECTED
+      - PENDING
+      - CLOSED
+      - COMMITTED
+      default: UNKNOWN
+      title: "- APPROVED: It is approved only if it has one approval and no rejections\n - REJECTED: It is rejected if it has any rejection\n - PENDING: It is pending if there are no approvals or rejections\n - CLOSED: It is closed if the user has explicitly requested it to be closed\n - COMMITTED: It has been committed and people can't close, approve or reject anymore"
+    registryFindTransitionsRequest:
+      type: object
+      properties:
+        registered_model_id:
+          type: string
+          format: uint64
+          title: At least one of the following needs to be provided
+        model_version_id:
+          type: string
+          format: uint64
+        state:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransitionStateEnumTransitionState'
+          title: Current state. If empty, return in any state
+    registryTransition:
+      type: object
+      properties:
+        source_stage:
+          $ref: '#/components/schemas/StageEnumStage'
+          title: Current stage. Automatically populated from the backend
+        desired_stage:
+          $ref: '#/components/schemas/StageEnumStage'
+          title: Desired stage sent as part of the transition request
+        state:
+          $ref: '#/components/schemas/TransitionStateEnumTransitionState'
+          title: Current state of the transition
+        id:
+          type: string
+          format: uint64
+          title: Transition Id, Automatically populated from the backend
+    registryCommitTransitionRequest:
+      type: object
+      properties:
+        transition_id:
+          type: string
+          format: uint64
+        comment:
+          type: string
+    registryCloseTransitionRequest:
+      type: object
+      properties:
+        transition_id:
+          type: string
+          format: uint64
+        comment:
+          type: string
+    registryApproveTransitionRequest:
+      type: object
+      properties:
+        transition_id:
+          type: string
+          format: uint64
+        comment:
+          type: string
+    registryUpdateStageRequest:
+      type: object
+      properties:
+        model_version_id:
+          type: string
+          format: uint64
+        stage:
+          $ref: '#/components/schemas/StageEnumStage'
+        comment:
+          type: string

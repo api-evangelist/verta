@@ -1,12 +1,9 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
-  title: deployment/APISync.proto AuthzService MonitoredEntityService API
+  title: monitoring/MonitoredEntity.proto Monitored Entity Service…
   version: version not set
-basePath: /v1
-consumes:
-- application/json
-produces:
-- application/json
+servers:
+- url: /v1
 tags:
 - name: MonitoredEntityService
 paths:
@@ -16,298 +13,323 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/monitoringCreateMonitoredEntityRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/monitoringCreateMonitoredEntityRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/monitoringCreateMonitoredEntityRequest'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       tags:
       - MonitoredEntityService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/monitoringCreateMonitoredEntityRequest'
+        required: true
+      summary: Monitored entity service create monitored entity
+      x-summary-source: derived
   /api/v1/monitoring/monitored_entity/deleteMonitoredEntity:
     delete:
       operationId: MonitoredEntityService_deleteMonitoredEntity
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/monitoringDeleteMonitoredEntityRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/monitoringDeleteMonitoredEntityRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/monitoringDeleteMonitoredEntityRequest'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       tags:
       - MonitoredEntityService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/monitoringDeleteMonitoredEntityRequest'
+        required: true
+      summary: Monitored entity service delete monitored entity
+      x-summary-source: derived
   /api/v1/monitoring/monitored_entity/findMonitoredEntity:
     post:
       operationId: MonitoredEntityService_findMonitoredEntity
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/monitoringFindMonitoredEntityRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/monitoringFindMonitoredEntityRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/monitoringFindMonitoredEntityRequest'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       tags:
       - MonitoredEntityService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/monitoringFindMonitoredEntityRequest'
+        required: true
+      summary: Monitored entity service find monitored entity
+      x-summary-source: derived
   /api/v1/monitoring/monitored_entity/updateMonitoredEntity:
     patch:
       operationId: MonitoredEntityService_updateMonitoredEntity
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/monitoringUpdateMonitoredEntityRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/monitoringUpdateMonitoredEntityRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/monitoringUpdateMonitoredEntityRequest'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       tags:
       - MonitoredEntityService
-definitions:
-  monitoringUpdateMonitoredEntityRequestResponse:
-    type: object
-    properties:
-      monitored_entity:
-        $ref: '#/definitions/monitoringMonitoredEntity'
-  monitoringCreateMonitoredEntityRequestResponse:
-    type: object
-    properties:
-      monitored_entity:
-        $ref: '#/definitions/monitoringMonitoredEntity'
-  protobufAny:
-    type: object
-    properties:
-      type_url:
-        type: string
-      value:
-        type: string
-        format: byte
-  commonGroupId:
-    type: object
-    properties:
-      org_id:
-        type: string
-      group_id:
-        type: string
-  runtimeError:
-    type: object
-    properties:
-      error:
-        type: string
-      code:
-        type: integer
-        format: int32
-      message:
-        type: string
-      details:
-        type: array
-        items:
-          $ref: '#/definitions/protobufAny'
-  uacCollaboratorPermissions:
-    type: object
-    properties:
-      collaborator_type:
-        $ref: '#/definitions/CollaboratorTypeEnumCollaboratorType'
-      can_deploy:
-        $ref: '#/definitions/TernaryEnumTernary'
-      can_predict:
-        $ref: '#/definitions/TernaryEnumTernary'
-  monitoringDeleteMonitoredEntityRequestResponse:
-    type: object
-  monitoringFindMonitoredEntityRequestResponse:
-    type: object
-    properties:
-      monitored_entities:
-        type: array
-        items:
-          $ref: '#/definitions/monitoringMonitoredEntity'
-      total_records:
-        type: integer
-        format: int32
-  monitoringUpdateMonitoredEntityRequest:
-    type: object
-    properties:
-      id:
-        type: string
-        format: uint64
-      name:
-        type: string
-      attributes:
-        type: object
-        additionalProperties:
-          type: string
-      resource_visibility:
-        $ref: '#/definitions/uacResourceVisibility'
-      custom_permission:
-        $ref: '#/definitions/uacCollaboratorPermissions'
-        title: 'The next field only makes sense when visibility == ORG_CUSTOM
-
-          They will be empty otherwise'
-  uacResourceVisibility:
-    type: string
-    enum:
-    - UNKNOWN
-    - ORG_DEFAULT
-    - ORG_CUSTOM
-    - PRIVATE
-    - WORKSPACE_DEFAULT
-    default: UNKNOWN
-  monitoringFindMonitoredEntityRequest:
-    type: object
-    properties:
-      ids:
-        type: array
-        items:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/monitoringUpdateMonitoredEntityRequest'
+        required: true
+      summary: Monitored entity service update monitored entity
+      x-summary-source: derived
+components:
+  schemas:
+    uacResourceVisibility:
+      type: string
+      enum:
+      - UNKNOWN
+      - ORG_DEFAULT
+      - ORG_CUSTOM
+      - PRIVATE
+      - WORKSPACE_DEFAULT
+      default: UNKNOWN
+    monitoringFindMonitoredEntityRequestResponse:
+      type: object
+      properties:
+        monitored_entities:
+          type: array
+          items:
+            $ref: '#/components/schemas/monitoringMonitoredEntity'
+        total_records:
+          type: integer
+          format: int32
+    uacCollaboratorPermissions:
+      type: object
+      properties:
+        collaborator_type:
+          $ref: '#/components/schemas/CollaboratorTypeEnumCollaboratorType'
+        can_deploy:
+          $ref: '#/components/schemas/TernaryEnumTernary'
+        can_predict:
+          $ref: '#/components/schemas/TernaryEnumTernary'
+    monitoringDeleteMonitoredEntityRequest:
+      type: object
+      properties:
+        id:
           type: string
           format: uint64
-      names:
-        type: array
-        items:
+    monitoringCreateMonitoredEntityRequest:
+      type: object
+      properties:
+        name:
           type: string
-      fuzzy_names:
-        type: array
-        items:
-          type: string
-        title: Add names to find with a fuzzy (non-exact) search
-      endpoint_ids:
-        type: array
-        items:
+        workspace_id:
           type: string
           format: uint64
-      model_version_ids:
-        type: array
-        items:
+        workspace_name:
           type: string
-      workspace_id:
-        type: string
-        format: uint64
-      workspace_name:
-        type: string
-      page_number:
-        type: integer
-        format: int32
-        title: Pagination
-      page_limit:
-        type: integer
-        format: int32
-  TernaryEnumTernary:
-    type: string
-    enum:
-    - UNKNOWN
-    - 'TRUE'
-    - 'FALSE'
-    default: UNKNOWN
-  monitoringMonitoredEntity:
-    type: object
-    properties:
-      id:
-        type: string
-        format: uint64
-      name:
-        type: string
-      workspace_id:
-        type: string
-        format: uint64
-      created_at_timestamp_millis:
-        type: string
-        format: uint64
-      updated_at_timestamp_millis:
-        type: string
-        format: uint64
-      attributes:
-        type: object
-        additionalProperties:
-          type: string
-      owner:
-        type: string
-        title: owner's verta_id
-      owner_id:
-        type: string
-        format: uint64
-      group_owner_id:
-        $ref: '#/definitions/commonGroupId'
-      resource_visibility:
-        $ref: '#/definitions/uacResourceVisibility'
-      custom_permission:
-        $ref: '#/definitions/uacCollaboratorPermissions'
-        title: 'The next field only makes sense when visibility == ORG_CUSTOM
+        attributes:
+          type: object
+          additionalProperties:
+            type: string
+        resource_visibility:
+          $ref: '#/components/schemas/uacResourceVisibility'
+        custom_permission:
+          $ref: '#/components/schemas/uacCollaboratorPermissions'
+          title: 'The next field only makes sense when visibility == ORG_CUSTOM
 
-          They will be empty otherwise'
-      version_number:
-        type: string
-        format: uint64
-      endpoint_id:
-        type: string
-        format: uint64
-      datasource_name:
-        type: string
-      origin:
-        type: string
-        title: a tag that says where the data for this monitored entity comes from. eg. "endpoint" or "batch"
-  monitoringCreateMonitoredEntityRequest:
-    type: object
-    properties:
-      name:
-        type: string
-      workspace_id:
-        type: string
-        format: uint64
-      workspace_name:
-        type: string
-      attributes:
-        type: object
-        additionalProperties:
+            They will be empty otherwise'
+        endpoint_id:
           type: string
-      resource_visibility:
-        $ref: '#/definitions/uacResourceVisibility'
-      custom_permission:
-        $ref: '#/definitions/uacCollaboratorPermissions'
-        title: 'The next field only makes sense when visibility == ORG_CUSTOM
+          format: uint64
+          description: Optional.  If the data originates from a Verta endpoint, set this to the endpoint id.
+        origin:
+          type: string
+          title: a tag that says where the data for this monitored entity comes from. eg. "endpoint" or "batch"
+    monitoringUpdateMonitoredEntityRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uint64
+        name:
+          type: string
+        attributes:
+          type: object
+          additionalProperties:
+            type: string
+        resource_visibility:
+          $ref: '#/components/schemas/uacResourceVisibility'
+        custom_permission:
+          $ref: '#/components/schemas/uacCollaboratorPermissions'
+          title: 'The next field only makes sense when visibility == ORG_CUSTOM
 
-          They will be empty otherwise'
-      endpoint_id:
-        type: string
-        format: uint64
-        description: Optional.  If the data originates from a Verta endpoint, set this to the endpoint id.
-      origin:
-        type: string
-        title: a tag that says where the data for this monitored entity comes from. eg. "endpoint" or "batch"
-  monitoringDeleteMonitoredEntityRequest:
-    type: object
-    properties:
-      id:
-        type: string
-        format: uint64
-  CollaboratorTypeEnumCollaboratorType:
-    type: string
-    enum:
-    - READ_ONLY
-    - READ_WRITE
-    default: READ_ONLY
+            They will be empty otherwise'
+    monitoringCreateMonitoredEntityRequestResponse:
+      type: object
+      properties:
+        monitored_entity:
+          $ref: '#/components/schemas/monitoringMonitoredEntity'
+    commonGroupId:
+      type: object
+      properties:
+        org_id:
+          type: string
+        group_id:
+          type: string
+    monitoringMonitoredEntity:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uint64
+        name:
+          type: string
+        workspace_id:
+          type: string
+          format: uint64
+        created_at_timestamp_millis:
+          type: string
+          format: uint64
+        updated_at_timestamp_millis:
+          type: string
+          format: uint64
+        attributes:
+          type: object
+          additionalProperties:
+            type: string
+        owner:
+          type: string
+          title: owner's verta_id
+        owner_id:
+          type: string
+          format: uint64
+        group_owner_id:
+          $ref: '#/components/schemas/commonGroupId'
+        resource_visibility:
+          $ref: '#/components/schemas/uacResourceVisibility'
+        custom_permission:
+          $ref: '#/components/schemas/uacCollaboratorPermissions'
+          title: 'The next field only makes sense when visibility == ORG_CUSTOM
+
+            They will be empty otherwise'
+        version_number:
+          type: string
+          format: uint64
+        endpoint_id:
+          type: string
+          format: uint64
+        datasource_name:
+          type: string
+        origin:
+          type: string
+          title: a tag that says where the data for this monitored entity comes from. eg. "endpoint" or "batch"
+    protobufAny:
+      type: object
+      properties:
+        type_url:
+          type: string
+        value:
+          type: string
+          format: byte
+    monitoringFindMonitoredEntityRequest:
+      type: object
+      properties:
+        ids:
+          type: array
+          items:
+            type: string
+            format: uint64
+        names:
+          type: array
+          items:
+            type: string
+        fuzzy_names:
+          type: array
+          items:
+            type: string
+          title: Add names to find with a fuzzy (non-exact) search
+        endpoint_ids:
+          type: array
+          items:
+            type: string
+            format: uint64
+        model_version_ids:
+          type: array
+          items:
+            type: string
+        workspace_id:
+          type: string
+          format: uint64
+        workspace_name:
+          type: string
+        page_number:
+          type: integer
+          format: int32
+          title: Pagination
+        page_limit:
+          type: integer
+          format: int32
+    monitoringUpdateMonitoredEntityRequestResponse:
+      type: object
+      properties:
+        monitored_entity:
+          $ref: '#/components/schemas/monitoringMonitoredEntity'
+    monitoringDeleteMonitoredEntityRequestResponse:
+      type: object
+    runtimeError:
+      type: object
+      properties:
+        error:
+          type: string
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/protobufAny'
+    TernaryEnumTernary:
+      type: string
+      enum:
+      - UNKNOWN
+      - 'TRUE'
+      - 'FALSE'
+      default: UNKNOWN
+    CollaboratorTypeEnumCollaboratorType:
+      type: string
+      enum:
+      - READ_ONLY
+      - READ_WRITE
+      default: READ_ONLY

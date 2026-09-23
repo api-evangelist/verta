@@ -1,12 +1,9 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
-  title: deployment/APISync.proto AuthzService ExperimentService API
+  title: modeldb/.proto Experiment Service API
   version: version not set
-basePath: /v1
-consumes:
-- application/json
-produces:
-- application/json
+servers:
+- url: /v1
 tags:
 - name: ExperimentService
 paths:
@@ -16,230 +13,300 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/modeldbAddAttributesResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/modeldbAddAttributesResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/modeldbAddAttributes'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       tags:
       - ExperimentService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/modeldbAddAttributes'
+        required: true
+      summary: Experiment service add attribute
+      x-summary-source: derived
   /experiment/addExperimentAttributes:
     post:
       operationId: ExperimentService_addExperimentAttributes
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/modeldbAddExperimentAttributesResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/modeldbAddExperimentAttributesResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/modeldbAddExperimentAttributes'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       tags:
       - ExperimentService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/modeldbAddExperimentAttributes'
+        required: true
+      summary: Experiment service add experiment attributes
+      x-summary-source: derived
   /experiment/addExperimentTag:
     post:
       operationId: ExperimentService_addExperimentTag
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/modeldbAddExperimentTagResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/modeldbAddExperimentTagResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/modeldbAddExperimentTag'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       tags:
       - ExperimentService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/modeldbAddExperimentTag'
+        required: true
+      summary: Experiment service add experiment tag
+      x-summary-source: derived
   /experiment/addExperimentTags:
     post:
       operationId: ExperimentService_addExperimentTags
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/modeldbAddExperimentTagsResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/modeldbAddExperimentTagsResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/modeldbAddExperimentTags'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       tags:
       - ExperimentService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/modeldbAddExperimentTags'
+        required: true
+      summary: Experiment service add experiment tags
+      x-summary-source: derived
   /experiment/createExperiment:
     post:
       operationId: ExperimentService_createExperiment
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/modeldbCreateExperimentResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/modeldbCreateExperimentResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/modeldbCreateExperiment'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       tags:
       - ExperimentService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/modeldbCreateExperiment'
+        required: true
+      summary: Experiment service create experiment
+      x-summary-source: derived
   /experiment/deleteArtifact:
     delete:
       operationId: ExperimentService_deleteArtifact
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/modeldbDeleteExperimentArtifactResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/modeldbDeleteExperimentArtifactResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/modeldbDeleteExperimentArtifact'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       tags:
       - ExperimentService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/modeldbDeleteExperimentArtifact'
+        required: true
+      summary: Experiment service delete artifact
+      x-summary-source: derived
   /experiment/deleteExperiment:
     delete:
       operationId: ExperimentService_deleteExperiment
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/modeldbDeleteExperimentResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/modeldbDeleteExperimentResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/modeldbDeleteExperiment'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       tags:
       - ExperimentService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/modeldbDeleteExperiment'
+        required: true
+      summary: Experiment service delete experiment
+      x-summary-source: derived
   /experiment/deleteExperimentAttributes:
     delete:
       operationId: ExperimentService_deleteExperimentAttributes
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/modeldbDeleteExperimentAttributesResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/modeldbDeleteExperimentAttributesResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: id
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: attribute_keys
         in: query
         required: false
-        type: array
-        items:
-          type: string
-        collectionFormat: multi
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
       - name: delete_all
         in: query
         required: false
-        type: boolean
+        schema:
+          type: boolean
       tags:
       - ExperimentService
+      summary: Experiment service delete experiment attributes
+      x-summary-source: derived
   /experiment/deleteExperimentTag:
     delete:
       operationId: ExperimentService_deleteExperimentTag
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/modeldbDeleteExperimentTagResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/modeldbDeleteExperimentTagResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/modeldbDeleteExperimentTag'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       tags:
       - ExperimentService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/modeldbDeleteExperimentTag'
+        required: true
+      summary: Experiment service delete experiment tag
+      x-summary-source: derived
   /experiment/deleteExperimentTags:
     delete:
       operationId: ExperimentService_deleteExperimentTags
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/modeldbDeleteExperimentTagsResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/modeldbDeleteExperimentTagsResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/modeldbDeleteExperimentTags'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       tags:
       - ExperimentService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/modeldbDeleteExperimentTags'
+        required: true
+      summary: Experiment service delete experiment tags
+      x-summary-source: derived
   /experiment/deleteExperiments:
     delete:
       operationId: ExperimentService_deleteExperiments
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/modeldbDeleteExperimentsResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/modeldbDeleteExperimentsResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/modeldbDeleteExperiments'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       tags:
       - ExperimentService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/modeldbDeleteExperiments'
+        required: true
+      summary: Experiment service delete experiments
+      x-summary-source: derived
   /experiment/findExperiments:
     post:
       summary: queries
@@ -247,190 +314,252 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/modeldbFindExperimentsResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/modeldbFindExperimentsResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/modeldbFindExperiments'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       tags:
       - ExperimentService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/modeldbFindExperiments'
+        required: true
   /experiment/getArtifacts:
     get:
       operationId: ExperimentService_getArtifacts
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/modeldbGetArtifactsResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/modeldbGetArtifactsResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: id
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: key
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       tags:
       - ExperimentService
+      summary: Experiment service get artifacts
+      x-summary-source: derived
   /experiment/getExperimentAttributes:
     get:
       operationId: ExperimentService_getExperimentAttributes
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/modeldbGetAttributesResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/modeldbGetAttributesResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: id
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: attribute_keys
         in: query
         required: false
-        type: array
-        items:
-          type: string
-        collectionFormat: multi
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
       - name: get_all
         in: query
         required: false
-        type: boolean
+        schema:
+          type: boolean
       tags:
       - ExperimentService
+      summary: Experiment service get experiment attributes
+      x-summary-source: derived
   /experiment/getExperimentById:
     get:
       operationId: ExperimentService_getExperimentById
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/modeldbGetExperimentByIdResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/modeldbGetExperimentByIdResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: id
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       tags:
       - ExperimentService
+      summary: Experiment service get experiment by id
+      x-summary-source: derived
   /experiment/getExperimentByName:
     get:
       operationId: ExperimentService_getExperimentByName
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/modeldbGetExperimentByNameResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/modeldbGetExperimentByNameResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: name
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: project_id
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       tags:
       - ExperimentService
+      summary: Experiment service get experiment by name
+      x-summary-source: derived
   /experiment/getExperimentCodeVersion:
     get:
       operationId: ExperimentService_getExperimentCodeVersion
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/modeldbGetExperimentCodeVersionResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/modeldbGetExperimentCodeVersionResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: id
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       tags:
       - ExperimentService
+      summary: Experiment service get experiment code version
+      x-summary-source: derived
   /experiment/getExperimentTags:
     get:
       operationId: ExperimentService_getExperimentTags
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/modeldbGetTagsResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/modeldbGetTagsResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: id
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       tags:
       - ExperimentService
+      summary: Experiment service get experiment tags
+      x-summary-source: derived
   /experiment/getExperimentsInProject:
     get:
       operationId: ExperimentService_getExperimentsInProject
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/modeldbGetExperimentsInProjectResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/modeldbGetExperimentsInProjectResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: project_id
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: page_number
         in: query
         required: false
-        type: integer
-        format: int32
+        schema:
+          type: integer
+          format: int32
       - name: page_limit
         in: query
         required: false
-        type: integer
-        format: int32
+        schema:
+          type: integer
+          format: int32
       - name: ascending
         in: query
         required: false
-        type: boolean
+        schema:
+          type: boolean
       - name: sort_key
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       tags:
       - ExperimentService
+      summary: Experiment service get experiments in project
+      x-summary-source: derived
   /experiment/getUrlForArtifact:
     post:
       summary: artifacts
@@ -438,20 +567,24 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/modeldbGetUrlForArtifactResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/modeldbGetUrlForArtifactResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/modeldbGetUrlForArtifact'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       tags:
       - ExperimentService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/modeldbGetUrlForArtifact'
+        required: true
   /experiment/logArtifacts:
     post:
       summary: artifacts
@@ -459,20 +592,24 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/modeldbLogExperimentArtifactsResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/modeldbLogExperimentArtifactsResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/modeldbLogExperimentArtifacts'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       tags:
       - ExperimentService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/modeldbLogExperimentArtifacts'
+        required: true
   /experiment/logExperimentCodeVersion:
     post:
       summary: code version
@@ -480,583 +617,606 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/modeldbLogExperimentCodeVersionResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/modeldbLogExperimentCodeVersionResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/modeldbLogExperimentCodeVersion'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       tags:
       - ExperimentService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/modeldbLogExperimentCodeVersion'
+        required: true
   /experiment/updateExperimentDescription:
     post:
       operationId: ExperimentService_updateExperimentDescription
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/modeldbUpdateExperimentDescriptionResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/modeldbUpdateExperimentDescriptionResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/modeldbUpdateExperimentDescription'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       tags:
       - ExperimentService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/modeldbUpdateExperimentDescription'
+        required: true
+      summary: Experiment service update experiment description
+      x-summary-source: derived
   /experiment/updateExperimentName:
     post:
       operationId: ExperimentService_updateExperimentName
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/modeldbUpdateExperimentNameResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/modeldbUpdateExperimentNameResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/modeldbUpdateExperimentName'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       tags:
       - ExperimentService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/modeldbUpdateExperimentName'
+        required: true
+      summary: Experiment service update experiment name
+      x-summary-source: derived
   /experiment/updateExperimentNameOrDescription:
     post:
       operationId: ExperimentService_updateExperimentNameOrDescription
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/modeldbUpdateExperimentNameOrDescriptionResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/modeldbUpdateExperimentNameOrDescriptionResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/modeldbUpdateExperimentNameOrDescription'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       tags:
       - ExperimentService
-definitions:
-  modeldbGetArtifactsResponse:
-    type: object
-    properties:
-      artifacts:
-        type: array
-        items:
-          $ref: '#/definitions/commonArtifact'
-  modeldbGetExperimentByNameResponse:
-    type: object
-    properties:
-      experiment:
-        $ref: '#/definitions/modeldbExperiment'
-  modeldbDeleteExperimentAttributesResponse:
-    type: object
-    properties:
-      experiment:
-        $ref: '#/definitions/modeldbExperiment'
-  modeldbUpdateExperimentNameOrDescriptionResponse:
-    type: object
-    properties:
-      experiment:
-        $ref: '#/definitions/modeldbExperiment'
-  modeldbUpdateExperimentDescriptionResponse:
-    type: object
-    properties:
-      experiment:
-        $ref: '#/definitions/modeldbExperiment'
-  modeldbDeleteExperimentTagsResponse:
-    type: object
-    properties:
-      experiment:
-        $ref: '#/definitions/modeldbExperiment'
-  modeldbFindExperimentsResponse:
-    type: object
-    properties:
-      experiments:
-        type: array
-        items:
-          $ref: '#/definitions/modeldbExperiment'
-      total_records:
-        type: string
-        format: int64
-  TernaryEnumTernary:
-    type: string
-    enum:
-    - UNKNOWN
-    - 'TRUE'
-    - 'FALSE'
-    default: UNKNOWN
-  modeldbGetAttributesResponse:
-    type: object
-    properties:
-      attributes:
-        type: array
-        items:
-          $ref: '#/definitions/commonKeyValue'
-  modeldbLogExperimentCodeVersion:
-    type: object
-    properties:
-      id:
-        type: string
-      code_version:
-        $ref: '#/definitions/commonCodeVersion'
-    title: code version
-  modeldbUpdateExperimentNameOrDescription:
-    type: object
-    properties:
-      id:
-        type: string
-      name:
-        type: string
-      description:
-        type: string
-  modeldbAddExperimentTagsResponse:
-    type: object
-    properties:
-      experiment:
-        $ref: '#/definitions/modeldbExperiment'
-  modeldbExperiment:
-    type: object
-    properties:
-      id:
-        type: string
-      project_id:
-        type: string
-      name:
-        type: string
-      description:
-        type: string
-      date_created:
-        type: string
-        format: int64
-      date_updated:
-        type: string
-        format: int64
-      attributes:
-        type: array
-        items:
-          $ref: '#/definitions/commonKeyValue'
-      tags:
-        type: array
-        items:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/modeldbUpdateExperimentNameOrDescription'
+        required: true
+      summary: Experiment service update experiment name or description
+      x-summary-source: derived
+components:
+  schemas:
+    modeldbUpdateExperimentDescriptionResponse:
+      type: object
+      properties:
+        experiment:
+          $ref: '#/components/schemas/modeldbExperiment'
+    modeldbAddAttributesResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+    commonGitSnapshot:
+      type: object
+      properties:
+        filepaths:
+          type: array
+          items:
+            type: string
+        repo:
           type: string
-      owner:
-        type: string
-      owner_id:
-        type: string
-        format: uint64
-      group_owner_id:
-        $ref: '#/definitions/commonGroupId'
-      code_version_snapshot:
-        $ref: '#/definitions/commonCodeVersion'
-      artifacts:
-        type: array
-        items:
-          $ref: '#/definitions/commonArtifact'
-      version_number:
-        type: string
-        format: uint64
-        title: Doc for version_number https://github.com/VertaAI/docs/pull/53
-  protobufAny:
-    type: object
-    properties:
-      type_url:
-        type: string
-      value:
-        type: string
-        format: byte
-  runtimeError:
-    type: object
-    properties:
-      error:
-        type: string
-      code:
-        type: integer
-        format: int32
-      message:
-        type: string
-      details:
-        type: array
-        items:
-          $ref: '#/definitions/protobufAny'
-  modeldbDeleteExperimentArtifactResponse:
-    type: object
-    properties:
-      experiment:
-        $ref: '#/definitions/modeldbExperiment'
-  modeldbCreateExperiment:
-    type: object
-    properties:
-      project_id:
-        type: string
-      name:
-        type: string
-      description:
-        type: string
-      date_created:
-        type: string
-        format: int64
-      date_updated:
-        type: string
-        format: int64
-      attributes:
-        type: array
-        items:
-          $ref: '#/definitions/commonKeyValue'
-      tags:
-        type: array
-        items:
+        hash:
           type: string
-      artifacts:
-        type: array
-        items:
-          $ref: '#/definitions/commonArtifact'
-  modeldbFindExperiments:
-    type: object
-    properties:
-      project_id:
-        type: string
-      experiment_ids:
-        type: array
-        items:
+        is_dirty:
+          $ref: '#/components/schemas/TernaryEnumTernary'
+    ArtifactTypeEnumArtifactType:
+      type: string
+      enum:
+      - IMAGE
+      - MODEL
+      - TENSORBOARD
+      - DATA
+      - BLOB
+      - STRING
+      - CODE
+      - CONTAINER
+      default: IMAGE
+    commonCodeVersion:
+      type: object
+      properties:
+        git_snapshot:
+          $ref: '#/components/schemas/commonGitSnapshot'
+        code_archive:
+          $ref: '#/components/schemas/commonArtifact'
+        date_logged:
           type: string
-      predicates:
-        type: array
-        items:
-          $ref: '#/definitions/commonKeyValueQuery'
-      ids_only:
-        type: boolean
-      page_number:
-        type: integer
-        format: int32
-        title: For pagination
-      page_limit:
-        type: integer
-        format: int32
-      ascending:
-        type: boolean
-      sort_key:
-        type: string
-      workspace_name:
-        type: string
-  modeldbLogExperimentArtifacts:
-    type: object
-    properties:
-      id:
-        type: string
-      artifacts:
-        type: array
-        items:
-          $ref: '#/definitions/commonArtifact'
-    title: artifacts
-  modeldbDeleteExperimentsResponse:
-    type: object
-    properties:
-      status:
-        type: boolean
-  modeldbAddExperimentTagResponse:
-    type: object
-    properties:
-      experiment:
-        $ref: '#/definitions/modeldbExperiment'
-  modeldbAddExperimentAttributes:
-    type: object
-    properties:
-      id:
-        type: string
-      attributes:
-        type: array
-        items:
-          $ref: '#/definitions/commonKeyValue'
-  modeldbLogExperimentCodeVersionResponse:
-    type: object
-    properties:
-      experiment:
-        $ref: '#/definitions/modeldbExperiment'
-  modeldbLogExperimentArtifactsResponse:
-    type: object
-    properties:
-      experiment:
-        $ref: '#/definitions/modeldbExperiment'
-  modeldbGetTagsResponse:
-    type: object
-    properties:
-      tags:
-        type: array
-        items:
+          format: uint64
+      title: code version
+    modeldbUpdateExperimentDescription:
+      type: object
+      properties:
+        id:
           type: string
-  modeldbAddExperimentTags:
-    type: object
-    properties:
-      id:
-        type: string
-      tags:
-        type: array
-        items:
+        description:
           type: string
-  commonKeyValueQuery:
-    type: object
-    properties:
-      key:
-        type: string
-      value:
-        type: object
-      value_type:
-        $ref: '#/definitions/ValueTypeEnumValueType'
-      operator:
-        $ref: '#/definitions/OperatorEnumOperator'
-  commonGitSnapshot:
-    type: object
-    properties:
-      filepaths:
-        type: array
-        items:
+    modeldbExperiment:
+      type: object
+      properties:
+        id:
           type: string
-      repo:
-        type: string
-      hash:
-        type: string
-      is_dirty:
-        $ref: '#/definitions/TernaryEnumTernary'
-  modeldbGetExperimentByIdResponse:
-    type: object
-    properties:
-      experiment:
-        $ref: '#/definitions/modeldbExperiment'
-  modeldbDeleteExperimentTagResponse:
-    type: object
-    properties:
-      experiment:
-        $ref: '#/definitions/modeldbExperiment'
-  ArtifactTypeEnumArtifactType:
-    type: string
-    enum:
-    - IMAGE
-    - MODEL
-    - TENSORBOARD
-    - DATA
-    - BLOB
-    - STRING
-    - CODE
-    - CONTAINER
-    default: IMAGE
-  modeldbGetUrlForArtifactResponse:
-    type: object
-    properties:
-      url:
-        type: string
-      fields:
-        type: object
-        additionalProperties:
+        project_id:
           type: string
-      multipart_upload_ok:
-        type: boolean
-  commonArtifact:
-    type: object
-    properties:
-      key:
-        type: string
-      path:
-        type: string
-      path_only:
-        type: boolean
-      artifact_type:
-        $ref: '#/definitions/ArtifactTypeEnumArtifactType'
-      linked_artifact_id:
-        type: string
-      filename_extension:
-        type: string
-      serialization:
-        type: string
-      artifact_subtype:
-        type: string
-      upload_completed:
-        type: boolean
-  modeldbGetExperimentCodeVersionResponse:
-    type: object
-    properties:
-      code_version:
-        $ref: '#/definitions/commonCodeVersion'
-  modeldbCreateExperimentResponse:
-    type: object
-    properties:
-      experiment:
-        $ref: '#/definitions/modeldbExperiment'
-  modeldbUpdateExperimentDescription:
-    type: object
-    properties:
-      id:
-        type: string
-      description:
-        type: string
-  modeldbAddAttributesResponse:
-    type: object
-    properties:
-      status:
-        type: boolean
-  modeldbDeleteExperimentTags:
-    type: object
-    properties:
-      id:
-        type: string
-      tags:
-        type: array
-        items:
+        name:
           type: string
-      delete_all:
-        type: boolean
-  modeldbAddExperimentAttributesResponse:
-    type: object
-    properties:
-      experiment:
-        $ref: '#/definitions/modeldbExperiment'
-  modeldbGetExperimentsInProjectResponse:
-    type: object
-    properties:
-      experiments:
-        type: array
-        items:
-          $ref: '#/definitions/modeldbExperiment'
-      total_records:
-        type: string
-        format: int64
-  modeldbDeleteExperimentArtifact:
-    type: object
-    properties:
-      id:
-        type: string
-      key:
-        type: string
-  ValueTypeEnumValueType:
-    type: string
-    enum:
-    - STRING
-    - NUMBER
-    - LIST
-    - BLOB
-    default: STRING
-  modeldbUpdateExperimentNameResponse:
-    type: object
-    properties:
-      experiment:
-        $ref: '#/definitions/modeldbExperiment'
-  commonCodeVersion:
-    type: object
-    properties:
-      git_snapshot:
-        $ref: '#/definitions/commonGitSnapshot'
-      code_archive:
-        $ref: '#/definitions/commonArtifact'
-      date_logged:
-        type: string
-        format: uint64
-    title: code version
-  commonGroupId:
-    type: object
-    properties:
-      org_id:
-        type: string
-      group_id:
-        type: string
-  modeldbDeleteExperimentResponse:
-    type: object
-    properties:
-      status:
-        type: boolean
-  modeldbDeleteExperimentTag:
-    type: object
-    properties:
-      id:
-        type: string
-      tag:
-        type: string
-  OperatorEnumOperator:
-    type: string
-    enum:
-    - EQ
-    - NE
-    - GT
-    - GTE
-    - LT
-    - LTE
-    - CONTAIN
-    - NOT_CONTAIN
-    - IN
-    - NOT_IN
-    default: EQ
-  modeldbDeleteExperiment:
-    type: object
-    properties:
-      id:
-        type: string
-  modeldbAddExperimentTag:
-    type: object
-    properties:
-      id:
-        type: string
-      tag:
-        type: string
-  modeldbGetUrlForArtifact:
-    type: object
-    properties:
-      id:
-        type: string
-      key:
-        type: string
-      method:
-        type: string
-      artifact_type:
-        $ref: '#/definitions/ArtifactTypeEnumArtifactType'
-      part_number:
-        type: string
-        format: uint64
-  modeldbDeleteExperiments:
-    type: object
-    properties:
-      ids:
-        type: array
-        items:
+        description:
           type: string
-  commonKeyValue:
-    type: object
-    properties:
-      key:
-        type: string
-      value:
-        type: object
-      value_type:
-        $ref: '#/definitions/ValueTypeEnumValueType'
-        description: "As per documentation of proto buffer 3.\n  For enums, the default value is the first defined enum value, which must be 0."
-  modeldbUpdateExperimentName:
-    type: object
-    properties:
-      id:
-        type: string
-      name:
-        type: string
-  modeldbAddAttributes:
-    type: object
-    properties:
-      id:
-        type: string
-      attribute:
-        $ref: '#/definitions/commonKeyValue'
-    title: 'TODO: make this update attribute'
+        date_created:
+          type: string
+          format: int64
+        date_updated:
+          type: string
+          format: int64
+        attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonKeyValue'
+        tags:
+          type: array
+          items:
+            type: string
+        owner:
+          type: string
+        owner_id:
+          type: string
+          format: uint64
+        group_owner_id:
+          $ref: '#/components/schemas/commonGroupId'
+        code_version_snapshot:
+          $ref: '#/components/schemas/commonCodeVersion'
+        artifacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonArtifact'
+        version_number:
+          type: string
+          format: uint64
+          title: Doc for version_number https://github.com/VertaAI/docs/pull/53
+    modeldbGetAttributesResponse:
+      type: object
+      properties:
+        attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonKeyValue'
+    modeldbUpdateExperimentNameOrDescriptionResponse:
+      type: object
+      properties:
+        experiment:
+          $ref: '#/components/schemas/modeldbExperiment'
+    runtimeError:
+      type: object
+      properties:
+        error:
+          type: string
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/protobufAny'
+    modeldbGetExperimentsInProjectResponse:
+      type: object
+      properties:
+        experiments:
+          type: array
+          items:
+            $ref: '#/components/schemas/modeldbExperiment'
+        total_records:
+          type: string
+          format: int64
+    modeldbDeleteExperiments:
+      type: object
+      properties:
+        ids:
+          type: array
+          items:
+            type: string
+    TernaryEnumTernary:
+      type: string
+      enum:
+      - UNKNOWN
+      - 'TRUE'
+      - 'FALSE'
+      default: UNKNOWN
+    modeldbDeleteExperimentResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+    protobufAny:
+      type: object
+      properties:
+        type_url:
+          type: string
+        value:
+          type: string
+          format: byte
+    modeldbDeleteExperimentTagResponse:
+      type: object
+      properties:
+        experiment:
+          $ref: '#/components/schemas/modeldbExperiment'
+    modeldbDeleteExperimentTag:
+      type: object
+      properties:
+        id:
+          type: string
+        tag:
+          type: string
+    modeldbUpdateExperimentName:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    modeldbLogExperimentCodeVersion:
+      type: object
+      properties:
+        id:
+          type: string
+        code_version:
+          $ref: '#/components/schemas/commonCodeVersion'
+      title: code version
+    modeldbGetExperimentByNameResponse:
+      type: object
+      properties:
+        experiment:
+          $ref: '#/components/schemas/modeldbExperiment'
+    modeldbDeleteExperimentAttributesResponse:
+      type: object
+      properties:
+        experiment:
+          $ref: '#/components/schemas/modeldbExperiment'
+    modeldbGetTagsResponse:
+      type: object
+      properties:
+        tags:
+          type: array
+          items:
+            type: string
+    modeldbAddExperimentTagResponse:
+      type: object
+      properties:
+        experiment:
+          $ref: '#/components/schemas/modeldbExperiment'
+    modeldbUpdateExperimentNameOrDescription:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+    modeldbFindExperiments:
+      type: object
+      properties:
+        project_id:
+          type: string
+        experiment_ids:
+          type: array
+          items:
+            type: string
+        predicates:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonKeyValueQuery'
+        ids_only:
+          type: boolean
+        page_number:
+          type: integer
+          format: int32
+          title: For pagination
+        page_limit:
+          type: integer
+          format: int32
+        ascending:
+          type: boolean
+        sort_key:
+          type: string
+        workspace_name:
+          type: string
+    modeldbDeleteExperimentTagsResponse:
+      type: object
+      properties:
+        experiment:
+          $ref: '#/components/schemas/modeldbExperiment'
+    modeldbDeleteExperimentsResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+    modeldbUpdateExperimentNameResponse:
+      type: object
+      properties:
+        experiment:
+          $ref: '#/components/schemas/modeldbExperiment'
+    modeldbFindExperimentsResponse:
+      type: object
+      properties:
+        experiments:
+          type: array
+          items:
+            $ref: '#/components/schemas/modeldbExperiment'
+        total_records:
+          type: string
+          format: int64
+    modeldbDeleteExperiment:
+      type: object
+      properties:
+        id:
+          type: string
+    modeldbAddExperimentTag:
+      type: object
+      properties:
+        id:
+          type: string
+        tag:
+          type: string
+    modeldbLogExperimentArtifacts:
+      type: object
+      properties:
+        id:
+          type: string
+        artifacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonArtifact'
+      title: artifacts
+    modeldbLogExperimentCodeVersionResponse:
+      type: object
+      properties:
+        experiment:
+          $ref: '#/components/schemas/modeldbExperiment'
+    OperatorEnumOperator:
+      type: string
+      enum:
+      - EQ
+      - NE
+      - GT
+      - GTE
+      - LT
+      - LTE
+      - CONTAIN
+      - NOT_CONTAIN
+      - IN
+      - NOT_IN
+      default: EQ
+    commonArtifact:
+      type: object
+      properties:
+        key:
+          type: string
+        path:
+          type: string
+        path_only:
+          type: boolean
+        artifact_type:
+          $ref: '#/components/schemas/ArtifactTypeEnumArtifactType'
+        linked_artifact_id:
+          type: string
+        filename_extension:
+          type: string
+        serialization:
+          type: string
+        artifact_subtype:
+          type: string
+        upload_completed:
+          type: boolean
+    modeldbGetExperimentCodeVersionResponse:
+      type: object
+      properties:
+        code_version:
+          $ref: '#/components/schemas/commonCodeVersion'
+    commonKeyValue:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: object
+        value_type:
+          $ref: '#/components/schemas/ValueTypeEnumValueType'
+          description: "As per documentation of proto buffer 3.\n  For enums, the default value is the first defined enum value, which must be 0."
+    modeldbAddExperimentAttributesResponse:
+      type: object
+      properties:
+        experiment:
+          $ref: '#/components/schemas/modeldbExperiment'
+    modeldbAddExperimentTags:
+      type: object
+      properties:
+        id:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+    modeldbAddExperimentAttributes:
+      type: object
+      properties:
+        id:
+          type: string
+        attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonKeyValue'
+    modeldbGetArtifactsResponse:
+      type: object
+      properties:
+        artifacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonArtifact'
+    modeldbLogExperimentArtifactsResponse:
+      type: object
+      properties:
+        experiment:
+          $ref: '#/components/schemas/modeldbExperiment'
+    modeldbGetExperimentByIdResponse:
+      type: object
+      properties:
+        experiment:
+          $ref: '#/components/schemas/modeldbExperiment'
+    modeldbDeleteExperimentTags:
+      type: object
+      properties:
+        id:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        delete_all:
+          type: boolean
+    modeldbGetUrlForArtifactResponse:
+      type: object
+      properties:
+        url:
+          type: string
+        fields:
+          type: object
+          additionalProperties:
+            type: string
+        multipart_upload_ok:
+          type: boolean
+    commonKeyValueQuery:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: object
+        value_type:
+          $ref: '#/components/schemas/ValueTypeEnumValueType'
+        operator:
+          $ref: '#/components/schemas/OperatorEnumOperator'
+    commonGroupId:
+      type: object
+      properties:
+        org_id:
+          type: string
+        group_id:
+          type: string
+    modeldbAddExperimentTagsResponse:
+      type: object
+      properties:
+        experiment:
+          $ref: '#/components/schemas/modeldbExperiment'
+    modeldbCreateExperiment:
+      type: object
+      properties:
+        project_id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        date_created:
+          type: string
+          format: int64
+        date_updated:
+          type: string
+          format: int64
+        attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonKeyValue'
+        tags:
+          type: array
+          items:
+            type: string
+        artifacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonArtifact'
+    modeldbAddAttributes:
+      type: object
+      properties:
+        id:
+          type: string
+        attribute:
+          $ref: '#/components/schemas/commonKeyValue'
+      title: 'TODO: make this update attribute'
+    modeldbDeleteExperimentArtifact:
+      type: object
+      properties:
+        id:
+          type: string
+        key:
+          type: string
+    ValueTypeEnumValueType:
+      type: string
+      enum:
+      - STRING
+      - NUMBER
+      - LIST
+      - BLOB
+      default: STRING
+    modeldbGetUrlForArtifact:
+      type: object
+      properties:
+        id:
+          type: string
+        key:
+          type: string
+        method:
+          type: string
+        artifact_type:
+          $ref: '#/components/schemas/ArtifactTypeEnumArtifactType'
+        part_number:
+          type: string
+          format: uint64
+    modeldbCreateExperimentResponse:
+      type: object
+      properties:
+        experiment:
+          $ref: '#/components/schemas/modeldbExperiment'
+    modeldbDeleteExperimentArtifactResponse:
+      type: object
+      properties:
+        experiment:
+          $ref: '#/components/schemas/modeldbExperiment'

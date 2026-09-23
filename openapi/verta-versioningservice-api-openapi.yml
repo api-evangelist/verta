@@ -1,12 +1,9 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
-  title: deployment/APISync.proto AuthzService VersioningService API
+  title: modeldb/versioning/.proto Versioning Service API
   version: version not set
-basePath: /v1
-consumes:
-- application/json
-produces:
-- application/json
+servers:
+- url: /v1
 tags:
 - name: VersioningService
 paths:
@@ -16,83 +13,108 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningCommitMultipartVersionedBlobArtifactResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningCommitMultipartVersionedBlobArtifactResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/versioningCommitMultipartVersionedBlobArtifact'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       tags:
       - VersioningService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/versioningCommitMultipartVersionedBlobArtifact'
+        required: true
+      summary: Versioning service commit multipart versioned blob artifact
+      x-summary-source: derived
   /versioning/commitVersionedBlobArtifactPart:
     post:
       operationId: VersioningService_commitVersionedBlobArtifactPart
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningCommitVersionedBlobArtifactPartResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningCommitVersionedBlobArtifactPartResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/versioningCommitVersionedBlobArtifactPart'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       tags:
       - VersioningService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/versioningCommitVersionedBlobArtifactPart'
+        required: true
+      summary: Versioning service commit versioned blob artifact part
+      x-summary-source: derived
   /versioning/getCommittedVersionedBlobArtifactParts:
     get:
       operationId: VersioningService_getCommittedVersionedBlobArtifactParts
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningGetCommittedVersionedBlobArtifactPartsResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningGetCommittedVersionedBlobArtifactPartsResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: repository_id.named_id.name
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: repository_id.named_id.workspace_name
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: repository_id.repo_id
         in: query
         required: false
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       - name: commit_sha
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: location
         in: query
         required: false
-        type: array
-        items:
-          type: string
-        collectionFormat: multi
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
       - name: path_dataset_component_blob_path
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       tags:
       - VersioningService
+      summary: Versioning service get committed versioned blob artifact parts
+      x-summary-source: derived
   /versioning/repositories:
     get:
       summary: CRUD for repositories
@@ -100,27 +122,34 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningListRepositoriesRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningListRepositoriesRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: workspace_name
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: pagination.page_number
         in: query
         required: false
-        type: integer
-        format: int32
+        schema:
+          type: integer
+          format: int32
       - name: pagination.page_limit
         in: query
         required: false
-        type: integer
-        format: int32
+        schema:
+          type: integer
+          format: int32
       tags:
       - VersioningService
   /versioning/repositories/{id.repo_id}:
@@ -129,88 +158,116 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningGetRepositoryRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningGetRepositoryRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: id.repo_id
         in: path
         required: true
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       - name: id.named_id.name
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: id.named_id.workspace_name
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       tags:
       - VersioningService
+      summary: Versioning service get repository2
+      x-summary-source: derived
     put:
       operationId: VersioningService_UpdateRepository2
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningSetRepositoryResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningSetRepositoryResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: id.repo_id
         in: path
         required: true
-        type: string
-        format: uint64
-      - name: body
-        in: body
-        required: true
         schema:
-          $ref: '#/definitions/versioningRepository'
+          type: string
+          format: uint64
       - name: id.named_id.name
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: id.named_id.workspace_name
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       tags:
       - VersioningService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/versioningRepository'
+        required: true
+      summary: Versioning service update repository2
+      x-summary-source: derived
   /versioning/repositories/{repository_id.repo_id}:
     delete:
       operationId: VersioningService_DeleteRepository2
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningDeleteRepositoryRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningDeleteRepositoryRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: repository_id.repo_id
         in: path
         required: true
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       - name: repository_id.named_id.name
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: repository_id.named_id.workspace_name
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       tags:
       - VersioningService
+      summary: Versioning service delete repository2
+      x-summary-source: derived
   /versioning/repositories/{repository_id.repo_id}/branches:
     get:
       summary: CRUD for Branches
@@ -218,26 +275,33 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningListBranchesRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningListBranchesRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: repository_id.repo_id
         in: path
         required: true
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       - name: repository_id.named_id.name
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: repository_id.named_id.workspace_name
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       tags:
       - VersioningService
   /versioning/repositories/{repository_id.repo_id}/branches/{branch}:
@@ -246,137 +310,177 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningGetBranchRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningGetBranchRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: repository_id.repo_id
         in: path
         required: true
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       - name: branch
         in: path
-        required: true
-        type: string
-      - name: repository_id.named_id.name
-        in: query
-        required: false
-        type: string
-      - name: repository_id.named_id.workspace_name
-        in: query
-        required: false
-        type: string
-      tags:
-      - VersioningService
-    delete:
-      operationId: VersioningService_DeleteBranch2
-      responses:
-        '200':
-          description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningDeleteBranchRequestResponse'
-        default:
-          description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: repository_id.repo_id
-        in: path
-        required: true
-        type: string
-        format: uint64
-      - name: branch
-        in: path
-        required: true
-        type: string
-      - name: repository_id.named_id.name
-        in: query
-        required: false
-        type: string
-      - name: repository_id.named_id.workspace_name
-        in: query
-        required: false
-        type: string
-      tags:
-      - VersioningService
-    put:
-      summary: Unlike tags, branches can be updated. The API must verify that the new commit is a child of the current branch.
-      operationId: VersioningService_SetBranch2
-      responses:
-        '200':
-          description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningSetBranchRequestResponse'
-        default:
-          description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: repository_id.repo_id
-        in: path
-        required: true
-        type: string
-        format: uint64
-      - name: branch
-        in: path
-        required: true
-        type: string
-      - name: body
-        in: body
         required: true
         schema:
           type: string
       - name: repository_id.named_id.name
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: repository_id.named_id.workspace_name
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       tags:
       - VersioningService
+      summary: Versioning service get branch2
+      x-summary-source: derived
+    delete:
+      operationId: VersioningService_DeleteBranch2
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningDeleteBranchRequestResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+      parameters:
+      - name: repository_id.repo_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uint64
+      - name: branch
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: repository_id.named_id.name
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: repository_id.named_id.workspace_name
+        in: query
+        required: false
+        schema:
+          type: string
+      tags:
+      - VersioningService
+      summary: Versioning service delete branch2
+      x-summary-source: derived
+    put:
+      summary: Unlike tags, branches can be updated.
+      operationId: VersioningService_SetBranch2
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningSetBranchRequestResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+      parameters:
+      - name: repository_id.repo_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uint64
+      - name: branch
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: repository_id.named_id.name
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: repository_id.named_id.workspace_name
+        in: query
+        required: false
+        schema:
+          type: string
+      tags:
+      - VersioningService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        required: true
   /versioning/repositories/{repository_id.repo_id}/branches/{branch}/log:
     get:
       operationId: VersioningService_ListCommitsLog2
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningListCommitsLogRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningListCommitsLogRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: repository_id.repo_id
         in: path
         required: true
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       - name: branch
         description: Pagination pagination = 2;
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: repository_id.named_id.name
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: repository_id.named_id.workspace_name
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: commit_sha
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       tags:
       - VersioningService
+      summary: Versioning service list commits log2
+      x-summary-source: derived
   /versioning/repositories/{repository_id.repo_id}/commits:
     get:
       summary: CRUD for commits
@@ -384,44 +488,55 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningListCommitsRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningListCommitsRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: repository_id.repo_id
         in: path
         required: true
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       - name: repository_id.named_id.name
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: repository_id.named_id.workspace_name
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: pagination.page_number
         in: query
         required: false
-        type: integer
-        format: int32
+        schema:
+          type: integer
+          format: int32
       - name: pagination.page_limit
         in: query
         required: false
-        type: integer
-        format: int32
+        schema:
+          type: integer
+          format: int32
       - name: commit_base
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: commit_head
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       tags:
       - VersioningService
     post:
@@ -429,88 +544,116 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningCreateCommitRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningCreateCommitRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: repository_id.repo_id
         in: path
         required: true
-        type: string
-        format: uint64
-      - name: body
-        in: body
-        required: true
         schema:
-          $ref: '#/definitions/versioningCreateCommitRequest'
+          type: string
+          format: uint64
       tags:
       - VersioningService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/versioningCreateCommitRequest'
+        required: true
+      summary: Versioning service create commit2
+      x-summary-source: derived
   /versioning/repositories/{repository_id.repo_id}/commits/{commit_sha}:
     get:
       operationId: VersioningService_GetCommit2
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningGetCommitRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningGetCommitRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: repository_id.repo_id
         in: path
         required: true
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       - name: commit_sha
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: repository_id.named_id.name
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: repository_id.named_id.workspace_name
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       tags:
       - VersioningService
+      summary: Versioning service get commit2
+      x-summary-source: derived
     delete:
       operationId: VersioningService_DeleteCommit2
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningDeleteCommitRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningDeleteCommitRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: repository_id.repo_id
         in: path
         required: true
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       - name: commit_sha
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: repository_id.named_id.name
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: repository_id.named_id.workspace_name
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       tags:
       - VersioningService
+      summary: Versioning service delete commit2
+      x-summary-source: derived
   /versioning/repositories/{repository_id.repo_id}/commits/{commit_sha}/blobs:
     get:
       summary: Getting blobs and folders in a commit
@@ -518,41 +661,51 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningListCommitBlobsRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningListCommitBlobsRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: repository_id.repo_id
         in: path
         required: true
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       - name: commit_sha
         description: Pagination pagination = 2;
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: repository_id.named_id.name
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: repository_id.named_id.workspace_name
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: location_prefix
         description: 'List of folder names (with the last element potentially representing the blob name)
 
           This will be used to limit the search to scope just this location, like `git log /my/path` would do.'
         in: query
         required: false
-        type: array
-        items:
-          type: string
-        collectionFormat: multi
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
       tags:
       - VersioningService
   /versioning/repositories/{repository_id.repo_id}/commits/{commit_sha}/getUrlForBlobVersioned:
@@ -561,96 +714,124 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningGetUrlForBlobVersionedResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningGetUrlForBlobVersionedResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: repository_id.repo_id
         in: path
         required: true
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       - name: commit_sha
         in: path
         required: true
-        type: string
-      - name: body
-        in: body
-        required: true
         schema:
-          $ref: '#/definitions/versioningGetUrlForBlobVersioned'
+          type: string
       tags:
       - VersioningService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/versioningGetUrlForBlobVersioned'
+        required: true
+      summary: Versioning service get url for blob versioned2
+      x-summary-source: derived
   /versioning/repositories/{repository_id.repo_id}/commits/{commit_sha}/log:
     get:
       operationId: VersioningService_ListCommitsLog4
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningListCommitsLogRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningListCommitsLogRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: repository_id.repo_id
         in: path
         required: true
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       - name: commit_sha
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: repository_id.named_id.name
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: repository_id.named_id.workspace_name
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: branch
         description: Pagination pagination = 2;.
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       tags:
       - VersioningService
+      summary: Versioning service list commits log4
+      x-summary-source: derived
   /versioning/repositories/{repository_id.repo_id}/commits/{commit_sha}/path:
     get:
       operationId: VersioningService_GetCommitComponent2
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningGetCommitComponentRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningGetCommitComponentRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: repository_id.repo_id
         in: path
         required: true
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       - name: commit_sha
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: repository_id.named_id.name
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: repository_id.named_id.workspace_name
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: location
         description: 'List of folder names, with the last element being the name of the blob or tree
 
@@ -659,41 +840,54 @@ paths:
           Each element goes one level deeper. So ["foo", "bar"] represents the same as /foo/bar.'
         in: query
         required: false
-        type: array
-        items:
-          type: string
-        collectionFormat: multi
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
       tags:
       - VersioningService
+      summary: Versioning service get commit component2
+      x-summary-source: derived
   /versioning/repositories/{repository_id.repo_id}/commits/{commit_to_revert_sha}/revert:
     post:
       operationId: VersioningService_RevertRepositoryCommits2
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningRevertRepositoryCommitsRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningRevertRepositoryCommitsRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: repository_id.repo_id
         in: path
         required: true
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       - name: commit_to_revert_sha
         in: path
         required: true
-        type: string
-      - name: body
-        in: body
-        required: true
         schema:
-          $ref: '#/definitions/versioningRevertRepositoryCommitsRequest'
+          type: string
       tags:
       - VersioningService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/versioningRevertRepositoryCommitsRequest'
+        required: true
+      summary: Versioning service revert repository commits2
+      x-summary-source: derived
   /versioning/repositories/{repository_id.repo_id}/diff:
     get:
       summary: Git-like operations
@@ -701,48 +895,60 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningComputeRepositoryDiffRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningComputeRepositoryDiffRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: repository_id.repo_id
         in: path
         required: true
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       - name: repository_id.named_id.name
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: repository_id.named_id.workspace_name
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: commit_a
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: commit_b
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: replace_a_with_common_ancestor
         description: Replace commit_a with the nearest common ancestor of commit_a and commit_b.
         in: query
         required: false
-        type: boolean
+        schema:
+          type: boolean
       - name: branch_a
         description: for a or b only one of commit or branch should be populated.
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: branch_b
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       tags:
       - VersioningService
   /versioning/repositories/{repository_id.repo_id}/merge:
@@ -751,25 +957,33 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningMergeRepositoryCommitsRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningMergeRepositoryCommitsRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: repository_id.repo_id
         in: path
         required: true
-        type: string
-        format: uint64
-      - name: body
-        in: body
-        required: true
         schema:
-          $ref: '#/definitions/versioningMergeRepositoryCommitsRequest'
+          type: string
+          format: uint64
       tags:
       - VersioningService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/versioningMergeRepositoryCommitsRequest'
+        required: true
+      summary: Versioning service merge repository commits2
+      x-summary-source: derived
   /versioning/repositories/{repository_id.repo_id}/tags:
     get:
       summary: CRUD for tags
@@ -777,26 +991,33 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningListTagsRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningListTagsRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: repository_id.repo_id
         in: path
         required: true
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       - name: repository_id.named_id.name
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: repository_id.named_id.workspace_name
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       tags:
       - VersioningService
   /versioning/repositories/{repository_id.repo_id}/tags/{tag}:
@@ -805,221 +1026,288 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningGetTagRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningGetTagRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: repository_id.repo_id
         in: path
         required: true
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       - name: tag
         in: path
-        required: true
-        type: string
-      - name: repository_id.named_id.name
-        in: query
-        required: false
-        type: string
-      - name: repository_id.named_id.workspace_name
-        in: query
-        required: false
-        type: string
-      tags:
-      - VersioningService
-    delete:
-      operationId: VersioningService_DeleteTag2
-      responses:
-        '200':
-          description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningDeleteTagRequestResponse'
-        default:
-          description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: repository_id.repo_id
-        in: path
-        required: true
-        type: string
-        format: uint64
-      - name: tag
-        in: path
-        required: true
-        type: string
-      - name: repository_id.named_id.name
-        in: query
-        required: false
-        type: string
-      - name: repository_id.named_id.workspace_name
-        in: query
-        required: false
-        type: string
-      tags:
-      - VersioningService
-    put:
-      summary: Can't update a tag. If someone tries to set one that exists, we should error.
-      operationId: VersioningService_SetTag2
-      responses:
-        '200':
-          description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningSetTagRequestResponse'
-        default:
-          description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: repository_id.repo_id
-        in: path
-        required: true
-        type: string
-        format: uint64
-      - name: tag
-        in: path
-        required: true
-        type: string
-      - name: body
-        in: body
         required: true
         schema:
           type: string
       - name: repository_id.named_id.name
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: repository_id.named_id.workspace_name
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       tags:
       - VersioningService
+      summary: Versioning service get tag2
+      x-summary-source: derived
+    delete:
+      operationId: VersioningService_DeleteTag2
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningDeleteTagRequestResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+      parameters:
+      - name: repository_id.repo_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uint64
+      - name: tag
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: repository_id.named_id.name
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: repository_id.named_id.workspace_name
+        in: query
+        required: false
+        schema:
+          type: string
+      tags:
+      - VersioningService
+      summary: Versioning service delete tag2
+      x-summary-source: derived
+    put:
+      summary: Can't update a tag. If someone tries to set one that exists, we should error
+      operationId: VersioningService_SetTag2
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningSetTagRequestResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+      parameters:
+      - name: repository_id.repo_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uint64
+      - name: tag
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: repository_id.named_id.name
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: repository_id.named_id.workspace_name
+        in: query
+        required: false
+        schema:
+          type: string
+      tags:
+      - VersioningService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        required: true
   /versioning/workspaces/{id.named_id.workspace_name}/repositories:
     post:
       operationId: VersioningService_CreateRepository
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningSetRepositoryResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningSetRepositoryResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: id.named_id.workspace_name
         in: path
         required: true
-        type: string
-      - name: body
-        in: body
-        required: true
         schema:
-          $ref: '#/definitions/versioningRepository'
+          type: string
       - name: id.named_id.name
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: id.repo_id
         in: query
         required: false
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       tags:
       - VersioningService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/versioningRepository'
+        required: true
+      summary: Versioning service create repository
+      x-summary-source: derived
   /versioning/workspaces/{id.named_id.workspace_name}/repositories/{id.named_id.name}:
     get:
       operationId: VersioningService_GetRepository
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningGetRepositoryRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningGetRepositoryRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: id.named_id.workspace_name
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: id.named_id.name
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: id.repo_id
         in: query
         required: false
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       tags:
       - VersioningService
+      summary: Versioning service get repository
+      x-summary-source: derived
     put:
       operationId: VersioningService_UpdateRepository
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningSetRepositoryResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningSetRepositoryResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: id.named_id.workspace_name
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: id.named_id.name
         in: path
         required: true
-        type: string
-      - name: body
-        in: body
-        required: true
         schema:
-          $ref: '#/definitions/versioningRepository'
+          type: string
       - name: id.repo_id
         in: query
         required: false
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       tags:
       - VersioningService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/versioningRepository'
+        required: true
+      summary: Versioning service update repository
+      x-summary-source: derived
   /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}:
     delete:
       operationId: VersioningService_DeleteRepository
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningDeleteRepositoryRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningDeleteRepositoryRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: repository_id.named_id.workspace_name
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: repository_id.named_id.name
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: repository_id.repo_id
         in: query
         required: false
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       tags:
       - VersioningService
+      summary: Versioning service delete repository
+      x-summary-source: derived
   /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/branches:
     get:
       summary: CRUD for Branches
@@ -1027,26 +1315,33 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningListBranchesRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningListBranchesRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: repository_id.named_id.workspace_name
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: repository_id.named_id.name
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: repository_id.repo_id
         in: query
         required: false
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       tags:
       - VersioningService
   ? /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/branches/{branch}
@@ -1055,137 +1350,177 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningGetBranchRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningGetBranchRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: repository_id.named_id.workspace_name
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: repository_id.named_id.name
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: branch
         in: path
-        required: true
-        type: string
-      - name: repository_id.repo_id
-        in: query
-        required: false
-        type: string
-        format: uint64
-      tags:
-      - VersioningService
-    delete:
-      operationId: VersioningService_DeleteBranch
-      responses:
-        '200':
-          description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningDeleteBranchRequestResponse'
-        default:
-          description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: repository_id.named_id.workspace_name
-        in: path
-        required: true
-        type: string
-      - name: repository_id.named_id.name
-        in: path
-        required: true
-        type: string
-      - name: branch
-        in: path
-        required: true
-        type: string
-      - name: repository_id.repo_id
-        in: query
-        required: false
-        type: string
-        format: uint64
-      tags:
-      - VersioningService
-    put:
-      summary: Unlike tags, branches can be updated. The API must verify that the new commit is a child of the current branch.
-      operationId: VersioningService_SetBranch
-      responses:
-        '200':
-          description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningSetBranchRequestResponse'
-        default:
-          description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: repository_id.named_id.workspace_name
-        in: path
-        required: true
-        type: string
-      - name: repository_id.named_id.name
-        in: path
-        required: true
-        type: string
-      - name: branch
-        in: path
-        required: true
-        type: string
-      - name: body
-        in: body
         required: true
         schema:
           type: string
       - name: repository_id.repo_id
         in: query
         required: false
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       tags:
       - VersioningService
+      summary: Versioning service get branch
+      x-summary-source: derived
+    delete:
+      operationId: VersioningService_DeleteBranch
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningDeleteBranchRequestResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+      parameters:
+      - name: repository_id.named_id.workspace_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: repository_id.named_id.name
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: branch
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: repository_id.repo_id
+        in: query
+        required: false
+        schema:
+          type: string
+          format: uint64
+      tags:
+      - VersioningService
+      summary: Versioning service delete branch
+      x-summary-source: derived
+    put:
+      summary: Unlike tags, branches can be updated.
+      operationId: VersioningService_SetBranch
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningSetBranchRequestResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+      parameters:
+      - name: repository_id.named_id.workspace_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: repository_id.named_id.name
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: branch
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: repository_id.repo_id
+        in: query
+        required: false
+        schema:
+          type: string
+          format: uint64
+      tags:
+      - VersioningService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        required: true
   ? /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/branches/{branch}/log
   : get:
       operationId: VersioningService_ListCommitsLog
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningListCommitsLogRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningListCommitsLogRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: repository_id.named_id.workspace_name
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: repository_id.named_id.name
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: branch
         description: Pagination pagination = 2;
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: repository_id.repo_id
         in: query
         required: false
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       - name: commit_sha
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       tags:
       - VersioningService
+      summary: Versioning service list commits log
+      x-summary-source: derived
   /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/commits:
     get:
       summary: CRUD for commits
@@ -1193,44 +1528,55 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningListCommitsRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningListCommitsRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: repository_id.named_id.workspace_name
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: repository_id.named_id.name
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: repository_id.repo_id
         in: query
         required: false
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       - name: pagination.page_number
         in: query
         required: false
-        type: integer
-        format: int32
+        schema:
+          type: integer
+          format: int32
       - name: pagination.page_limit
         in: query
         required: false
-        type: integer
-        format: int32
+        schema:
+          type: integer
+          format: int32
       - name: commit_base
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: commit_head
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       tags:
       - VersioningService
     post:
@@ -1238,91 +1584,120 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningCreateCommitRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningCreateCommitRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: repository_id.named_id.workspace_name
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: repository_id.named_id.name
         in: path
         required: true
-        type: string
-      - name: body
-        in: body
-        required: true
         schema:
-          $ref: '#/definitions/versioningCreateCommitRequest'
+          type: string
       tags:
       - VersioningService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/versioningCreateCommitRequest'
+        required: true
+      summary: Versioning service create commit
+      x-summary-source: derived
   ? /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/commits/{commit_sha}
   : get:
       operationId: VersioningService_GetCommit
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningGetCommitRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningGetCommitRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: repository_id.named_id.workspace_name
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: repository_id.named_id.name
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: commit_sha
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: repository_id.repo_id
         in: query
         required: false
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       tags:
       - VersioningService
+      summary: Versioning service get commit
+      x-summary-source: derived
     delete:
       operationId: VersioningService_DeleteCommit
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningDeleteCommitRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningDeleteCommitRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: repository_id.named_id.workspace_name
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: repository_id.named_id.name
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: commit_sha
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: repository_id.repo_id
         in: query
         required: false
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       tags:
       - VersioningService
+      summary: Versioning service delete commit
+      x-summary-source: derived
   ? /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/commits/{commit_sha}/blobs
   : get:
       summary: Getting blobs and folders in a commit
@@ -1330,41 +1705,51 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningListCommitBlobsRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningListCommitBlobsRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: repository_id.named_id.workspace_name
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: repository_id.named_id.name
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: commit_sha
         description: Pagination pagination = 2;
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: repository_id.repo_id
         in: query
         required: false
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       - name: location_prefix
         description: 'List of folder names (with the last element potentially representing the blob name)
 
           This will be used to limit the search to scope just this location, like `git log /my/path` would do.'
         in: query
         required: false
-        type: array
-        items:
-          type: string
-        collectionFormat: multi
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
       tags:
       - VersioningService
   ? /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/commits/{commit_sha}/getUrlForBlobVersioned
@@ -1373,99 +1758,128 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningGetUrlForBlobVersionedResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningGetUrlForBlobVersionedResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: repository_id.named_id.workspace_name
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: repository_id.named_id.name
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: commit_sha
         in: path
         required: true
-        type: string
-      - name: body
-        in: body
-        required: true
         schema:
-          $ref: '#/definitions/versioningGetUrlForBlobVersioned'
+          type: string
       tags:
       - VersioningService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/versioningGetUrlForBlobVersioned'
+        required: true
+      summary: Versioning service get url for blob versioned
+      x-summary-source: derived
   ? /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/commits/{commit_sha}/log
   : get:
       operationId: VersioningService_ListCommitsLog3
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningListCommitsLogRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningListCommitsLogRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: repository_id.named_id.workspace_name
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: repository_id.named_id.name
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: commit_sha
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: repository_id.repo_id
         in: query
         required: false
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       - name: branch
         description: Pagination pagination = 2;.
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       tags:
       - VersioningService
+      summary: Versioning service list commits log3
+      x-summary-source: derived
   ? /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/commits/{commit_sha}/path
   : get:
       operationId: VersioningService_GetCommitComponent
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningGetCommitComponentRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningGetCommitComponentRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: repository_id.named_id.workspace_name
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: repository_id.named_id.name
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: commit_sha
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: repository_id.repo_id
         in: query
         required: false
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       - name: location
         description: 'List of folder names, with the last element being the name of the blob or tree
 
@@ -1474,44 +1888,58 @@ paths:
           Each element goes one level deeper. So ["foo", "bar"] represents the same as /foo/bar.'
         in: query
         required: false
-        type: array
-        items:
-          type: string
-        collectionFormat: multi
+        style: form
+        explode: true
+        schema:
+          type: array
+          items:
+            type: string
       tags:
       - VersioningService
+      summary: Versioning service get commit component
+      x-summary-source: derived
   ? /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/commits/{commit_to_revert_sha}/revert
   : post:
       operationId: VersioningService_RevertRepositoryCommits
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningRevertRepositoryCommitsRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningRevertRepositoryCommitsRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: repository_id.named_id.workspace_name
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: repository_id.named_id.name
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: commit_to_revert_sha
         in: path
         required: true
-        type: string
-      - name: body
-        in: body
-        required: true
         schema:
-          $ref: '#/definitions/versioningRevertRepositoryCommitsRequest'
+          type: string
       tags:
       - VersioningService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/versioningRevertRepositoryCommitsRequest'
+        required: true
+      summary: Versioning service revert repository commits
+      x-summary-source: derived
   /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/diff:
     get:
       summary: Git-like operations
@@ -1519,48 +1947,60 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningComputeRepositoryDiffRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningComputeRepositoryDiffRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: repository_id.named_id.workspace_name
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: repository_id.named_id.name
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: repository_id.repo_id
         in: query
         required: false
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       - name: commit_a
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: commit_b
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: replace_a_with_common_ancestor
         description: Replace commit_a with the nearest common ancestor of commit_a and commit_b.
         in: query
         required: false
-        type: boolean
+        schema:
+          type: boolean
       - name: branch_a
         description: for a or b only one of commit or branch should be populated.
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       - name: branch_b
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       tags:
       - VersioningService
   /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/merge:
@@ -1569,28 +2009,37 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningMergeRepositoryCommitsRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningMergeRepositoryCommitsRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: repository_id.named_id.workspace_name
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: repository_id.named_id.name
         in: path
         required: true
-        type: string
-      - name: body
-        in: body
-        required: true
         schema:
-          $ref: '#/definitions/versioningMergeRepositoryCommitsRequest'
+          type: string
       tags:
       - VersioningService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/versioningMergeRepositoryCommitsRequest'
+        required: true
+      summary: Versioning service merge repository commits
+      x-summary-source: derived
   /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/tags:
     get:
       summary: CRUD for tags
@@ -1598,26 +2047,33 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningListTagsRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningListTagsRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: repository_id.named_id.workspace_name
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: repository_id.named_id.name
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: repository_id.repo_id
         in: query
         required: false
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       tags:
       - VersioningService
   /versioning/workspaces/{repository_id.named_id.workspace_name}/repositories/{repository_id.named_id.name}/tags/{tag}:
@@ -1626,148 +2082,193 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningGetTagRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningGetTagRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: repository_id.named_id.workspace_name
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: repository_id.named_id.name
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: tag
         in: path
-        required: true
-        type: string
-      - name: repository_id.repo_id
-        in: query
-        required: false
-        type: string
-        format: uint64
-      tags:
-      - VersioningService
-    delete:
-      operationId: VersioningService_DeleteTag
-      responses:
-        '200':
-          description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningDeleteTagRequestResponse'
-        default:
-          description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: repository_id.named_id.workspace_name
-        in: path
-        required: true
-        type: string
-      - name: repository_id.named_id.name
-        in: path
-        required: true
-        type: string
-      - name: tag
-        in: path
-        required: true
-        type: string
-      - name: repository_id.repo_id
-        in: query
-        required: false
-        type: string
-        format: uint64
-      tags:
-      - VersioningService
-    put:
-      summary: Can't update a tag. If someone tries to set one that exists, we should error.
-      operationId: VersioningService_SetTag
-      responses:
-        '200':
-          description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningSetTagRequestResponse'
-        default:
-          description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
-      parameters:
-      - name: repository_id.named_id.workspace_name
-        in: path
-        required: true
-        type: string
-      - name: repository_id.named_id.name
-        in: path
-        required: true
-        type: string
-      - name: tag
-        in: path
-        required: true
-        type: string
-      - name: body
-        in: body
         required: true
         schema:
           type: string
       - name: repository_id.repo_id
         in: query
         required: false
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       tags:
       - VersioningService
+      summary: Versioning service get tag
+      x-summary-source: derived
+    delete:
+      operationId: VersioningService_DeleteTag
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningDeleteTagRequestResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+      parameters:
+      - name: repository_id.named_id.workspace_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: repository_id.named_id.name
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: tag
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: repository_id.repo_id
+        in: query
+        required: false
+        schema:
+          type: string
+          format: uint64
+      tags:
+      - VersioningService
+      summary: Versioning service delete tag
+      x-summary-source: derived
+    put:
+      summary: Can't update a tag. If someone tries to set one that exists, we should error
+      operationId: VersioningService_SetTag
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningSetTagRequestResponse'
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
+      parameters:
+      - name: repository_id.named_id.workspace_name
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: repository_id.named_id.name
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: tag
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: repository_id.repo_id
+        in: query
+        required: false
+        schema:
+          type: string
+          format: uint64
+      tags:
+      - VersioningService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+        required: true
   /versioning/workspaces/{workspace_name}/findRepositories:
     post:
       operationId: VersioningService_findRepositories
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningFindRepositoriesResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningFindRepositoriesResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: workspace_name
         in: path
         required: true
-        type: string
-      - name: body
-        in: body
-        required: true
         schema:
-          $ref: '#/definitions/versioningFindRepositories'
+          type: string
       tags:
       - VersioningService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/versioningFindRepositories'
+        required: true
+      summary: Versioning service find repositories
+      x-summary-source: derived
   /versioning/workspaces/{workspace_name}/findRepositoriesBlobs:
     post:
       operationId: VersioningService_findRepositoriesBlobs
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningFindRepositoriesBlobsResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningFindRepositoriesBlobsResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: workspace_name
         in: path
         required: true
-        type: string
-      - name: body
-        in: body
-        required: true
         schema:
-          $ref: '#/definitions/versioningFindRepositoriesBlobs'
+          type: string
       tags:
       - VersioningService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/versioningFindRepositoriesBlobs'
+        required: true
+      summary: Versioning service find repositories blobs
+      x-summary-source: derived
   /versioning/workspaces/{workspace_name}/repositories:
     get:
       summary: CRUD for repositories
@@ -1775,1125 +2276,1133 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/versioningListRepositoriesRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/versioningListRepositoriesRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/runtimeError'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/runtimeError'
       parameters:
       - name: workspace_name
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: pagination.page_number
         in: query
         required: false
-        type: integer
-        format: int32
+        schema:
+          type: integer
+          format: int32
       - name: pagination.page_limit
         in: query
         required: false
-        type: integer
-        format: int32
+        schema:
+          type: integer
+          format: int32
       tags:
       - VersioningService
-definitions:
-  versioningDeleteTagRequestResponse:
-    type: object
-  versioningPathDatasetBlob:
-    type: object
-    properties:
-      components:
-        type: array
-        items:
-          $ref: '#/definitions/versioningPathDatasetComponentBlob'
-  versioningCreateCommitRequestResponse:
-    type: object
-    properties:
-      commit:
-        $ref: '#/definitions/versioningCommit'
-  versioningPythonEnvironmentDiff:
-    type: object
-    properties:
-      version:
-        $ref: '#/definitions/versioningVersionEnvironmentDiff'
-      requirements:
-        type: array
-        items:
-          $ref: '#/definitions/versioningPythonRequirementEnvironmentDiff'
-      constraints:
-        type: array
-        items:
-          $ref: '#/definitions/versioningPythonRequirementEnvironmentDiff'
-  versioningNotebookCodeBlob:
-    type: object
-    properties:
-      path:
-        $ref: '#/definitions/versioningPathDatasetComponentBlob'
-      git_repo:
-        $ref: '#/definitions/versioningGitCodeBlob'
-  uacCollaboratorPermissions:
-    type: object
-    properties:
-      collaborator_type:
-        $ref: '#/definitions/CollaboratorTypeEnumCollaboratorType'
-      can_deploy:
-        $ref: '#/definitions/TernaryEnumTernary'
-      can_predict:
-        $ref: '#/definitions/TernaryEnumTernary'
-  versioningListCommitBlobsRequestResponse:
-    type: object
-    properties:
-      blobs:
-        type: array
-        items:
-          $ref: '#/definitions/versioningBlobExpanded'
-      total_records:
-        type: string
-        format: int64
-  versioningEnvironmentDiff:
-    type: object
-    properties:
-      python:
-        $ref: '#/definitions/versioningPythonEnvironmentDiff'
-      docker:
-        $ref: '#/definitions/versioningDockerEnvironmentDiff'
-      environment_variables:
-        type: array
-        items:
-          $ref: '#/definitions/versioningEnvironmentVariablesDiff'
-        title: Should only contain environment variables unique to A/B (considering all fields)
-      command_line:
-        $ref: '#/definitions/versioningCommandLineEnvironmentDiff'
-  versioningPythonRequirementEnvironmentDiff:
-    type: object
-    properties:
-      status:
-        $ref: '#/definitions/DiffStatusEnumDiffStatus'
-      A:
-        $ref: '#/definitions/versioningPythonRequirementEnvironmentBlob'
-      B:
-        $ref: '#/definitions/versioningPythonRequirementEnvironmentBlob'
-      C:
-        $ref: '#/definitions/versioningPythonRequirementEnvironmentBlob'
-  versioningRevertRepositoryCommitsRequestResponse:
-    type: object
-    properties:
-      commit:
-        $ref: '#/definitions/versioningCommit'
-  versioningDockerEnvironmentDiff:
-    type: object
-    properties:
-      status:
-        $ref: '#/definitions/DiffStatusEnumDiffStatus'
-      A:
-        $ref: '#/definitions/versioningDockerEnvironmentBlob'
-      B:
-        $ref: '#/definitions/versioningDockerEnvironmentBlob'
-      C:
-        $ref: '#/definitions/versioningDockerEnvironmentBlob'
-  versioningBlob:
-    type: object
-    properties:
-      dataset:
-        $ref: '#/definitions/versioningDatasetBlob'
-      environment:
-        $ref: '#/definitions/versioningEnvironmentBlob'
-      code:
-        $ref: '#/definitions/versioningCodeBlob'
-      config:
-        $ref: '#/definitions/versioningConfigBlob'
-  versioningPythonRequirementEnvironmentBlob:
-    type: object
-    properties:
-      library:
-        type: string
-      constraint:
-        type: string
-      version:
-        $ref: '#/definitions/versioningVersionEnvironmentBlob'
-  versioningCommitMultipartVersionedBlobArtifactResponse:
-    type: object
-  versioningEnvironmentVariablesBlob:
-    type: object
-    properties:
-      name:
-        type: string
-      value:
-        type: string
-  versioningVersionEnvironmentBlob:
-    type: object
-    properties:
-      major:
-        type: integer
-        format: int32
-      minor:
-        type: integer
-        format: int32
-      patch:
-        type: integer
-        format: int32
-      suffix:
-        type: string
-  versioningGetCommitRequestResponse:
-    type: object
-    properties:
-      commit:
-        $ref: '#/definitions/versioningCommit'
-  versioningPythonEnvironmentBlob:
-    type: object
-    properties:
-      version:
-        $ref: '#/definitions/versioningVersionEnvironmentBlob'
-      requirements:
-        type: array
-        items:
-          $ref: '#/definitions/versioningPythonRequirementEnvironmentBlob'
-      constraints:
-        type: array
-        items:
-          $ref: '#/definitions/versioningPythonRequirementEnvironmentBlob'
-      raw_requirements:
-        type: string
-        description: These fields are only present if the parsed versions above are empty. That is, you cannot have both `requirements` and `raw_requirements` for example.
-      raw_constraints:
-        type: string
-  uacResourceVisibility:
-    type: string
-    enum:
-    - UNKNOWN
-    - ORG_DEFAULT
-    - ORG_CUSTOM
-    - PRIVATE
-    - WORKSPACE_DEFAULT
-    default: UNKNOWN
-  ValueTypeEnumValueType:
-    type: string
-    enum:
-    - STRING
-    - NUMBER
-    - LIST
-    - BLOB
-    default: STRING
-  versioningGitCodeDiff:
-    type: object
-    properties:
-      status:
-        $ref: '#/definitions/DiffStatusEnumDiffStatus'
-      A:
-        $ref: '#/definitions/versioningGitCodeBlob'
-      B:
-        $ref: '#/definitions/versioningGitCodeBlob'
-      C:
-        $ref: '#/definitions/versioningGitCodeBlob'
-  DiffStatusEnumDiffStatus:
-    type: string
-    enum:
-    - UNKNOWN
-    - ADDED
-    - DELETED
-    - MODIFIED
-    - CONFLICTED
-    default: UNKNOWN
-  versioningHyperparameterSetConfigDiff:
-    type: object
-    properties:
-      status:
-        $ref: '#/definitions/DiffStatusEnumDiffStatus'
-      A:
-        $ref: '#/definitions/versioningHyperparameterSetConfigBlob'
-      B:
-        $ref: '#/definitions/versioningHyperparameterSetConfigBlob'
-      C:
-        $ref: '#/definitions/versioningHyperparameterSetConfigBlob'
-  versioningBlobDiff:
-    type: object
-    properties:
-      location:
-        type: array
-        items:
+components:
+  schemas:
+    versioningPathDatasetComponentDiff:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/DiffStatusEnumDiffStatus'
+        A:
+          $ref: '#/components/schemas/versioningPathDatasetComponentBlob'
+        B:
+          $ref: '#/components/schemas/versioningPathDatasetComponentBlob'
+        C:
+          $ref: '#/components/schemas/versioningPathDatasetComponentBlob'
+    versioningCommandLineEnvironmentDiff:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/DiffStatusEnumDiffStatus'
+        A:
+          type: array
+          items:
+            type: string
+        B:
+          type: array
+          items:
+            type: string
+        C:
+          type: array
+          items:
+            type: string
+    versioningDiscreteHyperparameterSetConfigBlob:
+      type: object
+      properties:
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningHyperparameterValuesConfigBlob'
+    TernaryEnumTernary:
+      type: string
+      enum:
+      - UNKNOWN
+      - 'TRUE'
+      - 'FALSE'
+      default: UNKNOWN
+    versioningListCommitsLogRequestResponse:
+      type: object
+      properties:
+        commits:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningCommit'
+        total_records:
           type: string
-        title: 'List of folder names, with the last element being the name of the blob
+          format: int64
+    versioningDatasetDiff:
+      type: object
+      properties:
+        s3:
+          $ref: '#/components/schemas/versioningS3DatasetDiff'
+        path:
+          $ref: '#/components/schemas/versioningPathDatasetDiff'
+        query:
+          $ref: '#/components/schemas/versioningQueryDatasetDiff'
+    versioningFindRepositoriesBlobs:
+      type: object
+      properties:
+        repo_ids:
+          type: array
+          items:
+            type: string
+            format: uint64
+        workspace_name:
+          type: string
+        location_prefix:
+          type: array
+          items:
+            type: string
+        blob_type:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningBlobType'
+        commits:
+          type: array
+          items:
+            type: string
+        page_number:
+          type: integer
+          format: int32
+          title: For pagination
+        page_limit:
+          type: integer
+          format: int32
+        predicates:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonKeyValueQuery'
+          title: 'In future requirement
 
-          Each element goes one level deeper. So ["foo", "bar"] represents the same as /foo/bar'
-      status:
-        $ref: '#/definitions/DiffStatusEnumDiffStatus'
-      dataset:
-        $ref: '#/definitions/versioningDatasetDiff'
-      environment:
-        $ref: '#/definitions/versioningEnvironmentDiff'
-      code:
-        $ref: '#/definitions/versioningCodeDiff'
-      config:
-        $ref: '#/definitions/versioningConfigDiff'
-  versioningQueryDatasetComponentDiff:
-    type: object
-    properties:
-      status:
-        $ref: '#/definitions/DiffStatusEnumDiffStatus'
-      A:
-        $ref: '#/definitions/versioningQueryDatasetComponentBlob'
-      B:
-        $ref: '#/definitions/versioningQueryDatasetComponentBlob'
-      C:
-        $ref: '#/definitions/versioningQueryDatasetComponentBlob'
-  versioningListCommitsRequestResponse:
-    type: object
-    properties:
-      commits:
-        type: array
-        items:
-          $ref: '#/definitions/versioningCommit'
-      total_records:
-        type: string
-        format: int64
-  versioningDiscreteHyperparameterSetConfigBlob:
-    type: object
-    properties:
-      values:
-        type: array
-        items:
-          $ref: '#/definitions/versioningHyperparameterValuesConfigBlob'
-  versioningHyperparameterConfigDiff:
-    type: object
-    properties:
-      status:
-        $ref: '#/definitions/DiffStatusEnumDiffStatus'
-      A:
-        $ref: '#/definitions/versioningHyperparameterConfigBlob'
-      B:
-        $ref: '#/definitions/versioningHyperparameterConfigBlob'
-      C:
-        $ref: '#/definitions/versioningHyperparameterConfigBlob'
-  versioningRepository:
-    type: object
-    properties:
-      id:
-        type: string
-        format: uint64
-      name:
-        type: string
-      date_created:
-        type: string
-        format: uint64
-      date_updated:
-        type: string
-        format: uint64
-      workspace_id:
-        type: string
-      workspace_type:
-        $ref: '#/definitions/WorkspaceTypeEnumWorkspaceType'
-      workspace_service_id:
-        type: string
-        format: uint64
-      repository_visibility:
-        $ref: '#/definitions/RepositoryVisibilityEnumRepositoryVisibility'
-      owner:
-        type: string
-      owner_id:
-        type: string
-        format: uint64
-      group_owner_id:
-        $ref: '#/definitions/commonGroupId'
-      description:
-        type: string
-      attributes:
-        type: array
-        items:
-          $ref: '#/definitions/commonKeyValue'
-      custom_permission:
-        $ref: '#/definitions/uacCollaboratorPermissions'
-        title: 'The next field only makes sense when visibility == ORG_CUSTOM
+            bool ascending = 8;
 
-          They will be empty otherwise'
-      visibility:
-        $ref: '#/definitions/uacResourceVisibility'
-      version_number:
-        type: string
-        format: uint64
-        title: Doc for version_number https://github.com/VertaAI/docs/pull/53
-  versioningMergeRepositoryCommitsRequestResponse:
-    type: object
-    properties:
-      commit:
-        $ref: '#/definitions/versioningCommit'
-      conflicts:
-        type: array
-        items:
-          $ref: '#/definitions/versioningBlobDiff'
-      common_base:
-        $ref: '#/definitions/versioningCommit'
-        title: In case of a conflict, stop at the first such conflict and return it
-  commonArtifactPart:
-    type: object
-    properties:
-      part_number:
-        type: string
-        format: uint64
-      etag:
-        type: string
-  versioningCommitVersionedBlobArtifactPart:
-    type: object
-    properties:
-      repository_id:
-        $ref: '#/definitions/versioningRepositoryIdentification'
-      commit_sha:
-        type: string
-      location:
-        type: array
-        items:
+            string sort_key = 9;'
+    versioningCreateCommitRequest:
+      type: object
+      properties:
+        repository_id:
+          $ref: '#/components/schemas/versioningRepositoryIdentification'
+        commit:
+          $ref: '#/components/schemas/versioningCommit'
+        blobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningBlobExpanded'
+        commit_base:
           type: string
-      path_dataset_component_blob_path:
-        type: string
-      artifact_part:
-        $ref: '#/definitions/commonArtifactPart'
-  versioningDockerEnvironmentBlob:
-    type: object
-    properties:
-      repository:
-        type: string
-      tag:
-        type: string
-      sha:
-        type: string
-  versioningDeleteCommitRequestResponse:
-    type: object
-  versioningCodeBlob:
-    type: object
-    properties:
-      git:
-        $ref: '#/definitions/versioningGitCodeBlob'
-      notebook:
-        $ref: '#/definitions/versioningNotebookCodeBlob'
-  TernaryEnumTernary:
-    type: string
-    enum:
-    - UNKNOWN
-    - 'TRUE'
-    - 'FALSE'
-    default: UNKNOWN
-  versioningMergeRepositoryCommitsRequest:
-    type: object
-    properties:
-      repository_id:
-        $ref: '#/definitions/versioningRepositoryIdentification'
-      commit_sha_a:
-        type: string
-      commit_sha_b:
-        type: string
-      content:
-        $ref: '#/definitions/versioningCommit'
-      branch_a:
-        type: string
-        title: for a or b only one of commit or branch should be populated
-      branch_b:
-        type: string
-      is_dry_run:
-        type: boolean
-  versioningFolder:
-    type: object
-    properties:
-      blobs:
-        type: array
-        items:
-          $ref: '#/definitions/versioningFolderElement'
-        title: Blobs, which correspond to direct entries/files
-      sub_folders:
-        type: array
-        items:
-          $ref: '#/definitions/versioningFolderElement'
-        title: Subfolders
-    title: DO NOT USE TO COMPUTE SHA
-  versioningContinuousHyperparameterSetConfigBlob:
-    type: object
-    properties:
-      interval_begin:
-        $ref: '#/definitions/versioningHyperparameterValuesConfigBlob'
-      interval_end:
-        $ref: '#/definitions/versioningHyperparameterValuesConfigBlob'
-      interval_step:
-        $ref: '#/definitions/versioningHyperparameterValuesConfigBlob'
-  protobufAny:
-    type: object
-    properties:
-      type_url:
-        type: string
-      value:
-        type: string
-        format: byte
-  versioningHyperparameterConfigBlob:
-    type: object
-    properties:
-      name:
-        type: string
-      value:
-        $ref: '#/definitions/versioningHyperparameterValuesConfigBlob'
-  versioningAptEnvironmentBlob:
-    type: object
-    properties:
-      packages:
-        type: array
-        items:
-          type: string
-  versioningCommitVersionedBlobArtifactPartResponse:
-    type: object
-  versioningEnvironmentVariablesDiff:
-    type: object
-    properties:
-      status:
-        $ref: '#/definitions/DiffStatusEnumDiffStatus'
-      A:
-        $ref: '#/definitions/versioningEnvironmentVariablesBlob'
-      B:
-        $ref: '#/definitions/versioningEnvironmentVariablesBlob'
-      C:
-        $ref: '#/definitions/versioningEnvironmentVariablesBlob'
-  versioningCommit:
-    type: object
-    properties:
-      parent_shas:
-        type: array
-        items:
-          type: string
-        description: ID of the parent commits.
-      message:
-        type: string
-        description: Message associated with the commit.
-      date_created:
-        type: string
-        format: uint64
-        description: 'Date associated with the commit.
+          title: 'Apply the diffs on top of commit_base
 
-          It will be computed by the backend by default, but a feature flag should enable setting by the client.'
-      author:
-        type: string
-        description: ID of the user who created the commit.
-      commit_sha:
-        type: string
-      date_updated:
-        type: string
-        format: uint64
-        description: Updated Date while create tags & attribute for the commit.
-      version_number:
-        type: string
-        format: uint64
-        title: Doc for version_number https://github.com/VertaAI/docs/pull/53
-    title: 'Base commit for the versioning system
+            If a blob was added in the diff, add it on top of commit_base (doesn''t matter if it was present already or not)
 
-      DO NOT USE TO COMPUTE SHA'
-  CollaboratorTypeEnumCollaboratorType:
-    type: string
-    enum:
-    - READ_ONLY
-    - READ_WRITE
-    default: READ_ONLY
-  versioningRevertRepositoryCommitsRequest:
-    type: object
-    properties:
-      repository_id:
-        $ref: '#/definitions/versioningRepositoryIdentification'
-      commit_to_revert_sha:
-        type: string
-      base_commit_sha:
-        type: string
-      content:
-        $ref: '#/definitions/versioningCommit'
-  versioningEnvironmentBlob:
-    type: object
-    properties:
-      python:
-        $ref: '#/definitions/versioningPythonEnvironmentBlob'
-      docker:
-        $ref: '#/definitions/versioningDockerEnvironmentBlob'
-      environment_variables:
-        type: array
-        items:
-          $ref: '#/definitions/versioningEnvironmentVariablesBlob'
-      command_line:
-        type: array
-        items:
+            If a blob was deleted, delete if from commit_base if present
+
+            If a blob was modified, then:
+
+            1) check that the type of the diff is consistent with the type of the blob. If they are different, raise an error saying so
+
+            2) apply the diff to the blob as per the following logic:
+
+            2a) if the field is atomic (e.g. python version, git repository), use the newer version (B) from the diff and overwrite what the commit_base has
+
+            2b) if the field is not atomic (e.g. list of python requirements, dataset components), merge the lists by a) copying new values, b) deleting removed values, c) updating values that are already present based on some reasonable key'
+        diffs:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningBlobDiff'
+    versioningQueryDatasetDiff:
+      type: object
+      properties:
+        components:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningQueryDatasetComponentDiff'
+    versioningDockerEnvironmentBlob:
+      type: object
+      properties:
+        repository:
           type: string
-      apt:
-        $ref: '#/definitions/versioningAptEnvironmentBlob'
-  versioningListRepositoriesRequestResponse:
-    type: object
-    properties:
-      repositories:
-        type: array
-        items:
-          $ref: '#/definitions/versioningRepository'
-      total_records:
-        type: string
-        format: int64
-  versioningConfigBlob:
-    type: object
-    properties:
-      hyperparameter_set:
-        type: array
-        items:
-          $ref: '#/definitions/versioningHyperparameterSetConfigBlob'
-      hyperparameters:
-        type: array
-        items:
-          $ref: '#/definitions/versioningHyperparameterConfigBlob'
-  RepositoryVisibilityEnumRepositoryVisibility:
-    type: string
-    enum:
-    - PRIVATE
-    - PUBLIC
-    - ORG_SCOPED_PUBLIC
-    default: PRIVATE
-  versioningGetBranchRequestResponse:
-    type: object
-    properties:
-      commit:
-        $ref: '#/definitions/versioningCommit'
-  versioningSetRepositoryResponse:
-    type: object
-    properties:
-      repository:
-        $ref: '#/definitions/versioningRepository'
-  versioningRepositoryNamedIdentification:
-    type: object
-    properties:
-      name:
-        type: string
-      workspace_name:
-        type: string
-    title: CRUD for repositories
-  versioningGetUrlForBlobVersionedResponse:
-    type: object
-    properties:
-      url:
-        type: string
-      multipart_upload_ok:
-        type: boolean
-  versioningListCommitsLogRequestResponse:
-    type: object
-    properties:
-      commits:
-        type: array
-        items:
-          $ref: '#/definitions/versioningCommit'
-      total_records:
-        type: string
-        format: int64
-  versioningS3DatasetComponentBlob:
-    type: object
-    properties:
-      path:
-        $ref: '#/definitions/versioningPathDatasetComponentBlob'
-      s3_version_id:
-        type: string
-  versioningFolderElement:
-    type: object
-    properties:
-      element_name:
-        type: string
-        description: Name of the element inside the folder.
-    title: DO NOT USE TO COMPUTE SHA
-  versioningGetCommitComponentRequestResponse:
-    type: object
-    properties:
-      folder:
-        $ref: '#/definitions/versioningFolder'
-      blob:
-        $ref: '#/definitions/versioningBlob'
-      attributes:
-        type: array
-        items:
-          $ref: '#/definitions/commonKeyValue'
-  versioningCodeDiff:
-    type: object
-    properties:
-      git:
-        $ref: '#/definitions/versioningGitCodeDiff'
-      notebook:
-        $ref: '#/definitions/versioningNotebookCodeDiff'
-  WorkspaceTypeEnumWorkspaceType:
-    type: string
-    enum:
-    - UNKNOWN
-    - ORGANIZATION
-    - USER
-    default: UNKNOWN
-  versioningCommitMultipartVersionedBlobArtifact:
-    type: object
-    properties:
-      repository_id:
-        $ref: '#/definitions/versioningRepositoryIdentification'
-      commit_sha:
-        type: string
-      location:
-        type: array
-        items:
+        tag:
           type: string
-      path_dataset_component_blob_path:
-        type: string
-  versioningHyperparameterSetConfigBlob:
-    type: object
-    properties:
-      name:
-        type: string
-      continuous:
-        $ref: '#/definitions/versioningContinuousHyperparameterSetConfigBlob'
-      discrete:
-        $ref: '#/definitions/versioningDiscreteHyperparameterSetConfigBlob'
-  versioningDeleteBranchRequestResponse:
-    type: object
-  versioningRepositoryIdentification:
-    type: object
-    properties:
-      named_id:
-        $ref: '#/definitions/versioningRepositoryNamedIdentification'
-      repo_id:
-        type: string
-        format: uint64
-    title: 'changed from oneof because of that bug: https://github.com/grpc-ecosystem/grpc-gateway/issues/753'
-  versioningQueryDatasetDiff:
-    type: object
-    properties:
-      components:
-        type: array
-        items:
-          $ref: '#/definitions/versioningQueryDatasetComponentDiff'
-  versioningPathDatasetDiff:
-    type: object
-    properties:
-      components:
-        type: array
-        items:
-          $ref: '#/definitions/versioningPathDatasetComponentDiff'
-  versioningDeleteRepositoryRequestResponse:
-    type: object
-    properties:
-      status:
-        type: boolean
-  commonKeyValueQuery:
-    type: object
-    properties:
-      key:
-        type: string
-      value:
-        type: object
-      value_type:
-        $ref: '#/definitions/ValueTypeEnumValueType'
-      operator:
-        $ref: '#/definitions/OperatorEnumOperator'
-  versioningBlobType:
-    type: string
-    enum:
-    - UNKNOWN
-    - DATASET_BLOB
-    - ENVIRONMENT_BLOB
-    - CODE_BLOB
-    - CONFIG_BLOB
-    default: UNKNOWN
-  versioningVersionEnvironmentDiff:
-    type: object
-    properties:
-      status:
-        $ref: '#/definitions/DiffStatusEnumDiffStatus'
-      A:
-        $ref: '#/definitions/versioningVersionEnvironmentBlob'
-      B:
-        $ref: '#/definitions/versioningVersionEnvironmentBlob'
-      C:
-        $ref: '#/definitions/versioningVersionEnvironmentBlob'
-  versioningS3DatasetBlob:
-    type: object
-    properties:
-      components:
-        type: array
-        items:
-          $ref: '#/definitions/versioningS3DatasetComponentBlob'
-  versioningGetCommittedVersionedBlobArtifactPartsResponse:
-    type: object
-    properties:
-      artifact_parts:
-        type: array
-        items:
-          $ref: '#/definitions/commonArtifactPart'
-  versioningFindRepositoriesBlobsResponse:
-    type: object
-    properties:
-      blobs:
-        type: array
-        items:
-          $ref: '#/definitions/versioningBlobExpanded'
-      total_records:
-        type: string
-        format: int64
-  versioningDatasetBlob:
-    type: object
-    properties:
-      s3:
-        $ref: '#/definitions/versioningS3DatasetBlob'
-      path:
-        $ref: '#/definitions/versioningPathDatasetBlob'
-      query:
-        $ref: '#/definitions/versioningQueryDatasetBlob'
-  versioningGetUrlForBlobVersioned:
-    type: object
-    properties:
-      repository_id:
-        $ref: '#/definitions/versioningRepositoryIdentification'
-      commit_sha:
-        type: string
-      location:
-        type: array
-        items:
+        sha:
           type: string
-      path_dataset_component_blob_path:
-        type: string
-      method:
-        type: string
-      part_number:
-        type: string
-        format: uint64
-  commonKeyValue:
-    type: object
-    properties:
-      key:
-        type: string
-      value:
-        type: object
-      value_type:
-        $ref: '#/definitions/ValueTypeEnumValueType'
-        description: "As per documentation of proto buffer 3.\n  For enums, the default value is the first defined enum value, which must be 0."
-  versioningHyperparameterValuesConfigBlob:
-    type: object
-    properties:
-      int_value:
-        type: string
-        format: int64
-      float_value:
-        type: number
-        format: float
-      string_value:
-        type: string
-  versioningGetTagRequestResponse:
-    type: object
-    properties:
-      commit:
-        $ref: '#/definitions/versioningCommit'
-  versioningDatasetDiff:
-    type: object
-    properties:
-      s3:
-        $ref: '#/definitions/versioningS3DatasetDiff'
-      path:
-        $ref: '#/definitions/versioningPathDatasetDiff'
-      query:
-        $ref: '#/definitions/versioningQueryDatasetDiff'
-  versioningS3DatasetComponentDiff:
-    type: object
-    properties:
-      status:
-        $ref: '#/definitions/DiffStatusEnumDiffStatus'
-      A:
-        $ref: '#/definitions/versioningS3DatasetComponentBlob'
-      B:
-        $ref: '#/definitions/versioningS3DatasetComponentBlob'
-      C:
-        $ref: '#/definitions/versioningS3DatasetComponentBlob'
-  versioningComputeRepositoryDiffRequestResponse:
-    type: object
-    properties:
-      diffs:
-        type: array
-        items:
-          $ref: '#/definitions/versioningBlobDiff'
-  versioningSetTagRequestResponse:
-    type: object
-  versioningFindRepositories:
-    type: object
-    properties:
-      repo_ids:
-        type: array
-        items:
+    versioningEnvironmentVariablesBlob:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+    CollaboratorTypeEnumCollaboratorType:
+      type: string
+      enum:
+      - READ_ONLY
+      - READ_WRITE
+      default: READ_ONLY
+    versioningQueryDatasetComponentDiff:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/DiffStatusEnumDiffStatus'
+        A:
+          $ref: '#/components/schemas/versioningQueryDatasetComponentBlob'
+        B:
+          $ref: '#/components/schemas/versioningQueryDatasetComponentBlob'
+        C:
+          $ref: '#/components/schemas/versioningQueryDatasetComponentBlob'
+    versioningRepositoryIdentification:
+      type: object
+      properties:
+        named_id:
+          $ref: '#/components/schemas/versioningRepositoryNamedIdentification'
+        repo_id:
           type: string
           format: uint64
-      workspace_name:
-        type: string
-      predicates:
-        type: array
-        items:
-          $ref: '#/definitions/commonKeyValueQuery'
-      page_number:
-        type: integer
-        format: int32
-        title: For pagination
-      page_limit:
-        type: integer
-        format: int32
-    title: 'If any of the request parameters are not set then backend will return all the repositories.
-
-      the query like: FROM RepositoryEntity repo ORDER BY repo.date_updated DESC'
-  versioningGitCodeBlob:
-    type: object
-    properties:
-      repo:
-        type: string
-      hash:
-        type: string
-      branch:
-        type: string
-      tag:
-        type: string
-      is_dirty:
-        type: boolean
-  versioningBlobExpanded:
-    type: object
-    properties:
-      location:
-        type: array
-        items:
+      title: 'changed from oneof because of that bug: https://github.com/grpc-ecosystem/grpc-gateway/issues/753'
+    versioningSetBranchRequestResponse:
+      type: object
+    versioningListRepositoriesRequestResponse:
+      type: object
+      properties:
+        repositories:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningRepository'
+        total_records:
           type: string
-        title: 'List of folder names, with the last element being the name of the blob
-
-          Each element goes one level deeper. So ["foo", "bar"] represents the same as /foo/bar'
-      blob:
-        $ref: '#/definitions/versioningBlob'
-      attributes:
-        type: array
-        items:
-          $ref: '#/definitions/commonKeyValue'
-  runtimeError:
-    type: object
-    properties:
-      error:
-        type: string
-      code:
-        type: integer
-        format: int32
-      message:
-        type: string
-      details:
-        type: array
-        items:
-          $ref: '#/definitions/protobufAny'
-  versioningPathDatasetComponentDiff:
-    type: object
-    properties:
-      status:
-        $ref: '#/definitions/DiffStatusEnumDiffStatus'
-      A:
-        $ref: '#/definitions/versioningPathDatasetComponentBlob'
-      B:
-        $ref: '#/definitions/versioningPathDatasetComponentBlob'
-      C:
-        $ref: '#/definitions/versioningPathDatasetComponentBlob'
-  versioningFindRepositoriesBlobs:
-    type: object
-    properties:
-      repo_ids:
-        type: array
-        items:
+          format: int64
+    versioningCommitMultipartVersionedBlobArtifact:
+      type: object
+      properties:
+        repository_id:
+          $ref: '#/components/schemas/versioningRepositoryIdentification'
+        commit_sha:
+          type: string
+        location:
+          type: array
+          items:
+            type: string
+        path_dataset_component_blob_path:
+          type: string
+    RepositoryVisibilityEnumRepositoryVisibility:
+      type: string
+      enum:
+      - PRIVATE
+      - PUBLIC
+      - ORG_SCOPED_PUBLIC
+      default: PRIVATE
+    versioningGitCodeDiff:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/DiffStatusEnumDiffStatus'
+        A:
+          $ref: '#/components/schemas/versioningGitCodeBlob'
+        B:
+          $ref: '#/components/schemas/versioningGitCodeBlob'
+        C:
+          $ref: '#/components/schemas/versioningGitCodeBlob'
+    versioningGetCommitRequestResponse:
+      type: object
+      properties:
+        commit:
+          $ref: '#/components/schemas/versioningCommit'
+    versioningComputeRepositoryDiffRequestResponse:
+      type: object
+      properties:
+        diffs:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningBlobDiff'
+    versioningCommitMultipartVersionedBlobArtifactResponse:
+      type: object
+    versioningNotebookCodeBlob:
+      type: object
+      properties:
+        path:
+          $ref: '#/components/schemas/versioningPathDatasetComponentBlob'
+        git_repo:
+          $ref: '#/components/schemas/versioningGitCodeBlob'
+    versioningGetTagRequestResponse:
+      type: object
+      properties:
+        commit:
+          $ref: '#/components/schemas/versioningCommit'
+    ValueTypeEnumValueType:
+      type: string
+      enum:
+      - STRING
+      - NUMBER
+      - LIST
+      - BLOB
+      default: STRING
+    versioningContinuousHyperparameterSetConfigBlob:
+      type: object
+      properties:
+        interval_begin:
+          $ref: '#/components/schemas/versioningHyperparameterValuesConfigBlob'
+        interval_end:
+          $ref: '#/components/schemas/versioningHyperparameterValuesConfigBlob'
+        interval_step:
+          $ref: '#/components/schemas/versioningHyperparameterValuesConfigBlob'
+    versioningGetRepositoryRequestResponse:
+      type: object
+      properties:
+        repository:
+          $ref: '#/components/schemas/versioningRepository'
+    WorkspaceTypeEnumWorkspaceType:
+      type: string
+      enum:
+      - UNKNOWN
+      - ORGANIZATION
+      - USER
+      default: UNKNOWN
+    versioningPathDatasetComponentBlob:
+      type: object
+      properties:
+        path:
+          type: string
+        size:
           type: string
           format: uint64
-      workspace_name:
-        type: string
-      location_prefix:
-        type: array
-        items:
+        last_modified_at_source:
           type: string
-      blob_type:
-        type: array
-        items:
-          $ref: '#/definitions/versioningBlobType'
-      commits:
-        type: array
-        items:
+          format: uint64
+        sha256:
           type: string
-      page_number:
-        type: integer
-        format: int32
-        title: For pagination
-      page_limit:
-        type: integer
-        format: int32
-      predicates:
-        type: array
-        items:
-          $ref: '#/definitions/commonKeyValueQuery'
-        title: 'In future requirement
-
-          bool ascending = 8;
-
-          string sort_key = 9;'
-  versioningQueryDatasetBlob:
-    type: object
-    properties:
-      components:
-        type: array
-        items:
-          $ref: '#/definitions/versioningQueryDatasetComponentBlob'
-  versioningGetRepositoryRequestResponse:
-    type: object
-    properties:
-      repository:
-        $ref: '#/definitions/versioningRepository'
-  versioningConfigDiff:
-    type: object
-    properties:
-      hyperparameter_set:
-        type: array
-        items:
-          $ref: '#/definitions/versioningHyperparameterSetConfigDiff'
-      hyperparameters:
-        type: array
-        items:
-          $ref: '#/definitions/versioningHyperparameterConfigDiff'
-  versioningNotebookCodeDiff:
-    type: object
-    properties:
-      path:
-        $ref: '#/definitions/versioningPathDatasetComponentDiff'
-      git_repo:
-        $ref: '#/definitions/versioningGitCodeDiff'
-  versioningPathDatasetComponentBlob:
-    type: object
-    properties:
-      path:
-        type: string
-      size:
-        type: string
-        format: uint64
-      last_modified_at_source:
-        type: string
-        format: uint64
-      sha256:
-        type: string
-      md5:
-        type: string
-      internal_versioned_path:
-        type: string
-      base_path:
-        type: string
-  versioningCreateCommitRequest:
-    type: object
-    properties:
-      repository_id:
-        $ref: '#/definitions/versioningRepositoryIdentification'
-      commit:
-        $ref: '#/definitions/versioningCommit'
-      blobs:
-        type: array
-        items:
-          $ref: '#/definitions/versioningBlobExpanded'
-      commit_base:
-        type: string
-        title: 'Apply the diffs on top of commit_base
-
-          If a blob was added in the diff, add it on top of commit_base (doesn''t matter if it was present already or not)
-
-          If a blob was deleted, delete if from commit_base if present
-
-          If a blob was modified, then:
-
-          1) check that the type of the diff is consistent with the type of the blob. If they are different, raise an error saying so
-
-          2) apply the diff to the blob as per the following logic:
-
-          2a) if the field is atomic (e.g. python version, git repository), use the newer version (B) from the diff and overwrite what the commit_base has
-
-          2b) if the field is not atomic (e.g. list of python requirements, dataset components), merge the lists by a) copying new values, b) deleting removed values, c) updating values that are already present based on some reasonable key'
-      diffs:
-        type: array
-        items:
-          $ref: '#/definitions/versioningBlobDiff'
-  versioningQueryDatasetComponentBlob:
-    type: object
-    properties:
-      query:
-        type: string
-      data_source_uri:
-        type: string
-        title: 'string query_template = 2;
-
-          repeated QueryParameter query_parameters = 3;'
-      execution_timestamp:
-        type: string
-        format: uint64
-      num_records:
-        type: string
-        format: uint64
-  versioningS3DatasetDiff:
-    type: object
-    properties:
-      components:
-        type: array
-        items:
-          $ref: '#/definitions/versioningS3DatasetComponentDiff'
-  versioningListTagsRequestResponse:
-    type: object
-    properties:
-      tags:
-        type: array
-        items:
+        md5:
           type: string
-      total_records:
-        type: string
-        format: int64
-  versioningListBranchesRequestResponse:
-    type: object
-    properties:
-      branches:
-        type: array
-        items:
+        internal_versioned_path:
           type: string
-      total_records:
-        type: string
-        format: int64
-  versioningCommandLineEnvironmentDiff:
-    type: object
-    properties:
-      status:
-        $ref: '#/definitions/DiffStatusEnumDiffStatus'
-      A:
-        type: array
-        items:
+        base_path:
           type: string
-      B:
-        type: array
-        items:
+    versioningMergeRepositoryCommitsRequestResponse:
+      type: object
+      properties:
+        commit:
+          $ref: '#/components/schemas/versioningCommit'
+        conflicts:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningBlobDiff'
+        common_base:
+          $ref: '#/components/schemas/versioningCommit'
+          title: In case of a conflict, stop at the first such conflict and return it
+    versioningFindRepositoriesBlobsResponse:
+      type: object
+      properties:
+        blobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningBlobExpanded'
+        total_records:
           type: string
-      C:
-        type: array
-        items:
+          format: int64
+    commonArtifactPart:
+      type: object
+      properties:
+        part_number:
           type: string
-  commonGroupId:
-    type: object
-    properties:
-      org_id:
-        type: string
-      group_id:
-        type: string
-  versioningFindRepositoriesResponse:
-    type: object
-    properties:
-      repositories:
-        type: array
-        items:
-          $ref: '#/definitions/versioningRepository'
-      total_records:
-        type: string
-        format: int64
-  versioningSetBranchRequestResponse:
-    type: object
-  OperatorEnumOperator:
-    type: string
-    enum:
-    - EQ
-    - NE
-    - GT
-    - GTE
-    - LT
-    - LTE
-    - CONTAIN
-    - NOT_CONTAIN
-    - IN
-    - NOT_IN
-    default: EQ
+          format: uint64
+        etag:
+          type: string
+    versioningGitCodeBlob:
+      type: object
+      properties:
+        repo:
+          type: string
+        hash:
+          type: string
+        branch:
+          type: string
+        tag:
+          type: string
+        is_dirty:
+          type: boolean
+    versioningFindRepositories:
+      type: object
+      properties:
+        repo_ids:
+          type: array
+          items:
+            type: string
+            format: uint64
+        workspace_name:
+          type: string
+        predicates:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonKeyValueQuery'
+        page_number:
+          type: integer
+          format: int32
+          title: For pagination
+        page_limit:
+          type: integer
+          format: int32
+      title: 'If any of the request parameters are not set then backend will return all the repositories.
+
+        the query like: FROM RepositoryEntity repo ORDER BY repo.date_updated DESC'
+    versioningRepositoryNamedIdentification:
+      type: object
+      properties:
+        name:
+          type: string
+        workspace_name:
+          type: string
+      title: CRUD for repositories
+    versioningBlobExpanded:
+      type: object
+      properties:
+        location:
+          type: array
+          items:
+            type: string
+          title: 'List of folder names, with the last element being the name of the blob
+
+            Each element goes one level deeper. So ["foo", "bar"] represents the same as /foo/bar'
+        blob:
+          $ref: '#/components/schemas/versioningBlob'
+        attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonKeyValue'
+    versioningDockerEnvironmentDiff:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/DiffStatusEnumDiffStatus'
+        A:
+          $ref: '#/components/schemas/versioningDockerEnvironmentBlob'
+        B:
+          $ref: '#/components/schemas/versioningDockerEnvironmentBlob'
+        C:
+          $ref: '#/components/schemas/versioningDockerEnvironmentBlob'
+    protobufAny:
+      type: object
+      properties:
+        type_url:
+          type: string
+        value:
+          type: string
+          format: byte
+    versioningFolderElement:
+      type: object
+      properties:
+        element_name:
+          type: string
+          description: Name of the element inside the folder.
+      title: DO NOT USE TO COMPUTE SHA
+    versioningEnvironmentBlob:
+      type: object
+      properties:
+        python:
+          $ref: '#/components/schemas/versioningPythonEnvironmentBlob'
+        docker:
+          $ref: '#/components/schemas/versioningDockerEnvironmentBlob'
+        environment_variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningEnvironmentVariablesBlob'
+        command_line:
+          type: array
+          items:
+            type: string
+        apt:
+          $ref: '#/components/schemas/versioningAptEnvironmentBlob'
+    versioningVersionEnvironmentBlob:
+      type: object
+      properties:
+        major:
+          type: integer
+          format: int32
+        minor:
+          type: integer
+          format: int32
+        patch:
+          type: integer
+          format: int32
+        suffix:
+          type: string
+    versioningListCommitsRequestResponse:
+      type: object
+      properties:
+        commits:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningCommit'
+        total_records:
+          type: string
+          format: int64
+    versioningFolder:
+      type: object
+      properties:
+        blobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningFolderElement'
+          title: Blobs, which correspond to direct entries/files
+        sub_folders:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningFolderElement'
+          title: Subfolders
+      title: DO NOT USE TO COMPUTE SHA
+    versioningConfigBlob:
+      type: object
+      properties:
+        hyperparameter_set:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningHyperparameterSetConfigBlob'
+        hyperparameters:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningHyperparameterConfigBlob'
+    versioningCommitVersionedBlobArtifactPart:
+      type: object
+      properties:
+        repository_id:
+          $ref: '#/components/schemas/versioningRepositoryIdentification'
+        commit_sha:
+          type: string
+        location:
+          type: array
+          items:
+            type: string
+        path_dataset_component_blob_path:
+          type: string
+        artifact_part:
+          $ref: '#/components/schemas/commonArtifactPart'
+    versioningVersionEnvironmentDiff:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/DiffStatusEnumDiffStatus'
+        A:
+          $ref: '#/components/schemas/versioningVersionEnvironmentBlob'
+        B:
+          $ref: '#/components/schemas/versioningVersionEnvironmentBlob'
+        C:
+          $ref: '#/components/schemas/versioningVersionEnvironmentBlob'
+    versioningQueryDatasetBlob:
+      type: object
+      properties:
+        components:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningQueryDatasetComponentBlob'
+    versioningSetTagRequestResponse:
+      type: object
+    versioningCodeBlob:
+      type: object
+      properties:
+        git:
+          $ref: '#/components/schemas/versioningGitCodeBlob'
+        notebook:
+          $ref: '#/components/schemas/versioningNotebookCodeBlob'
+    versioningGetCommittedVersionedBlobArtifactPartsResponse:
+      type: object
+      properties:
+        artifact_parts:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonArtifactPart'
+    commonKeyValueQuery:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: object
+        value_type:
+          $ref: '#/components/schemas/ValueTypeEnumValueType'
+        operator:
+          $ref: '#/components/schemas/OperatorEnumOperator'
+    versioningDatasetBlob:
+      type: object
+      properties:
+        s3:
+          $ref: '#/components/schemas/versioningS3DatasetBlob'
+        path:
+          $ref: '#/components/schemas/versioningPathDatasetBlob'
+        query:
+          $ref: '#/components/schemas/versioningQueryDatasetBlob'
+    versioningQueryDatasetComponentBlob:
+      type: object
+      properties:
+        query:
+          type: string
+        data_source_uri:
+          type: string
+          title: 'string query_template = 2;
+
+            repeated QueryParameter query_parameters = 3;'
+        execution_timestamp:
+          type: string
+          format: uint64
+        num_records:
+          type: string
+          format: uint64
+    commonGroupId:
+      type: object
+      properties:
+        org_id:
+          type: string
+        group_id:
+          type: string
+    versioningSetRepositoryResponse:
+      type: object
+      properties:
+        repository:
+          $ref: '#/components/schemas/versioningRepository'
+    versioningPythonRequirementEnvironmentBlob:
+      type: object
+      properties:
+        library:
+          type: string
+        constraint:
+          type: string
+        version:
+          $ref: '#/components/schemas/versioningVersionEnvironmentBlob'
+    versioningAptEnvironmentBlob:
+      type: object
+      properties:
+        packages:
+          type: array
+          items:
+            type: string
+    versioningBlob:
+      type: object
+      properties:
+        dataset:
+          $ref: '#/components/schemas/versioningDatasetBlob'
+        environment:
+          $ref: '#/components/schemas/versioningEnvironmentBlob'
+        code:
+          $ref: '#/components/schemas/versioningCodeBlob'
+        config:
+          $ref: '#/components/schemas/versioningConfigBlob'
+    versioningEnvironmentVariablesDiff:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/DiffStatusEnumDiffStatus'
+        A:
+          $ref: '#/components/schemas/versioningEnvironmentVariablesBlob'
+        B:
+          $ref: '#/components/schemas/versioningEnvironmentVariablesBlob'
+        C:
+          $ref: '#/components/schemas/versioningEnvironmentVariablesBlob'
+    versioningListTagsRequestResponse:
+      type: object
+      properties:
+        tags:
+          type: array
+          items:
+            type: string
+        total_records:
+          type: string
+          format: int64
+    versioningHyperparameterSetConfigBlob:
+      type: object
+      properties:
+        name:
+          type: string
+        continuous:
+          $ref: '#/components/schemas/versioningContinuousHyperparameterSetConfigBlob'
+        discrete:
+          $ref: '#/components/schemas/versioningDiscreteHyperparameterSetConfigBlob'
+    versioningPythonEnvironmentDiff:
+      type: object
+      properties:
+        version:
+          $ref: '#/components/schemas/versioningVersionEnvironmentDiff'
+        requirements:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningPythonRequirementEnvironmentDiff'
+        constraints:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningPythonRequirementEnvironmentDiff'
+    versioningNotebookCodeDiff:
+      type: object
+      properties:
+        path:
+          $ref: '#/components/schemas/versioningPathDatasetComponentDiff'
+        git_repo:
+          $ref: '#/components/schemas/versioningGitCodeDiff'
+    versioningMergeRepositoryCommitsRequest:
+      type: object
+      properties:
+        repository_id:
+          $ref: '#/components/schemas/versioningRepositoryIdentification'
+        commit_sha_a:
+          type: string
+        commit_sha_b:
+          type: string
+        content:
+          $ref: '#/components/schemas/versioningCommit'
+        branch_a:
+          type: string
+          title: for a or b only one of commit or branch should be populated
+        branch_b:
+          type: string
+        is_dry_run:
+          type: boolean
+    versioningS3DatasetBlob:
+      type: object
+      properties:
+        components:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningS3DatasetComponentBlob'
+    versioningBlobType:
+      type: string
+      enum:
+      - UNKNOWN
+      - DATASET_BLOB
+      - ENVIRONMENT_BLOB
+      - CODE_BLOB
+      - CONFIG_BLOB
+      default: UNKNOWN
+    versioningS3DatasetDiff:
+      type: object
+      properties:
+        components:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningS3DatasetComponentDiff'
+    versioningHyperparameterSetConfigDiff:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/DiffStatusEnumDiffStatus'
+        A:
+          $ref: '#/components/schemas/versioningHyperparameterSetConfigBlob'
+        B:
+          $ref: '#/components/schemas/versioningHyperparameterSetConfigBlob'
+        C:
+          $ref: '#/components/schemas/versioningHyperparameterSetConfigBlob'
+    versioningDeleteBranchRequestResponse:
+      type: object
+    versioningConfigDiff:
+      type: object
+      properties:
+        hyperparameter_set:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningHyperparameterSetConfigDiff'
+        hyperparameters:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningHyperparameterConfigDiff'
+    versioningDeleteRepositoryRequestResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+    versioningFindRepositoriesResponse:
+      type: object
+      properties:
+        repositories:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningRepository'
+        total_records:
+          type: string
+          format: int64
+    versioningHyperparameterConfigBlob:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          $ref: '#/components/schemas/versioningHyperparameterValuesConfigBlob'
+    versioningRepository:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uint64
+        name:
+          type: string
+        date_created:
+          type: string
+          format: uint64
+        date_updated:
+          type: string
+          format: uint64
+        workspace_id:
+          type: string
+        workspace_type:
+          $ref: '#/components/schemas/WorkspaceTypeEnumWorkspaceType'
+        workspace_service_id:
+          type: string
+          format: uint64
+        repository_visibility:
+          $ref: '#/components/schemas/RepositoryVisibilityEnumRepositoryVisibility'
+        owner:
+          type: string
+        owner_id:
+          type: string
+          format: uint64
+        group_owner_id:
+          $ref: '#/components/schemas/commonGroupId'
+        description:
+          type: string
+        attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonKeyValue'
+        custom_permission:
+          $ref: '#/components/schemas/uacCollaboratorPermissions'
+          title: 'The next field only makes sense when visibility == ORG_CUSTOM
+
+            They will be empty otherwise'
+        visibility:
+          $ref: '#/components/schemas/uacResourceVisibility'
+        version_number:
+          type: string
+          format: uint64
+          title: Doc for version_number https://github.com/VertaAI/docs/pull/53
+    versioningListBranchesRequestResponse:
+      type: object
+      properties:
+        branches:
+          type: array
+          items:
+            type: string
+        total_records:
+          type: string
+          format: int64
+    versioningEnvironmentDiff:
+      type: object
+      properties:
+        python:
+          $ref: '#/components/schemas/versioningPythonEnvironmentDiff'
+        docker:
+          $ref: '#/components/schemas/versioningDockerEnvironmentDiff'
+        environment_variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningEnvironmentVariablesDiff'
+          title: Should only contain environment variables unique to A/B (considering all fields)
+        command_line:
+          $ref: '#/components/schemas/versioningCommandLineEnvironmentDiff'
+    versioningListCommitBlobsRequestResponse:
+      type: object
+      properties:
+        blobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningBlobExpanded'
+        total_records:
+          type: string
+          format: int64
+    versioningCreateCommitRequestResponse:
+      type: object
+      properties:
+        commit:
+          $ref: '#/components/schemas/versioningCommit'
+    versioningRevertRepositoryCommitsRequestResponse:
+      type: object
+      properties:
+        commit:
+          $ref: '#/components/schemas/versioningCommit'
+    versioningRevertRepositoryCommitsRequest:
+      type: object
+      properties:
+        repository_id:
+          $ref: '#/components/schemas/versioningRepositoryIdentification'
+        commit_to_revert_sha:
+          type: string
+        base_commit_sha:
+          type: string
+        content:
+          $ref: '#/components/schemas/versioningCommit'
+    versioningCommitVersionedBlobArtifactPartResponse:
+      type: object
+    versioningHyperparameterConfigDiff:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/DiffStatusEnumDiffStatus'
+        A:
+          $ref: '#/components/schemas/versioningHyperparameterConfigBlob'
+        B:
+          $ref: '#/components/schemas/versioningHyperparameterConfigBlob'
+        C:
+          $ref: '#/components/schemas/versioningHyperparameterConfigBlob'
+    versioningDeleteTagRequestResponse:
+      type: object
+    runtimeError:
+      type: object
+      properties:
+        error:
+          type: string
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/protobufAny'
+    versioningCodeDiff:
+      type: object
+      properties:
+        git:
+          $ref: '#/components/schemas/versioningGitCodeDiff'
+        notebook:
+          $ref: '#/components/schemas/versioningNotebookCodeDiff'
+    versioningDeleteCommitRequestResponse:
+      type: object
+    versioningPathDatasetBlob:
+      type: object
+      properties:
+        components:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningPathDatasetComponentBlob'
+    uacCollaboratorPermissions:
+      type: object
+      properties:
+        collaborator_type:
+          $ref: '#/components/schemas/CollaboratorTypeEnumCollaboratorType'
+        can_deploy:
+          $ref: '#/components/schemas/TernaryEnumTernary'
+        can_predict:
+          $ref: '#/components/schemas/TernaryEnumTernary'
+    versioningCommit:
+      type: object
+      properties:
+        parent_shas:
+          type: array
+          items:
+            type: string
+          description: ID of the parent commits.
+        message:
+          type: string
+          description: Message associated with the commit.
+        date_created:
+          type: string
+          format: uint64
+          description: 'Date associated with the commit.
+
+            It will be computed by the backend by default, but a feature flag should enable setting by the client.'
+        author:
+          type: string
+          description: ID of the user who created the commit.
+        commit_sha:
+          type: string
+        date_updated:
+          type: string
+          format: uint64
+          description: Updated Date while create tags & attribute for the commit.
+        version_number:
+          type: string
+          format: uint64
+          title: Doc for version_number https://github.com/VertaAI/docs/pull/53
+      title: 'Base commit for the versioning system
+
+        DO NOT USE TO COMPUTE SHA'
+    versioningS3DatasetComponentBlob:
+      type: object
+      properties:
+        path:
+          $ref: '#/components/schemas/versioningPathDatasetComponentBlob'
+        s3_version_id:
+          type: string
+    versioningHyperparameterValuesConfigBlob:
+      type: object
+      properties:
+        int_value:
+          type: string
+          format: int64
+        float_value:
+          type: number
+          format: float
+        string_value:
+          type: string
+    versioningPathDatasetDiff:
+      type: object
+      properties:
+        components:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningPathDatasetComponentDiff'
+    OperatorEnumOperator:
+      type: string
+      enum:
+      - EQ
+      - NE
+      - GT
+      - GTE
+      - LT
+      - LTE
+      - CONTAIN
+      - NOT_CONTAIN
+      - IN
+      - NOT_IN
+      default: EQ
+    commonKeyValue:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: object
+        value_type:
+          $ref: '#/components/schemas/ValueTypeEnumValueType'
+          description: "As per documentation of proto buffer 3.\n  For enums, the default value is the first defined enum value, which must be 0."
+    uacResourceVisibility:
+      type: string
+      enum:
+      - UNKNOWN
+      - ORG_DEFAULT
+      - ORG_CUSTOM
+      - PRIVATE
+      - WORKSPACE_DEFAULT
+      default: UNKNOWN
+    DiffStatusEnumDiffStatus:
+      type: string
+      enum:
+      - UNKNOWN
+      - ADDED
+      - DELETED
+      - MODIFIED
+      - CONFLICTED
+      default: UNKNOWN
+    versioningBlobDiff:
+      type: object
+      properties:
+        location:
+          type: array
+          items:
+            type: string
+          title: 'List of folder names, with the last element being the name of the blob
+
+            Each element goes one level deeper. So ["foo", "bar"] represents the same as /foo/bar'
+        status:
+          $ref: '#/components/schemas/DiffStatusEnumDiffStatus'
+        dataset:
+          $ref: '#/components/schemas/versioningDatasetDiff'
+        environment:
+          $ref: '#/components/schemas/versioningEnvironmentDiff'
+        code:
+          $ref: '#/components/schemas/versioningCodeDiff'
+        config:
+          $ref: '#/components/schemas/versioningConfigDiff'
+    versioningGetCommitComponentRequestResponse:
+      type: object
+      properties:
+        folder:
+          $ref: '#/components/schemas/versioningFolder'
+        blob:
+          $ref: '#/components/schemas/versioningBlob'
+        attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonKeyValue'
+    versioningPythonRequirementEnvironmentDiff:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/DiffStatusEnumDiffStatus'
+        A:
+          $ref: '#/components/schemas/versioningPythonRequirementEnvironmentBlob'
+        B:
+          $ref: '#/components/schemas/versioningPythonRequirementEnvironmentBlob'
+        C:
+          $ref: '#/components/schemas/versioningPythonRequirementEnvironmentBlob'
+    versioningGetUrlForBlobVersionedResponse:
+      type: object
+      properties:
+        url:
+          type: string
+        multipart_upload_ok:
+          type: boolean
+    versioningPythonEnvironmentBlob:
+      type: object
+      properties:
+        version:
+          $ref: '#/components/schemas/versioningVersionEnvironmentBlob'
+        requirements:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningPythonRequirementEnvironmentBlob'
+        constraints:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningPythonRequirementEnvironmentBlob'
+        raw_requirements:
+          type: string
+          description: These fields are only present if the parsed versions above are empty. That is, you cannot have both `requirements` and `raw_requirements` for example.
+        raw_constraints:
+          type: string
+    versioningGetUrlForBlobVersioned:
+      type: object
+      properties:
+        repository_id:
+          $ref: '#/components/schemas/versioningRepositoryIdentification'
+        commit_sha:
+          type: string
+        location:
+          type: array
+          items:
+            type: string
+        path_dataset_component_blob_path:
+          type: string
+        method:
+          type: string
+        part_number:
+          type: string
+          format: uint64
+    versioningGetBranchRequestResponse:
+      type: object
+      properties:
+        commit:
+          $ref: '#/components/schemas/versioningCommit'
+    versioningS3DatasetComponentDiff:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/DiffStatusEnumDiffStatus'
+        A:
+          $ref: '#/components/schemas/versioningS3DatasetComponentBlob'
+        B:
+          $ref: '#/components/schemas/versioningS3DatasetComponentBlob'
+        C:
+          $ref: '#/components/schemas/versioningS3DatasetComponentBlob'
