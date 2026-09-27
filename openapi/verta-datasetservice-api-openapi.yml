@@ -478,13 +478,92 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    vertamodeldbLocation:
+    modeldbDeleteDatasetResponse:
       type: object
       properties:
-        location:
+        status:
+          type: boolean
+    modeldbUpdateDatasetDescriptionResponse:
+      type: object
+      properties:
+        dataset:
+          $ref: '#/components/schemas/modeldbDataset'
+    modeldbUpdateDatasetAttributes:
+      type: object
+      properties:
+        id:
+          type: string
+        attribute:
+          $ref: '#/components/schemas/commonKeyValue'
+    modeldbExperiment:
+      type: object
+      properties:
+        id:
+          type: string
+        project_id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        date_created:
+          type: string
+          format: int64
+        date_updated:
+          type: string
+          format: int64
+        attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonKeyValue'
+        tags:
           type: array
           items:
             type: string
+        owner:
+          type: string
+        owner_id:
+          type: string
+          format: uint64
+        group_owner_id:
+          $ref: '#/components/schemas/commonGroupId'
+        code_version_snapshot:
+          $ref: '#/components/schemas/commonCodeVersion'
+        artifacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonArtifact'
+        version_number:
+          type: string
+          format: uint64
+          title: Doc for version_number https://github.com/VertaAI/docs/pull/53
+    CollaboratorTypeEnumCollaboratorType:
+      type: string
+      enum:
+      - READ_ONLY
+      - READ_WRITE
+      default: READ_ONLY
+    modeldbGetDatasetByNameResponse:
+      type: object
+      properties:
+        dataset_by_user:
+          $ref: '#/components/schemas/modeldbDataset'
+        shared_datasets:
+          type: array
+          items:
+            $ref: '#/components/schemas/modeldbDataset'
+    modeldbDeleteDatasetTagsResponse:
+      type: object
+      properties:
+        dataset:
+          $ref: '#/components/schemas/modeldbDataset'
+    commonGroupId:
+      type: object
+      properties:
+        org_id:
+          type: string
+        group_id:
+          type: string
     WorkspaceTypeEnumWorkspaceType:
       type: string
       enum:
@@ -492,43 +571,244 @@ components:
       - ORGANIZATION
       - USER
       default: UNKNOWN
-    versioningAptEnvironmentBlob:
+    modeldbDeleteDataset:
       type: object
       properties:
-        packages:
+        id:
+          type: string
+    modeldbCreateDatasetResponse:
+      type: object
+      properties:
+        dataset:
+          $ref: '#/components/schemas/modeldbDataset'
+    runtimeError:
+      type: object
+      properties:
+        error:
+          type: string
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/protobufAny'
+    modeldbAddDatasetAttributes:
+      type: object
+      properties:
+        id:
+          type: string
+        attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonKeyValue'
+    vertamodeldbLocation:
+      type: object
+      properties:
+        location:
           type: array
           items:
             type: string
-    modeldbGetExperimentRunByDataset:
+    versioningEnvironmentBlob:
       type: object
       properties:
-        dataset_id:
-          type: string
-    commonGitSnapshot:
-      type: object
-      properties:
-        filepaths:
+        python:
+          $ref: '#/components/schemas/versioningPythonEnvironmentBlob'
+        docker:
+          $ref: '#/components/schemas/versioningDockerEnvironmentBlob'
+        environment_variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningEnvironmentVariablesBlob'
+        command_line:
           type: array
           items:
             type: string
-        repo:
+        apt:
+          $ref: '#/components/schemas/versioningAptEnvironmentBlob'
+    modeldbGetDatasetByIdResponse:
+      type: object
+      properties:
+        dataset:
+          $ref: '#/components/schemas/modeldbDataset'
+    versioningPythonEnvironmentBlob:
+      type: object
+      properties:
+        version:
+          $ref: '#/components/schemas/versioningVersionEnvironmentBlob'
+        requirements:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningPythonRequirementEnvironmentBlob'
+        constraints:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningPythonRequirementEnvironmentBlob'
+        raw_requirements:
           type: string
-        hash:
+          description: These fields are only present if the parsed versions above are empty. That is, you cannot have both `requirements` and `raw_requirements` for example.
+        raw_constraints:
           type: string
-        is_dirty:
-          $ref: '#/components/schemas/TernaryEnumTernary'
-    ArtifactTypeEnumArtifactType:
+    modeldbFindDatasets:
+      type: object
+      properties:
+        dataset_ids:
+          type: array
+          items:
+            type: string
+        predicates:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonKeyValueQuery'
+        ids_only:
+          type: boolean
+        workspace_name:
+          type: string
+        page_number:
+          type: integer
+          format: int32
+          title: For pagination
+        page_limit:
+          type: integer
+          format: int32
+        ascending:
+          type: boolean
+        sort_key:
+          type: string
+    OperatorEnumOperator:
       type: string
       enum:
-      - IMAGE
-      - MODEL
-      - TENSORBOARD
-      - DATA
-      - BLOB
+      - EQ
+      - NE
+      - GT
+      - GTE
+      - LT
+      - LTE
+      - CONTAIN
+      - NOT_CONTAIN
+      - IN
+      - NOT_IN
+      default: EQ
+    modeldbDeleteDatasetAttributesResponse:
+      type: object
+      properties:
+        dataset:
+          $ref: '#/components/schemas/modeldbDataset'
+    modeldbDeleteDatasetAttributes:
+      type: object
+      properties:
+        id:
+          type: string
+        attribute_keys:
+          type: array
+          items:
+            type: string
+        delete_all:
+          type: boolean
+    modeldbCreateDataset:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonKeyValue'
+        dataset_visibility:
+          $ref: '#/components/schemas/DatasetVisibilityEnumDatasetVisibility'
+        dataset_type:
+          $ref: '#/components/schemas/DatasetTypeEnumDatasetType'
+        workspace_name:
+          type: string
+        time_created:
+          type: string
+          format: uint64
+        custom_permission:
+          $ref: '#/components/schemas/uacCollaboratorPermissions'
+          title: 'The next field only makes sense when visibility == ORG_CUSTOM
+
+            They will be empty otherwise'
+        visibility:
+          $ref: '#/components/schemas/uacResourceVisibility'
+    modeldbAddDatasetTagsResponse:
+      type: object
+      properties:
+        dataset:
+          $ref: '#/components/schemas/modeldbDataset'
+    modeldbDeleteDatasetsResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+    commonKeyValue:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: object
+        value_type:
+          $ref: '#/components/schemas/ValueTypeEnumValueType'
+          description: "As per documentation of proto buffer 3.\n  For enums, the default value is the first defined enum value, which must be 0."
+    ValueTypeEnumValueType:
+      type: string
+      enum:
       - STRING
-      - CODE
-      - CONTAINER
-      default: IMAGE
+      - NUMBER
+      - LIST
+      - BLOB
+      default: STRING
+    modeldbFindDatasetsResponse:
+      type: object
+      properties:
+        datasets:
+          type: array
+          items:
+            $ref: '#/components/schemas/modeldbDataset'
+        total_records:
+          type: string
+          format: int64
+    modeldbObservation:
+      type: object
+      properties:
+        attribute:
+          $ref: '#/components/schemas/commonKeyValue'
+        artifact:
+          $ref: '#/components/schemas/commonArtifact'
+        timestamp:
+          type: string
+          format: int64
+        epoch_number:
+          type: object
+      title: observations with the same key are not overwritten, the are appended to a list
+    modeldbLastExperimentByDatasetIdResponse:
+      type: object
+      properties:
+        experiment:
+          $ref: '#/components/schemas/modeldbExperiment'
+    DatasetTypeEnumDatasetType:
+      type: string
+      enum:
+      - RAW
+      - PATH
+      - QUERY
+      default: RAW
+    protobufAny:
+      type: object
+      properties:
+        type_url:
+          type: string
+        value:
+          type: string
+          format: byte
     modeldbExperimentRun:
       type: object
       properties:
@@ -626,138 +906,57 @@ components:
           type: string
           format: uint64
       title: code version
-    modeldbDeleteDatasetAttributesResponse:
+    versioningEnvironmentVariablesBlob:
       type: object
       properties:
-        dataset:
-          $ref: '#/components/schemas/modeldbDataset'
-    modeldbExperiment:
+        name:
+          type: string
+        value:
+          type: string
+    ArtifactTypeEnumArtifactType:
+      type: string
+      enum:
+      - IMAGE
+      - MODEL
+      - TENSORBOARD
+      - DATA
+      - BLOB
+      - STRING
+      - CODE
+      - CONTAINER
+      default: IMAGE
+    modeldbAddDatasetTags:
       type: object
       properties:
         id:
           type: string
-        project_id:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        date_created:
-          type: string
-          format: int64
-        date_updated:
-          type: string
-          format: int64
-        attributes:
-          type: array
-          items:
-            $ref: '#/components/schemas/commonKeyValue'
         tags:
           type: array
           items:
             type: string
-        owner:
-          type: string
-        owner_id:
-          type: string
-          format: uint64
-        group_owner_id:
-          $ref: '#/components/schemas/commonGroupId'
-        code_version_snapshot:
-          $ref: '#/components/schemas/commonCodeVersion'
-        artifacts:
-          type: array
-          items:
-            $ref: '#/components/schemas/commonArtifact'
-        version_number:
-          type: string
-          format: uint64
-          title: Doc for version_number https://github.com/VertaAI/docs/pull/53
-    runtimeError:
+    versioningAptEnvironmentBlob:
       type: object
       properties:
-        error:
-          type: string
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
-        details:
-          type: array
-          items:
-            $ref: '#/components/schemas/protobufAny'
-    modeldbDeleteDatasetResponse:
-      type: object
-      properties:
-        status:
-          type: boolean
-    modeldbDeleteDatasetTagsResponse:
-      type: object
-      properties:
-        dataset:
-          $ref: '#/components/schemas/modeldbDataset'
-    TernaryEnumTernary:
-      type: string
-      enum:
-      - UNKNOWN
-      - 'TRUE'
-      - 'FALSE'
-      default: UNKNOWN
-    protobufAny:
-      type: object
-      properties:
-        type_url:
-          type: string
-        value:
-          type: string
-          format: byte
-    modeldbGetAllDatasetsResponse:
-      type: object
-      properties:
-        datasets:
-          type: array
-          items:
-            $ref: '#/components/schemas/modeldbDataset'
-        total_records:
-          type: string
-          format: uint64
-    versioningEnvironmentBlob:
-      type: object
-      properties:
-        python:
-          $ref: '#/components/schemas/versioningPythonEnvironmentBlob'
-        docker:
-          $ref: '#/components/schemas/versioningDockerEnvironmentBlob'
-        environment_variables:
-          type: array
-          items:
-            $ref: '#/components/schemas/versioningEnvironmentVariablesBlob'
-        command_line:
+        packages:
           type: array
           items:
             type: string
-        apt:
-          $ref: '#/components/schemas/versioningAptEnvironmentBlob'
-    modeldbUpdateDatasetName:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-    DatasetTypeEnumDatasetType:
+    uacResourceVisibility:
       type: string
       enum:
-      - RAW
-      - PATH
-      - QUERY
-      default: RAW
-    modeldbUpdateDatasetAttributesResponse:
+      - UNKNOWN
+      - ORG_DEFAULT
+      - ORG_CUSTOM
+      - PRIVATE
+      - WORKSPACE_DEFAULT
+      default: UNKNOWN
+    modeldbGetExperimentRunByDatasetResponse:
       type: object
       properties:
-        dataset:
-          $ref: '#/components/schemas/modeldbDataset'
+        experiment_runs:
+          type: array
+          items:
+            $ref: '#/components/schemas/modeldbExperimentRun'
     modeldbUpdateDatasetNameResponse:
       type: object
       properties:
@@ -777,178 +976,10 @@ components:
           format: int32
         suffix:
           type: string
-    modeldbFindDatasetsResponse:
-      type: object
-      properties:
-        datasets:
-          type: array
-          items:
-            $ref: '#/components/schemas/modeldbDataset'
-        total_records:
-          type: string
-          format: int64
-    modeldbCreateDatasetResponse:
-      type: object
-      properties:
-        dataset:
-          $ref: '#/components/schemas/modeldbDataset'
-    modeldbGetDatasetByIdResponse:
-      type: object
-      properties:
-        dataset:
-          $ref: '#/components/schemas/modeldbDataset'
-    modeldbLastExperimentByDatasetIdResponse:
-      type: object
-      properties:
-        experiment:
-          $ref: '#/components/schemas/modeldbExperiment'
-    DatasetVisibilityEnumDatasetVisibility:
-      type: string
-      enum:
-      - PRIVATE
-      - PUBLIC
-      - ORG_SCOPED_PUBLIC
-      default: PRIVATE
-    modeldbCreateDataset:
+    modeldbFeature:
       type: object
       properties:
         name:
-          type: string
-        description:
-          type: string
-        tags:
-          type: array
-          items:
-            type: string
-        attributes:
-          type: array
-          items:
-            $ref: '#/components/schemas/commonKeyValue'
-        dataset_visibility:
-          $ref: '#/components/schemas/DatasetVisibilityEnumDatasetVisibility'
-        dataset_type:
-          $ref: '#/components/schemas/DatasetTypeEnumDatasetType'
-        workspace_name:
-          type: string
-        time_created:
-          type: string
-          format: uint64
-        custom_permission:
-          $ref: '#/components/schemas/uacCollaboratorPermissions'
-          title: 'The next field only makes sense when visibility == ORG_CUSTOM
-
-            They will be empty otherwise'
-        visibility:
-          $ref: '#/components/schemas/uacResourceVisibility'
-    modeldbVersioningEntry:
-      type: object
-      properties:
-        repository_id:
-          type: string
-          format: uint64
-        commit:
-          type: string
-        key_location_map:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/vertamodeldbLocation'
-    versioningDockerEnvironmentBlob:
-      type: object
-      properties:
-        repository:
-          type: string
-        tag:
-          type: string
-        sha:
-          type: string
-    modeldbGetTagsResponse:
-      type: object
-      properties:
-        tags:
-          type: array
-          items:
-            type: string
-    versioningEnvironmentVariablesBlob:
-      type: object
-      properties:
-        name:
-          type: string
-        value:
-          type: string
-    modeldbUpdateDatasetAttributes:
-      type: object
-      properties:
-        id:
-          type: string
-        attribute:
-          $ref: '#/components/schemas/commonKeyValue'
-    CollaboratorTypeEnumCollaboratorType:
-      type: string
-      enum:
-      - READ_ONLY
-      - READ_WRITE
-      default: READ_ONLY
-    modeldbDeleteDatasetTags:
-      type: object
-      properties:
-        id:
-          type: string
-        tags:
-          type: array
-          items:
-            type: string
-        delete_all:
-          type: boolean
-    uacCollaboratorPermissions:
-      type: object
-      properties:
-        collaborator_type:
-          $ref: '#/components/schemas/CollaboratorTypeEnumCollaboratorType'
-        can_deploy:
-          $ref: '#/components/schemas/TernaryEnumTernary'
-        can_predict:
-          $ref: '#/components/schemas/TernaryEnumTernary'
-    modeldbDeleteDatasets:
-      type: object
-      properties:
-        ids:
-          type: array
-          items:
-            type: string
-    modeldbAddDatasetTagsResponse:
-      type: object
-      properties:
-        dataset:
-          $ref: '#/components/schemas/modeldbDataset'
-    modeldbGetDatasetByNameResponse:
-      type: object
-      properties:
-        dataset_by_user:
-          $ref: '#/components/schemas/modeldbDataset'
-        shared_datasets:
-          type: array
-          items:
-            $ref: '#/components/schemas/modeldbDataset'
-    OperatorEnumOperator:
-      type: string
-      enum:
-      - EQ
-      - NE
-      - GT
-      - GTE
-      - LT
-      - LTE
-      - CONTAIN
-      - NOT_CONTAIN
-      - IN
-      - NOT_IN
-      default: EQ
-    modeldbUpdateDatasetDescription:
-      type: object
-      properties:
-        id:
-          type: string
-        description:
           type: string
     commonArtifact:
       type: object
@@ -971,18 +1002,16 @@ components:
           type: string
         upload_completed:
           type: boolean
-    modeldbDeleteDatasetAttributes:
+    uacCollaboratorPermissions:
       type: object
       properties:
-        id:
-          type: string
-        attribute_keys:
-          type: array
-          items:
-            type: string
-        delete_all:
-          type: boolean
-    commonKeyValue:
+        collaborator_type:
+          $ref: '#/components/schemas/CollaboratorTypeEnumCollaboratorType'
+        can_deploy:
+          $ref: '#/components/schemas/TernaryEnumTernary'
+        can_predict:
+          $ref: '#/components/schemas/TernaryEnumTernary'
+    commonKeyValueQuery:
       type: object
       properties:
         key:
@@ -991,21 +1020,8 @@ components:
           type: object
         value_type:
           $ref: '#/components/schemas/ValueTypeEnumValueType'
-          description: "As per documentation of proto buffer 3.\n  For enums, the default value is the first defined enum value, which must be 0."
-    modeldbAddDatasetTags:
-      type: object
-      properties:
-        id:
-          type: string
-        tags:
-          type: array
-          items:
-            type: string
-    modeldbDeleteDataset:
-      type: object
-      properties:
-        id:
-          type: string
+        operator:
+          $ref: '#/components/schemas/OperatorEnumOperator'
     modeldbDataset:
       type: object
       properties:
@@ -1058,123 +1074,49 @@ components:
           type: string
           format: uint64
           title: Doc for version_number https://github.com/VertaAI/docs/pull/53
-    modeldbUpdateDatasetDescriptionResponse:
+    modeldbGetTagsResponse:
+      type: object
+      properties:
+        tags:
+          type: array
+          items:
+            type: string
+    TernaryEnumTernary:
+      type: string
+      enum:
+      - UNKNOWN
+      - 'TRUE'
+      - 'FALSE'
+      default: UNKNOWN
+    modeldbAddDatasetAttributesResponse:
       type: object
       properties:
         dataset:
           $ref: '#/components/schemas/modeldbDataset'
-    modeldbGetExperimentRunByDatasetResponse:
+    modeldbUpdateDatasetAttributesResponse:
       type: object
       properties:
-        experiment_runs:
-          type: array
-          items:
-            $ref: '#/components/schemas/modeldbExperimentRun'
-    modeldbAddDatasetAttributes:
+        dataset:
+          $ref: '#/components/schemas/modeldbDataset'
+    modeldbDeleteDatasetTags:
       type: object
       properties:
         id:
           type: string
-        attributes:
-          type: array
-          items:
-            $ref: '#/components/schemas/commonKeyValue'
-    uacResourceVisibility:
-      type: string
-      enum:
-      - UNKNOWN
-      - ORG_DEFAULT
-      - ORG_CUSTOM
-      - PRIVATE
-      - WORKSPACE_DEFAULT
-      default: UNKNOWN
-    modeldbObservation:
-      type: object
-      properties:
-        attribute:
-          $ref: '#/components/schemas/commonKeyValue'
-        artifact:
-          $ref: '#/components/schemas/commonArtifact'
-        timestamp:
-          type: string
-          format: int64
-        epoch_number:
-          type: object
-      title: observations with the same key are not overwritten, the are appended to a list
-    commonKeyValueQuery:
-      type: object
-      properties:
-        key:
-          type: string
-        value:
-          type: object
-        value_type:
-          $ref: '#/components/schemas/ValueTypeEnumValueType'
-        operator:
-          $ref: '#/components/schemas/OperatorEnumOperator'
-    commonGroupId:
-      type: object
-      properties:
-        org_id:
-          type: string
-        group_id:
-          type: string
-    versioningPythonEnvironmentBlob:
-      type: object
-      properties:
-        version:
-          $ref: '#/components/schemas/versioningVersionEnvironmentBlob'
-        requirements:
-          type: array
-          items:
-            $ref: '#/components/schemas/versioningPythonRequirementEnvironmentBlob'
-        constraints:
-          type: array
-          items:
-            $ref: '#/components/schemas/versioningPythonRequirementEnvironmentBlob'
-        raw_requirements:
-          type: string
-          description: These fields are only present if the parsed versions above are empty. That is, you cannot have both `requirements` and `raw_requirements` for example.
-        raw_constraints:
-          type: string
-    modeldbFindDatasets:
-      type: object
-      properties:
-        dataset_ids:
+        tags:
           type: array
           items:
             type: string
-        predicates:
-          type: array
-          items:
-            $ref: '#/components/schemas/commonKeyValueQuery'
-        ids_only:
+        delete_all:
           type: boolean
-        workspace_name:
-          type: string
-        page_number:
-          type: integer
-          format: int32
-          title: For pagination
-        page_limit:
-          type: integer
-          format: int32
-        ascending:
-          type: boolean
-        sort_key:
-          type: string
-    ValueTypeEnumValueType:
-      type: string
-      enum:
-      - STRING
-      - NUMBER
-      - LIST
-      - BLOB
-      default: STRING
-    modeldbFeature:
+    versioningDockerEnvironmentBlob:
       type: object
       properties:
-        name:
+        repository:
+          type: string
+        tag:
+          type: string
+        sha:
           type: string
     versioningPythonRequirementEnvironmentBlob:
       type: object
@@ -1185,13 +1127,71 @@ components:
           type: string
         version:
           $ref: '#/components/schemas/versioningVersionEnvironmentBlob'
-    modeldbDeleteDatasetsResponse:
+    modeldbGetAllDatasetsResponse:
       type: object
       properties:
-        status:
-          type: boolean
-    modeldbAddDatasetAttributesResponse:
+        datasets:
+          type: array
+          items:
+            $ref: '#/components/schemas/modeldbDataset'
+        total_records:
+          type: string
+          format: uint64
+    modeldbVersioningEntry:
       type: object
       properties:
-        dataset:
-          $ref: '#/components/schemas/modeldbDataset'
+        repository_id:
+          type: string
+          format: uint64
+        commit:
+          type: string
+        key_location_map:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/vertamodeldbLocation'
+    commonGitSnapshot:
+      type: object
+      properties:
+        filepaths:
+          type: array
+          items:
+            type: string
+        repo:
+          type: string
+        hash:
+          type: string
+        is_dirty:
+          $ref: '#/components/schemas/TernaryEnumTernary'
+    modeldbGetExperimentRunByDataset:
+      type: object
+      properties:
+        dataset_id:
+          type: string
+    modeldbDeleteDatasets:
+      type: object
+      properties:
+        ids:
+          type: array
+          items:
+            type: string
+    modeldbUpdateDatasetDescription:
+      type: object
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+    modeldbUpdateDatasetName:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    DatasetVisibilityEnumDatasetVisibility:
+      type: string
+      enum:
+      - PRIVATE
+      - PUBLIC
+      - ORG_SCOPED_PUBLIC
+      default: PRIVATE

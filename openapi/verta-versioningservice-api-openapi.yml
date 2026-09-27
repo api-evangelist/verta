@@ -2308,67 +2308,85 @@ paths:
       - VersioningService
 components:
   schemas:
-    versioningPathDatasetComponentDiff:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/DiffStatusEnumDiffStatus'
-        A:
-          $ref: '#/components/schemas/versioningPathDatasetComponentBlob'
-        B:
-          $ref: '#/components/schemas/versioningPathDatasetComponentBlob'
-        C:
-          $ref: '#/components/schemas/versioningPathDatasetComponentBlob'
-    versioningCommandLineEnvironmentDiff:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/DiffStatusEnumDiffStatus'
-        A:
-          type: array
-          items:
-            type: string
-        B:
-          type: array
-          items:
-            type: string
-        C:
-          type: array
-          items:
-            type: string
-    versioningDiscreteHyperparameterSetConfigBlob:
-      type: object
-      properties:
-        values:
-          type: array
-          items:
-            $ref: '#/components/schemas/versioningHyperparameterValuesConfigBlob'
-    TernaryEnumTernary:
+    CollaboratorTypeEnumCollaboratorType:
       type: string
       enum:
-      - UNKNOWN
-      - 'TRUE'
-      - 'FALSE'
-      default: UNKNOWN
-    versioningListCommitsLogRequestResponse:
+      - READ_ONLY
+      - READ_WRITE
+      default: READ_ONLY
+    versioningS3DatasetDiff:
       type: object
       properties:
-        commits:
+        components:
           type: array
           items:
-            $ref: '#/components/schemas/versioningCommit'
-        total_records:
-          type: string
-          format: int64
-    versioningDatasetDiff:
+            $ref: '#/components/schemas/versioningS3DatasetComponentDiff'
+    versioningGetRepositoryRequestResponse:
       type: object
       properties:
-        s3:
-          $ref: '#/components/schemas/versioningS3DatasetDiff'
+        repository:
+          $ref: '#/components/schemas/versioningRepository'
+    versioningS3DatasetComponentBlob:
+      type: object
+      properties:
         path:
-          $ref: '#/components/schemas/versioningPathDatasetDiff'
-        query:
-          $ref: '#/components/schemas/versioningQueryDatasetDiff'
+          $ref: '#/components/schemas/versioningPathDatasetComponentBlob'
+        s3_version_id:
+          type: string
+    versioningPythonEnvironmentBlob:
+      type: object
+      properties:
+        version:
+          $ref: '#/components/schemas/versioningVersionEnvironmentBlob'
+        requirements:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningPythonRequirementEnvironmentBlob'
+        constraints:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningPythonRequirementEnvironmentBlob'
+        raw_requirements:
+          type: string
+          description: These fields are only present if the parsed versions above are empty. That is, you cannot have both `requirements` and `raw_requirements` for example.
+        raw_constraints:
+          type: string
+    versioningRevertRepositoryCommitsRequestResponse:
+      type: object
+      properties:
+        commit:
+          $ref: '#/components/schemas/versioningCommit'
+    versioningDeleteCommitRequestResponse:
+      type: object
+    versioningHyperparameterConfigDiff:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/DiffStatusEnumDiffStatus'
+        A:
+          $ref: '#/components/schemas/versioningHyperparameterConfigBlob'
+        B:
+          $ref: '#/components/schemas/versioningHyperparameterConfigBlob'
+        C:
+          $ref: '#/components/schemas/versioningHyperparameterConfigBlob'
+    versioningGetUrlForBlobVersioned:
+      type: object
+      properties:
+        repository_id:
+          $ref: '#/components/schemas/versioningRepositoryIdentification'
+        commit_sha:
+          type: string
+        location:
+          type: array
+          items:
+            type: string
+        path_dataset_component_blob_path:
+          type: string
+        method:
+          type: string
+        part_number:
+          type: string
+          format: uint64
     versioningFindRepositoriesBlobs:
       type: object
       properties:
@@ -2407,119 +2425,6 @@ components:
             bool ascending = 8;
 
             string sort_key = 9;'
-    versioningCreateCommitRequest:
-      type: object
-      properties:
-        repository_id:
-          $ref: '#/components/schemas/versioningRepositoryIdentification'
-        commit:
-          $ref: '#/components/schemas/versioningCommit'
-        blobs:
-          type: array
-          items:
-            $ref: '#/components/schemas/versioningBlobExpanded'
-        commit_base:
-          type: string
-          title: 'Apply the diffs on top of commit_base
-
-            If a blob was added in the diff, add it on top of commit_base (doesn''t matter if it was present already or not)
-
-            If a blob was deleted, delete if from commit_base if present
-
-            If a blob was modified, then:
-
-            1) check that the type of the diff is consistent with the type of the blob. If they are different, raise an error saying so
-
-            2) apply the diff to the blob as per the following logic:
-
-            2a) if the field is atomic (e.g. python version, git repository), use the newer version (B) from the diff and overwrite what the commit_base has
-
-            2b) if the field is not atomic (e.g. list of python requirements, dataset components), merge the lists by a) copying new values, b) deleting removed values, c) updating values that are already present based on some reasonable key'
-        diffs:
-          type: array
-          items:
-            $ref: '#/components/schemas/versioningBlobDiff'
-    versioningQueryDatasetDiff:
-      type: object
-      properties:
-        components:
-          type: array
-          items:
-            $ref: '#/components/schemas/versioningQueryDatasetComponentDiff'
-    versioningDockerEnvironmentBlob:
-      type: object
-      properties:
-        repository:
-          type: string
-        tag:
-          type: string
-        sha:
-          type: string
-    versioningEnvironmentVariablesBlob:
-      type: object
-      properties:
-        name:
-          type: string
-        value:
-          type: string
-    CollaboratorTypeEnumCollaboratorType:
-      type: string
-      enum:
-      - READ_ONLY
-      - READ_WRITE
-      default: READ_ONLY
-    versioningQueryDatasetComponentDiff:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/DiffStatusEnumDiffStatus'
-        A:
-          $ref: '#/components/schemas/versioningQueryDatasetComponentBlob'
-        B:
-          $ref: '#/components/schemas/versioningQueryDatasetComponentBlob'
-        C:
-          $ref: '#/components/schemas/versioningQueryDatasetComponentBlob'
-    versioningRepositoryIdentification:
-      type: object
-      properties:
-        named_id:
-          $ref: '#/components/schemas/versioningRepositoryNamedIdentification'
-        repo_id:
-          type: string
-          format: uint64
-      title: 'changed from oneof because of that bug: https://github.com/grpc-ecosystem/grpc-gateway/issues/753'
-    versioningSetBranchRequestResponse:
-      type: object
-    versioningListRepositoriesRequestResponse:
-      type: object
-      properties:
-        repositories:
-          type: array
-          items:
-            $ref: '#/components/schemas/versioningRepository'
-        total_records:
-          type: string
-          format: int64
-    versioningCommitMultipartVersionedBlobArtifact:
-      type: object
-      properties:
-        repository_id:
-          $ref: '#/components/schemas/versioningRepositoryIdentification'
-        commit_sha:
-          type: string
-        location:
-          type: array
-          items:
-            type: string
-        path_dataset_component_blob_path:
-          type: string
-    RepositoryVisibilityEnumRepositoryVisibility:
-      type: string
-      enum:
-      - PRIVATE
-      - PUBLIC
-      - ORG_SCOPED_PUBLIC
-      default: PRIVATE
     versioningGitCodeDiff:
       type: object
       properties:
@@ -2531,109 +2436,12 @@ components:
           $ref: '#/components/schemas/versioningGitCodeBlob'
         C:
           $ref: '#/components/schemas/versioningGitCodeBlob'
-    versioningGetCommitRequestResponse:
+    versioningEnvironmentVariablesBlob:
       type: object
       properties:
-        commit:
-          $ref: '#/components/schemas/versioningCommit'
-    versioningComputeRepositoryDiffRequestResponse:
-      type: object
-      properties:
-        diffs:
-          type: array
-          items:
-            $ref: '#/components/schemas/versioningBlobDiff'
-    versioningCommitMultipartVersionedBlobArtifactResponse:
-      type: object
-    versioningNotebookCodeBlob:
-      type: object
-      properties:
-        path:
-          $ref: '#/components/schemas/versioningPathDatasetComponentBlob'
-        git_repo:
-          $ref: '#/components/schemas/versioningGitCodeBlob'
-    versioningGetTagRequestResponse:
-      type: object
-      properties:
-        commit:
-          $ref: '#/components/schemas/versioningCommit'
-    ValueTypeEnumValueType:
-      type: string
-      enum:
-      - STRING
-      - NUMBER
-      - LIST
-      - BLOB
-      default: STRING
-    versioningContinuousHyperparameterSetConfigBlob:
-      type: object
-      properties:
-        interval_begin:
-          $ref: '#/components/schemas/versioningHyperparameterValuesConfigBlob'
-        interval_end:
-          $ref: '#/components/schemas/versioningHyperparameterValuesConfigBlob'
-        interval_step:
-          $ref: '#/components/schemas/versioningHyperparameterValuesConfigBlob'
-    versioningGetRepositoryRequestResponse:
-      type: object
-      properties:
-        repository:
-          $ref: '#/components/schemas/versioningRepository'
-    WorkspaceTypeEnumWorkspaceType:
-      type: string
-      enum:
-      - UNKNOWN
-      - ORGANIZATION
-      - USER
-      default: UNKNOWN
-    versioningPathDatasetComponentBlob:
-      type: object
-      properties:
-        path:
+        name:
           type: string
-        size:
-          type: string
-          format: uint64
-        last_modified_at_source:
-          type: string
-          format: uint64
-        sha256:
-          type: string
-        md5:
-          type: string
-        internal_versioned_path:
-          type: string
-        base_path:
-          type: string
-    versioningMergeRepositoryCommitsRequestResponse:
-      type: object
-      properties:
-        commit:
-          $ref: '#/components/schemas/versioningCommit'
-        conflicts:
-          type: array
-          items:
-            $ref: '#/components/schemas/versioningBlobDiff'
-        common_base:
-          $ref: '#/components/schemas/versioningCommit'
-          title: In case of a conflict, stop at the first such conflict and return it
-    versioningFindRepositoriesBlobsResponse:
-      type: object
-      properties:
-        blobs:
-          type: array
-          items:
-            $ref: '#/components/schemas/versioningBlobExpanded'
-        total_records:
-          type: string
-          format: int64
-    commonArtifactPart:
-      type: object
-      properties:
-        part_number:
-          type: string
-          format: uint64
-        etag:
+        value:
           type: string
     versioningGitCodeBlob:
       type: object
@@ -2648,6 +2456,231 @@ components:
           type: string
         is_dirty:
           type: boolean
+    versioningSetTagRequestResponse:
+      type: object
+    versioningQueryDatasetComponentBlob:
+      type: object
+      properties:
+        query:
+          type: string
+        data_source_uri:
+          type: string
+          title: 'string query_template = 2;
+
+            repeated QueryParameter query_parameters = 3;'
+        execution_timestamp:
+          type: string
+          format: uint64
+        num_records:
+          type: string
+          format: uint64
+    versioningFolderElement:
+      type: object
+      properties:
+        element_name:
+          type: string
+          description: Name of the element inside the folder.
+      title: DO NOT USE TO COMPUTE SHA
+    commonArtifactPart:
+      type: object
+      properties:
+        part_number:
+          type: string
+          format: uint64
+        etag:
+          type: string
+    versioningHyperparameterSetConfigDiff:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/DiffStatusEnumDiffStatus'
+        A:
+          $ref: '#/components/schemas/versioningHyperparameterSetConfigBlob'
+        B:
+          $ref: '#/components/schemas/versioningHyperparameterSetConfigBlob'
+        C:
+          $ref: '#/components/schemas/versioningHyperparameterSetConfigBlob'
+    versioningS3DatasetBlob:
+      type: object
+      properties:
+        components:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningS3DatasetComponentBlob'
+    versioningDockerEnvironmentBlob:
+      type: object
+      properties:
+        repository:
+          type: string
+        tag:
+          type: string
+        sha:
+          type: string
+    versioningBlobDiff:
+      type: object
+      properties:
+        location:
+          type: array
+          items:
+            type: string
+          title: 'List of folder names, with the last element being the name of the blob
+
+            Each element goes one level deeper. So ["foo", "bar"] represents the same as /foo/bar'
+        status:
+          $ref: '#/components/schemas/DiffStatusEnumDiffStatus'
+        dataset:
+          $ref: '#/components/schemas/versioningDatasetDiff'
+        environment:
+          $ref: '#/components/schemas/versioningEnvironmentDiff'
+        code:
+          $ref: '#/components/schemas/versioningCodeDiff'
+        config:
+          $ref: '#/components/schemas/versioningConfigDiff'
+    versioningComputeRepositoryDiffRequestResponse:
+      type: object
+      properties:
+        diffs:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningBlobDiff'
+    versioningGetCommittedVersionedBlobArtifactPartsResponse:
+      type: object
+      properties:
+        artifact_parts:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonArtifactPart'
+    versioningConfigBlob:
+      type: object
+      properties:
+        hyperparameter_set:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningHyperparameterSetConfigBlob'
+        hyperparameters:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningHyperparameterConfigBlob'
+    versioningHyperparameterSetConfigBlob:
+      type: object
+      properties:
+        name:
+          type: string
+        continuous:
+          $ref: '#/components/schemas/versioningContinuousHyperparameterSetConfigBlob'
+        discrete:
+          $ref: '#/components/schemas/versioningDiscreteHyperparameterSetConfigBlob'
+    versioningSetBranchRequestResponse:
+      type: object
+    runtimeError:
+      type: object
+      properties:
+        error:
+          type: string
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/protobufAny'
+    versioningListCommitsRequestResponse:
+      type: object
+      properties:
+        commits:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningCommit'
+        total_records:
+          type: string
+          format: int64
+    OperatorEnumOperator:
+      type: string
+      enum:
+      - EQ
+      - NE
+      - GT
+      - GTE
+      - LT
+      - LTE
+      - CONTAIN
+      - NOT_CONTAIN
+      - IN
+      - NOT_IN
+      default: EQ
+    versioningRevertRepositoryCommitsRequest:
+      type: object
+      properties:
+        repository_id:
+          $ref: '#/components/schemas/versioningRepositoryIdentification'
+        commit_to_revert_sha:
+          type: string
+        base_commit_sha:
+          type: string
+        content:
+          $ref: '#/components/schemas/versioningCommit'
+    ValueTypeEnumValueType:
+      type: string
+      enum:
+      - STRING
+      - NUMBER
+      - LIST
+      - BLOB
+      default: STRING
+    versioningCommandLineEnvironmentDiff:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/DiffStatusEnumDiffStatus'
+        A:
+          type: array
+          items:
+            type: string
+        B:
+          type: array
+          items:
+            type: string
+        C:
+          type: array
+          items:
+            type: string
+    versioningListRepositoriesRequestResponse:
+      type: object
+      properties:
+        repositories:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningRepository'
+        total_records:
+          type: string
+          format: int64
+    versioningDiscreteHyperparameterSetConfigBlob:
+      type: object
+      properties:
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningHyperparameterValuesConfigBlob'
+    uacCollaboratorPermissions:
+      type: object
+      properties:
+        collaborator_type:
+          $ref: '#/components/schemas/CollaboratorTypeEnumCollaboratorType'
+        can_deploy:
+          $ref: '#/components/schemas/TernaryEnumTernary'
+        can_predict:
+          $ref: '#/components/schemas/TernaryEnumTernary'
+    versioningCommitMultipartVersionedBlobArtifactResponse:
+      type: object
+    versioningQueryDatasetBlob:
+      type: object
+      properties:
+        components:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningQueryDatasetComponentBlob'
     versioningFindRepositories:
       type: object
       properties:
@@ -2672,88 +2705,128 @@ components:
       title: 'If any of the request parameters are not set then backend will return all the repositories.
 
         the query like: FROM RepositoryEntity repo ORDER BY repo.date_updated DESC'
-    versioningRepositoryNamedIdentification:
+    TernaryEnumTernary:
+      type: string
+      enum:
+      - UNKNOWN
+      - 'TRUE'
+      - 'FALSE'
+      default: UNKNOWN
+    versioningCommitMultipartVersionedBlobArtifact:
       type: object
       properties:
-        name:
+        repository_id:
+          $ref: '#/components/schemas/versioningRepositoryIdentification'
+        commit_sha:
           type: string
-        workspace_name:
-          type: string
-      title: CRUD for repositories
-    versioningBlobExpanded:
-      type: object
-      properties:
         location:
           type: array
           items:
             type: string
-          title: 'List of folder names, with the last element being the name of the blob
-
-            Each element goes one level deeper. So ["foo", "bar"] represents the same as /foo/bar'
+        path_dataset_component_blob_path:
+          type: string
+    versioningGetCommitComponentRequestResponse:
+      type: object
+      properties:
+        folder:
+          $ref: '#/components/schemas/versioningFolder'
         blob:
           $ref: '#/components/schemas/versioningBlob'
         attributes:
           type: array
           items:
             $ref: '#/components/schemas/commonKeyValue'
-    versioningDockerEnvironmentDiff:
+    versioningAptEnvironmentBlob:
       type: object
       properties:
-        status:
-          $ref: '#/components/schemas/DiffStatusEnumDiffStatus'
-        A:
-          $ref: '#/components/schemas/versioningDockerEnvironmentBlob'
-        B:
-          $ref: '#/components/schemas/versioningDockerEnvironmentBlob'
-        C:
-          $ref: '#/components/schemas/versioningDockerEnvironmentBlob'
-    protobufAny:
-      type: object
-      properties:
-        type_url:
-          type: string
-        value:
-          type: string
-          format: byte
-    versioningFolderElement:
-      type: object
-      properties:
-        element_name:
-          type: string
-          description: Name of the element inside the folder.
-      title: DO NOT USE TO COMPUTE SHA
-    versioningEnvironmentBlob:
-      type: object
-      properties:
-        python:
-          $ref: '#/components/schemas/versioningPythonEnvironmentBlob'
-        docker:
-          $ref: '#/components/schemas/versioningDockerEnvironmentBlob'
-        environment_variables:
-          type: array
-          items:
-            $ref: '#/components/schemas/versioningEnvironmentVariablesBlob'
-        command_line:
+        packages:
           type: array
           items:
             type: string
-        apt:
-          $ref: '#/components/schemas/versioningAptEnvironmentBlob'
-    versioningVersionEnvironmentBlob:
+    versioningPathDatasetDiff:
       type: object
       properties:
-        major:
-          type: integer
-          format: int32
-        minor:
-          type: integer
-          format: int32
-        patch:
-          type: integer
-          format: int32
-        suffix:
+        components:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningPathDatasetComponentDiff'
+    WorkspaceTypeEnumWorkspaceType:
+      type: string
+      enum:
+      - UNKNOWN
+      - ORGANIZATION
+      - USER
+      default: UNKNOWN
+    versioningGetCommitRequestResponse:
+      type: object
+      properties:
+        commit:
+          $ref: '#/components/schemas/versioningCommit'
+    versioningListTagsRequestResponse:
+      type: object
+      properties:
+        tags:
+          type: array
+          items:
+            type: string
+        total_records:
           type: string
-    versioningListCommitsRequestResponse:
+          format: int64
+    versioningBlob:
+      type: object
+      properties:
+        dataset:
+          $ref: '#/components/schemas/versioningDatasetBlob'
+        environment:
+          $ref: '#/components/schemas/versioningEnvironmentBlob'
+        code:
+          $ref: '#/components/schemas/versioningCodeBlob'
+        config:
+          $ref: '#/components/schemas/versioningConfigBlob'
+    versioningGetBranchRequestResponse:
+      type: object
+      properties:
+        commit:
+          $ref: '#/components/schemas/versioningCommit'
+    commonKeyValue:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: object
+        value_type:
+          $ref: '#/components/schemas/ValueTypeEnumValueType'
+          description: "As per documentation of proto buffer 3.\n  For enums, the default value is the first defined enum value, which must be 0."
+    versioningDeleteRepositoryRequestResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+    versioningPathDatasetBlob:
+      type: object
+      properties:
+        components:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningPathDatasetComponentBlob'
+    versioningRepositoryIdentification:
+      type: object
+      properties:
+        named_id:
+          $ref: '#/components/schemas/versioningRepositoryNamedIdentification'
+        repo_id:
+          type: string
+          format: uint64
+      title: 'changed from oneof because of that bug: https://github.com/grpc-ecosystem/grpc-gateway/issues/753'
+    versioningHyperparameterConfigBlob:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          $ref: '#/components/schemas/versioningHyperparameterValuesConfigBlob'
+    versioningListCommitsLogRequestResponse:
       type: object
       properties:
         commits:
@@ -2763,31 +2836,18 @@ components:
         total_records:
           type: string
           format: int64
-    versioningFolder:
+    versioningMergeRepositoryCommitsRequestResponse:
       type: object
       properties:
-        blobs:
+        commit:
+          $ref: '#/components/schemas/versioningCommit'
+        conflicts:
           type: array
           items:
-            $ref: '#/components/schemas/versioningFolderElement'
-          title: Blobs, which correspond to direct entries/files
-        sub_folders:
-          type: array
-          items:
-            $ref: '#/components/schemas/versioningFolderElement'
-          title: Subfolders
-      title: DO NOT USE TO COMPUTE SHA
-    versioningConfigBlob:
-      type: object
-      properties:
-        hyperparameter_set:
-          type: array
-          items:
-            $ref: '#/components/schemas/versioningHyperparameterSetConfigBlob'
-        hyperparameters:
-          type: array
-          items:
-            $ref: '#/components/schemas/versioningHyperparameterConfigBlob'
+            $ref: '#/components/schemas/versioningBlobDiff'
+        common_base:
+          $ref: '#/components/schemas/versioningCommit'
+          title: In case of a conflict, stop at the first such conflict and return it
     versioningCommitVersionedBlobArtifactPart:
       type: object
       properties:
@@ -2803,40 +2863,58 @@ components:
           type: string
         artifact_part:
           $ref: '#/components/schemas/commonArtifactPart'
-    versioningVersionEnvironmentDiff:
+    versioningListBranchesRequestResponse:
+      type: object
+      properties:
+        branches:
+          type: array
+          items:
+            type: string
+        total_records:
+          type: string
+          format: int64
+    versioningNotebookCodeBlob:
+      type: object
+      properties:
+        path:
+          $ref: '#/components/schemas/versioningPathDatasetComponentBlob'
+        git_repo:
+          $ref: '#/components/schemas/versioningGitCodeBlob'
+    versioningFindRepositoriesResponse:
+      type: object
+      properties:
+        repositories:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningRepository'
+        total_records:
+          type: string
+          format: int64
+    versioningDockerEnvironmentDiff:
       type: object
       properties:
         status:
           $ref: '#/components/schemas/DiffStatusEnumDiffStatus'
         A:
-          $ref: '#/components/schemas/versioningVersionEnvironmentBlob'
+          $ref: '#/components/schemas/versioningDockerEnvironmentBlob'
         B:
-          $ref: '#/components/schemas/versioningVersionEnvironmentBlob'
+          $ref: '#/components/schemas/versioningDockerEnvironmentBlob'
         C:
-          $ref: '#/components/schemas/versioningVersionEnvironmentBlob'
-    versioningQueryDatasetBlob:
+          $ref: '#/components/schemas/versioningDockerEnvironmentBlob'
+    versioningVersionEnvironmentBlob:
       type: object
       properties:
-        components:
-          type: array
-          items:
-            $ref: '#/components/schemas/versioningQueryDatasetComponentBlob'
-    versioningSetTagRequestResponse:
-      type: object
-    versioningCodeBlob:
-      type: object
-      properties:
-        git:
-          $ref: '#/components/schemas/versioningGitCodeBlob'
-        notebook:
-          $ref: '#/components/schemas/versioningNotebookCodeBlob'
-    versioningGetCommittedVersionedBlobArtifactPartsResponse:
-      type: object
-      properties:
-        artifact_parts:
-          type: array
-          items:
-            $ref: '#/components/schemas/commonArtifactPart'
+        major:
+          type: integer
+          format: int32
+        minor:
+          type: integer
+          format: int32
+        patch:
+          type: integer
+          format: int32
+        suffix:
+          type: string
     commonKeyValueQuery:
       type: object
       properties:
@@ -2848,6 +2926,37 @@ components:
           $ref: '#/components/schemas/ValueTypeEnumValueType'
         operator:
           $ref: '#/components/schemas/OperatorEnumOperator'
+    versioningBlobType:
+      type: string
+      enum:
+      - UNKNOWN
+      - DATASET_BLOB
+      - ENVIRONMENT_BLOB
+      - CODE_BLOB
+      - CONFIG_BLOB
+      default: UNKNOWN
+    RepositoryVisibilityEnumRepositoryVisibility:
+      type: string
+      enum:
+      - PRIVATE
+      - PUBLIC
+      - ORG_SCOPED_PUBLIC
+      default: PRIVATE
+    versioningRepositoryNamedIdentification:
+      type: object
+      properties:
+        name:
+          type: string
+        workspace_name:
+          type: string
+      title: CRUD for repositories
+    versioningCodeDiff:
+      type: object
+      properties:
+        git:
+          $ref: '#/components/schemas/versioningGitCodeDiff'
+        notebook:
+          $ref: '#/components/schemas/versioningNotebookCodeDiff'
     versioningDatasetBlob:
       type: object
       properties:
@@ -2857,22 +2966,37 @@ components:
           $ref: '#/components/schemas/versioningPathDatasetBlob'
         query:
           $ref: '#/components/schemas/versioningQueryDatasetBlob'
-    versioningQueryDatasetComponentBlob:
+    versioningDeleteBranchRequestResponse:
+      type: object
+    versioningCommitVersionedBlobArtifactPartResponse:
+      type: object
+    versioningCodeBlob:
       type: object
       properties:
+        git:
+          $ref: '#/components/schemas/versioningGitCodeBlob'
+        notebook:
+          $ref: '#/components/schemas/versioningNotebookCodeBlob'
+    versioningDatasetDiff:
+      type: object
+      properties:
+        s3:
+          $ref: '#/components/schemas/versioningS3DatasetDiff'
+        path:
+          $ref: '#/components/schemas/versioningPathDatasetDiff'
         query:
-          type: string
-        data_source_uri:
-          type: string
-          title: 'string query_template = 2;
-
-            repeated QueryParameter query_parameters = 3;'
-        execution_timestamp:
-          type: string
-          format: uint64
-        num_records:
-          type: string
-          format: uint64
+          $ref: '#/components/schemas/versioningQueryDatasetDiff'
+    versioningConfigDiff:
+      type: object
+      properties:
+        hyperparameter_set:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningHyperparameterSetConfigDiff'
+        hyperparameters:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningHyperparameterConfigDiff'
     commonGroupId:
       type: object
       properties:
@@ -2880,88 +3004,31 @@ components:
           type: string
         group_id:
           type: string
-    versioningSetRepositoryResponse:
+    versioningEnvironmentDiff:
       type: object
       properties:
-        repository:
-          $ref: '#/components/schemas/versioningRepository'
-    versioningPythonRequirementEnvironmentBlob:
-      type: object
-      properties:
-        library:
-          type: string
-        constraint:
-          type: string
-        version:
-          $ref: '#/components/schemas/versioningVersionEnvironmentBlob'
-    versioningAptEnvironmentBlob:
-      type: object
-      properties:
-        packages:
+        python:
+          $ref: '#/components/schemas/versioningPythonEnvironmentDiff'
+        docker:
+          $ref: '#/components/schemas/versioningDockerEnvironmentDiff'
+        environment_variables:
           type: array
           items:
-            type: string
-    versioningBlob:
-      type: object
-      properties:
-        dataset:
-          $ref: '#/components/schemas/versioningDatasetBlob'
-        environment:
-          $ref: '#/components/schemas/versioningEnvironmentBlob'
-        code:
-          $ref: '#/components/schemas/versioningCodeBlob'
-        config:
-          $ref: '#/components/schemas/versioningConfigBlob'
-    versioningEnvironmentVariablesDiff:
+            $ref: '#/components/schemas/versioningEnvironmentVariablesDiff'
+          title: Should only contain environment variables unique to A/B (considering all fields)
+        command_line:
+          $ref: '#/components/schemas/versioningCommandLineEnvironmentDiff'
+    versioningPythonRequirementEnvironmentDiff:
       type: object
       properties:
         status:
           $ref: '#/components/schemas/DiffStatusEnumDiffStatus'
         A:
-          $ref: '#/components/schemas/versioningEnvironmentVariablesBlob'
+          $ref: '#/components/schemas/versioningPythonRequirementEnvironmentBlob'
         B:
-          $ref: '#/components/schemas/versioningEnvironmentVariablesBlob'
+          $ref: '#/components/schemas/versioningPythonRequirementEnvironmentBlob'
         C:
-          $ref: '#/components/schemas/versioningEnvironmentVariablesBlob'
-    versioningListTagsRequestResponse:
-      type: object
-      properties:
-        tags:
-          type: array
-          items:
-            type: string
-        total_records:
-          type: string
-          format: int64
-    versioningHyperparameterSetConfigBlob:
-      type: object
-      properties:
-        name:
-          type: string
-        continuous:
-          $ref: '#/components/schemas/versioningContinuousHyperparameterSetConfigBlob'
-        discrete:
-          $ref: '#/components/schemas/versioningDiscreteHyperparameterSetConfigBlob'
-    versioningPythonEnvironmentDiff:
-      type: object
-      properties:
-        version:
-          $ref: '#/components/schemas/versioningVersionEnvironmentDiff'
-        requirements:
-          type: array
-          items:
-            $ref: '#/components/schemas/versioningPythonRequirementEnvironmentDiff'
-        constraints:
-          type: array
-          items:
-            $ref: '#/components/schemas/versioningPythonRequirementEnvironmentDiff'
-    versioningNotebookCodeDiff:
-      type: object
-      properties:
-        path:
-          $ref: '#/components/schemas/versioningPathDatasetComponentDiff'
-        git_repo:
-          $ref: '#/components/schemas/versioningGitCodeDiff'
+          $ref: '#/components/schemas/versioningPythonRequirementEnvironmentBlob'
     versioningMergeRepositoryCommitsRequest:
       type: object
       properties:
@@ -2980,75 +3047,151 @@ components:
           type: string
         is_dry_run:
           type: boolean
-    versioningS3DatasetBlob:
+    versioningQueryDatasetDiff:
       type: object
       properties:
         components:
           type: array
           items:
-            $ref: '#/components/schemas/versioningS3DatasetComponentBlob'
-    versioningBlobType:
-      type: string
-      enum:
-      - UNKNOWN
-      - DATASET_BLOB
-      - ENVIRONMENT_BLOB
-      - CODE_BLOB
-      - CONFIG_BLOB
-      default: UNKNOWN
-    versioningS3DatasetDiff:
+            $ref: '#/components/schemas/versioningQueryDatasetComponentDiff'
+    versioningFolder:
       type: object
       properties:
-        components:
+        blobs:
           type: array
           items:
-            $ref: '#/components/schemas/versioningS3DatasetComponentDiff'
-    versioningHyperparameterSetConfigDiff:
+            $ref: '#/components/schemas/versioningFolderElement'
+          title: Blobs, which correspond to direct entries/files
+        sub_folders:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningFolderElement'
+          title: Subfolders
+      title: DO NOT USE TO COMPUTE SHA
+    versioningDeleteTagRequestResponse:
+      type: object
+    versioningCommit:
+      type: object
+      properties:
+        parent_shas:
+          type: array
+          items:
+            type: string
+          description: ID of the parent commits.
+        message:
+          type: string
+          description: Message associated with the commit.
+        date_created:
+          type: string
+          format: uint64
+          description: 'Date associated with the commit.
+
+            It will be computed by the backend by default, but a feature flag should enable setting by the client.'
+        author:
+          type: string
+          description: ID of the user who created the commit.
+        commit_sha:
+          type: string
+        date_updated:
+          type: string
+          format: uint64
+          description: Updated Date while create tags & attribute for the commit.
+        version_number:
+          type: string
+          format: uint64
+          title: Doc for version_number https://github.com/VertaAI/docs/pull/53
+      title: 'Base commit for the versioning system
+
+        DO NOT USE TO COMPUTE SHA'
+    versioningListCommitBlobsRequestResponse:
+      type: object
+      properties:
+        blobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningBlobExpanded'
+        total_records:
+          type: string
+          format: int64
+    versioningGetTagRequestResponse:
+      type: object
+      properties:
+        commit:
+          $ref: '#/components/schemas/versioningCommit'
+    versioningEnvironmentBlob:
+      type: object
+      properties:
+        python:
+          $ref: '#/components/schemas/versioningPythonEnvironmentBlob'
+        docker:
+          $ref: '#/components/schemas/versioningDockerEnvironmentBlob'
+        environment_variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningEnvironmentVariablesBlob'
+        command_line:
+          type: array
+          items:
+            type: string
+        apt:
+          $ref: '#/components/schemas/versioningAptEnvironmentBlob'
+    versioningCreateCommitRequestResponse:
+      type: object
+      properties:
+        commit:
+          $ref: '#/components/schemas/versioningCommit'
+    versioningBlobExpanded:
+      type: object
+      properties:
+        location:
+          type: array
+          items:
+            type: string
+          title: 'List of folder names, with the last element being the name of the blob
+
+            Each element goes one level deeper. So ["foo", "bar"] represents the same as /foo/bar'
+        blob:
+          $ref: '#/components/schemas/versioningBlob'
+        attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonKeyValue'
+    versioningFindRepositoriesBlobsResponse:
+      type: object
+      properties:
+        blobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningBlobExpanded'
+        total_records:
+          type: string
+          format: int64
+    versioningNotebookCodeDiff:
+      type: object
+      properties:
+        path:
+          $ref: '#/components/schemas/versioningPathDatasetComponentDiff'
+        git_repo:
+          $ref: '#/components/schemas/versioningGitCodeDiff'
+    versioningS3DatasetComponentDiff:
       type: object
       properties:
         status:
           $ref: '#/components/schemas/DiffStatusEnumDiffStatus'
         A:
-          $ref: '#/components/schemas/versioningHyperparameterSetConfigBlob'
+          $ref: '#/components/schemas/versioningS3DatasetComponentBlob'
         B:
-          $ref: '#/components/schemas/versioningHyperparameterSetConfigBlob'
+          $ref: '#/components/schemas/versioningS3DatasetComponentBlob'
         C:
-          $ref: '#/components/schemas/versioningHyperparameterSetConfigBlob'
-    versioningDeleteBranchRequestResponse:
-      type: object
-    versioningConfigDiff:
+          $ref: '#/components/schemas/versioningS3DatasetComponentBlob'
+    protobufAny:
       type: object
       properties:
-        hyperparameter_set:
-          type: array
-          items:
-            $ref: '#/components/schemas/versioningHyperparameterSetConfigDiff'
-        hyperparameters:
-          type: array
-          items:
-            $ref: '#/components/schemas/versioningHyperparameterConfigDiff'
-    versioningDeleteRepositoryRequestResponse:
-      type: object
-      properties:
-        status:
-          type: boolean
-    versioningFindRepositoriesResponse:
-      type: object
-      properties:
-        repositories:
-          type: array
-          items:
-            $ref: '#/components/schemas/versioningRepository'
-        total_records:
-          type: string
-          format: int64
-    versioningHyperparameterConfigBlob:
-      type: object
-      properties:
-        name:
+        type_url:
           type: string
         value:
-          $ref: '#/components/schemas/versioningHyperparameterValuesConfigBlob'
+          type: string
+          format: byte
     versioningRepository:
       type: object
       properties:
@@ -3096,155 +3239,110 @@ components:
           type: string
           format: uint64
           title: Doc for version_number https://github.com/VertaAI/docs/pull/53
-    versioningListBranchesRequestResponse:
-      type: object
-      properties:
-        branches:
-          type: array
-          items:
-            type: string
-        total_records:
-          type: string
-          format: int64
-    versioningEnvironmentDiff:
-      type: object
-      properties:
-        python:
-          $ref: '#/components/schemas/versioningPythonEnvironmentDiff'
-        docker:
-          $ref: '#/components/schemas/versioningDockerEnvironmentDiff'
-        environment_variables:
-          type: array
-          items:
-            $ref: '#/components/schemas/versioningEnvironmentVariablesDiff'
-          title: Should only contain environment variables unique to A/B (considering all fields)
-        command_line:
-          $ref: '#/components/schemas/versioningCommandLineEnvironmentDiff'
-    versioningListCommitBlobsRequestResponse:
-      type: object
-      properties:
-        blobs:
-          type: array
-          items:
-            $ref: '#/components/schemas/versioningBlobExpanded'
-        total_records:
-          type: string
-          format: int64
-    versioningCreateCommitRequestResponse:
-      type: object
-      properties:
-        commit:
-          $ref: '#/components/schemas/versioningCommit'
-    versioningRevertRepositoryCommitsRequestResponse:
-      type: object
-      properties:
-        commit:
-          $ref: '#/components/schemas/versioningCommit'
-    versioningRevertRepositoryCommitsRequest:
-      type: object
-      properties:
-        repository_id:
-          $ref: '#/components/schemas/versioningRepositoryIdentification'
-        commit_to_revert_sha:
-          type: string
-        base_commit_sha:
-          type: string
-        content:
-          $ref: '#/components/schemas/versioningCommit'
-    versioningCommitVersionedBlobArtifactPartResponse:
-      type: object
-    versioningHyperparameterConfigDiff:
+    versioningQueryDatasetComponentDiff:
       type: object
       properties:
         status:
           $ref: '#/components/schemas/DiffStatusEnumDiffStatus'
         A:
-          $ref: '#/components/schemas/versioningHyperparameterConfigBlob'
+          $ref: '#/components/schemas/versioningQueryDatasetComponentBlob'
         B:
-          $ref: '#/components/schemas/versioningHyperparameterConfigBlob'
+          $ref: '#/components/schemas/versioningQueryDatasetComponentBlob'
         C:
-          $ref: '#/components/schemas/versioningHyperparameterConfigBlob'
-    versioningDeleteTagRequestResponse:
-      type: object
-    runtimeError:
+          $ref: '#/components/schemas/versioningQueryDatasetComponentBlob'
+    versioningSetRepositoryResponse:
       type: object
       properties:
-        error:
-          type: string
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
-        details:
+        repository:
+          $ref: '#/components/schemas/versioningRepository'
+    versioningCreateCommitRequest:
+      type: object
+      properties:
+        repository_id:
+          $ref: '#/components/schemas/versioningRepositoryIdentification'
+        commit:
+          $ref: '#/components/schemas/versioningCommit'
+        blobs:
           type: array
           items:
-            $ref: '#/components/schemas/protobufAny'
-    versioningCodeDiff:
-      type: object
-      properties:
-        git:
-          $ref: '#/components/schemas/versioningGitCodeDiff'
-        notebook:
-          $ref: '#/components/schemas/versioningNotebookCodeDiff'
-    versioningDeleteCommitRequestResponse:
-      type: object
-    versioningPathDatasetBlob:
-      type: object
-      properties:
-        components:
-          type: array
-          items:
-            $ref: '#/components/schemas/versioningPathDatasetComponentBlob'
-    uacCollaboratorPermissions:
-      type: object
-      properties:
-        collaborator_type:
-          $ref: '#/components/schemas/CollaboratorTypeEnumCollaboratorType'
-        can_deploy:
-          $ref: '#/components/schemas/TernaryEnumTernary'
-        can_predict:
-          $ref: '#/components/schemas/TernaryEnumTernary'
-    versioningCommit:
-      type: object
-      properties:
-        parent_shas:
-          type: array
-          items:
-            type: string
-          description: ID of the parent commits.
-        message:
+            $ref: '#/components/schemas/versioningBlobExpanded'
+        commit_base:
           type: string
-          description: Message associated with the commit.
-        date_created:
-          type: string
-          format: uint64
-          description: 'Date associated with the commit.
+          title: 'Apply the diffs on top of commit_base
 
-            It will be computed by the backend by default, but a feature flag should enable setting by the client.'
-        author:
-          type: string
-          description: ID of the user who created the commit.
-        commit_sha:
-          type: string
-        date_updated:
-          type: string
-          format: uint64
-          description: Updated Date while create tags & attribute for the commit.
-        version_number:
-          type: string
-          format: uint64
-          title: Doc for version_number https://github.com/VertaAI/docs/pull/53
-      title: 'Base commit for the versioning system
+            If a blob was added in the diff, add it on top of commit_base (doesn''t matter if it was present already or not)
 
-        DO NOT USE TO COMPUTE SHA'
-    versioningS3DatasetComponentBlob:
+            If a blob was deleted, delete if from commit_base if present
+
+            If a blob was modified, then:
+
+            1) check that the type of the diff is consistent with the type of the blob. If they are different, raise an error saying so
+
+            2) apply the diff to the blob as per the following logic:
+
+            2a) if the field is atomic (e.g. python version, git repository), use the newer version (B) from the diff and overwrite what the commit_base has
+
+            2b) if the field is not atomic (e.g. list of python requirements, dataset components), merge the lists by a) copying new values, b) deleting removed values, c) updating values that are already present based on some reasonable key'
+        diffs:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningBlobDiff'
+    versioningEnvironmentVariablesDiff:
       type: object
       properties:
-        path:
-          $ref: '#/components/schemas/versioningPathDatasetComponentBlob'
-        s3_version_id:
+        status:
+          $ref: '#/components/schemas/DiffStatusEnumDiffStatus'
+        A:
+          $ref: '#/components/schemas/versioningEnvironmentVariablesBlob'
+        B:
+          $ref: '#/components/schemas/versioningEnvironmentVariablesBlob'
+        C:
+          $ref: '#/components/schemas/versioningEnvironmentVariablesBlob'
+    DiffStatusEnumDiffStatus:
+      type: string
+      enum:
+      - UNKNOWN
+      - ADDED
+      - DELETED
+      - MODIFIED
+      - CONFLICTED
+      default: UNKNOWN
+    uacResourceVisibility:
+      type: string
+      enum:
+      - UNKNOWN
+      - ORG_DEFAULT
+      - ORG_CUSTOM
+      - PRIVATE
+      - WORKSPACE_DEFAULT
+      default: UNKNOWN
+    versioningGetUrlForBlobVersionedResponse:
+      type: object
+      properties:
+        url:
           type: string
+        multipart_upload_ok:
+          type: boolean
+    versioningContinuousHyperparameterSetConfigBlob:
+      type: object
+      properties:
+        interval_begin:
+          $ref: '#/components/schemas/versioningHyperparameterValuesConfigBlob'
+        interval_end:
+          $ref: '#/components/schemas/versioningHyperparameterValuesConfigBlob'
+        interval_step:
+          $ref: '#/components/schemas/versioningHyperparameterValuesConfigBlob'
+    versioningVersionEnvironmentDiff:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/DiffStatusEnumDiffStatus'
+        A:
+          $ref: '#/components/schemas/versioningVersionEnvironmentBlob'
+        B:
+          $ref: '#/components/schemas/versioningVersionEnvironmentBlob'
+        C:
+          $ref: '#/components/schemas/versioningVersionEnvironmentBlob'
     versioningHyperparameterValuesConfigBlob:
       type: object
       properties:
@@ -3256,153 +3354,55 @@ components:
           format: float
         string_value:
           type: string
-    versioningPathDatasetDiff:
+    versioningPathDatasetComponentBlob:
       type: object
       properties:
-        components:
-          type: array
-          items:
-            $ref: '#/components/schemas/versioningPathDatasetComponentDiff'
-    OperatorEnumOperator:
-      type: string
-      enum:
-      - EQ
-      - NE
-      - GT
-      - GTE
-      - LT
-      - LTE
-      - CONTAIN
-      - NOT_CONTAIN
-      - IN
-      - NOT_IN
-      default: EQ
-    commonKeyValue:
-      type: object
-      properties:
-        key:
+        path:
           type: string
-        value:
-          type: object
-        value_type:
-          $ref: '#/components/schemas/ValueTypeEnumValueType'
-          description: "As per documentation of proto buffer 3.\n  For enums, the default value is the first defined enum value, which must be 0."
-    uacResourceVisibility:
-      type: string
-      enum:
-      - UNKNOWN
-      - ORG_DEFAULT
-      - ORG_CUSTOM
-      - PRIVATE
-      - WORKSPACE_DEFAULT
-      default: UNKNOWN
-    DiffStatusEnumDiffStatus:
-      type: string
-      enum:
-      - UNKNOWN
-      - ADDED
-      - DELETED
-      - MODIFIED
-      - CONFLICTED
-      default: UNKNOWN
-    versioningBlobDiff:
-      type: object
-      properties:
-        location:
-          type: array
-          items:
-            type: string
-          title: 'List of folder names, with the last element being the name of the blob
-
-            Each element goes one level deeper. So ["foo", "bar"] represents the same as /foo/bar'
-        status:
-          $ref: '#/components/schemas/DiffStatusEnumDiffStatus'
-        dataset:
-          $ref: '#/components/schemas/versioningDatasetDiff'
-        environment:
-          $ref: '#/components/schemas/versioningEnvironmentDiff'
-        code:
-          $ref: '#/components/schemas/versioningCodeDiff'
-        config:
-          $ref: '#/components/schemas/versioningConfigDiff'
-    versioningGetCommitComponentRequestResponse:
-      type: object
-      properties:
-        folder:
-          $ref: '#/components/schemas/versioningFolder'
-        blob:
-          $ref: '#/components/schemas/versioningBlob'
-        attributes:
-          type: array
-          items:
-            $ref: '#/components/schemas/commonKeyValue'
-    versioningPythonRequirementEnvironmentDiff:
-      type: object
-      properties:
-        status:
-          $ref: '#/components/schemas/DiffStatusEnumDiffStatus'
-        A:
-          $ref: '#/components/schemas/versioningPythonRequirementEnvironmentBlob'
-        B:
-          $ref: '#/components/schemas/versioningPythonRequirementEnvironmentBlob'
-        C:
-          $ref: '#/components/schemas/versioningPythonRequirementEnvironmentBlob'
-    versioningGetUrlForBlobVersionedResponse:
-      type: object
-      properties:
-        url:
+        size:
           type: string
-        multipart_upload_ok:
-          type: boolean
-    versioningPythonEnvironmentBlob:
+          format: uint64
+        last_modified_at_source:
+          type: string
+          format: uint64
+        sha256:
+          type: string
+        md5:
+          type: string
+        internal_versioned_path:
+          type: string
+        base_path:
+          type: string
+    versioningPythonEnvironmentDiff:
       type: object
       properties:
         version:
-          $ref: '#/components/schemas/versioningVersionEnvironmentBlob'
+          $ref: '#/components/schemas/versioningVersionEnvironmentDiff'
         requirements:
           type: array
           items:
-            $ref: '#/components/schemas/versioningPythonRequirementEnvironmentBlob'
+            $ref: '#/components/schemas/versioningPythonRequirementEnvironmentDiff'
         constraints:
           type: array
           items:
-            $ref: '#/components/schemas/versioningPythonRequirementEnvironmentBlob'
-        raw_requirements:
-          type: string
-          description: These fields are only present if the parsed versions above are empty. That is, you cannot have both `requirements` and `raw_requirements` for example.
-        raw_constraints:
-          type: string
-    versioningGetUrlForBlobVersioned:
+            $ref: '#/components/schemas/versioningPythonRequirementEnvironmentDiff'
+    versioningPythonRequirementEnvironmentBlob:
       type: object
       properties:
-        repository_id:
-          $ref: '#/components/schemas/versioningRepositoryIdentification'
-        commit_sha:
+        library:
           type: string
-        location:
-          type: array
-          items:
-            type: string
-        path_dataset_component_blob_path:
+        constraint:
           type: string
-        method:
-          type: string
-        part_number:
-          type: string
-          format: uint64
-    versioningGetBranchRequestResponse:
-      type: object
-      properties:
-        commit:
-          $ref: '#/components/schemas/versioningCommit'
-    versioningS3DatasetComponentDiff:
+        version:
+          $ref: '#/components/schemas/versioningVersionEnvironmentBlob'
+    versioningPathDatasetComponentDiff:
       type: object
       properties:
         status:
           $ref: '#/components/schemas/DiffStatusEnumDiffStatus'
         A:
-          $ref: '#/components/schemas/versioningS3DatasetComponentBlob'
+          $ref: '#/components/schemas/versioningPathDatasetComponentBlob'
         B:
-          $ref: '#/components/schemas/versioningS3DatasetComponentBlob'
+          $ref: '#/components/schemas/versioningPathDatasetComponentBlob'
         C:
-          $ref: '#/components/schemas/versioningS3DatasetComponentBlob'
+          $ref: '#/components/schemas/versioningPathDatasetComponentBlob'

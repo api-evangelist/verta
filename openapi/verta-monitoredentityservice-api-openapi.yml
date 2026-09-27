@@ -113,99 +113,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    uacResourceVisibility:
-      type: string
-      enum:
-      - UNKNOWN
-      - ORG_DEFAULT
-      - ORG_CUSTOM
-      - PRIVATE
-      - WORKSPACE_DEFAULT
-      default: UNKNOWN
-    monitoringFindMonitoredEntityRequestResponse:
-      type: object
-      properties:
-        monitored_entities:
-          type: array
-          items:
-            $ref: '#/components/schemas/monitoringMonitoredEntity'
-        total_records:
-          type: integer
-          format: int32
-    uacCollaboratorPermissions:
-      type: object
-      properties:
-        collaborator_type:
-          $ref: '#/components/schemas/CollaboratorTypeEnumCollaboratorType'
-        can_deploy:
-          $ref: '#/components/schemas/TernaryEnumTernary'
-        can_predict:
-          $ref: '#/components/schemas/TernaryEnumTernary'
-    monitoringDeleteMonitoredEntityRequest:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uint64
-    monitoringCreateMonitoredEntityRequest:
-      type: object
-      properties:
-        name:
-          type: string
-        workspace_id:
-          type: string
-          format: uint64
-        workspace_name:
-          type: string
-        attributes:
-          type: object
-          additionalProperties:
-            type: string
-        resource_visibility:
-          $ref: '#/components/schemas/uacResourceVisibility'
-        custom_permission:
-          $ref: '#/components/schemas/uacCollaboratorPermissions'
-          title: 'The next field only makes sense when visibility == ORG_CUSTOM
-
-            They will be empty otherwise'
-        endpoint_id:
-          type: string
-          format: uint64
-          description: Optional.  If the data originates from a Verta endpoint, set this to the endpoint id.
-        origin:
-          type: string
-          title: a tag that says where the data for this monitored entity comes from. eg. "endpoint" or "batch"
-    monitoringUpdateMonitoredEntityRequest:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uint64
-        name:
-          type: string
-        attributes:
-          type: object
-          additionalProperties:
-            type: string
-        resource_visibility:
-          $ref: '#/components/schemas/uacResourceVisibility'
-        custom_permission:
-          $ref: '#/components/schemas/uacCollaboratorPermissions'
-          title: 'The next field only makes sense when visibility == ORG_CUSTOM
-
-            They will be empty otherwise'
-    monitoringCreateMonitoredEntityRequestResponse:
-      type: object
-      properties:
-        monitored_entity:
-          $ref: '#/components/schemas/monitoringMonitoredEntity'
-    commonGroupId:
-      type: object
-      properties:
-        org_id:
-          type: string
-        group_id:
-          type: string
     monitoringMonitoredEntity:
       type: object
       properties:
@@ -253,14 +160,101 @@ components:
         origin:
           type: string
           title: a tag that says where the data for this monitored entity comes from. eg. "endpoint" or "batch"
-    protobufAny:
+    monitoringDeleteMonitoredEntityRequest:
       type: object
       properties:
-        type_url:
+        id:
           type: string
-        value:
+          format: uint64
+    monitoringUpdateMonitoredEntityRequestResponse:
+      type: object
+      properties:
+        monitored_entity:
+          $ref: '#/components/schemas/monitoringMonitoredEntity'
+    monitoringCreateMonitoredEntityRequest:
+      type: object
+      properties:
+        name:
           type: string
-          format: byte
+        workspace_id:
+          type: string
+          format: uint64
+        workspace_name:
+          type: string
+        attributes:
+          type: object
+          additionalProperties:
+            type: string
+        resource_visibility:
+          $ref: '#/components/schemas/uacResourceVisibility'
+        custom_permission:
+          $ref: '#/components/schemas/uacCollaboratorPermissions'
+          title: 'The next field only makes sense when visibility == ORG_CUSTOM
+
+            They will be empty otherwise'
+        endpoint_id:
+          type: string
+          format: uint64
+          description: Optional.  If the data originates from a Verta endpoint, set this to the endpoint id.
+        origin:
+          type: string
+          title: a tag that says where the data for this monitored entity comes from. eg. "endpoint" or "batch"
+    monitoringDeleteMonitoredEntityRequestResponse:
+      type: object
+    TernaryEnumTernary:
+      type: string
+      enum:
+      - UNKNOWN
+      - 'TRUE'
+      - 'FALSE'
+      default: UNKNOWN
+    CollaboratorTypeEnumCollaboratorType:
+      type: string
+      enum:
+      - READ_ONLY
+      - READ_WRITE
+      default: READ_ONLY
+    monitoringUpdateMonitoredEntityRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uint64
+        name:
+          type: string
+        attributes:
+          type: object
+          additionalProperties:
+            type: string
+        resource_visibility:
+          $ref: '#/components/schemas/uacResourceVisibility'
+        custom_permission:
+          $ref: '#/components/schemas/uacCollaboratorPermissions'
+          title: 'The next field only makes sense when visibility == ORG_CUSTOM
+
+            They will be empty otherwise'
+    monitoringFindMonitoredEntityRequestResponse:
+      type: object
+      properties:
+        monitored_entities:
+          type: array
+          items:
+            $ref: '#/components/schemas/monitoringMonitoredEntity'
+        total_records:
+          type: integer
+          format: int32
+    monitoringCreateMonitoredEntityRequestResponse:
+      type: object
+      properties:
+        monitored_entity:
+          $ref: '#/components/schemas/monitoringMonitoredEntity'
+    commonGroupId:
+      type: object
+      properties:
+        org_id:
+          type: string
+        group_id:
+          type: string
     monitoringFindMonitoredEntityRequest:
       type: object
       properties:
@@ -299,13 +293,15 @@ components:
         page_limit:
           type: integer
           format: int32
-    monitoringUpdateMonitoredEntityRequestResponse:
-      type: object
-      properties:
-        monitored_entity:
-          $ref: '#/components/schemas/monitoringMonitoredEntity'
-    monitoringDeleteMonitoredEntityRequestResponse:
-      type: object
+    uacResourceVisibility:
+      type: string
+      enum:
+      - UNKNOWN
+      - ORG_DEFAULT
+      - ORG_CUSTOM
+      - PRIVATE
+      - WORKSPACE_DEFAULT
+      default: UNKNOWN
     runtimeError:
       type: object
       properties:
@@ -320,16 +316,20 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/protobufAny'
-    TernaryEnumTernary:
-      type: string
-      enum:
-      - UNKNOWN
-      - 'TRUE'
-      - 'FALSE'
-      default: UNKNOWN
-    CollaboratorTypeEnumCollaboratorType:
-      type: string
-      enum:
-      - READ_ONLY
-      - READ_WRITE
-      default: READ_ONLY
+    protobufAny:
+      type: object
+      properties:
+        type_url:
+          type: string
+        value:
+          type: string
+          format: byte
+    uacCollaboratorPermissions:
+      type: object
+      properties:
+        collaborator_type:
+          $ref: '#/components/schemas/CollaboratorTypeEnumCollaboratorType'
+        can_deploy:
+          $ref: '#/components/schemas/TernaryEnumTernary'
+        can_predict:
+          $ref: '#/components/schemas/TernaryEnumTernary'

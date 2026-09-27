@@ -45,13 +45,13 @@ created: '2026-07-17'
 modified: '2026-09-16'
 tags:
 - MLOps
-- Machine-Learning
+- Machine Learning
 - Model Management
 - Experiment Tracking
 - Model Registry
 - Model Versioning
 - Metadata
-- Open-Source
+- Open Source
 - Company
 tags_raw:
 - MLOps
@@ -63,6 +63,8 @@ tags_raw:
 - Metadata
 - Open Source
 - Company
+- Machine-Learning
+- Open-Source
 apis:
 - aid: verta:verta-authzservice-api
   name: Verta AuthzService API
