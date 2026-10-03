@@ -238,6 +238,82 @@ paths:
         required: true
 components:
   schemas:
+    StageEnumStage:
+      type: string
+      enum:
+      - UNKNOWN
+      - DEVELOPMENT
+      - STAGING
+      - PRODUCTION
+      - ARCHIVED
+      - UNASSIGNED
+      default: UNKNOWN
+    registryStageUpdate:
+      type: object
+      properties:
+        stage:
+          $ref: '#/components/schemas/StageEnumStage'
+    registryRejectionOfTransition:
+      type: object
+    registryFindActivitiesRequest:
+      type: object
+      properties:
+        registered_model_id:
+          type: string
+          format: uint64
+          title: At least one of the following needs to be provided
+        model_version_id:
+          type: string
+          format: uint64
+    registryApprovalOfTransition:
+      type: object
+    registryFindActivitiesRequestResponse:
+      type: object
+      properties:
+        activities:
+          type: array
+          items:
+            $ref: '#/components/schemas/registryActivity'
+    registryCloseTransitionRequest:
+      type: object
+      properties:
+        transition_id:
+          type: string
+          format: uint64
+        comment:
+          type: string
+    protobufAny:
+      type: object
+      properties:
+        type_url:
+          type: string
+        value:
+          type: string
+          format: byte
+    registryRejectTransitionRequest:
+      type: object
+      properties:
+        transition_id:
+          type: string
+          format: uint64
+        comment:
+          type: string
+    registryTransition:
+      type: object
+      properties:
+        source_stage:
+          $ref: '#/components/schemas/StageEnumStage'
+          title: Current stage. Automatically populated from the backend
+        desired_stage:
+          $ref: '#/components/schemas/StageEnumStage'
+          title: Desired stage sent as part of the transition request
+        state:
+          $ref: '#/components/schemas/TransitionStateEnumTransitionState'
+          title: Current state of the transition
+        id:
+          type: string
+          format: uint64
+          title: Transition Id, Automatically populated from the backend
     registryUpdateStageRequest:
       type: object
       properties:
@@ -246,14 +322,6 @@ components:
           format: uint64
         stage:
           $ref: '#/components/schemas/StageEnumStage'
-        comment:
-          type: string
-    registryApproveTransitionRequest:
-      type: object
-      properties:
-        transition_id:
-          type: string
-          format: uint64
         comment:
           type: string
     registryActivity:
@@ -288,6 +356,56 @@ components:
         activity_state:
           $ref: '#/components/schemas/TransitionStateEnumTransitionState'
           title: Activity state while the transition happen
+    registryApproveTransitionRequest:
+      type: object
+      properties:
+        transition_id:
+          type: string
+          format: uint64
+        comment:
+          type: string
+    registryCreateCommentRequest:
+      type: object
+      properties:
+        model_version_id:
+          type: string
+          format: uint64
+        comment:
+          type: string
+    registryFindTransitionsRequest:
+      type: object
+      properties:
+        registered_model_id:
+          type: string
+          format: uint64
+          title: At least one of the following needs to be provided
+        model_version_id:
+          type: string
+          format: uint64
+        state:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransitionStateEnumTransitionState'
+          title: Current state. If empty, return in any state
+    registryFindTransitionsRequestResponse:
+      type: object
+      properties:
+        activities:
+          type: array
+          items:
+            $ref: '#/components/schemas/registryActivity'
+          title: Only things of type transition can be returned
+    registryCreateTransitionRequest:
+      type: object
+      properties:
+        model_version_id:
+          type: string
+          format: uint64
+        desired_stage:
+          $ref: '#/components/schemas/StageEnumStage'
+        comment:
+          type: string
+      title: Actions
     registryCloseOfTransition:
       type: object
     runtimeError:
@@ -312,100 +430,6 @@ components:
           format: uint64
         comment:
           type: string
-    registryCloseTransitionRequest:
-      type: object
-      properties:
-        transition_id:
-          type: string
-          format: uint64
-        comment:
-          type: string
-    registryTransition:
-      type: object
-      properties:
-        source_stage:
-          $ref: '#/components/schemas/StageEnumStage'
-          title: Current stage. Automatically populated from the backend
-        desired_stage:
-          $ref: '#/components/schemas/StageEnumStage'
-          title: Desired stage sent as part of the transition request
-        state:
-          $ref: '#/components/schemas/TransitionStateEnumTransitionState'
-          title: Current state of the transition
-        id:
-          type: string
-          format: uint64
-          title: Transition Id, Automatically populated from the backend
-    registryFindActivitiesRequest:
-      type: object
-      properties:
-        registered_model_id:
-          type: string
-          format: uint64
-          title: At least one of the following needs to be provided
-        model_version_id:
-          type: string
-          format: uint64
-    registryFindTransitionsRequestResponse:
-      type: object
-      properties:
-        activities:
-          type: array
-          items:
-            $ref: '#/components/schemas/registryActivity'
-          title: Only things of type transition can be returned
-    StageEnumStage:
-      type: string
-      enum:
-      - UNKNOWN
-      - DEVELOPMENT
-      - STAGING
-      - PRODUCTION
-      - ARCHIVED
-      - UNASSIGNED
-      default: UNKNOWN
-    registryRejectTransitionRequest:
-      type: object
-      properties:
-        transition_id:
-          type: string
-          format: uint64
-        comment:
-          type: string
-    protobufAny:
-      type: object
-      properties:
-        type_url:
-          type: string
-        value:
-          type: string
-          format: byte
-    registryRejectionOfTransition:
-      type: object
-    registryFindActivitiesRequestResponse:
-      type: object
-      properties:
-        activities:
-          type: array
-          items:
-            $ref: '#/components/schemas/registryActivity'
-    registryApprovalOfTransition:
-      type: object
-    registryFindTransitionsRequest:
-      type: object
-      properties:
-        registered_model_id:
-          type: string
-          format: uint64
-          title: At least one of the following needs to be provided
-        model_version_id:
-          type: string
-          format: uint64
-        state:
-          type: array
-          items:
-            $ref: '#/components/schemas/TransitionStateEnumTransitionState'
-          title: Current state. If empty, return in any state
     TransitionStateEnumTransitionState:
       type: string
       enum:
@@ -417,27 +441,3 @@ components:
       - COMMITTED
       default: UNKNOWN
       title: "- APPROVED: It is approved only if it has one approval and no rejections\n - REJECTED: It is rejected if it has any rejection\n - PENDING: It is pending if there are no approvals or rejections\n - CLOSED: It is closed if the user has explicitly requested it to be closed\n - COMMITTED: It has been committed and people can't close, approve or reject anymore"
-    registryCreateCommentRequest:
-      type: object
-      properties:
-        model_version_id:
-          type: string
-          format: uint64
-        comment:
-          type: string
-    registryStageUpdate:
-      type: object
-      properties:
-        stage:
-          $ref: '#/components/schemas/StageEnumStage'
-    registryCreateTransitionRequest:
-      type: object
-      properties:
-        model_version_id:
-          type: string
-          format: uint64
-        desired_stage:
-          $ref: '#/components/schemas/StageEnumStage'
-        comment:
-          type: string
-      title: Actions

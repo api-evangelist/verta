@@ -877,44 +877,32 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    modeldbDeleteProjects:
-      type: object
-      properties:
-        ids:
-          type: array
-          items:
-            type: string
-    modeldbUpdateProjectAttributesResponse:
+    modeldbLogProjectArtifactsResponse:
       type: object
       properties:
         project:
           $ref: '#/components/schemas/modeldbProject'
-    modeldbFindProjectsResponse:
+    modeldbGetProjectReadmeResponse:
       type: object
       properties:
-        projects:
-          type: array
-          items:
-            $ref: '#/components/schemas/modeldbProject'
-        total_records:
+        readme_text:
           type: string
-          format: int64
-    modeldbDeleteProjectAttributes:
+    modeldbAddProjectAttributes:
       type: object
       properties:
         id:
           type: string
-        attribute_keys:
+        attributes:
           type: array
           items:
-            type: string
-        delete_all:
-          type: boolean
-    modeldbUpdateProjectNameResponse:
-      type: object
-      properties:
-        project:
-          $ref: '#/components/schemas/modeldbProject'
+            $ref: '#/components/schemas/commonKeyValue'
+    TernaryEnumTernary:
+      type: string
+      enum:
+      - UNKNOWN
+      - 'TRUE'
+      - 'FALSE'
+      default: UNKNOWN
     modeldbCreateProject:
       type: object
       properties:
@@ -950,89 +938,47 @@ components:
             They will be empty otherwise'
         visibility:
           $ref: '#/components/schemas/uacResourceVisibility'
-    CollaboratorTypeEnumCollaboratorType:
-      type: string
-      enum:
-      - READ_ONLY
-      - READ_WRITE
-      default: READ_ONLY
-    modeldbDeleteProjectArtifactResponse:
+    modeldbUpdateProjectDescriptionResponse:
       type: object
       properties:
         project:
           $ref: '#/components/schemas/modeldbProject'
-    commonGroupId:
-      type: object
-      properties:
-        org_id:
-          type: string
-        group_id:
-          type: string
-    modeldbGetSummaryResponse:
-      type: object
-      properties:
-        name:
-          type: string
-        last_updated_time:
-          type: string
-          format: uint64
-        total_experiment:
-          type: string
-          format: int64
-        total_experiment_runs:
-          type: string
-          format: int64
-        last_modified_experimentRun_summary:
-          $ref: '#/components/schemas/modeldbLastModifiedExperimentRunSummary'
-        metrics:
-          type: array
-          items:
-            $ref: '#/components/schemas/modeldbMetricsSummary'
-    modeldbLogProjectCodeVersion:
+    modeldbUpdateProjectName:
       type: object
       properties:
         id:
           type: string
-        code_version:
-          $ref: '#/components/schemas/commonCodeVersion'
-      title: code version
-    WorkspaceTypeEnumWorkspaceType:
-      type: string
-      enum:
-      - UNKNOWN
-      - ORGANIZATION
-      - USER
-      default: UNKNOWN
-    modeldbSetProjectReadmeResponse:
-      type: object
-      properties:
-        project:
-          $ref: '#/components/schemas/modeldbProject'
-    modeldbAddProjectAttributesResponse:
-      type: object
-      properties:
-        project:
-          $ref: '#/components/schemas/modeldbProject'
-    runtimeError:
-      type: object
-      properties:
-        error:
+        name:
           type: string
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
-        details:
+    modeldbDeleteProjectsResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+    modeldbDeleteProjects:
+      type: object
+      properties:
+        ids:
           type: array
           items:
-            $ref: '#/components/schemas/protobufAny'
-    modeldbGetProjectDatasetCountResponse:
+            type: string
+    modeldbDeleteProjectAttributesResponse:
       type: object
       properties:
-        dataset_count:
+        project:
+          $ref: '#/components/schemas/modeldbProject'
+    modeldbDeleteProjectResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+    modeldbDeleteProjectArtifact:
+      type: object
+      properties:
+        id:
           type: string
-          format: int64
+        key:
+          type: string
     modeldbGetUrlForArtifactResponse:
       type: object
       properties:
@@ -1044,18 +990,164 @@ components:
             type: string
         multipart_upload_ok:
           type: boolean
-    modeldbGetProjectByIdResponse:
+    modeldbGetProjectByNameResponse:
+      type: object
+      properties:
+        project_by_user:
+          $ref: '#/components/schemas/modeldbProject'
+        shared_projects:
+          type: array
+          items:
+            $ref: '#/components/schemas/modeldbProject'
+    ValueTypeEnumValueType:
+      type: string
+      enum:
+      - STRING
+      - NUMBER
+      - LIST
+      - BLOB
+      default: STRING
+    commonKeyValueQuery:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: object
+        value_type:
+          $ref: '#/components/schemas/ValueTypeEnumValueType'
+        operator:
+          $ref: '#/components/schemas/OperatorEnumOperator'
+    modeldbVerifyConnectionResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+    modeldbGetTagsResponse:
+      type: object
+      properties:
+        tags:
+          type: array
+          items:
+            type: string
+    modeldbMetricsSummary:
+      type: object
+      properties:
+        key:
+          type: string
+        min_value:
+          type: number
+          format: double
+        max_value:
+          type: number
+          format: double
+    protobufAny:
+      type: object
+      properties:
+        type_url:
+          type: string
+        value:
+          type: string
+          format: byte
+    modeldbGetProjectsResponse:
+      type: object
+      properties:
+        projects:
+          type: array
+          items:
+            $ref: '#/components/schemas/modeldbProject'
+        total_records:
+          type: string
+          format: int64
+    commonGitSnapshot:
+      type: object
+      properties:
+        filepaths:
+          type: array
+          items:
+            type: string
+        repo:
+          type: string
+        hash:
+          type: string
+        is_dirty:
+          $ref: '#/components/schemas/TernaryEnumTernary'
+    modeldbAddProjectTagsResponse:
       type: object
       properties:
         project:
           $ref: '#/components/schemas/modeldbProject'
-    modeldbGetAttributesResponse:
+    modeldbAddProjectAttributesResponse:
       type: object
       properties:
-        attributes:
+        project:
+          $ref: '#/components/schemas/modeldbProject'
+    modeldbDeleteProjectAttributes:
+      type: object
+      properties:
+        id:
+          type: string
+        attribute_keys:
           type: array
           items:
-            $ref: '#/components/schemas/commonKeyValue'
+            type: string
+        delete_all:
+          type: boolean
+    modeldbSetProjectReadme:
+      type: object
+      properties:
+        id:
+          type: string
+        readme_text:
+          type: string
+    modeldbUpdateProjectNameResponse:
+      type: object
+      properties:
+        project:
+          $ref: '#/components/schemas/modeldbProject'
+    modeldbDeleteProjectTagsResponse:
+      type: object
+      properties:
+        project:
+          $ref: '#/components/schemas/modeldbProject'
+    commonArtifact:
+      type: object
+      properties:
+        key:
+          type: string
+        path:
+          type: string
+        path_only:
+          type: boolean
+        artifact_type:
+          $ref: '#/components/schemas/ArtifactTypeEnumArtifactType'
+        linked_artifact_id:
+          type: string
+        filename_extension:
+          type: string
+        serialization:
+          type: string
+        artifact_subtype:
+          type: string
+        upload_completed:
+          type: boolean
+    modeldbDeleteProjectTagResponse:
+      type: object
+      properties:
+        project:
+          $ref: '#/components/schemas/modeldbProject'
+    modeldbSetProjectReadmeResponse:
+      type: object
+      properties:
+        project:
+          $ref: '#/components/schemas/modeldbProject'
+    modeldbAddProjectTag:
+      type: object
+      properties:
+        id:
+          type: string
+        tag:
+          type: string
     modeldbFindProjects:
       type: object
       properties:
@@ -1082,40 +1174,24 @@ components:
           type: boolean
         sort_key:
           type: string
-    modeldbGetProjectCodeVersionResponse:
+    modeldbProjectVisibility:
+      type: string
+      enum:
+      - PRIVATE
+      - PUBLIC
+      - ORG_SCOPED_PUBLIC
+      default: PRIVATE
+    commonCodeVersion:
       type: object
       properties:
-        code_version:
-          $ref: '#/components/schemas/commonCodeVersion'
-    modeldbDeleteProjectResponse:
-      type: object
-      properties:
-        status:
-          type: boolean
-    modeldbGetProjectShortNameResponse:
-      type: object
-      properties:
-        short_name:
+        git_snapshot:
+          $ref: '#/components/schemas/commonGitSnapshot'
+        code_archive:
+          $ref: '#/components/schemas/commonArtifact'
+        date_logged:
           type: string
-    modeldbGetProjectByNameResponse:
-      type: object
-      properties:
-        project_by_user:
-          $ref: '#/components/schemas/modeldbProject'
-        shared_projects:
-          type: array
-          items:
-            $ref: '#/components/schemas/modeldbProject'
-    modeldbAddProjectTagsResponse:
-      type: object
-      properties:
-        project:
-          $ref: '#/components/schemas/modeldbProject'
-    modeldbDeepCopyProject:
-      type: object
-      properties:
-        id:
-          type: string
+          format: uint64
+      title: code version
     modeldbLogProjectArtifacts:
       type: object
       properties:
@@ -1126,6 +1202,156 @@ components:
           items:
             $ref: '#/components/schemas/commonArtifact'
       title: artifacts
+    ArtifactTypeEnumArtifactType:
+      type: string
+      enum:
+      - IMAGE
+      - MODEL
+      - TENSORBOARD
+      - DATA
+      - BLOB
+      - STRING
+      - CODE
+      - CONTAINER
+      default: IMAGE
+    modeldbGetProjectByIdResponse:
+      type: object
+      properties:
+        project:
+          $ref: '#/components/schemas/modeldbProject'
+    modeldbSetProjectShortNameResponse:
+      type: object
+      properties:
+        project:
+          $ref: '#/components/schemas/modeldbProject'
+    modeldbGetProjectCodeVersionResponse:
+      type: object
+      properties:
+        code_version:
+          $ref: '#/components/schemas/commonCodeVersion'
+    modeldbDeepCopyProject:
+      type: object
+      properties:
+        id:
+          type: string
+    uacResourceVisibility:
+      type: string
+      enum:
+      - UNKNOWN
+      - ORG_DEFAULT
+      - ORG_CUSTOM
+      - PRIVATE
+      - WORKSPACE_DEFAULT
+      default: UNKNOWN
+    modeldbUpdateProjectAttributesResponse:
+      type: object
+      properties:
+        project:
+          $ref: '#/components/schemas/modeldbProject'
+    uacCollaboratorPermissions:
+      type: object
+      properties:
+        collaborator_type:
+          $ref: '#/components/schemas/CollaboratorTypeEnumCollaboratorType'
+        can_deploy:
+          $ref: '#/components/schemas/TernaryEnumTernary'
+        can_predict:
+          $ref: '#/components/schemas/TernaryEnumTernary'
+    modeldbUpdateProjectDescription:
+      type: object
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+    modeldbGetProjectShortNameResponse:
+      type: object
+      properties:
+        short_name:
+          type: string
+    modeldbDeleteProjectTag:
+      type: object
+      properties:
+        id:
+          type: string
+        tag:
+          type: string
+    modeldbGetSummaryResponse:
+      type: object
+      properties:
+        name:
+          type: string
+        last_updated_time:
+          type: string
+          format: uint64
+        total_experiment:
+          type: string
+          format: int64
+        total_experiment_runs:
+          type: string
+          format: int64
+        last_modified_experimentRun_summary:
+          $ref: '#/components/schemas/modeldbLastModifiedExperimentRunSummary'
+        metrics:
+          type: array
+          items:
+            $ref: '#/components/schemas/modeldbMetricsSummary'
+    CollaboratorTypeEnumCollaboratorType:
+      type: string
+      enum:
+      - READ_ONLY
+      - READ_WRITE
+      default: READ_ONLY
+    modeldbLogProjectCodeVersion:
+      type: object
+      properties:
+        id:
+          type: string
+        code_version:
+          $ref: '#/components/schemas/commonCodeVersion'
+      title: code version
+    modeldbCreateProjectResponse:
+      type: object
+      properties:
+        project:
+          $ref: '#/components/schemas/modeldbProject'
+    modeldbUpdateProjectAttributes:
+      type: object
+      properties:
+        id:
+          type: string
+        attribute:
+          $ref: '#/components/schemas/commonKeyValue'
+    modeldbGetAttributesResponse:
+      type: object
+      properties:
+        attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonKeyValue'
+    modeldbDeleteProjectTags:
+      type: object
+      properties:
+        id:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        delete_all:
+          type: boolean
+    modeldbLogProjectCodeVersionResponse:
+      type: object
+      properties:
+        project:
+          $ref: '#/components/schemas/modeldbProject'
+    commonGroupId:
+      type: object
+      properties:
+        org_id:
+          type: string
+        group_id:
+          type: string
     OperatorEnumOperator:
       type: string
       enum:
@@ -1140,11 +1366,23 @@ components:
       - IN
       - NOT_IN
       default: EQ
-    modeldbDeleteProjectAttributesResponse:
+    modeldbAddProjectTagResponse:
       type: object
       properties:
         project:
           $ref: '#/components/schemas/modeldbProject'
+    WorkspaceTypeEnumWorkspaceType:
+      type: string
+      enum:
+      - UNKNOWN
+      - ORGANIZATION
+      - USER
+      default: UNKNOWN
+    modeldbDeleteProject:
+      type: object
+      properties:
+        id:
+          type: string
     modeldbGetArtifactsResponse:
       type: object
       properties:
@@ -1152,237 +1390,20 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/commonArtifact'
-    commonKeyValue:
+    runtimeError:
       type: object
       properties:
-        key:
+        error:
           type: string
-        value:
-          type: object
-        value_type:
-          $ref: '#/components/schemas/ValueTypeEnumValueType'
-          description: "As per documentation of proto buffer 3.\n  For enums, the default value is the first defined enum value, which must be 0."
-    ValueTypeEnumValueType:
-      type: string
-      enum:
-      - STRING
-      - NUMBER
-      - LIST
-      - BLOB
-      default: STRING
-    modeldbDeleteProjectTagResponse:
-      type: object
-      properties:
-        project:
-          $ref: '#/components/schemas/modeldbProject'
-    modeldbUpdateProjectDescriptionResponse:
-      type: object
-      properties:
-        project:
-          $ref: '#/components/schemas/modeldbProject'
-    modeldbSetProjectShortNameResponse:
-      type: object
-      properties:
-        project:
-          $ref: '#/components/schemas/modeldbProject'
-    modeldbGetProjectsResponse:
-      type: object
-      properties:
-        projects:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        details:
           type: array
           items:
-            $ref: '#/components/schemas/modeldbProject'
-        total_records:
-          type: string
-          format: int64
-    modeldbLogProjectCodeVersionResponse:
-      type: object
-      properties:
-        project:
-          $ref: '#/components/schemas/modeldbProject'
-    protobufAny:
-      type: object
-      properties:
-        type_url:
-          type: string
-        value:
-          type: string
-          format: byte
-    modeldbGetProjectReadmeResponse:
-      type: object
-      properties:
-        readme_text:
-          type: string
-    commonCodeVersion:
-      type: object
-      properties:
-        git_snapshot:
-          $ref: '#/components/schemas/commonGitSnapshot'
-        code_archive:
-          $ref: '#/components/schemas/commonArtifact'
-        date_logged:
-          type: string
-          format: uint64
-      title: code version
-    modeldbLastModifiedExperimentRunSummary:
-      type: object
-      properties:
-        name:
-          type: string
-        last_updated_time:
-          type: string
-          format: uint64
-    modeldbUpdateProjectDescription:
-      type: object
-      properties:
-        id:
-          type: string
-        description:
-          type: string
-    modeldbDeleteProjectTagsResponse:
-      type: object
-      properties:
-        project:
-          $ref: '#/components/schemas/modeldbProject'
-    ArtifactTypeEnumArtifactType:
-      type: string
-      enum:
-      - IMAGE
-      - MODEL
-      - TENSORBOARD
-      - DATA
-      - BLOB
-      - STRING
-      - CODE
-      - CONTAINER
-      default: IMAGE
-    modeldbVerifyConnectionResponse:
-      type: object
-      properties:
-        status:
-          type: boolean
-    modeldbDeleteProjectArtifact:
-      type: object
-      properties:
-        id:
-          type: string
-        key:
-          type: string
-    modeldbProjectVisibility:
-      type: string
-      enum:
-      - PRIVATE
-      - PUBLIC
-      - ORG_SCOPED_PUBLIC
-      default: PRIVATE
-    modeldbDeleteProjectTags:
-      type: object
-      properties:
-        id:
-          type: string
-        tags:
-          type: array
-          items:
-            type: string
-        delete_all:
-          type: boolean
-    modeldbCreateProjectResponse:
-      type: object
-      properties:
-        project:
-          $ref: '#/components/schemas/modeldbProject'
-    modeldbAddProjectTags:
-      type: object
-      properties:
-        id:
-          type: string
-        tags:
-          type: array
-          items:
-            type: string
-    uacResourceVisibility:
-      type: string
-      enum:
-      - UNKNOWN
-      - ORG_DEFAULT
-      - ORG_CUSTOM
-      - PRIVATE
-      - WORKSPACE_DEFAULT
-      default: UNKNOWN
-    modeldbSetProjectReadme:
-      type: object
-      properties:
-        id:
-          type: string
-        readme_text:
-          type: string
-    modeldbDeepCopyProjectResponse:
-      type: object
-      properties:
-        project:
-          $ref: '#/components/schemas/modeldbProject'
-    modeldbAddProjectAttributes:
-      type: object
-      properties:
-        id:
-          type: string
-        attributes:
-          type: array
-          items:
-            $ref: '#/components/schemas/commonKeyValue'
-    modeldbDeleteProjectsResponse:
-      type: object
-      properties:
-        status:
-          type: boolean
-    modeldbUpdateProjectAttributes:
-      type: object
-      properties:
-        id:
-          type: string
-        attribute:
-          $ref: '#/components/schemas/commonKeyValue'
-    commonArtifact:
-      type: object
-      properties:
-        key:
-          type: string
-        path:
-          type: string
-        path_only:
-          type: boolean
-        artifact_type:
-          $ref: '#/components/schemas/ArtifactTypeEnumArtifactType'
-        linked_artifact_id:
-          type: string
-        filename_extension:
-          type: string
-        serialization:
-          type: string
-        artifact_subtype:
-          type: string
-        upload_completed:
-          type: boolean
-    uacCollaboratorPermissions:
-      type: object
-      properties:
-        collaborator_type:
-          $ref: '#/components/schemas/CollaboratorTypeEnumCollaboratorType'
-        can_deploy:
-          $ref: '#/components/schemas/TernaryEnumTernary'
-        can_predict:
-          $ref: '#/components/schemas/TernaryEnumTernary'
-    commonKeyValueQuery:
-      type: object
-      properties:
-        key:
-          type: string
-        value:
-          type: object
-        value_type:
-          $ref: '#/components/schemas/ValueTypeEnumValueType'
-        operator:
-          $ref: '#/components/schemas/OperatorEnumOperator'
+            $ref: '#/components/schemas/protobufAny'
     modeldbGetUrlForArtifact:
       type: object
       properties:
@@ -1397,30 +1418,6 @@ components:
         part_number:
           type: string
           format: uint64
-    modeldbDeleteProject:
-      type: object
-      properties:
-        id:
-          type: string
-    modeldbGetTagsResponse:
-      type: object
-      properties:
-        tags:
-          type: array
-          items:
-            type: string
-    TernaryEnumTernary:
-      type: string
-      enum:
-      - UNKNOWN
-      - 'TRUE'
-      - 'FALSE'
-      default: UNKNOWN
-    modeldbAddProjectTagResponse:
-      type: object
-      properties:
-        project:
-          $ref: '#/components/schemas/modeldbProject'
     modeldbSetProjectShortName:
       type: object
       properties:
@@ -1428,49 +1425,59 @@ components:
           type: string
         short_name:
           type: string
-    modeldbLogProjectArtifactsResponse:
+    modeldbDeleteProjectArtifactResponse:
       type: object
       properties:
         project:
           $ref: '#/components/schemas/modeldbProject'
-    modeldbDeleteProjectTag:
+    modeldbGetProjectDatasetCountResponse:
+      type: object
+      properties:
+        dataset_count:
+          type: string
+          format: int64
+    modeldbDeepCopyProjectResponse:
+      type: object
+      properties:
+        project:
+          $ref: '#/components/schemas/modeldbProject'
+    modeldbAddProjectTags:
       type: object
       properties:
         id:
           type: string
-        tag:
-          type: string
-    commonGitSnapshot:
-      type: object
-      properties:
-        filepaths:
+        tags:
           type: array
           items:
             type: string
-        repo:
+    modeldbLastModifiedExperimentRunSummary:
+      type: object
+      properties:
+        name:
           type: string
-        hash:
+        last_updated_time:
           type: string
-        is_dirty:
-          $ref: '#/components/schemas/TernaryEnumTernary'
-    modeldbMetricsSummary:
+          format: uint64
+    modeldbFindProjectsResponse:
+      type: object
+      properties:
+        projects:
+          type: array
+          items:
+            $ref: '#/components/schemas/modeldbProject'
+        total_records:
+          type: string
+          format: int64
+    commonKeyValue:
       type: object
       properties:
         key:
           type: string
-        min_value:
-          type: number
-          format: double
-        max_value:
-          type: number
-          format: double
-    modeldbUpdateProjectName:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
+        value:
+          type: object
+        value_type:
+          $ref: '#/components/schemas/ValueTypeEnumValueType'
+          description: "As per documentation of proto buffer 3.\n  For enums, the default value is the first defined enum value, which must be 0."
     modeldbProject:
       type: object
       properties:
@@ -1531,10 +1538,3 @@ components:
           type: string
           format: uint64
           title: Doc for version_number https://github.com/VertaAI/docs/pull/53
-    modeldbAddProjectTag:
-      type: object
-      properties:
-        id:
-          type: string
-        tag:
-          type: string

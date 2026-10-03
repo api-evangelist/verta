@@ -113,6 +113,42 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    monitoringFindMonitoredEntityRequestResponse:
+      type: object
+      properties:
+        monitored_entities:
+          type: array
+          items:
+            $ref: '#/components/schemas/monitoringMonitoredEntity'
+        total_records:
+          type: integer
+          format: int32
+    monitoringUpdateMonitoredEntityRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uint64
+        name:
+          type: string
+        attributes:
+          type: object
+          additionalProperties:
+            type: string
+        resource_visibility:
+          $ref: '#/components/schemas/uacResourceVisibility'
+        custom_permission:
+          $ref: '#/components/schemas/uacCollaboratorPermissions'
+          title: 'The next field only makes sense when visibility == ORG_CUSTOM
+
+            They will be empty otherwise'
+    commonGroupId:
+      type: object
+      properties:
+        org_id:
+          type: string
+        group_id:
+          type: string
     monitoringMonitoredEntity:
       type: object
       properties:
@@ -166,11 +202,71 @@ components:
         id:
           type: string
           format: uint64
+    monitoringDeleteMonitoredEntityRequestResponse:
+      type: object
+    TernaryEnumTernary:
+      type: string
+      enum:
+      - UNKNOWN
+      - 'TRUE'
+      - 'FALSE'
+      default: UNKNOWN
+    protobufAny:
+      type: object
+      properties:
+        type_url:
+          type: string
+        value:
+          type: string
+          format: byte
+    runtimeError:
+      type: object
+      properties:
+        error:
+          type: string
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/protobufAny'
+    uacResourceVisibility:
+      type: string
+      enum:
+      - UNKNOWN
+      - ORG_DEFAULT
+      - ORG_CUSTOM
+      - PRIVATE
+      - WORKSPACE_DEFAULT
+      default: UNKNOWN
+    uacCollaboratorPermissions:
+      type: object
+      properties:
+        collaborator_type:
+          $ref: '#/components/schemas/CollaboratorTypeEnumCollaboratorType'
+        can_deploy:
+          $ref: '#/components/schemas/TernaryEnumTernary'
+        can_predict:
+          $ref: '#/components/schemas/TernaryEnumTernary'
+    monitoringCreateMonitoredEntityRequestResponse:
+      type: object
+      properties:
+        monitored_entity:
+          $ref: '#/components/schemas/monitoringMonitoredEntity'
     monitoringUpdateMonitoredEntityRequestResponse:
       type: object
       properties:
         monitored_entity:
           $ref: '#/components/schemas/monitoringMonitoredEntity'
+    CollaboratorTypeEnumCollaboratorType:
+      type: string
+      enum:
+      - READ_ONLY
+      - READ_WRITE
+      default: READ_ONLY
     monitoringCreateMonitoredEntityRequest:
       type: object
       properties:
@@ -199,62 +295,6 @@ components:
         origin:
           type: string
           title: a tag that says where the data for this monitored entity comes from. eg. "endpoint" or "batch"
-    monitoringDeleteMonitoredEntityRequestResponse:
-      type: object
-    TernaryEnumTernary:
-      type: string
-      enum:
-      - UNKNOWN
-      - 'TRUE'
-      - 'FALSE'
-      default: UNKNOWN
-    CollaboratorTypeEnumCollaboratorType:
-      type: string
-      enum:
-      - READ_ONLY
-      - READ_WRITE
-      default: READ_ONLY
-    monitoringUpdateMonitoredEntityRequest:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uint64
-        name:
-          type: string
-        attributes:
-          type: object
-          additionalProperties:
-            type: string
-        resource_visibility:
-          $ref: '#/components/schemas/uacResourceVisibility'
-        custom_permission:
-          $ref: '#/components/schemas/uacCollaboratorPermissions'
-          title: 'The next field only makes sense when visibility == ORG_CUSTOM
-
-            They will be empty otherwise'
-    monitoringFindMonitoredEntityRequestResponse:
-      type: object
-      properties:
-        monitored_entities:
-          type: array
-          items:
-            $ref: '#/components/schemas/monitoringMonitoredEntity'
-        total_records:
-          type: integer
-          format: int32
-    monitoringCreateMonitoredEntityRequestResponse:
-      type: object
-      properties:
-        monitored_entity:
-          $ref: '#/components/schemas/monitoringMonitoredEntity'
-    commonGroupId:
-      type: object
-      properties:
-        org_id:
-          type: string
-        group_id:
-          type: string
     monitoringFindMonitoredEntityRequest:
       type: object
       properties:
@@ -293,43 +333,3 @@ components:
         page_limit:
           type: integer
           format: int32
-    uacResourceVisibility:
-      type: string
-      enum:
-      - UNKNOWN
-      - ORG_DEFAULT
-      - ORG_CUSTOM
-      - PRIVATE
-      - WORKSPACE_DEFAULT
-      default: UNKNOWN
-    runtimeError:
-      type: object
-      properties:
-        error:
-          type: string
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
-        details:
-          type: array
-          items:
-            $ref: '#/components/schemas/protobufAny'
-    protobufAny:
-      type: object
-      properties:
-        type_url:
-          type: string
-        value:
-          type: string
-          format: byte
-    uacCollaboratorPermissions:
-      type: object
-      properties:
-        collaborator_type:
-          $ref: '#/components/schemas/CollaboratorTypeEnumCollaboratorType'
-        can_deploy:
-          $ref: '#/components/schemas/TernaryEnumTernary'
-        can_predict:
-          $ref: '#/components/schemas/TernaryEnumTernary'

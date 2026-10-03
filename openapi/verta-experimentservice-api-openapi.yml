@@ -715,21 +715,307 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    modeldbGetExperimentByNameResponse:
+    TernaryEnumTernary:
+      type: string
+      enum:
+      - UNKNOWN
+      - 'TRUE'
+      - 'FALSE'
+      default: UNKNOWN
+    modeldbDeleteExperiments:
+      type: object
+      properties:
+        ids:
+          type: array
+          items:
+            type: string
+    modeldbDeleteExperimentTagResponse:
       type: object
       properties:
         experiment:
           $ref: '#/components/schemas/modeldbExperiment'
+    modeldbUpdateExperimentNameResponse:
+      type: object
+      properties:
+        experiment:
+          $ref: '#/components/schemas/modeldbExperiment'
+    modeldbAddExperimentTag:
+      type: object
+      properties:
+        id:
+          type: string
+        tag:
+          type: string
+    modeldbCreateExperiment:
+      type: object
+      properties:
+        project_id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        date_created:
+          type: string
+          format: int64
+        date_updated:
+          type: string
+          format: int64
+        attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonKeyValue'
+        tags:
+          type: array
+          items:
+            type: string
+        artifacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonArtifact'
+    modeldbGetUrlForArtifactResponse:
+      type: object
+      properties:
+        url:
+          type: string
+        fields:
+          type: object
+          additionalProperties:
+            type: string
+        multipart_upload_ok:
+          type: boolean
+    modeldbDeleteExperimentTag:
+      type: object
+      properties:
+        id:
+          type: string
+        tag:
+          type: string
+    ValueTypeEnumValueType:
+      type: string
+      enum:
+      - STRING
+      - NUMBER
+      - LIST
+      - BLOB
+      default: STRING
+    modeldbDeleteExperimentArtifact:
+      type: object
+      properties:
+        id:
+          type: string
+        key:
+          type: string
+    modeldbGetTagsResponse:
+      type: object
+      properties:
+        tags:
+          type: array
+          items:
+            type: string
     modeldbUpdateExperimentDescriptionResponse:
       type: object
       properties:
         experiment:
           $ref: '#/components/schemas/modeldbExperiment'
-    modeldbDeleteExperimentResponse:
+    protobufAny:
+      type: object
+      properties:
+        type_url:
+          type: string
+        value:
+          type: string
+          format: byte
+    commonGitSnapshot:
+      type: object
+      properties:
+        filepaths:
+          type: array
+          items:
+            type: string
+        repo:
+          type: string
+        hash:
+          type: string
+        is_dirty:
+          $ref: '#/components/schemas/TernaryEnumTernary'
+    modeldbAddExperimentAttributes:
+      type: object
+      properties:
+        id:
+          type: string
+        attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonKeyValue'
+    modeldbGetExperimentByIdResponse:
+      type: object
+      properties:
+        experiment:
+          $ref: '#/components/schemas/modeldbExperiment'
+    modeldbAddExperimentTagResponse:
+      type: object
+      properties:
+        experiment:
+          $ref: '#/components/schemas/modeldbExperiment'
+    commonArtifact:
+      type: object
+      properties:
+        key:
+          type: string
+        path:
+          type: string
+        path_only:
+          type: boolean
+        artifact_type:
+          $ref: '#/components/schemas/ArtifactTypeEnumArtifactType'
+        linked_artifact_id:
+          type: string
+        filename_extension:
+          type: string
+        serialization:
+          type: string
+        artifact_subtype:
+          type: string
+        upload_completed:
+          type: boolean
+    modeldbLogExperimentArtifacts:
+      type: object
+      properties:
+        id:
+          type: string
+        artifacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonArtifact'
+      title: artifacts
+    modeldbAddAttributes:
+      type: object
+      properties:
+        id:
+          type: string
+        attribute:
+          $ref: '#/components/schemas/commonKeyValue'
+      title: 'TODO: make this update attribute'
+    modeldbUpdateExperimentDescription:
+      type: object
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+    modeldbLogExperimentArtifactsResponse:
+      type: object
+      properties:
+        experiment:
+          $ref: '#/components/schemas/modeldbExperiment'
+    modeldbAddExperimentAttributesResponse:
+      type: object
+      properties:
+        experiment:
+          $ref: '#/components/schemas/modeldbExperiment'
+    modeldbLogExperimentCodeVersionResponse:
+      type: object
+      properties:
+        experiment:
+          $ref: '#/components/schemas/modeldbExperiment'
+    commonCodeVersion:
+      type: object
+      properties:
+        git_snapshot:
+          $ref: '#/components/schemas/commonGitSnapshot'
+        code_archive:
+          $ref: '#/components/schemas/commonArtifact'
+        date_logged:
+          type: string
+          format: uint64
+      title: code version
+    modeldbUpdateExperimentName:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    modeldbCreateExperimentResponse:
+      type: object
+      properties:
+        experiment:
+          $ref: '#/components/schemas/modeldbExperiment'
+    ArtifactTypeEnumArtifactType:
+      type: string
+      enum:
+      - IMAGE
+      - MODEL
+      - TENSORBOARD
+      - DATA
+      - BLOB
+      - STRING
+      - CODE
+      - CONTAINER
+      default: IMAGE
+    modeldbGetExperimentByNameResponse:
+      type: object
+      properties:
+        experiment:
+          $ref: '#/components/schemas/modeldbExperiment'
+    modeldbGetExperimentsInProjectResponse:
+      type: object
+      properties:
+        experiments:
+          type: array
+          items:
+            $ref: '#/components/schemas/modeldbExperiment'
+        total_records:
+          type: string
+          format: int64
+    modeldbAddExperimentTagsResponse:
+      type: object
+      properties:
+        experiment:
+          $ref: '#/components/schemas/modeldbExperiment'
+    modeldbGetExperimentCodeVersionResponse:
+      type: object
+      properties:
+        code_version:
+          $ref: '#/components/schemas/commonCodeVersion'
+    commonKeyValue:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: object
+        value_type:
+          $ref: '#/components/schemas/ValueTypeEnumValueType'
+          description: "As per documentation of proto buffer 3.\n  For enums, the default value is the first defined enum value, which must be 0."
+    modeldbDeleteExperimentsResponse:
       type: object
       properties:
         status:
           type: boolean
+    modeldbAddAttributesResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+    modeldbGetAttributesResponse:
+      type: object
+      properties:
+        attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonKeyValue'
+    modeldbDeleteExperiment:
+      type: object
+      properties:
+        id:
+          type: string
+    modeldbDeleteExperimentTagsResponse:
+      type: object
+      properties:
+        experiment:
+          $ref: '#/components/schemas/modeldbExperiment'
     modeldbDeleteExperimentTags:
       type: object
       properties:
@@ -741,6 +1027,137 @@ components:
             type: string
         delete_all:
           type: boolean
+    modeldbAddExperimentTags:
+      type: object
+      properties:
+        id:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+    modeldbFindExperiments:
+      type: object
+      properties:
+        project_id:
+          type: string
+        experiment_ids:
+          type: array
+          items:
+            type: string
+        predicates:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonKeyValueQuery'
+        ids_only:
+          type: boolean
+        page_number:
+          type: integer
+          format: int32
+          title: For pagination
+        page_limit:
+          type: integer
+          format: int32
+        ascending:
+          type: boolean
+        sort_key:
+          type: string
+        workspace_name:
+          type: string
+    modeldbDeleteExperimentAttributesResponse:
+      type: object
+      properties:
+        experiment:
+          $ref: '#/components/schemas/modeldbExperiment'
+    commonGroupId:
+      type: object
+      properties:
+        org_id:
+          type: string
+        group_id:
+          type: string
+    OperatorEnumOperator:
+      type: string
+      enum:
+      - EQ
+      - NE
+      - GT
+      - GTE
+      - LT
+      - LTE
+      - CONTAIN
+      - NOT_CONTAIN
+      - IN
+      - NOT_IN
+      default: EQ
+    modeldbUpdateExperimentNameOrDescription:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+    modeldbGetArtifactsResponse:
+      type: object
+      properties:
+        artifacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonArtifact'
+    runtimeError:
+      type: object
+      properties:
+        error:
+          type: string
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/protobufAny'
+    modeldbLogExperimentCodeVersion:
+      type: object
+      properties:
+        id:
+          type: string
+        code_version:
+          $ref: '#/components/schemas/commonCodeVersion'
+      title: code version
+    modeldbGetUrlForArtifact:
+      type: object
+      properties:
+        id:
+          type: string
+        key:
+          type: string
+        method:
+          type: string
+        artifact_type:
+          $ref: '#/components/schemas/ArtifactTypeEnumArtifactType'
+        part_number:
+          type: string
+          format: uint64
+    modeldbDeleteExperimentResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+    commonKeyValueQuery:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: object
+        value_type:
+          $ref: '#/components/schemas/ValueTypeEnumValueType'
+        operator:
+          $ref: '#/components/schemas/OperatorEnumOperator'
     modeldbExperiment:
       type: object
       properties:
@@ -783,254 +1200,11 @@ components:
           type: string
           format: uint64
           title: Doc for version_number https://github.com/VertaAI/docs/pull/53
-    modeldbLogExperimentArtifacts:
-      type: object
-      properties:
-        id:
-          type: string
-        artifacts:
-          type: array
-          items:
-            $ref: '#/components/schemas/commonArtifact'
-      title: artifacts
-    modeldbUpdateExperimentNameOrDescription:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-    modeldbAddAttributesResponse:
-      type: object
-      properties:
-        status:
-          type: boolean
-    modeldbDeleteExperimentAttributesResponse:
+    modeldbUpdateExperimentNameOrDescriptionResponse:
       type: object
       properties:
         experiment:
           $ref: '#/components/schemas/modeldbExperiment'
-    commonGroupId:
-      type: object
-      properties:
-        org_id:
-          type: string
-        group_id:
-          type: string
-    runtimeError:
-      type: object
-      properties:
-        error:
-          type: string
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
-        details:
-          type: array
-          items:
-            $ref: '#/components/schemas/protobufAny'
-    modeldbFindExperiments:
-      type: object
-      properties:
-        project_id:
-          type: string
-        experiment_ids:
-          type: array
-          items:
-            type: string
-        predicates:
-          type: array
-          items:
-            $ref: '#/components/schemas/commonKeyValueQuery'
-        ids_only:
-          type: boolean
-        page_number:
-          type: integer
-          format: int32
-          title: For pagination
-        page_limit:
-          type: integer
-          format: int32
-        ascending:
-          type: boolean
-        sort_key:
-          type: string
-        workspace_name:
-          type: string
-    modeldbDeleteExperiments:
-      type: object
-      properties:
-        ids:
-          type: array
-          items:
-            type: string
-    modeldbDeleteExperiment:
-      type: object
-      properties:
-        id:
-          type: string
-    modeldbGetUrlForArtifactResponse:
-      type: object
-      properties:
-        url:
-          type: string
-        fields:
-          type: object
-          additionalProperties:
-            type: string
-        multipart_upload_ok:
-          type: boolean
-    modeldbGetAttributesResponse:
-      type: object
-      properties:
-        attributes:
-          type: array
-          items:
-            $ref: '#/components/schemas/commonKeyValue'
-    modeldbDeleteExperimentArtifactResponse:
-      type: object
-      properties:
-        experiment:
-          $ref: '#/components/schemas/modeldbExperiment'
-    OperatorEnumOperator:
-      type: string
-      enum:
-      - EQ
-      - NE
-      - GT
-      - GTE
-      - LT
-      - LTE
-      - CONTAIN
-      - NOT_CONTAIN
-      - IN
-      - NOT_IN
-      default: EQ
-    modeldbGetArtifactsResponse:
-      type: object
-      properties:
-        artifacts:
-          type: array
-          items:
-            $ref: '#/components/schemas/commonArtifact'
-    ValueTypeEnumValueType:
-      type: string
-      enum:
-      - STRING
-      - NUMBER
-      - LIST
-      - BLOB
-      default: STRING
-    commonKeyValue:
-      type: object
-      properties:
-        key:
-          type: string
-        value:
-          type: object
-        value_type:
-          $ref: '#/components/schemas/ValueTypeEnumValueType'
-          description: "As per documentation of proto buffer 3.\n  For enums, the default value is the first defined enum value, which must be 0."
-    modeldbLogExperimentArtifactsResponse:
-      type: object
-      properties:
-        experiment:
-          $ref: '#/components/schemas/modeldbExperiment'
-    modeldbDeleteExperimentTagResponse:
-      type: object
-      properties:
-        experiment:
-          $ref: '#/components/schemas/modeldbExperiment'
-    modeldbAddExperimentTagsResponse:
-      type: object
-      properties:
-        experiment:
-          $ref: '#/components/schemas/modeldbExperiment'
-    protobufAny:
-      type: object
-      properties:
-        type_url:
-          type: string
-        value:
-          type: string
-          format: byte
-    commonCodeVersion:
-      type: object
-      properties:
-        git_snapshot:
-          $ref: '#/components/schemas/commonGitSnapshot'
-        code_archive:
-          $ref: '#/components/schemas/commonArtifact'
-        date_logged:
-          type: string
-          format: uint64
-      title: code version
-    modeldbDeleteExperimentsResponse:
-      type: object
-      properties:
-        status:
-          type: boolean
-    ArtifactTypeEnumArtifactType:
-      type: string
-      enum:
-      - IMAGE
-      - MODEL
-      - TENSORBOARD
-      - DATA
-      - BLOB
-      - STRING
-      - CODE
-      - CONTAINER
-      default: IMAGE
-    modeldbAddAttributes:
-      type: object
-      properties:
-        id:
-          type: string
-        attribute:
-          $ref: '#/components/schemas/commonKeyValue'
-      title: 'TODO: make this update attribute'
-    modeldbAddExperimentTagResponse:
-      type: object
-      properties:
-        experiment:
-          $ref: '#/components/schemas/modeldbExperiment'
-    modeldbLogExperimentCodeVersionResponse:
-      type: object
-      properties:
-        experiment:
-          $ref: '#/components/schemas/modeldbExperiment'
-    modeldbCreateExperiment:
-      type: object
-      properties:
-        project_id:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        date_created:
-          type: string
-          format: int64
-        date_updated:
-          type: string
-          format: int64
-        attributes:
-          type: array
-          items:
-            $ref: '#/components/schemas/commonKeyValue'
-        tags:
-          type: array
-          items:
-            type: string
-        artifacts:
-          type: array
-          items:
-            $ref: '#/components/schemas/commonArtifact'
     modeldbFindExperimentsResponse:
       type: object
       properties:
@@ -1041,181 +1215,7 @@ components:
         total_records:
           type: string
           format: int64
-    modeldbDeleteExperimentTag:
-      type: object
-      properties:
-        id:
-          type: string
-        tag:
-          type: string
-    modeldbAddExperimentTag:
-      type: object
-      properties:
-        id:
-          type: string
-        tag:
-          type: string
-    modeldbLogExperimentCodeVersion:
-      type: object
-      properties:
-        id:
-          type: string
-        code_version:
-          $ref: '#/components/schemas/commonCodeVersion'
-      title: code version
-    commonArtifact:
-      type: object
-      properties:
-        key:
-          type: string
-        path:
-          type: string
-        path_only:
-          type: boolean
-        artifact_type:
-          $ref: '#/components/schemas/ArtifactTypeEnumArtifactType'
-        linked_artifact_id:
-          type: string
-        filename_extension:
-          type: string
-        serialization:
-          type: string
-        artifact_subtype:
-          type: string
-        upload_completed:
-          type: boolean
-    modeldbGetExperimentByIdResponse:
-      type: object
-      properties:
-        experiment:
-          $ref: '#/components/schemas/modeldbExperiment'
-    modeldbGetExperimentCodeVersionResponse:
-      type: object
-      properties:
-        code_version:
-          $ref: '#/components/schemas/commonCodeVersion'
-    commonKeyValueQuery:
-      type: object
-      properties:
-        key:
-          type: string
-        value:
-          type: object
-        value_type:
-          $ref: '#/components/schemas/ValueTypeEnumValueType'
-        operator:
-          $ref: '#/components/schemas/OperatorEnumOperator'
-    modeldbUpdateExperimentNameOrDescriptionResponse:
-      type: object
-      properties:
-        experiment:
-          $ref: '#/components/schemas/modeldbExperiment'
-    modeldbGetUrlForArtifact:
-      type: object
-      properties:
-        id:
-          type: string
-        key:
-          type: string
-        method:
-          type: string
-        artifact_type:
-          $ref: '#/components/schemas/ArtifactTypeEnumArtifactType'
-        part_number:
-          type: string
-          format: uint64
-    modeldbUpdateExperimentNameResponse:
-      type: object
-      properties:
-        experiment:
-          $ref: '#/components/schemas/modeldbExperiment'
-    modeldbGetTagsResponse:
-      type: object
-      properties:
-        tags:
-          type: array
-          items:
-            type: string
-    TernaryEnumTernary:
-      type: string
-      enum:
-      - UNKNOWN
-      - 'TRUE'
-      - 'FALSE'
-      default: UNKNOWN
-    modeldbDeleteExperimentArtifact:
-      type: object
-      properties:
-        id:
-          type: string
-        key:
-          type: string
-    modeldbGetExperimentsInProjectResponse:
-      type: object
-      properties:
-        experiments:
-          type: array
-          items:
-            $ref: '#/components/schemas/modeldbExperiment'
-        total_records:
-          type: string
-          format: int64
-    modeldbUpdateExperimentDescription:
-      type: object
-      properties:
-        id:
-          type: string
-        description:
-          type: string
-    commonGitSnapshot:
-      type: object
-      properties:
-        filepaths:
-          type: array
-          items:
-            type: string
-        repo:
-          type: string
-        hash:
-          type: string
-        is_dirty:
-          $ref: '#/components/schemas/TernaryEnumTernary'
-    modeldbCreateExperimentResponse:
-      type: object
-      properties:
-        experiment:
-          $ref: '#/components/schemas/modeldbExperiment'
-    modeldbAddExperimentAttributes:
-      type: object
-      properties:
-        id:
-          type: string
-        attributes:
-          type: array
-          items:
-            $ref: '#/components/schemas/commonKeyValue'
-    modeldbAddExperimentTags:
-      type: object
-      properties:
-        id:
-          type: string
-        tags:
-          type: array
-          items:
-            type: string
-    modeldbUpdateExperimentName:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-    modeldbDeleteExperimentTagsResponse:
-      type: object
-      properties:
-        experiment:
-          $ref: '#/components/schemas/modeldbExperiment'
-    modeldbAddExperimentAttributesResponse:
+    modeldbDeleteExperimentArtifactResponse:
       type: object
       properties:
         experiment:
