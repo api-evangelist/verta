@@ -1,0 +1,95 @@
+slug: verta
+provider: Verta
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 8
+edges:
+- tag: ExperimentRunService
+  spec_file: verta-experimentrunservice-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.85
+  evidence: '"Experiment run service create experiment run", schemas modeldbLogMetricsResponse, modeldbLogObservation,
+    modeldbLogExperimentRunCodeVersionResponse'
+  reason: Logging metrics, observations, artefacts and code versions for ML experiment runs is core experiment
+    tracking in an MLOps platform, which sits under AI/ML model lifecycle management.
+- tag: ExperimentService
+  spec_file: verta-experimentservice-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.85
+  evidence: '"Experiment service create experiment", "Experiment service log experiment artifacts" (modeldbLogExperimentArtifacts),
+    commonGitSnapshot'
+  reason: Grouping and tracking ML experiments with attributes, tags and artefacts in ModelDB is MLOps
+    experiment management, mapped to Artificial Intelligence Management rather than generic R&D experimentation.
+- tag: RegistryService
+  spec_file: verta-registryservice-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.85
+  evidence: POST /model_versions/find  'CRUD for Model Version'; registryGetRegisteredModelRequestResponse
+  reason: Explicit model registry and model-version CRUD with artifacts, environments and datasets — squarely
+    AI/ML model lifecycle (MLOps) management.
+- tag: AuthzService
+  spec_file: verta-authzservice-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.8
+  evidence: '"Authz service is self allowed", "Authz service get allowed entities", "Authz service get
+    self allowed resources"; schemas uacAction, uacResources, RoleActionEnumRoleServiceActions'
+  reason: Runtime authorization checks resolving which actions a principal may perform on which resources
+    — access control / entitlement enforcement, mapped to Identity & Access Management.
+- tag: DatasetService
+  spec_file: verta-datasetservice-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.7
+  evidence: '"Dataset service create dataset", schemas modeldbDataset, modeldbGetExperimentRunByDataset,
+    versioningPythonEnvironmentBlob'
+  reason: ModelDB datasets are versioned ML training-data artefacts linked to experiment runs; cataloguing
+    and versioning them is part of the ML/MLOps model lifecycle. Mapped to Artificial Intelligence Management,
+    with some chance a data-governance reading is preferred.
+- tag: MonitoredEntityService
+  spec_file: verta-monitoredentityservice-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.7
+  evidence: POST /api/v1/monitoring/monitored_entity/createMonitoredEntity — schema monitoringMonitoredEntity
+  reason: Verta is an MLOps platform; the monitored-entity CRUD registers ML models/pipelines for monitoring,
+    part of the AI/ML model lifecycle and MLOps discipline rather than general SaaS observability of the
+    vendor's own service.
+- tag: StageService
+  spec_file: verta-stageservice-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.7
+  evidence: POST /stage/commitTransition  'Only a transition that has been approved can be commited.';
+    StageEnumStage, registryApprovalOfTransition
+  reason: Approval workflow for promoting model versions between registry stages (e.g. staging to production)
+    — governance of the ML model lifecycle, not generic change or release management of a software product.
+- tag: UACService
+  spec_file: verta-uacservice-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: POST /uac/createUser, POST /uac/addDevKey 'adds new user developer key', GET /uac/getCurrentUser
+    'Get the current user information verifying JWT token'
+  reason: 'User access control service: user account CRUD and developer-key credential issuance/revocation
+    — identity and access management for the platform.'
