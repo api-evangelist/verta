@@ -113,6 +113,29 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    protobufAny:
+      type: object
+      properties:
+        type_url:
+          type: string
+        value:
+          type: string
+          format: byte
+    monitoringDeleteMonitoredEntityRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uint64
+    uacResourceVisibility:
+      type: string
+      enum:
+      - UNKNOWN
+      - ORG_DEFAULT
+      - ORG_CUSTOM
+      - PRIVATE
+      - WORKSPACE_DEFAULT
+      default: UNKNOWN
     monitoringFindMonitoredEntityRequestResponse:
       type: object
       properties:
@@ -123,6 +146,100 @@ components:
         total_records:
           type: integer
           format: int32
+    monitoringFindMonitoredEntityRequest:
+      type: object
+      properties:
+        ids:
+          type: array
+          items:
+            type: string
+            format: uint64
+        names:
+          type: array
+          items:
+            type: string
+        fuzzy_names:
+          type: array
+          items:
+            type: string
+          title: Add names to find with a fuzzy (non-exact) search
+        endpoint_ids:
+          type: array
+          items:
+            type: string
+            format: uint64
+        model_version_ids:
+          type: array
+          items:
+            type: string
+        workspace_id:
+          type: string
+          format: uint64
+        workspace_name:
+          type: string
+        page_number:
+          type: integer
+          format: int32
+          title: Pagination
+        page_limit:
+          type: integer
+          format: int32
+    monitoringUpdateMonitoredEntityRequestResponse:
+      type: object
+      properties:
+        monitored_entity:
+          $ref: '#/components/schemas/monitoringMonitoredEntity'
+    monitoringCreateMonitoredEntityRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        workspace_id:
+          type: string
+          format: uint64
+        workspace_name:
+          type: string
+        attributes:
+          type: object
+          additionalProperties:
+            type: string
+        resource_visibility:
+          $ref: '#/components/schemas/uacResourceVisibility'
+        custom_permission:
+          $ref: '#/components/schemas/uacCollaboratorPermissions'
+          title: 'The next field only makes sense when visibility == ORG_CUSTOM
+
+            They will be empty otherwise'
+        endpoint_id:
+          type: string
+          format: uint64
+          description: Optional.  If the data originates from a Verta endpoint, set this to the endpoint id.
+        origin:
+          type: string
+          title: a tag that says where the data for this monitored entity comes from. eg. "endpoint" or "batch"
+    monitoringDeleteMonitoredEntityRequestResponse:
+      type: object
+    commonGroupId:
+      type: object
+      properties:
+        org_id:
+          type: string
+        group_id:
+          type: string
+    runtimeError:
+      type: object
+      properties:
+        error:
+          type: string
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/protobufAny'
     monitoringUpdateMonitoredEntityRequest:
       type: object
       properties:
@@ -142,13 +259,33 @@ components:
           title: 'The next field only makes sense when visibility == ORG_CUSTOM
 
             They will be empty otherwise'
-    commonGroupId:
+    uacCollaboratorPermissions:
       type: object
       properties:
-        org_id:
-          type: string
-        group_id:
-          type: string
+        collaborator_type:
+          $ref: '#/components/schemas/CollaboratorTypeEnumCollaboratorType'
+        can_deploy:
+          $ref: '#/components/schemas/TernaryEnumTernary'
+        can_predict:
+          $ref: '#/components/schemas/TernaryEnumTernary'
+    TernaryEnumTernary:
+      type: string
+      enum:
+      - UNKNOWN
+      - 'TRUE'
+      - 'FALSE'
+      default: UNKNOWN
+    monitoringCreateMonitoredEntityRequestResponse:
+      type: object
+      properties:
+        monitored_entity:
+          $ref: '#/components/schemas/monitoringMonitoredEntity'
+    CollaboratorTypeEnumCollaboratorType:
+      type: string
+      enum:
+      - READ_ONLY
+      - READ_WRITE
+      default: READ_ONLY
     monitoringMonitoredEntity:
       type: object
       properties:
@@ -196,140 +333,3 @@ components:
         origin:
           type: string
           title: a tag that says where the data for this monitored entity comes from. eg. "endpoint" or "batch"
-    monitoringDeleteMonitoredEntityRequest:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uint64
-    monitoringDeleteMonitoredEntityRequestResponse:
-      type: object
-    TernaryEnumTernary:
-      type: string
-      enum:
-      - UNKNOWN
-      - 'TRUE'
-      - 'FALSE'
-      default: UNKNOWN
-    protobufAny:
-      type: object
-      properties:
-        type_url:
-          type: string
-        value:
-          type: string
-          format: byte
-    runtimeError:
-      type: object
-      properties:
-        error:
-          type: string
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
-        details:
-          type: array
-          items:
-            $ref: '#/components/schemas/protobufAny'
-    uacResourceVisibility:
-      type: string
-      enum:
-      - UNKNOWN
-      - ORG_DEFAULT
-      - ORG_CUSTOM
-      - PRIVATE
-      - WORKSPACE_DEFAULT
-      default: UNKNOWN
-    uacCollaboratorPermissions:
-      type: object
-      properties:
-        collaborator_type:
-          $ref: '#/components/schemas/CollaboratorTypeEnumCollaboratorType'
-        can_deploy:
-          $ref: '#/components/schemas/TernaryEnumTernary'
-        can_predict:
-          $ref: '#/components/schemas/TernaryEnumTernary'
-    monitoringCreateMonitoredEntityRequestResponse:
-      type: object
-      properties:
-        monitored_entity:
-          $ref: '#/components/schemas/monitoringMonitoredEntity'
-    monitoringUpdateMonitoredEntityRequestResponse:
-      type: object
-      properties:
-        monitored_entity:
-          $ref: '#/components/schemas/monitoringMonitoredEntity'
-    CollaboratorTypeEnumCollaboratorType:
-      type: string
-      enum:
-      - READ_ONLY
-      - READ_WRITE
-      default: READ_ONLY
-    monitoringCreateMonitoredEntityRequest:
-      type: object
-      properties:
-        name:
-          type: string
-        workspace_id:
-          type: string
-          format: uint64
-        workspace_name:
-          type: string
-        attributes:
-          type: object
-          additionalProperties:
-            type: string
-        resource_visibility:
-          $ref: '#/components/schemas/uacResourceVisibility'
-        custom_permission:
-          $ref: '#/components/schemas/uacCollaboratorPermissions'
-          title: 'The next field only makes sense when visibility == ORG_CUSTOM
-
-            They will be empty otherwise'
-        endpoint_id:
-          type: string
-          format: uint64
-          description: Optional.  If the data originates from a Verta endpoint, set this to the endpoint id.
-        origin:
-          type: string
-          title: a tag that says where the data for this monitored entity comes from. eg. "endpoint" or "batch"
-    monitoringFindMonitoredEntityRequest:
-      type: object
-      properties:
-        ids:
-          type: array
-          items:
-            type: string
-            format: uint64
-        names:
-          type: array
-          items:
-            type: string
-        fuzzy_names:
-          type: array
-          items:
-            type: string
-          title: Add names to find with a fuzzy (non-exact) search
-        endpoint_ids:
-          type: array
-          items:
-            type: string
-            format: uint64
-        model_version_ids:
-          type: array
-          items:
-            type: string
-        workspace_id:
-          type: string
-          format: uint64
-        workspace_name:
-          type: string
-        page_number:
-          type: integer
-          format: int32
-          title: Pagination
-        page_limit:
-          type: integer
-          format: int32

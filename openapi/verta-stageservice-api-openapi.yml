@@ -238,24 +238,60 @@ paths:
         required: true
 components:
   schemas:
-    StageEnumStage:
-      type: string
-      enum:
-      - UNKNOWN
-      - DEVELOPMENT
-      - STAGING
-      - PRODUCTION
-      - ARCHIVED
-      - UNASSIGNED
-      default: UNKNOWN
+    protobufAny:
+      type: object
+      properties:
+        type_url:
+          type: string
+        value:
+          type: string
+          format: byte
+    registryCloseTransitionRequest:
+      type: object
+      properties:
+        transition_id:
+          type: string
+          format: uint64
+        comment:
+          type: string
     registryStageUpdate:
       type: object
       properties:
         stage:
           $ref: '#/components/schemas/StageEnumStage'
-    registryRejectionOfTransition:
+    runtimeError:
       type: object
-    registryFindActivitiesRequest:
+      properties:
+        error:
+          type: string
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            $ref: '#/components/schemas/protobufAny'
+    registryUpdateStageRequest:
+      type: object
+      properties:
+        model_version_id:
+          type: string
+          format: uint64
+        stage:
+          $ref: '#/components/schemas/StageEnumStage'
+        comment:
+          type: string
+    registryRejectTransitionRequest:
+      type: object
+      properties:
+        transition_id:
+          type: string
+          format: uint64
+        comment:
+          type: string
+    registryFindTransitionsRequest:
       type: object
       properties:
         registered_model_id:
@@ -265,39 +301,27 @@ components:
         model_version_id:
           type: string
           format: uint64
-    registryApprovalOfTransition:
+        state:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransitionStateEnumTransitionState'
+          title: Current state. If empty, return in any state
+    registryApproveTransitionRequest:
       type: object
-    registryFindActivitiesRequestResponse:
+      properties:
+        transition_id:
+          type: string
+          format: uint64
+        comment:
+          type: string
+    registryFindTransitionsRequestResponse:
       type: object
       properties:
         activities:
           type: array
           items:
             $ref: '#/components/schemas/registryActivity'
-    registryCloseTransitionRequest:
-      type: object
-      properties:
-        transition_id:
-          type: string
-          format: uint64
-        comment:
-          type: string
-    protobufAny:
-      type: object
-      properties:
-        type_url:
-          type: string
-        value:
-          type: string
-          format: byte
-    registryRejectTransitionRequest:
-      type: object
-      properties:
-        transition_id:
-          type: string
-          format: uint64
-        comment:
-          type: string
+          title: Only things of type transition can be returned
     registryTransition:
       type: object
       properties:
@@ -314,16 +338,31 @@ components:
           type: string
           format: uint64
           title: Transition Id, Automatically populated from the backend
-    registryUpdateStageRequest:
+    registryCreateCommentRequest:
       type: object
       properties:
         model_version_id:
           type: string
           format: uint64
-        stage:
-          $ref: '#/components/schemas/StageEnumStage'
         comment:
           type: string
+    registryRejectionOfTransition:
+      type: object
+    registryApprovalOfTransition:
+      type: object
+    registryCloseOfTransition:
+      type: object
+    TransitionStateEnumTransitionState:
+      type: string
+      enum:
+      - UNKNOWN
+      - APPROVED
+      - REJECTED
+      - PENDING
+      - CLOSED
+      - COMMITTED
+      default: UNKNOWN
+      title: "- APPROVED: It is approved only if it has one approval and no rejections\n - REJECTED: It is rejected if it has any rejection\n - PENDING: It is pending if there are no approvals or rejections\n - CLOSED: It is closed if the user has explicitly requested it to be closed\n - COMMITTED: It has been committed and people can't close, approve or reject anymore"
     registryActivity:
       type: object
       properties:
@@ -356,7 +395,7 @@ components:
         activity_state:
           $ref: '#/components/schemas/TransitionStateEnumTransitionState'
           title: Activity state while the transition happen
-    registryApproveTransitionRequest:
+    registryCommitTransitionRequest:
       type: object
       properties:
         transition_id:
@@ -364,37 +403,6 @@ components:
           format: uint64
         comment:
           type: string
-    registryCreateCommentRequest:
-      type: object
-      properties:
-        model_version_id:
-          type: string
-          format: uint64
-        comment:
-          type: string
-    registryFindTransitionsRequest:
-      type: object
-      properties:
-        registered_model_id:
-          type: string
-          format: uint64
-          title: At least one of the following needs to be provided
-        model_version_id:
-          type: string
-          format: uint64
-        state:
-          type: array
-          items:
-            $ref: '#/components/schemas/TransitionStateEnumTransitionState'
-          title: Current state. If empty, return in any state
-    registryFindTransitionsRequestResponse:
-      type: object
-      properties:
-        activities:
-          type: array
-          items:
-            $ref: '#/components/schemas/registryActivity'
-          title: Only things of type transition can be returned
     registryCreateTransitionRequest:
       type: object
       properties:
@@ -406,38 +414,30 @@ components:
         comment:
           type: string
       title: Actions
-    registryCloseOfTransition:
-      type: object
-    runtimeError:
+    registryFindActivitiesRequestResponse:
       type: object
       properties:
-        error:
-          type: string
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
-        details:
+        activities:
           type: array
           items:
-            $ref: '#/components/schemas/protobufAny'
-    registryCommitTransitionRequest:
+            $ref: '#/components/schemas/registryActivity'
+    registryFindActivitiesRequest:
       type: object
       properties:
-        transition_id:
+        registered_model_id:
           type: string
           format: uint64
-        comment:
+          title: At least one of the following needs to be provided
+        model_version_id:
           type: string
-    TransitionStateEnumTransitionState:
+          format: uint64
+    StageEnumStage:
       type: string
       enum:
       - UNKNOWN
-      - APPROVED
-      - REJECTED
-      - PENDING
-      - CLOSED
-      - COMMITTED
+      - DEVELOPMENT
+      - STAGING
+      - PRODUCTION
+      - ARCHIVED
+      - UNASSIGNED
       default: UNKNOWN
-      title: "- APPROVED: It is approved only if it has one approval and no rejections\n - REJECTED: It is rejected if it has any rejection\n - PENDING: It is pending if there are no approvals or rejections\n - CLOSED: It is closed if the user has explicitly requested it to be closed\n - COMMITTED: It has been committed and people can't close, approve or reject anymore"

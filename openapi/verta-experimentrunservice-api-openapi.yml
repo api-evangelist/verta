@@ -1858,6 +1858,21 @@ paths:
       - ExperimentRunService
 components:
   schemas:
+    protobufAny:
+      type: object
+      properties:
+        type_url:
+          type: string
+        value:
+          type: string
+          format: byte
+    modeldbDeleteExperimentRun:
+      type: object
+      properties:
+        id:
+          type: string
+    modeldbSetParentExperimentRunIdResponse:
+      type: object
     modeldbDeleteObservations:
       type: object
       properties:
@@ -1871,49 +1886,54 @@ components:
         delete_all:
           type: boolean
           title: if true delete all observations corresponding to the run, ignoring observation_keys
-    modeldbGetDatasetsResponse:
+    modeldbLogAttributes:
       type: object
       properties:
-        datasets:
+        id:
+          type: string
+        attributes:
           type: array
           items:
-            $ref: '#/components/schemas/commonArtifact'
-    modeldbVersioningEntry:
+            $ref: '#/components/schemas/commonKeyValue'
+      title: attributes
+    modeldbTopExperimentRunsSelectorResponse:
       type: object
       properties:
-        repository_id:
-          type: string
-          format: uint64
-        commit:
-          type: string
-        key_location_map:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/vertamodeldbLocation'
-    modeldbDeleteExperimentRunsResponse:
+        experiment_runs:
+          type: array
+          items:
+            $ref: '#/components/schemas/modeldbExperimentRun'
+    modeldbFindExperimentRunsResponse:
       type: object
       properties:
-        status:
-          type: boolean
-    modeldbListCommitExperimentRunsRequestResponse:
-      type: object
-      properties:
-        runs:
+        experiment_runs:
           type: array
           items:
             $ref: '#/components/schemas/modeldbExperimentRun'
         total_records:
           type: string
           format: int64
-    modeldbCommitArtifactPart:
+    modeldbLogEnvironment:
       type: object
       properties:
         id:
           type: string
-        key:
-          type: string
-        artifact_part:
-          $ref: '#/components/schemas/commonArtifactPart'
+        environment:
+          $ref: '#/components/schemas/versioningEnvironmentBlob'
+    modeldbLogMetricResponse:
+      type: object
+    modeldbGetExperimentRunByIdResponse:
+      type: object
+      properties:
+        experiment_run:
+          $ref: '#/components/schemas/modeldbExperimentRun'
+    modeldbDeleteExperimentRunTagsResponse:
+      type: object
+      properties:
+        experiment_run:
+          $ref: '#/components/schemas/modeldbExperimentRun'
+    modeldbUpdateExperimentRunNameResponse:
+      type: object
     modeldbCreateExperimentRun:
       type: object
       properties:
@@ -1979,74 +1999,34 @@ components:
             $ref: '#/components/schemas/modeldbFeature'
         versioned_inputs:
           $ref: '#/components/schemas/modeldbVersioningEntry'
-    modeldbGetUrlForArtifactResponse:
+    modeldbCommitArtifactPartResponse:
       type: object
-      properties:
-        url:
-          type: string
-        fields:
-          type: object
-          additionalProperties:
-            type: string
-        multipart_upload_ok:
-          type: boolean
-    modeldbGetChildrenExperimentRunsResponse:
-      type: object
-      properties:
-        experiment_runs:
-          type: array
-          items:
-            $ref: '#/components/schemas/modeldbExperimentRun'
-        total_records:
-          type: string
-          format: int64
-    modeldbLogObservation:
+    modeldbLogVersionedInput:
       type: object
       properties:
         id:
           type: string
-        observation:
-          $ref: '#/components/schemas/modeldbObservation'
-      title: observation
-    modeldbListBlobExperimentRunsRequestResponse:
+        versioned_inputs:
+          $ref: '#/components/schemas/modeldbVersioningEntry'
+    versioningEnvironmentVariablesBlob:
       type: object
       properties:
-        runs:
-          type: array
-          items:
-            $ref: '#/components/schemas/modeldbExperimentRun'
-        total_records:
+        name:
           type: string
-          format: int64
-    modeldbDeleteExperimentRunAttributesResponse:
-      type: object
-    modeldbAddExperimentRunTagsResponse:
-      type: object
-      properties:
-        experiment_run:
-          $ref: '#/components/schemas/modeldbExperimentRun'
-    modeldbFindExperimentRunsResponse:
-      type: object
-      properties:
-        experiment_runs:
-          type: array
-          items:
-            $ref: '#/components/schemas/modeldbExperimentRun'
-        total_records:
+        value:
           type: string
-          format: int64
-    modeldbLogMetricsResponse:
+    modeldbLogJobIdResponse:
       type: object
-    modeldbLogExperimentRunCodeVersionResponse:
-      type: object
-    modeldbLogAttribute:
+    modeldbLogArtifact:
       type: object
       properties:
         id:
           type: string
-        attribute:
-          $ref: '#/components/schemas/commonKeyValue'
-      title: attribute
+        artifact:
+          $ref: '#/components/schemas/commonArtifact'
+      title: artifact
+    modeldbLogAttributesResponse:
+      type: object
     modeldbObservation:
       type: object
       properties:
@@ -2060,51 +2040,95 @@ components:
         epoch_number:
           type: object
       title: observations with the same key are not overwritten, the are appended to a list
-    modeldbLogObservationResponse:
-      type: object
-    modeldbLogObservations:
+    modeldbGetChildrenExperimentRunsResponse:
       type: object
       properties:
-        id:
-          type: string
-        observations:
+        experiment_runs:
           type: array
           items:
-            $ref: '#/components/schemas/modeldbObservation'
-      title: observations
-    modeldbGetHyperparametersResponse:
-      type: object
-      properties:
-        hyperparameters:
-          type: array
-          items:
-            $ref: '#/components/schemas/commonKeyValue'
-    modeldbCloneExperimentRun:
-      type: object
-      properties:
-        src_experiment_run_id:
+            $ref: '#/components/schemas/modeldbExperimentRun'
+        total_records:
           type: string
-        dest_experiment_run_name:
-          type: string
-        dest_experiment_id:
-          type: string
-    modeldbLogMetricResponse:
-      type: object
+          format: int64
     modeldbDeleteExperimentRunTagResponse:
       type: object
       properties:
         experiment_run:
           $ref: '#/components/schemas/modeldbExperimentRun'
-    modeldbAddExperimentRunTag:
+    modeldbDeleteHyperparametersResponse:
+      type: object
+    modeldbLogAttributeResponse:
+      type: object
+    modeldbListCommitExperimentRunsRequestResponse:
+      type: object
+      properties:
+        runs:
+          type: array
+          items:
+            $ref: '#/components/schemas/modeldbExperimentRun'
+        total_records:
+          type: string
+          format: int64
+    modeldbGetObservationsResponse:
+      type: object
+      properties:
+        observations:
+          type: array
+          items:
+            $ref: '#/components/schemas/modeldbObservation'
+    modeldbFeature:
+      type: object
+      properties:
+        name:
+          type: string
+    modeldbGetExperimentRunCodeVersionResponse:
+      type: object
+      properties:
+        code_version:
+          $ref: '#/components/schemas/commonCodeVersion'
+    modeldbLogArtifactResponse:
+      type: object
+    modeldbLogDataset:
       type: object
       properties:
         id:
           type: string
-        tag:
-          type: string
-      title: tag
-    modeldbCommitMultipartArtifactResponse:
+        dataset:
+          $ref: '#/components/schemas/commonArtifact'
+        overwrite:
+          type: boolean
+      title: dataset
+    commonArtifactPart:
       type: object
+      properties:
+        part_number:
+          type: string
+          format: uint64
+        etag:
+          type: string
+    modeldbLogArtifactsResponse:
+      type: object
+    versioningVersionEnvironmentBlob:
+      type: object
+      properties:
+        major:
+          type: integer
+          format: int32
+        minor:
+          type: integer
+          format: int32
+        patch:
+          type: integer
+          format: int32
+        suffix:
+          type: string
+    commonGroupId:
+      type: object
+      properties:
+        org_id:
+          type: string
+        group_id:
+          type: string
     runtimeError:
       type: object
       properties:
@@ -2119,15 +2143,72 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/protobufAny'
-    modeldbLogAttributeResponse:
-      type: object
-    vertamodeldbLocation:
+    modeldbLogAttribute:
       type: object
       properties:
-        location:
+        id:
+          type: string
+        attribute:
+          $ref: '#/components/schemas/commonKeyValue'
+      title: attribute
+    modeldbGetAttributesResponse:
+      type: object
+      properties:
+        attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonKeyValue'
+    modeldbAddExperimentRunAttributesResponse:
+      type: object
+    modeldbGetUrlForArtifact:
+      type: object
+      properties:
+        id:
+          type: string
+        key:
+          type: string
+        method:
+          type: string
+        artifact_type:
+          $ref: '#/components/schemas/ArtifactTypeEnumArtifactType'
+        part_number:
+          type: string
+          format: uint64
+    modeldbDeleteHyperparameters:
+      type: object
+      properties:
+        id:
+          type: string
+        hyperparameter_keys:
           type: array
           items:
             type: string
+          title: delete HyperParameters corresponding to the keys
+        delete_all:
+          type: boolean
+          title: if true delete all hyper parameters corresponding to the run, ignoring hyperparameter_keys
+    modeldbSortExperimentRunsResponse:
+      type: object
+      properties:
+        experiment_runs:
+          type: array
+          items:
+            $ref: '#/components/schemas/modeldbExperimentRun'
+        total_records:
+          type: string
+          format: int64
+    modeldbUpdateExperimentRunDescriptionResponse:
+      type: object
+      properties:
+        experiment_run:
+          $ref: '#/components/schemas/modeldbExperimentRun'
+    modeldbGetHyperparametersResponse:
+      type: object
+      properties:
+        hyperparameters:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonKeyValue'
     OperatorEnumOperator:
       type: string
       enum:
@@ -2142,18 +2223,78 @@ components:
       - IN
       - NOT_IN
       default: EQ
-    commonKeyValue:
+    modeldbDeleteMetricsResponse:
+      type: object
+    modeldbLogObservationsResponse:
+      type: object
+    versioningEnvironmentBlob:
       type: object
       properties:
-        key:
-          type: string
-        value:
-          type: object
-        value_type:
-          $ref: '#/components/schemas/ValueTypeEnumValueType'
-          description: "As per documentation of proto buffer 3.\n  For enums, the default value is the first defined enum value, which must be 0."
-    modeldbLogDatasetResponse:
+        python:
+          $ref: '#/components/schemas/versioningPythonEnvironmentBlob'
+        docker:
+          $ref: '#/components/schemas/versioningDockerEnvironmentBlob'
+        environment_variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningEnvironmentVariablesBlob'
+        command_line:
+          type: array
+          items:
+            type: string
+        apt:
+          $ref: '#/components/schemas/versioningAptEnvironmentBlob'
+    modeldbLogExperimentRunCodeVersionResponse:
       type: object
+    modeldbDeleteExperimentRunsResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+    modeldbDeleteExperimentRunResponse:
+      type: object
+      properties:
+        status:
+          type: boolean
+    ArtifactTypeEnumArtifactType:
+      type: string
+      enum:
+      - IMAGE
+      - MODEL
+      - TENSORBOARD
+      - DATA
+      - BLOB
+      - STRING
+      - CODE
+      - CONTAINER
+      default: IMAGE
+    modeldbGetCommittedArtifactPartsResponse:
+      type: object
+      properties:
+        artifact_parts:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonArtifactPart'
+    modeldbAddExperimentRunTags:
+      type: object
+      properties:
+        id:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+      title: tags
+    modeldbLogHyperparameters:
+      type: object
+      properties:
+        id:
+          type: string
+        hyperparameters:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonKeyValue'
+      title: hyperparameters
     modeldbLogMetric:
       type: object
       properties:
@@ -2162,8 +2303,6 @@ components:
         metric:
           $ref: '#/components/schemas/commonKeyValue'
       title: metric
-    modeldbLogEnvironmentResponse:
-      type: object
     modeldbFindExperimentRuns:
       type: object
       properties:
@@ -2194,13 +2333,49 @@ components:
           type: string
         workspace_name:
           type: string
-    modeldbDeleteArtifact:
+    modeldbLogEnvironmentResponse:
+      type: object
+    versioningPythonEnvironmentBlob:
       type: object
       properties:
-        id:
+        version:
+          $ref: '#/components/schemas/versioningVersionEnvironmentBlob'
+        requirements:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningPythonRequirementEnvironmentBlob'
+        constraints:
+          type: array
+          items:
+            $ref: '#/components/schemas/versioningPythonRequirementEnvironmentBlob'
+        raw_requirements:
           type: string
-        key:
+          description: These fields are only present if the parsed versions above are empty. That is, you cannot have both `requirements` and `raw_requirements` for example.
+        raw_constraints:
           type: string
+    modeldbListBlobExperimentRunsRequestResponse:
+      type: object
+      properties:
+        runs:
+          type: array
+          items:
+            $ref: '#/components/schemas/modeldbExperimentRun'
+        total_records:
+          type: string
+          format: int64
+    modeldbLogVersionedInputResponse:
+      type: object
+    commonCodeVersion:
+      type: object
+      properties:
+        git_snapshot:
+          $ref: '#/components/schemas/commonGitSnapshot'
+        code_archive:
+          $ref: '#/components/schemas/commonArtifact'
+        date_logged:
+          type: string
+          format: uint64
+      title: code version
     modeldbGetExperimentRunsByDatasetVersionIdResponse:
       type: object
       properties:
@@ -2211,6 +2386,212 @@ components:
         total_records:
           type: string
           format: uint64
+    modeldbLogHyperparameter:
+      type: object
+      properties:
+        id:
+          type: string
+        hyperparameter:
+          $ref: '#/components/schemas/commonKeyValue'
+      title: hyperparameter
+    modeldbLogHyperparameterResponse:
+      type: object
+    modeldbDeleteMetrics:
+      type: object
+      properties:
+        id:
+          type: string
+        metric_keys:
+          type: array
+          items:
+            type: string
+          title: delete metrics corresponding to the keys
+        delete_all:
+          type: boolean
+          title: if true delete all metrics corresponding to the run, ignoring metric_keys
+    modeldbAddExperimentRunAttributes:
+      type: object
+      properties:
+        id:
+          type: string
+        attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonKeyValue'
+      title: attributes
+    modeldbDeleteExperimentRuns:
+      type: object
+      properties:
+        ids:
+          type: array
+          items:
+            type: string
+    versioningDockerEnvironmentBlob:
+      type: object
+      properties:
+        repository:
+          type: string
+        tag:
+          type: string
+        sha:
+          type: string
+    modeldbCloneExperimentRun:
+      type: object
+      properties:
+        src_experiment_run_id:
+          type: string
+        dest_experiment_run_name:
+          type: string
+        dest_experiment_id:
+          type: string
+    commonArtifact:
+      type: object
+      properties:
+        key:
+          type: string
+        path:
+          type: string
+        path_only:
+          type: boolean
+        artifact_type:
+          $ref: '#/components/schemas/ArtifactTypeEnumArtifactType'
+        linked_artifact_id:
+          type: string
+        filename_extension:
+          type: string
+        serialization:
+          type: string
+        artifact_subtype:
+          type: string
+        upload_completed:
+          type: boolean
+    modeldbAddExperimentRunTagsResponse:
+      type: object
+      properties:
+        experiment_run:
+          $ref: '#/components/schemas/modeldbExperimentRun'
+    modeldbDeleteExperimentRunAttributes:
+      type: object
+      properties:
+        id:
+          type: string
+        attribute_keys:
+          type: array
+          items:
+            type: string
+        delete_all:
+          type: boolean
+    vertamodeldbLocation:
+      type: object
+      properties:
+        location:
+          type: array
+          items:
+            type: string
+    modeldbCommitMultipartArtifactResponse:
+      type: object
+    versioningPythonRequirementEnvironmentBlob:
+      type: object
+      properties:
+        library:
+          type: string
+        constraint:
+          type: string
+        version:
+          $ref: '#/components/schemas/versioningVersionEnvironmentBlob'
+    modeldbDeleteExperimentRunAttributesResponse:
+      type: object
+    modeldbGetUrlForArtifactResponse:
+      type: object
+      properties:
+        url:
+          type: string
+        fields:
+          type: object
+          additionalProperties:
+            type: string
+        multipart_upload_ok:
+          type: boolean
+    modeldbLogObservationResponse:
+      type: object
+    modeldbCommitArtifactPart:
+      type: object
+      properties:
+        id:
+          type: string
+        key:
+          type: string
+        artifact_part:
+          $ref: '#/components/schemas/commonArtifactPart'
+    commonKeyValue:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: object
+        value_type:
+          $ref: '#/components/schemas/ValueTypeEnumValueType'
+          description: "As per documentation of proto buffer 3.\n  For enums, the default value is the first defined enum value, which must be 0."
+    modeldbCloneExperimentRunResponse:
+      type: object
+      properties:
+        run:
+          $ref: '#/components/schemas/modeldbExperimentRun'
+    modeldbAddExperimentRunTag:
+      type: object
+      properties:
+        id:
+          type: string
+        tag:
+          type: string
+      title: tag
+    versioningAptEnvironmentBlob:
+      type: object
+      properties:
+        packages:
+          type: array
+          items:
+            type: string
+    modeldbCommitMultipartArtifact:
+      type: object
+      properties:
+        id:
+          type: string
+        key:
+          type: string
+    modeldbGetDatasetsResponse:
+      type: object
+      properties:
+        datasets:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonArtifact'
+    modeldbDeleteExperimentRunTags:
+      type: object
+      properties:
+        id:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        delete_all:
+          type: boolean
+    modeldbGetVersionedInputResponse:
+      type: object
+      properties:
+        versioned_inputs:
+          $ref: '#/components/schemas/modeldbVersioningEntry'
+    modeldbGetJobIdResponse:
+      type: object
+      properties:
+        job_id:
+          type: string
+    modeldbLogDatasetsResponse:
+      type: object
+    modeldbLogDatasetResponse:
+      type: object
     modeldbUpdateExperimentRunDescription:
       type: object
       properties:
@@ -2218,25 +2599,69 @@ components:
           type: string
         description:
           type: string
-    modeldbLogDatasetsResponse:
+    modeldbSetParentExperimentRunId:
       type: object
-    modeldbLogJobIdResponse:
-      type: object
-    modeldbDeleteHyperparameters:
+      properties:
+        experiment_run_id:
+          type: string
+        parent_id:
+          type: string
+    modeldbDeleteArtifact:
       type: object
       properties:
         id:
           type: string
-        hyperparameter_keys:
+        key:
+          type: string
+    modeldbGetExperimentRunsInProjectResponse:
+      type: object
+      properties:
+        experiment_runs:
+          type: array
+          items:
+            $ref: '#/components/schemas/modeldbExperimentRun'
+        total_records:
+          type: string
+          format: int64
+    modeldbGetTagsResponse:
+      type: object
+      properties:
+        tags:
           type: array
           items:
             type: string
-          title: delete HyperParameters corresponding to the keys
-        delete_all:
-          type: boolean
-          title: if true delete all hyper parameters corresponding to the run, ignoring hyperparameter_keys
-    modeldbAddExperimentRunAttributesResponse:
+    modeldbLogArtifacts:
       type: object
+      properties:
+        id:
+          type: string
+        artifacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonArtifact'
+      title: artifacts
+    modeldbGetMetricsResponse:
+      type: object
+      properties:
+        metrics:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonKeyValue'
+    modeldbGetArtifactsResponse:
+      type: object
+      properties:
+        artifacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/commonArtifact'
+    modeldbLogObservation:
+      type: object
+      properties:
+        id:
+          type: string
+        observation:
+          $ref: '#/components/schemas/modeldbObservation'
+      title: observation
     modeldbExperimentRun:
       type: object
       properties:
@@ -2323,30 +2748,6 @@ components:
           format: uint64
           title: Doc for version_number https://github.com/VertaAI/docs/pull/53
       title: ExperimentRun Entity
-    modeldbDeleteHyperparametersResponse:
-      type: object
-    modeldbDeleteExperimentRunTag:
-      type: object
-      properties:
-        id:
-          type: string
-        tag:
-          type: string
-    modeldbGetObservationsResponse:
-      type: object
-      properties:
-        observations:
-          type: array
-          items:
-            $ref: '#/components/schemas/modeldbObservation'
-    protobufAny:
-      type: object
-      properties:
-        type_url:
-          type: string
-        value:
-          type: string
-          format: byte
     commonGitSnapshot:
       type: object
       properties:
@@ -2360,85 +2761,6 @@ components:
           type: string
         is_dirty:
           $ref: '#/components/schemas/TernaryEnumTernary'
-    versioningAptEnvironmentBlob:
-      type: object
-      properties:
-        packages:
-          type: array
-          items:
-            type: string
-    modeldbUpdateExperimentRunName:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-    modeldbDeleteExperimentRun:
-      type: object
-      properties:
-        id:
-          type: string
-    modeldbDeleteExperimentRunTags:
-      type: object
-      properties:
-        id:
-          type: string
-        tags:
-          type: array
-          items:
-            type: string
-        delete_all:
-          type: boolean
-    modeldbCreateExperimentRunResponse:
-      type: object
-      properties:
-        experiment_run:
-          $ref: '#/components/schemas/modeldbExperimentRun'
-    modeldbSetParentExperimentRunId:
-      type: object
-      properties:
-        experiment_run_id:
-          type: string
-        parent_id:
-          type: string
-    modeldbLogHyperparameters:
-      type: object
-      properties:
-        id:
-          type: string
-        hyperparameters:
-          type: array
-          items:
-            $ref: '#/components/schemas/commonKeyValue'
-      title: hyperparameters
-    modeldbDeleteMetricsResponse:
-      type: object
-    modeldbDeleteExperimentRunTagsResponse:
-      type: object
-      properties:
-        experiment_run:
-          $ref: '#/components/schemas/modeldbExperimentRun'
-    modeldbGetExperimentRunsInExperimentResponse:
-      type: object
-      properties:
-        experiment_runs:
-          type: array
-          items:
-            $ref: '#/components/schemas/modeldbExperimentRun'
-        total_records:
-          type: string
-          format: int64
-    modeldbAddExperimentRunTags:
-      type: object
-      properties:
-        id:
-          type: string
-        tags:
-          type: array
-          items:
-            type: string
-      title: tags
     commonKeyValueQuery:
       type: object
       properties:
@@ -2450,42 +2772,23 @@ components:
           $ref: '#/components/schemas/ValueTypeEnumValueType'
         operator:
           $ref: '#/components/schemas/OperatorEnumOperator'
-    modeldbLogEnvironment:
+    modeldbLogHyperparametersResponse:
+      type: object
+    modeldbDeleteExperimentRunTag:
       type: object
       properties:
         id:
           type: string
-        environment:
-          $ref: '#/components/schemas/versioningEnvironmentBlob'
-    modeldbGetExperimentRunByIdResponse:
-      type: object
-      properties:
-        experiment_run:
-          $ref: '#/components/schemas/modeldbExperimentRun'
-    modeldbUpdateExperimentRunNameResponse:
-      type: object
+        tag:
+          type: string
     modeldbAddExperimentRunTagResponse:
       type: object
       properties:
         experiment_run:
           $ref: '#/components/schemas/modeldbExperimentRun'
-    versioningPythonRequirementEnvironmentBlob:
+    modeldbDeleteObservationsResponse:
       type: object
-      properties:
-        library:
-          type: string
-        constraint:
-          type: string
-        version:
-          $ref: '#/components/schemas/versioningVersionEnvironmentBlob'
-    TernaryEnumTernary:
-      type: string
-      enum:
-      - UNKNOWN
-      - 'TRUE'
-      - 'FALSE'
-      default: UNKNOWN
-    modeldbSortExperimentRunsResponse:
+    modeldbGetExperimentRunsInExperimentResponse:
       type: object
       properties:
         experiment_runs:
@@ -2495,205 +2798,32 @@ components:
         total_records:
           type: string
           format: int64
-    modeldbCommitMultipartArtifact:
-      type: object
-      properties:
-        id:
-          type: string
-        key:
-          type: string
-    modeldbGetCommittedArtifactPartsResponse:
-      type: object
-      properties:
-        artifact_parts:
-          type: array
-          items:
-            $ref: '#/components/schemas/commonArtifactPart'
-    modeldbDeleteArtifactResponse:
-      type: object
-    versioningEnvironmentVariablesBlob:
-      type: object
-      properties:
-        name:
-          type: string
-        value:
-          type: string
-    versioningPythonEnvironmentBlob:
-      type: object
-      properties:
-        version:
-          $ref: '#/components/schemas/versioningVersionEnvironmentBlob'
-        requirements:
-          type: array
-          items:
-            $ref: '#/components/schemas/versioningPythonRequirementEnvironmentBlob'
-        constraints:
-          type: array
-          items:
-            $ref: '#/components/schemas/versioningPythonRequirementEnvironmentBlob'
-        raw_requirements:
-          type: string
-          description: These fields are only present if the parsed versions above are empty. That is, you cannot have both `requirements` and `raw_requirements` for example.
-        raw_constraints:
-          type: string
-    modeldbLogObservationsResponse:
-      type: object
-    modeldbAddExperimentRunAttributes:
-      type: object
-      properties:
-        id:
-          type: string
-        attributes:
-          type: array
-          items:
-            $ref: '#/components/schemas/commonKeyValue'
-      title: attributes
-    modeldbTopExperimentRunsSelectorResponse:
-      type: object
-      properties:
-        experiment_runs:
-          type: array
-          items:
-            $ref: '#/components/schemas/modeldbExperimentRun'
-    modeldbCloneExperimentRunResponse:
-      type: object
-      properties:
-        run:
-          $ref: '#/components/schemas/modeldbExperimentRun'
     modeldbGetExperimentRunByNameResponse:
       type: object
       properties:
         experiment_run:
           $ref: '#/components/schemas/modeldbExperimentRun'
-    modeldbCommitArtifactPartResponse:
-      type: object
-    commonCodeVersion:
+    modeldbVersioningEntry:
       type: object
       properties:
-        git_snapshot:
-          $ref: '#/components/schemas/commonGitSnapshot'
-        code_archive:
-          $ref: '#/components/schemas/commonArtifact'
-        date_logged:
+        repository_id:
           type: string
           format: uint64
-      title: code version
-    modeldbLogHyperparametersResponse:
-      type: object
-    modeldbDeleteMetrics:
+        commit:
+          type: string
+        key_location_map:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/vertamodeldbLocation'
+    modeldbUpdateExperimentRunName:
       type: object
       properties:
         id:
           type: string
-        metric_keys:
-          type: array
-          items:
-            type: string
-          title: delete metrics corresponding to the keys
-        delete_all:
-          type: boolean
-          title: if true delete all metrics corresponding to the run, ignoring metric_keys
-    modeldbUpdateExperimentRunDescriptionResponse:
-      type: object
-      properties:
-        experiment_run:
-          $ref: '#/components/schemas/modeldbExperimentRun'
-    modeldbLogHyperparameter:
-      type: object
-      properties:
-        id:
-          type: string
-        hyperparameter:
-          $ref: '#/components/schemas/commonKeyValue'
-      title: hyperparameter
-    modeldbFeature:
-      type: object
-      properties:
         name:
           type: string
-    modeldbLogAttributes:
+    modeldbLogMetricsResponse:
       type: object
-      properties:
-        id:
-          type: string
-        attributes:
-          type: array
-          items:
-            $ref: '#/components/schemas/commonKeyValue'
-      title: attributes
-    modeldbGetExperimentRunCodeVersionResponse:
-      type: object
-      properties:
-        code_version:
-          $ref: '#/components/schemas/commonCodeVersion'
-    modeldbGetAttributesResponse:
-      type: object
-      properties:
-        attributes:
-          type: array
-          items:
-            $ref: '#/components/schemas/commonKeyValue'
-    modeldbLogArtifactsResponse:
-      type: object
-    modeldbDeleteObservationsResponse:
-      type: object
-    commonGroupId:
-      type: object
-      properties:
-        org_id:
-          type: string
-        group_id:
-          type: string
-    modeldbLogAttributesResponse:
-      type: object
-    modeldbLogExperimentRunCodeVersion:
-      type: object
-      properties:
-        id:
-          type: string
-        code_version:
-          $ref: '#/components/schemas/commonCodeVersion'
-        overwrite:
-          type: boolean
-      title: code version
-    modeldbGetArtifactsResponse:
-      type: object
-      properties:
-        artifacts:
-          type: array
-          items:
-            $ref: '#/components/schemas/commonArtifact'
-    commonArtifactPart:
-      type: object
-      properties:
-        part_number:
-          type: string
-          format: uint64
-        etag:
-          type: string
-    modeldbGetUrlForArtifact:
-      type: object
-      properties:
-        id:
-          type: string
-        key:
-          type: string
-        method:
-          type: string
-        artifact_type:
-          $ref: '#/components/schemas/ArtifactTypeEnumArtifactType'
-        part_number:
-          type: string
-          format: uint64
-    modeldbLogVersionedInputResponse:
-      type: object
-    modeldbDeleteExperimentRuns:
-      type: object
-      properties:
-        ids:
-          type: array
-          items:
-            type: string
     modeldbLogDatasets:
       type: object
       properties:
@@ -2706,32 +2836,6 @@ components:
         overwrite:
           type: boolean
       title: datasets
-    versioningDockerEnvironmentBlob:
-      type: object
-      properties:
-        repository:
-          type: string
-        tag:
-          type: string
-        sha:
-          type: string
-    versioningEnvironmentBlob:
-      type: object
-      properties:
-        python:
-          $ref: '#/components/schemas/versioningPythonEnvironmentBlob'
-        docker:
-          $ref: '#/components/schemas/versioningDockerEnvironmentBlob'
-        environment_variables:
-          type: array
-          items:
-            $ref: '#/components/schemas/versioningEnvironmentVariablesBlob'
-        command_line:
-          type: array
-          items:
-            type: string
-        apt:
-          $ref: '#/components/schemas/versioningAptEnvironmentBlob'
     modeldbLogMetrics:
       type: object
       properties:
@@ -2742,40 +2846,11 @@ components:
           items:
             $ref: '#/components/schemas/commonKeyValue'
       title: metrics
-    modeldbLogHyperparameterResponse:
-      type: object
-    modeldbDeleteExperimentRunResponse:
+    modeldbCreateExperimentRunResponse:
       type: object
       properties:
-        status:
-          type: boolean
-    modeldbGetMetricsResponse:
-      type: object
-      properties:
-        metrics:
-          type: array
-          items:
-            $ref: '#/components/schemas/commonKeyValue'
-    modeldbLogArtifact:
-      type: object
-      properties:
-        id:
-          type: string
-        artifact:
-          $ref: '#/components/schemas/commonArtifact'
-      title: artifact
-    modeldbLogVersionedInput:
-      type: object
-      properties:
-        id:
-          type: string
-        versioned_inputs:
-          $ref: '#/components/schemas/modeldbVersioningEntry'
-    modeldbGetJobIdResponse:
-      type: object
-      properties:
-        job_id:
-          type: string
+        experiment_run:
+          $ref: '#/components/schemas/modeldbExperimentRun'
     ValueTypeEnumValueType:
       type: string
       enum:
@@ -2784,107 +2859,32 @@ components:
       - LIST
       - BLOB
       default: STRING
-    modeldbGetTagsResponse:
+    modeldbLogObservations:
       type: object
       properties:
-        tags:
+        id:
+          type: string
+        observations:
           type: array
           items:
-            type: string
-    commonArtifact:
-      type: object
-      properties:
-        key:
-          type: string
-        path:
-          type: string
-        path_only:
-          type: boolean
-        artifact_type:
-          $ref: '#/components/schemas/ArtifactTypeEnumArtifactType'
-        linked_artifact_id:
-          type: string
-        filename_extension:
-          type: string
-        serialization:
-          type: string
-        artifact_subtype:
-          type: string
-        upload_completed:
-          type: boolean
-    modeldbLogArtifactResponse:
-      type: object
-    modeldbGetVersionedInputResponse:
-      type: object
-      properties:
-        versioned_inputs:
-          $ref: '#/components/schemas/modeldbVersioningEntry'
-    ArtifactTypeEnumArtifactType:
+            $ref: '#/components/schemas/modeldbObservation'
+      title: observations
+    TernaryEnumTernary:
       type: string
       enum:
-      - IMAGE
-      - MODEL
-      - TENSORBOARD
-      - DATA
-      - BLOB
-      - STRING
-      - CODE
-      - CONTAINER
-      default: IMAGE
-    modeldbSetParentExperimentRunIdResponse:
-      type: object
-    modeldbLogDataset:
+      - UNKNOWN
+      - 'TRUE'
+      - 'FALSE'
+      default: UNKNOWN
+    modeldbLogExperimentRunCodeVersion:
       type: object
       properties:
         id:
           type: string
-        dataset:
-          $ref: '#/components/schemas/commonArtifact'
+        code_version:
+          $ref: '#/components/schemas/commonCodeVersion'
         overwrite:
           type: boolean
-      title: dataset
-    versioningVersionEnvironmentBlob:
+      title: code version
+    modeldbDeleteArtifactResponse:
       type: object
-      properties:
-        major:
-          type: integer
-          format: int32
-        minor:
-          type: integer
-          format: int32
-        patch:
-          type: integer
-          format: int32
-        suffix:
-          type: string
-    modeldbGetExperimentRunsInProjectResponse:
-      type: object
-      properties:
-        experiment_runs:
-          type: array
-          items:
-            $ref: '#/components/schemas/modeldbExperimentRun'
-        total_records:
-          type: string
-          format: int64
-    modeldbDeleteExperimentRunAttributes:
-      type: object
-      properties:
-        id:
-          type: string
-        attribute_keys:
-          type: array
-          items:
-            type: string
-        delete_all:
-          type: boolean
-    modeldbLogArtifacts:
-      type: object
-      properties:
-        id:
-          type: string
-        artifacts:
-          type: array
-          items:
-            $ref: '#/components/schemas/commonArtifact'
-      title: artifacts
